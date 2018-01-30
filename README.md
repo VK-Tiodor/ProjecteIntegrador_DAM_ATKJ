@@ -1,2 +1,2 @@
 # ProjecteIntegrador_DAM_ATKJ
-Repositorio para el proyecto integrador. Usuarios
+Repositorio para la aplicación de escritorio para el asistente

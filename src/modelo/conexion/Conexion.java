@@ -6,6 +6,7 @@
 package modelo.conexion;
 
 import controlador.Controlador;
+import java.sql.ResultSet;
 
 /**
  *
@@ -18,7 +19,29 @@ public class Conexion {
         this.controlador = controlador;
     }
     
-   public boolean login(String userName, String password){
-       return true;
-   }
+    public boolean login(String userName, String password){
+        return true;
+    }
+    
+    /**
+     * Metodo para conseguir el Result set de las tareas pendientes de un asistente.
+     * Tiene que devolver: Dependiente, fecha, hora, encabezado y descripcion 
+     * 
+     * @param clase_Asistente tiene que ser Asistente en vez de string pero aun no está
+     * @return 
+     * 
+     */
+    public ResultSet getResultSetAgenda(String clase_Asistente) {
+        
+        return null;
+    }
+
+    public ResultSet getResultSetHistorialLLamadas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ResultSet getResultSetListaDependientes(String clase_Asistente) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

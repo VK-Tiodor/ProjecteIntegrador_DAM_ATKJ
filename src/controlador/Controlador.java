@@ -10,6 +10,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -33,18 +34,18 @@ public class Controlador {
     public Controlador() {
         this.ventanaLogin = new Login(this);
         this.conexion = new Conexion(this);
-        cambiaVentana(null, this.ventanaLogin);
+        cambiaVentana(this.ventanaLogin);
     }
     
     public void login(String user, String pass) { //presiona boton de login
         if (this.conexion.login(user, pass)) {
-            cambiaVentana(ventanaActual, new JFramePantallaPrincipal(this, conexion));
+            cambiaVentana(new JFramePantallaPrincipal(this, conexion));
         }
     }
 
-    private void cambiaVentana(JFrame antigua, JFrame nueva) {
-        if (antigua != null) {
-            antigua.dispose();
+    public void cambiaVentana(JFrame nueva) {
+        if (ventanaActual != null) {
+            ventanaActual.dispose();
         }
         if (nueva != null) {
             nueva.pack();
@@ -53,6 +54,18 @@ public class Controlador {
             ventanaActual = nueva;
         }
         
+    }
+    public void abreFrame(JFrame nueva){
+        if (nueva != null) {
+            nueva.pack();
+            nueva.setLocationRelativeTo(null);
+            nueva.setVisible(true);
+        }
+    }
+    public void abreDialog(JDialog dialog){
+        dialog.pack();
+        dialog.setVisible(true);
+        dialog.setLocationRelativeTo(null);
     }
 
 
@@ -90,10 +103,12 @@ public class Controlador {
     public void rellenaTablaHistorialLlamadas(JTable jTableHistorialLlamadas) throws SQLException {
         ResultSet rsHistorialLLamadas = this.conexion.getResultSetHistorialLLamadas(); //TODO 
         rellenaTabla(jTableHistorialLlamadas,rsHistorialLLamadas);
+        
     }
     public void rellenaTablaListaDependiente(JTable jTableListaDependientes) throws SQLException {
         ResultSet rsListaDependientes = this.conexion.getResultSetListaDependientes("Clase Asistente"); //TODO 
         rellenaTabla(jTableListaDependientes,rsListaDependientes);
+        
     }
 
 

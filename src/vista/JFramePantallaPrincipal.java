@@ -26,7 +26,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         this.controlador = controlador;
         this.conexion = conexion;
         
-        setUI();
+        //setUI();
     }
 
     /**
@@ -38,16 +38,110 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialogAñadirTarea = new javax.swing.JDialog();
+        jComboBoxDependientesAddTarea = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        dateChooserComboFechaAddTarea = new datechooser.beans.DateChooserCombo();
+        jLabel3 = new javax.swing.JLabel();
+        jFormattedTextFieldHoraAddTarea = new javax.swing.JFormattedTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextFieldEncabezadoAddTarea = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextAreaDescripcionAddTarea = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
+        jButtonCrearTareaAddTarea = new javax.swing.JButton();
         jTabbedPanePrincipal = new javax.swing.JTabbedPane();
         jPanelAgenda = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableAgenda = new javax.swing.JTable();
+        jButtonAddTarea = new javax.swing.JButton();
+        jButtonTareaRealizado = new javax.swing.JButton();
+        jButtonBorrarTarea = new javax.swing.JButton();
         jPanelHistorialLlamadas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableHistorialLlamadas = new javax.swing.JTable();
+        jButtonVerDetallesLlamada = new javax.swing.JButton();
+        jButtonVerDependienteHist = new javax.swing.JButton();
         jPanelDependientes = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableListaDependientes = new javax.swing.JTable();
+        jButtonVerDependiente = new javax.swing.JButton();
+
+        jLabel1.setText("Dependiente");
+
+        jLabel2.setText("Fecha");
+
+        jLabel3.setText("Hora");
+
+        jFormattedTextFieldHoraAddTarea.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+
+        jLabel4.setText("Encabezado");
+
+        jTextAreaDescripcionAddTarea.setColumns(20);
+        jTextAreaDescripcionAddTarea.setLineWrap(true);
+        jTextAreaDescripcionAddTarea.setRows(5);
+        jScrollPane4.setViewportView(jTextAreaDescripcionAddTarea);
+
+        jLabel5.setText("Descripción");
+
+        jButtonCrearTareaAddTarea.setText("Crear");
+        jButtonCrearTareaAddTarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearTareaAddTareaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogAñadirTareaLayout = new javax.swing.GroupLayout(jDialogAñadirTarea.getContentPane());
+        jDialogAñadirTarea.getContentPane().setLayout(jDialogAñadirTareaLayout);
+        jDialogAñadirTareaLayout.setHorizontalGroup(
+            jDialogAñadirTareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAñadirTareaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialogAñadirTareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBoxDependientesAddTarea, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dateChooserComboFechaAddTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jFormattedTextFieldHoraAddTarea)
+                    .addComponent(jTextFieldEncabezadoAddTarea)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                    .addGroup(jDialogAñadirTareaLayout.createSequentialGroup()
+                        .addGroup(jDialogAñadirTareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButtonCrearTareaAddTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jDialogAñadirTareaLayout.setVerticalGroup(
+            jDialogAñadirTareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAñadirTareaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBoxDependientesAddTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(dateChooserComboFechaAddTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jFormattedTextFieldHoraAddTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldEncabezadoAddTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonCrearTareaAddTarea)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,13 +158,42 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTableAgenda);
 
+        jButtonAddTarea.setText("Añadir Tarea");
+        jButtonAddTarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddTareaActionPerformed(evt);
+            }
+        });
+
+        jButtonTareaRealizado.setText("Tarea Realizada");
+        jButtonTareaRealizado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTareaRealizadoActionPerformed(evt);
+            }
+        });
+
+        jButtonBorrarTarea.setText("Borrar Tarea");
+        jButtonBorrarTarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarTareaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelAgendaLayout = new javax.swing.GroupLayout(jPanelAgenda);
         jPanelAgenda.setLayout(jPanelAgendaLayout);
         jPanelAgendaLayout.setHorizontalGroup(
             jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAgendaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
+                .addGroup(jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
+                    .addGroup(jPanelAgendaLayout.createSequentialGroup()
+                        .addComponent(jButtonAddTarea)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonTareaRealizado)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonBorrarTarea)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelAgendaLayout.setVerticalGroup(
@@ -78,7 +201,12 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanelAgendaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAddTarea)
+                    .addComponent(jButtonTareaRealizado)
+                    .addComponent(jButtonBorrarTarea))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jTabbedPanePrincipal.addTab("Agenda", jPanelAgenda);
@@ -96,13 +224,33 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTableHistorialLlamadas);
 
+        jButtonVerDetallesLlamada.setText("Ver Detalles");
+        jButtonVerDetallesLlamada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerDetallesLlamadaActionPerformed(evt);
+            }
+        });
+
+        jButtonVerDependienteHist.setText("Ver Dependiente");
+        jButtonVerDependienteHist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerDependienteHistActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelHistorialLlamadasLayout = new javax.swing.GroupLayout(jPanelHistorialLlamadas);
         jPanelHistorialLlamadas.setLayout(jPanelHistorialLlamadasLayout);
         jPanelHistorialLlamadasLayout.setHorizontalGroup(
             jPanelHistorialLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHistorialLlamadasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
+                .addGroup(jPanelHistorialLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
+                    .addGroup(jPanelHistorialLlamadasLayout.createSequentialGroup()
+                        .addComponent(jButtonVerDetallesLlamada)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonVerDependienteHist)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelHistorialLlamadasLayout.setVerticalGroup(
@@ -110,7 +258,11 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanelHistorialLlamadasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelHistorialLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVerDetallesLlamada)
+                    .addComponent(jButtonVerDependienteHist))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jTabbedPanePrincipal.addTab("Historial Llamadas", jPanelHistorialLlamadas);
@@ -128,13 +280,24 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableListaDependientes);
 
+        jButtonVerDependiente.setText("Ver Dependiente");
+        jButtonVerDependiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerDependienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelDependientesLayout = new javax.swing.GroupLayout(jPanelDependientes);
         jPanelDependientes.setLayout(jPanelDependientesLayout);
         jPanelDependientesLayout.setHorizontalGroup(
             jPanelDependientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDependientesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
+                .addGroup(jPanelDependientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
+                    .addGroup(jPanelDependientesLayout.createSequentialGroup()
+                        .addComponent(jButtonVerDependiente)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelDependientesLayout.setVerticalGroup(
@@ -142,7 +305,9 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanelDependientesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonVerDependiente)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         jTabbedPanePrincipal.addTab("Dependientes", jPanelDependientes);
@@ -161,18 +326,68 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonAddTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTareaActionPerformed
+        
+        this.controlador.abreDialog(jDialogAñadirTarea);
+        
+    }//GEN-LAST:event_jButtonAddTareaActionPerformed
+
+    private void jButtonTareaRealizadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTareaRealizadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonTareaRealizadoActionPerformed
+
+    private void jButtonBorrarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarTareaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBorrarTareaActionPerformed
+
+    private void jButtonVerDetallesLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDetallesLlamadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonVerDetallesLlamadaActionPerformed
+
+    private void jButtonVerDependienteHistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteHistActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonVerDependienteHistActionPerformed
+
+    private void jButtonVerDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteActionPerformed
+        // TODO add your handling code here:
+        this.controlador.abreFrame(new JFrameDependiente(controlador, conexion));
+    }//GEN-LAST:event_jButtonVerDependienteActionPerformed
+
+    private void jButtonCrearTareaAddTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearTareaAddTareaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCrearTareaAddTareaActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private datechooser.beans.DateChooserCombo dateChooserComboFechaAddTarea;
+    private javax.swing.JButton jButtonAddTarea;
+    private javax.swing.JButton jButtonBorrarTarea;
+    private javax.swing.JButton jButtonCrearTareaAddTarea;
+    private javax.swing.JButton jButtonTareaRealizado;
+    private javax.swing.JButton jButtonVerDependiente;
+    private javax.swing.JButton jButtonVerDependienteHist;
+    private javax.swing.JButton jButtonVerDetallesLlamada;
+    private javax.swing.JComboBox<String> jComboBoxDependientesAddTarea;
+    private javax.swing.JDialog jDialogAñadirTarea;
+    private javax.swing.JFormattedTextField jFormattedTextFieldHoraAddTarea;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanelAgenda;
     private javax.swing.JPanel jPanelDependientes;
     private javax.swing.JPanel jPanelHistorialLlamadas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPanePrincipal;
     private javax.swing.JTable jTableAgenda;
     private javax.swing.JTable jTableHistorialLlamadas;
     private javax.swing.JTable jTableListaDependientes;
+    private javax.swing.JTextArea jTextAreaDescripcionAddTarea;
+    private javax.swing.JTextField jTextFieldEncabezadoAddTarea;
     // End of variables declaration//GEN-END:variables
 
     private void setUI() {

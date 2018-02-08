@@ -31,9 +31,6 @@ public class Controlador {
 
     private static final String IP_ESCUCHA = "localhost";
     private static final int PUERTO_ESCUCHA = 9090;
-    
-    private final Conexion conexion;
-    private final Login ventanaLogin;
    
     private JFrame ventanaActual;
     

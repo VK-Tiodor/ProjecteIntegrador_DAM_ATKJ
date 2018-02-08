@@ -12,10 +12,11 @@ import controlador.Controlador;
  */
 public class Login extends javax.swing.JFrame {
 
-    private Controlador controlador;
+    private final Controlador controlador;
     
     /**
      * Creates new form Login
+     * @param controlador
      */
     public Login(Controlador controlador) {
          initComponents();

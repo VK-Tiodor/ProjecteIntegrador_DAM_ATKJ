@@ -5,17 +5,18 @@
  */
 package controlador;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.conexion.Conexion;
+import modelo.escuchadorLlamadas;
 import vista.JFramePantallaPrincipal;
 import vista.Login;
 
@@ -27,7 +28,13 @@ public class Controlador {
 
     private Login ventanaLogin;
     private Conexion conexion;
+
+    private static final String IP_ESCUCHA = "localhost";
+    private static final int PUERTO_ESCUCHA = 9090;
     
+    private final Conexion conexion;
+    private final Login ventanaLogin;
+   
     private JFrame ventanaActual;
     
     
@@ -109,6 +116,24 @@ public class Controlador {
         ResultSet rsListaDependientes = this.conexion.getResultSetListaDependientes("Clase Asistente"); //TODO 
         rellenaTabla(jTableListaDependientes,rsListaDependientes);
         
+    }
+    
+    private void iniciaEscuchadorLlamadas() {
+        InetSocketAddress sockAddr = new InetSocketAddress(IP_ESCUCHA, PUERTO_ESCUCHA);
+
+        try (ServerSocket serverSocket = new ServerSocket(PUERTO_ESCUCHA)) {
+            while (true) {
+                new escuchadorLlamadas(serverSocket.accept(), this).start();
+            }
+        } catch (IOException e) {
+            System.err.println("Could not listen on port " + PUERTO_ESCUCHA);
+            System.exit(-1);
+        }
+    }
+    
+    public void lanzaAlerta(int id) {
+        //TODO
+        System.out.println("Llamada recibida del dependiente " + id);
     }
 
 

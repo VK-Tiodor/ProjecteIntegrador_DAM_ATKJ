@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-feb-2018 19:11:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.hibernate.Medicacion" table="Medicacion" catalog="proyecto1" optimistic-lock="version">
+        <id name="idMedicacion" type="java.lang.Integer">
+            <column name="idMedicacion" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="45" />
+        </property>
+        <set name="dependienteHasMedicacions" table="Dependiente_has_Medicacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idMedicacion" not-null="true" />
+            </key>
+            <one-to-many class="modelo.hibernate.DependienteHasMedicacion" />
+        </set>
+    </class>
+</hibernate-mapping>

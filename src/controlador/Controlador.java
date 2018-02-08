@@ -26,11 +26,11 @@ import vista.Login;
  */
 public class Controlador {
 
+    private Login ventanaLogin;
+    private Conexion conexion;
+
     private static final String IP_ESCUCHA = "localhost";
     private static final int PUERTO_ESCUCHA = 9090;
-    
-    private final Conexion conexion;
-    private final Login ventanaLogin;
    
     private JFrame ventanaActual;
     

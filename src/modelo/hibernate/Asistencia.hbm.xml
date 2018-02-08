@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-feb-2018 19:11:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.hibernate.Asistencia" table="Asistencia" catalog="proyecto1" optimistic-lock="version">
+        <id name="idAsistencia" type="java.lang.Integer">
+            <column name="idAsistencia" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="asistente" class="modelo.hibernate.Asistente" fetch="select">
+            <column name="idAsistente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dependiente" class="modelo.hibernate.Dependiente" fetch="select">
+            <column name="idDependiente" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="timestamp">
+            <column name="Fecha" length="19" />
+        </property>
+        <property name="motivo" type="string">
+            <column name="Motivo" length="45" />
+        </property>
+        <property name="datosAsistencia" type="string">
+            <column name="`Datos asistencia`" length="1000" />
+        </property>
+    </class>
+</hibernate-mapping>

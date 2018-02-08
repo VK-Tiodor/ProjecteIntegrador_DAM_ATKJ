@@ -44,7 +44,6 @@ public class escuchadorLlamadas extends Thread {
     @Override
     public void run() {
         try {
-            
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             

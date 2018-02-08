@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-feb-2018 19:11:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.hibernate.Asistente" table="Asistente" catalog="proyecto1" optimistic-lock="version">
+        <id name="idAsistente" type="int">
+            <column name="idAsistente" />
+            <generator class="foreign">
+                <param name="property">personas</param>
+            </generator>
+        </id>
+        <one-to-one name="personas" class="modelo.hibernate.Personas" constrained="true"></one-to-one>
+        <property name="contrasenya" type="string">
+            <column name="Contrasenya" length="45" />
+        </property>
+        <set name="dependientes" table="Dependiente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Asistente_Asignado" not-null="true" />
+            </key>
+            <one-to-many class="modelo.hibernate.Dependiente" />
+        </set>
+        <set name="asistencias" table="Asistencia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idAsistente" not-null="true" />
+            </key>
+            <one-to-many class="modelo.hibernate.Asistencia" />
+        </set>
+        <set name="tareasPendienteses" table="TareasPendientes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idAsistente" not-null="true" />
+            </key>
+            <one-to-many class="modelo.hibernate.TareasPendientes" />
+        </set>
+    </class>
+</hibernate-mapping>

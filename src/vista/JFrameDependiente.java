@@ -351,31 +351,31 @@ public class JFrameDependiente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddContactoDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddContactoDependienteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonAddContactoDependienteActionPerformed
 
     private void jButtonEditarContactoDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarContactoDependienteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonEditarContactoDependienteActionPerformed
 
     private void jButtonEliminarContactoDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarContactoDependienteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonEliminarContactoDependienteActionPerformed
 
     private void jButtonAñadirMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirMedicacionDependienteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonAñadirMedicacionDependienteActionPerformed
 
     private void jButtonEditarMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarMedicacionDependienteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonEditarMedicacionDependienteActionPerformed
 
     private void jButtonEliminarMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarMedicacionDependienteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonEliminarMedicacionDependienteActionPerformed
 
     private void jButtonVerViviendasDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerViviendasDependienteActionPerformed
-        this.controlador.abreDialog(jDialogViviendas);
+        this.controlador.abreDialog(jDialogViviendas,false);
     }//GEN-LAST:event_jButtonVerViviendasDependienteActionPerformed
 
 

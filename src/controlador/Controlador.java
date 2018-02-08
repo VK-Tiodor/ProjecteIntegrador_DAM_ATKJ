@@ -13,6 +13,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.conexion.Conexion;
@@ -29,10 +30,11 @@ public class Controlador {
     private Login ventanaLogin;
     private Conexion conexion;
 
-    private static final String IP_ESCUCHA = "localhost";
+    private static final String IP_ESCUCHA = "172.16.226.22";
     private static final int PUERTO_ESCUCHA = 9090;
    
     private JFrame ventanaActual;
+    private JFramePantallaPrincipal pantallaPrincipal;
     
     
     public Controlador() {
@@ -43,7 +45,8 @@ public class Controlador {
     
     public void login(String user, String pass) { //presiona boton de login
         if (this.conexion.login(user, pass)) {
-            cambiaVentana(new JFramePantallaPrincipal(this, conexion));
+            pantallaPrincipal = new JFramePantallaPrincipal(this, conexion);
+            cambiaVentana(pantallaPrincipal);
         }
     }
 
@@ -66,9 +69,10 @@ public class Controlador {
             nueva.setVisible(true);
         }
     }
-    public void abreDialog(JDialog dialog){
+    public void abreDialog(JDialog dialog, boolean modal){
         dialog.pack();
         dialog.setVisible(true);
+        dialog.setModal(modal);
         dialog.setLocationRelativeTo(null);
     }
 
@@ -114,23 +118,13 @@ public class Controlador {
         rellenaTabla(jTableListaDependientes,rsListaDependientes);
         
     }
-    
-    private void iniciaEscuchadorLlamadas() {
-        InetSocketAddress sockAddr = new InetSocketAddress(IP_ESCUCHA, PUERTO_ESCUCHA);
-
-        try (ServerSocket serverSocket = new ServerSocket(PUERTO_ESCUCHA)) {
-            while (true) {
-                new escuchadorLlamadas(serverSocket.accept(), this).start();
-            }
-        } catch (IOException e) {
-            System.err.println("Could not listen on port " + PUERTO_ESCUCHA);
-            System.exit(-1);
-        }
-    }
+   
     
     public void lanzaAlerta(int id) {
         //TODO
         System.out.println("Llamada recibida del dependiente " + id);
+        pantallaPrincipal.abreDialogAlerta(id);
+        
     }
 
 

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-feb-2018 18:52:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernate.Personas" table="Personas" catalog="proyecto1" optimistic-lock="version">
+        <id name="idPersona" type="java.lang.Integer">
+            <column name="idPersona" />
+            <generator class="identity" />
+        </id>
+        <property name="dni" type="string">
+            <column name="DNI" length="10" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="45" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="Apellidos" length="45" />
+        </property>
+        <property name="nacimiento" type="date">
+            <column name="Nacimiento" length="10" />
+        </property>
+        <property name="genero" type="string">
+            <column name="Genero" length="2" />
+        </property>
+        <set name="viviendas" table="Personas_has_Vivienda" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="idPersona" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.Vivienda">
+                <column name="idVivienda" not-null="true" />
+            </many-to-many>
+        </set>
+        <one-to-one name="dependiente" class="hibernate.Dependiente"></one-to-one>
+        <set name="telefonoses" table="Telefonos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPersona" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.Telefonos" />
+        </set>
+        <set name="dependientes" table="Personas_has_Dependiente" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="idPersona" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.Dependiente">
+                <column name="idDependiente" not-null="true" />
+            </many-to-many>
+        </set>
+        <one-to-one name="contacto" class="hibernate.Contacto"></one-to-one>
+    </class>
+</hibernate-mapping>

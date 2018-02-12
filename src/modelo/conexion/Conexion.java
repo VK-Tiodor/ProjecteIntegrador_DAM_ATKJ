@@ -6,7 +6,13 @@
 package modelo.conexion;
 
 import controlador.Controlador;
+import hibernate.Asistencia;
+import hibernate.Dependiente;
+import hibernate.HibernateUtil;
+import hibernate.TareasPendientes;
 import java.sql.ResultSet;
+import java.util.List;
+import org.hibernate.Session;
 
 /**
  *
@@ -14,13 +20,19 @@ import java.sql.ResultSet;
  */
 public class Conexion {
     private Controlador controlador;
+    private Session sessionHibernate;
     
     public Conexion(Controlador controlador){
         this.controlador = controlador;
+        this.sessionHibernate = HibernateUtil.getSessionFactory().openSession();
     }
     
     public boolean login(String userName, String password){
         return true;
+    }
+    
+    public void cierraConexion(){
+        this.sessionHibernate.close();
     }
     
     /**
@@ -43,5 +55,28 @@ public class Conexion {
     public ResultSet getResultSetListaDependientes(String clase_Asistente) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public List<TareasPendientes> getTareasPendientes(){
+        this.sessionHibernate.beginTransaction();
+        List<TareasPendientes> tareasPendientes = (List<TareasPendientes>) this.sessionHibernate.createQuery("from TareasPendientes").list();
+        this.sessionHibernate.getTransaction().commit();
+        return tareasPendientes;
+    }
+    
+    public List<Asistencia> getAsistencias(){
+        this.sessionHibernate.beginTransaction();
+        List<Asistencia> asistencia = (List<Asistencia>) this.sessionHibernate.createQuery("from Asistencia").list();
+        this.sessionHibernate.getTransaction().commit();
+        return asistencia;
+    }
+    
+    public List<Dependiente> getDependientes(){
+        this.sessionHibernate.beginTransaction();
+        List<Dependiente> dependiente = (List<Dependiente>) this.sessionHibernate.createQuery("from Dependiente").list();
+        this.sessionHibernate.getTransaction().commit();
+        return dependiente;
+    }
+    
+    
 
 }

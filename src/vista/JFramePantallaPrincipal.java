@@ -6,7 +6,6 @@
 package vista;
 
 import controlador.Controlador;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,15 +17,14 @@ import modelo.conexion.Conexion;
  */
 public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
-    private Controlador controlador;
-    private Conexion conexion;
-    
-    public JFramePantallaPrincipal(Controlador controlador, Conexion conexion){
+    private final Controlador controlador;
+    private final Conexion conexion;
+
+    public JFramePantallaPrincipal(Controlador controlador, Conexion conexion) {
         initComponents();
         this.controlador = controlador;
         this.conexion = conexion;
-        
-        //setUI();
+        setUI();
     }
 
     /**
@@ -51,6 +49,23 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jTextAreaDescripcionAddTarea = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jButtonCrearTareaAddTarea = new javax.swing.JButton();
+        jDialogDetallesLlamada = new javax.swing.JDialog();
+        jLabel6 = new javax.swing.JLabel();
+        jLabelAsistenteDetallesLlamada = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabelDependienteDetallesLlamada = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        dateChooserComboFecjaDetallesLlamada = new datechooser.beans.DateChooserCombo();
+        jTextFieldMotivoDetallesLlamada = new javax.swing.JTextField();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextAreaDatosAsistenciaDetallesLlamada = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
+        jButtonAceptarDetallesLlamada = new javax.swing.JButton();
+        jDialogAlertaLlamadaEntrante = new javax.swing.JDialog();
+        jLabel9 = new javax.swing.JLabel();
+        jButtonCogerLlamadaAviso = new javax.swing.JButton();
         jTabbedPanePrincipal = new javax.swing.JTabbedPane();
         jPanelAgenda = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -143,6 +158,136 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel6.setText("Asistente:");
+
+        jLabelAsistenteDetallesLlamada.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelAsistenteDetallesLlamada.setText("jLabel7");
+
+        jLabel8.setText("Dependiente:");
+
+        jLabelDependienteDetallesLlamada.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelDependienteDetallesLlamada.setText("jLabel9");
+
+        jLabel10.setText("Fecha:");
+
+        jLabel11.setText("Motivo:");
+
+        jLabel12.setText("Datos de Asistencia:");
+
+        jTextAreaDatosAsistenciaDetallesLlamada.setColumns(20);
+        jTextAreaDatosAsistenciaDetallesLlamada.setRows(5);
+        jScrollPane5.setViewportView(jTextAreaDatosAsistenciaDetallesLlamada);
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Detalles Llamada");
+
+        jButtonAceptarDetallesLlamada.setText("Aceptar");
+        jButtonAceptarDetallesLlamada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarDetallesLlamadaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogDetallesLlamadaLayout = new javax.swing.GroupLayout(jDialogDetallesLlamada.getContentPane());
+        jDialogDetallesLlamada.getContentPane().setLayout(jDialogDetallesLlamadaLayout);
+        jDialogDetallesLlamadaLayout.setHorizontalGroup(
+            jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogDetallesLlamadaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addGroup(jDialogDetallesLlamadaLayout.createSequentialGroup()
+                        .addGroup(jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldMotivoDetallesLlamada)
+                            .addGroup(jDialogDetallesLlamadaLayout.createSequentialGroup()
+                                .addComponent(dateChooserComboFecjaDetallesLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jDialogDetallesLlamadaLayout.createSequentialGroup()
+                        .addGroup(jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDialogDetallesLlamadaLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabelAsistenteDetallesLlamada))
+                            .addGroup(jDialogDetallesLlamadaLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelDependienteDetallesLlamada))
+                            .addComponent(jLabel12))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jDialogDetallesLlamadaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButtonAceptarDetallesLlamada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jDialogDetallesLlamadaLayout.setVerticalGroup(
+            jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogDetallesLlamadaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addGroup(jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabelAsistenteDetallesLlamada))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabelDependienteDetallesLlamada))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(dateChooserComboFecjaDetallesLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jTextFieldMotivoDetallesLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonAceptarDetallesLlamada)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel9.setText("AVISO - LLAMADA ENTRANTE");
+
+        jButtonCogerLlamadaAviso.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButtonCogerLlamadaAviso.setText("COGER LLAMADA");
+        jButtonCogerLlamadaAviso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCogerLlamadaAvisoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogAlertaLlamadaEntranteLayout = new javax.swing.GroupLayout(jDialogAlertaLlamadaEntrante.getContentPane());
+        jDialogAlertaLlamadaEntrante.getContentPane().setLayout(jDialogAlertaLlamadaEntranteLayout);
+        jDialogAlertaLlamadaEntranteLayout.setHorizontalGroup(
+            jDialogAlertaLlamadaEntranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAlertaLlamadaEntranteLayout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addGroup(jDialogAlertaLlamadaEntranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButtonCogerLlamadaAviso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+        jDialogAlertaLlamadaEntranteLayout.setVerticalGroup(
+            jDialogAlertaLlamadaEntranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAlertaLlamadaEntranteLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCogerLlamadaAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTableAgenda.setModel(new javax.swing.table.DefaultTableModel(
@@ -200,13 +345,13 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAgendaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAddTarea)
                     .addComponent(jButtonTareaRealizado)
                     .addComponent(jButtonBorrarTarea))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPanePrincipal.addTab("Agenda", jPanelAgenda);
@@ -257,12 +402,12 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             jPanelHistorialLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHistorialLlamadasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelHistorialLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVerDetallesLlamada)
                     .addComponent(jButtonVerDependienteHist))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPanePrincipal.addTab("Historial Llamadas", jPanelHistorialLlamadas);
@@ -304,10 +449,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             jPanelDependientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDependientesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonVerDependiente)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPanePrincipal.addTab("Dependientes", jPanelDependientes);
@@ -320,61 +465,89 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPanePrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPanePrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTareaActionPerformed
-        
-        this.controlador.abreDialog(jDialogAñadirTarea);
-        
+
+        this.controlador.abreDialog(jDialogAñadirTarea, false);
+
     }//GEN-LAST:event_jButtonAddTareaActionPerformed
 
     private void jButtonTareaRealizadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTareaRealizadoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButtonTareaRealizadoActionPerformed
 
     private void jButtonBorrarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarTareaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButtonBorrarTareaActionPerformed
 
     private void jButtonVerDetallesLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDetallesLlamadaActionPerformed
-        // TODO add your handling code here:
+        //TODO funcion por especificar (no se sabe si se va a poder editar una llamada en el historial o no)
     }//GEN-LAST:event_jButtonVerDetallesLlamadaActionPerformed
 
     private void jButtonVerDependienteHistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteHistActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButtonVerDependienteHistActionPerformed
 
     private void jButtonVerDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteActionPerformed
-        // TODO add your handling code here:
+
         this.controlador.abreFrame(new JFrameDependiente(controlador, conexion));
     }//GEN-LAST:event_jButtonVerDependienteActionPerformed
 
     private void jButtonCrearTareaAddTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearTareaAddTareaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButtonCrearTareaAddTareaActionPerformed
 
-    
+    private void jButtonAceptarDetallesLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarDetallesLlamadaActionPerformed
+        //TODO --- si se puede editar el historial de llamadas, hay que hacer o otro dialog o bien modificar este (jDialogDetallesLlamada)
+
+    }//GEN-LAST:event_jButtonAceptarDetallesLlamadaActionPerformed
+
+    private void jButtonCogerLlamadaAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCogerLlamadaAvisoActionPerformed
+        JFrameDependiente jfd = new JFrameDependiente(controlador, conexion);
+        this.controlador.abreFrame(jfd);
+        this.controlador.abreDialog(jDialogDetallesLlamada, false);
+        jfd.setLocation(50, 170);
+        jDialogDetallesLlamada.setLocation(1150, 170);
+
+    }//GEN-LAST:event_jButtonCogerLlamadaAvisoActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datechooser.beans.DateChooserCombo dateChooserComboFechaAddTarea;
+    private datechooser.beans.DateChooserCombo dateChooserComboFecjaDetallesLlamada;
+    private javax.swing.JButton jButtonAceptarDetallesLlamada;
     private javax.swing.JButton jButtonAddTarea;
     private javax.swing.JButton jButtonBorrarTarea;
+    private javax.swing.JButton jButtonCogerLlamadaAviso;
     private javax.swing.JButton jButtonCrearTareaAddTarea;
     private javax.swing.JButton jButtonTareaRealizado;
     private javax.swing.JButton jButtonVerDependiente;
     private javax.swing.JButton jButtonVerDependienteHist;
     private javax.swing.JButton jButtonVerDetallesLlamada;
     private javax.swing.JComboBox<String> jComboBoxDependientesAddTarea;
+    private javax.swing.JDialog jDialogAlertaLlamadaEntrante;
     private javax.swing.JDialog jDialogAñadirTarea;
+    private javax.swing.JDialog jDialogDetallesLlamada;
     private javax.swing.JFormattedTextField jFormattedTextFieldHoraAddTarea;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelAsistenteDetallesLlamada;
+    private javax.swing.JLabel jLabelDependienteDetallesLlamada;
     private javax.swing.JPanel jPanelAgenda;
     private javax.swing.JPanel jPanelDependientes;
     private javax.swing.JPanel jPanelHistorialLlamadas;
@@ -382,22 +555,27 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPanePrincipal;
     private javax.swing.JTable jTableAgenda;
     private javax.swing.JTable jTableHistorialLlamadas;
     private javax.swing.JTable jTableListaDependientes;
+    private javax.swing.JTextArea jTextAreaDatosAsistenciaDetallesLlamada;
     private javax.swing.JTextArea jTextAreaDescripcionAddTarea;
     private javax.swing.JTextField jTextFieldEncabezadoAddTarea;
+    private javax.swing.JTextField jTextFieldMotivoDetallesLlamada;
     // End of variables declaration//GEN-END:variables
 
     private void setUI() {
-        try {
-            this.controlador.rellenaTablaAgenda(this.jTableAgenda);
-            this.controlador.rellenaTablaHistorialLlamadas(this.jTableHistorialLlamadas);
-            this.controlador.rellenaTablaListaDependiente(this.jTableListaDependientes);
-        } catch (SQLException ex) {
-            Logger.getLogger(JFramePantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        this.controlador.rellenaTablaAgenda(this.jTableAgenda);
+        this.controlador.rellenaTablaHistorialLlamadas(this.jTableHistorialLlamadas);
+        this.controlador.rellenaTablaListaDependiente(this.jTableListaDependientes);
+
+    }
+
+    public void abreDialogAlerta(int id) {
+        this.controlador.abreDialog(jDialogAlertaLlamadaEntrante, true);
     }
 
 }

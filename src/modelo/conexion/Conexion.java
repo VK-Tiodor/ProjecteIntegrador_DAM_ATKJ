@@ -77,6 +77,13 @@ public class Conexion {
         return dependiente;
     }
     
+    public Dependiente getDependienteById(String id){
+        this.sessionHibernate.beginTransaction();
+        Dependiente dependiente = (Dependiente) this.sessionHibernate.createQuery("select a from Dependiente where a.idDependiente " + id);
+        this.sessionHibernate.getTransaction().commit();
+        return dependiente;
+    }
+    
     
 
 }

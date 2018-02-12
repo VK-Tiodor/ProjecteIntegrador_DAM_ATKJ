@@ -494,7 +494,9 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVerDependienteHistActionPerformed
 
     private void jButtonVerDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteActionPerformed
-
+        int fila = this.jTableListaDependientes.getSelectedRow();
+        int columna = this.jTableListaDependientes.getColumnModel().
+        System.out.println(this.conexion.getDependienteById());
         this.controlador.abreFrame(new JFrameDependiente(controlador, conexion));
     }//GEN-LAST:event_jButtonVerDependienteActionPerformed
 

@@ -132,7 +132,6 @@ public class Controlador {
         }
 
         jTableListaDependientes.setModel(model);
-
     }
 
     public void lanzaAlerta(int id) {

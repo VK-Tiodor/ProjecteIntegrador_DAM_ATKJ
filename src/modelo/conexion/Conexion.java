@@ -17,6 +17,7 @@ public class Conexion {
     
     public Conexion(Controlador controlador){
         this.controlador = controlador;
+        
     }
     
     public boolean login(String userName, String password){

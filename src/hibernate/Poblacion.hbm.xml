@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-feb-2018 18:52:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernate.Poblacion" table="Poblacion" catalog="proyecto1" optimistic-lock="version">
+        <id name="idPoblacion" type="java.lang.Integer">
+            <column name="idPoblacion" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="45" />
+        </property>
+        <property name="provincia" type="string">
+            <column name="Provincia" length="45" />
+        </property>
+        <property name="pais" type="string">
+            <column name="Pais" length="45" />
+        </property>
+        <set name="viviendas" table="Vivienda" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPoblacion" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.Vivienda" />
+        </set>
+        <one-to-one name="recursosLocalidad" class="hibernate.RecursosLocalidad"></one-to-one>
+    </class>
+</hibernate-mapping>

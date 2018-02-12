@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <!--
 DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 
@@ -39,25 +39,21 @@ made subject to such option by the copyright holder.
 
 Contributor(s):
 -->
-<hibernate-configuration>
-  <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:9000/proyecto1?zeroDateTimeBehavior=convertToNull</property>
-    <property name="hibernate.connection.username">grupo1</property>
-    <property name="hibernate.connection.password">jatk1</property>
-    <mapping resource="hibernate/DependienteHasMedicacion.hbm.xml"/>
-    <mapping resource="hibernate/Asistencia.hbm.xml"/>
-    <mapping resource="hibernate/RecursosLocalidad.hbm.xml"/>
-    <mapping resource="hibernate/TareasPendientes.hbm.xml"/>
-    <mapping resource="hibernate/Telefonos.hbm.xml"/>
-    <mapping resource="hibernate/Vivienda.hbm.xml"/>
-    <mapping resource="hibernate/Contacto.hbm.xml"/>
-    <mapping resource="hibernate/ContactoHasDependiente.hbm.xml"/>
-    <mapping resource="hibernate/Aviso.hbm.xml"/>
-    <mapping resource="hibernate/Medicacion.hbm.xml"/>
-    <mapping resource="hibernate/Personas.hbm.xml"/>
-    <mapping resource="hibernate/Poblacion.hbm.xml"/>
-    <mapping resource="hibernate/Dependiente.hbm.xml"/>
-  </session-factory>
-</hibernate-configuration>
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="proyecto1"/>
+  <table-filter match-name="Vivienda"/>
+  <table-filter match-name="Personas_has_Dependiente"/>
+  <table-filter match-name="Aviso"/>
+  <table-filter match-name="Dependiente_has_Medicacion"/>
+  <table-filter match-name="Contacto_has_Dependiente"/>
+  <table-filter match-name="Asistencia"/>
+  <table-filter match-name="Personas"/>
+  <table-filter match-name="RecursosLocalidad"/>
+  <table-filter match-name="TareasPendientes"/>
+  <table-filter match-name="Contacto"/>
+  <table-filter match-name="Medicacion"/>
+  <table-filter match-name="Dependiente"/>
+  <table-filter match-name="Personas_has_Vivienda"/>
+  <table-filter match-name="Poblacion"/>
+  <table-filter match-name="Telefonos"/>
+</hibernate-reverse-engineering>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-feb-2018 18:52:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernate.Aviso" table="Aviso" catalog="proyecto1" optimistic-lock="version">
+        <id name="idAviso" type="java.lang.Integer">
+            <column name="idAviso" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="dependiente" class="hibernate.Dependiente" fetch="select">
+            <column name="idDependiente" not-null="true" />
+        </many-to-one>
+        <property name="hora" type="string">
+            <column name="Hora" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

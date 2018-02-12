@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-feb-2018 18:52:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernate.Vivienda" table="Vivienda" catalog="proyecto1" optimistic-lock="version">
+        <id name="idVivienda" type="java.lang.Integer">
+            <column name="idVivienda" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="poblacion" class="hibernate.Poblacion" fetch="select">
+            <column name="idPoblacion" not-null="true" />
+        </many-to-one>
+        <property name="direccion" type="string">
+            <column name="Direccion" length="45" />
+        </property>
+        <set name="personases" table="Personas_has_Vivienda" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idVivienda" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.Personas">
+                <column name="idPersona" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

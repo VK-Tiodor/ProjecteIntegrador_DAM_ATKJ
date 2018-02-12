@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-feb-2018 18:52:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernate.ContactoHasDependiente" table="Contacto_has_Dependiente" catalog="proyecto1" optimistic-lock="version">
+        <composite-id name="id" class="hibernate.ContactoHasDependienteId">
+            <key-property name="idContacto" type="int">
+                <column name="idContacto" />
+            </key-property>
+            <key-property name="idDependiente" type="int">
+                <column name="idDependiente" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="contacto" class="hibernate.Contacto" update="false" insert="false" fetch="select">
+            <column name="idContacto" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dependiente" class="hibernate.Dependiente" update="false" insert="false" fetch="select">
+            <column name="idDependiente" not-null="true" />
+        </many-to-one>
+        <property name="relacion" type="string">
+            <column name="Relacion" length="45" />
+        </property>
+        <property name="llave" type="java.lang.Boolean">
+            <column name="Llave" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -6,7 +6,6 @@
 package vista;
 
 import controlador.Controlador;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,15 +17,14 @@ import modelo.conexion.Conexion;
  */
 public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
-    private Controlador controlador;
-    private Conexion conexion;
-    
-    public JFramePantallaPrincipal(Controlador controlador, Conexion conexion){
+    private final Controlador controlador;
+    private final Conexion conexion;
+
+    public JFramePantallaPrincipal(Controlador controlador, Conexion conexion) {
         initComponents();
         this.controlador = controlador;
         this.conexion = conexion;
-        
-        //setUI();
+        setUI();
     }
 
     /**
@@ -347,13 +345,13 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAgendaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAddTarea)
                     .addComponent(jButtonTareaRealizado)
                     .addComponent(jButtonBorrarTarea))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPanePrincipal.addTab("Agenda", jPanelAgenda);
@@ -404,12 +402,12 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             jPanelHistorialLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHistorialLlamadasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelHistorialLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVerDetallesLlamada)
                     .addComponent(jButtonVerDependienteHist))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPanePrincipal.addTab("Historial Llamadas", jPanelHistorialLlamadas);
@@ -451,10 +449,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             jPanelDependientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDependientesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonVerDependiente)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPanePrincipal.addTab("Dependientes", jPanelDependientes);
@@ -467,54 +465,58 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPanePrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPanePrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTareaActionPerformed
-        
+
         this.controlador.abreDialog(jDialogAñadirTarea, false);
-        
+
     }//GEN-LAST:event_jButtonAddTareaActionPerformed
 
     private void jButtonTareaRealizadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTareaRealizadoActionPerformed
-        
+
     }//GEN-LAST:event_jButtonTareaRealizadoActionPerformed
 
     private void jButtonBorrarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarTareaActionPerformed
-        
+
     }//GEN-LAST:event_jButtonBorrarTareaActionPerformed
 
     private void jButtonVerDetallesLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDetallesLlamadaActionPerformed
-        
+        //TODO funcion por especificar (no se sabe si se va a poder editar una llamada en el historial o no)
     }//GEN-LAST:event_jButtonVerDetallesLlamadaActionPerformed
 
     private void jButtonVerDependienteHistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteHistActionPerformed
-        
+
     }//GEN-LAST:event_jButtonVerDependienteHistActionPerformed
 
     private void jButtonVerDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteActionPerformed
-        
+
         this.controlador.abreFrame(new JFrameDependiente(controlador, conexion));
     }//GEN-LAST:event_jButtonVerDependienteActionPerformed
 
     private void jButtonCrearTareaAddTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearTareaAddTareaActionPerformed
-        
+
     }//GEN-LAST:event_jButtonCrearTareaAddTareaActionPerformed
 
     private void jButtonAceptarDetallesLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarDetallesLlamadaActionPerformed
         //TODO --- si se puede editar el historial de llamadas, hay que hacer o otro dialog o bien modificar este (jDialogDetallesLlamada)
-        
+
     }//GEN-LAST:event_jButtonAceptarDetallesLlamadaActionPerformed
 
     private void jButtonCogerLlamadaAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCogerLlamadaAvisoActionPerformed
-        
-        
+        JFrameDependiente jfd = new JFrameDependiente(controlador, conexion);
+        this.controlador.abreFrame(jfd);
+        this.controlador.abreDialog(jDialogDetallesLlamada, false);
+        jfd.setLocation(50, 170);
+        jDialogDetallesLlamada.setLocation(1150, 170);
+
     }//GEN-LAST:event_jButtonCogerLlamadaAvisoActionPerformed
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datechooser.beans.DateChooserCombo dateChooserComboFechaAddTarea;
     private datechooser.beans.DateChooserCombo dateChooserComboFecjaDetallesLlamada;
@@ -565,18 +567,15 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setUI() {
-        try {
-            this.controlador.rellenaTablaAgenda(this.jTableAgenda);
-            this.controlador.rellenaTablaHistorialLlamadas(this.jTableHistorialLlamadas);
-            this.controlador.rellenaTablaListaDependiente(this.jTableListaDependientes);
-        } catch (SQLException ex) {
-            Logger.getLogger(JFramePantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        this.controlador.rellenaTablaAgenda(this.jTableAgenda);
+        this.controlador.rellenaTablaHistorialLlamadas(this.jTableHistorialLlamadas);
+        this.controlador.rellenaTablaListaDependiente(this.jTableListaDependientes);
+
     }
 
     public void abreDialogAlerta(int id) {
         this.controlador.abreDialog(jDialogAlertaLlamadaEntrante, true);
     }
-    
 
 }

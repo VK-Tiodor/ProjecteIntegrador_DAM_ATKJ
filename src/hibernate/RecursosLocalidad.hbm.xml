@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-feb-2018 18:52:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernate.RecursosLocalidad" table="RecursosLocalidad" catalog="proyecto1" optimistic-lock="version">
+        <id name="idPoblacion" type="int">
+            <column name="idPoblacion" />
+            <generator class="foreign">
+                <param name="property">poblacion</param>
+            </generator>
+        </id>
+        <one-to-one name="poblacion" class="hibernate.Poblacion" constrained="true"></one-to-one>
+        <property name="telefonoGuardiaCil" type="string">
+            <column name="`Telefono Guardia Cil`" length="9" />
+        </property>
+        <property name="telefonoBomberos" type="string">
+            <column name="`Telefono Bomberos`" length="9" />
+        </property>
+        <property name="telefonoPoliciaLocal" type="string">
+            <column name="`Telefono Policia Local`" length="9" />
+        </property>
+        <property name="telefonoUrgencias" type="string">
+            <column name="`Telefono Urgencias`" length="9" />
+        </property>
+        <property name="telefonoPoliciaNacional" type="string">
+            <column name="`Telefono Policia Nacional`" length="9" />
+        </property>
+        <property name="telefonoAmbulatorio" type="string">
+            <column name="`Telefono Ambulatorio`" length="9" />
+        </property>
+        <property name="telefonoHospital" type="string">
+            <column name="`Telefono Hospital`" length="9" />
+        </property>
+    </class>
+</hibernate-mapping>

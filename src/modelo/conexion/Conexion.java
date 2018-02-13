@@ -19,16 +19,12 @@ import org.hibernate.Session;
  * @author Juan Carlos Blanco
  */
 public class Conexion {
-    private Controlador controlador;
-    private Session sessionHibernate;
+    private final Controlador controlador;
+    private final Session sessionHibernate;
     
     public Conexion(Controlador controlador){
         this.controlador = controlador;
         this.sessionHibernate = HibernateUtil.getSessionFactory().openSession();
-    }
-    
-    public boolean login(String userName, String password){
-        return true;
     }
     
     public void cierraConexion(){
@@ -48,14 +44,6 @@ public class Conexion {
         return null;
     }
 
-    public ResultSet getResultSetHistorialLLamadas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public ResultSet getResultSetListaDependientes(String clase_Asistente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     public List<TareasPendientes> getTareasPendientes(){
         this.sessionHibernate.beginTransaction();
         List<TareasPendientes> tareasPendientes = (List<TareasPendientes>) this.sessionHibernate.createQuery("from TareasPendientes").list();
@@ -75,6 +63,13 @@ public class Conexion {
         List<Dependiente> dependiente = (List<Dependiente>) this.sessionHibernate.createQuery("from Dependiente").list();
         this.sessionHibernate.getTransaction().commit();
         return dependiente;
+    }
+    
+    public Dependiente getDependienteById(String id){
+        this.sessionHibernate.beginTransaction();
+        List<Dependiente> dependiente =  (List<Dependiente>)  this.sessionHibernate.createQuery("FROM Dependiente d WHERE idDependiente=" + id).list();
+        this.sessionHibernate.getTransaction().commit();
+        return dependiente.get(0);
     }
     
     

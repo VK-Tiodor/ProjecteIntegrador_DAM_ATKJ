@@ -22,6 +22,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     private final Controlador controlador;
     private final Conexion conexion;
+    private String idDependienteLlamada;
 
     private DefaultTableModel tablaListaDependientes;
     
@@ -615,7 +616,9 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     private void jButtonVerDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteActionPerformed
 
-        this.controlador.abreFrame(new JFrameDependiente(controlador, null));
+        String idDependienteSeleccionado=String.valueOf(jTableListaDependientes.getModel().getValueAt(jTableListaDependientes.getSelectedRow(),0));
+        this.controlador.abreFrame(new JFrameDependiente(controlador, this.controlador.getConexion().getDependienteById(idDependienteSeleccionado)));
+        
     }//GEN-LAST:event_jButtonVerDependienteActionPerformed
 
     private void jButtonCrearTareaAddTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearTareaAddTareaActionPerformed
@@ -636,7 +639,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAceptarDetallesLlamadaActionPerformed
 
     private void jButtonCogerLlamadaAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCogerLlamadaAvisoActionPerformed
-        JFrameDependiente jfd = new JFrameDependiente(controlador, null);
+        JFrameDependiente jfd = new JFrameDependiente(controlador, this.controlador.getConexion().getDependienteById(this.idDependienteLlamada));
         this.controlador.abreFrame(jfd);
         this.controlador.abreDialog(jDialogDetallesLlamada, false);
         jfd.setLocation(50, 170);
@@ -735,7 +738,11 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     }
 
     public void abreDialogAlerta(int id) {
-        this.controlador.abreDialog(jDialogAlertaLlamadaEntrante, true);
+        this.idDependienteLlamada = "1";
+        jDialogAlertaLlamadaEntrante.pack();
+        jDialogAlertaLlamadaEntrante.setVisible(true);
+        jDialogAlertaLlamadaEntrante.setModal(true);
+        jDialogAlertaLlamadaEntrante.setLocationRelativeTo(null);
     }
 
 }

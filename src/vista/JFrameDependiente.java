@@ -27,11 +27,18 @@ public class JFrameDependiente extends javax.swing.JFrame {
     
     /**
      * Creates new form JFrameDependiente
+     * @param controlador
+     * @param dependienteSeleccionado
      */
     public JFrameDependiente(Controlador controlador, Dependiente dependienteSeleccionado) {
         initComponents();
         this.controlador = controlador;
         this.dependienteSeleccionado = dependienteSeleccionado;
+        setUI();
+    }
+    
+    private void setUI(){
+        this.jLabelNombreYApellidosDependiente.setText(this.dependienteSeleccionado.getPersonas().getNombre() + ", " + this.dependienteSeleccionado.getPersonas().getApellidos());
     }
 
     /**
@@ -83,7 +90,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jTextFieldCantidadAddMedicinaDependiente = new javax.swing.JTextField();
         jButtonAddMedicinaDependiente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelNombreYApellidosDependiente = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabelDNIDependiente = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -373,8 +380,8 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Datos de Dependiente:");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setText("Nombre y Apellidos");
+        jLabelNombreYApellidosDependiente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelNombreYApellidosDependiente.setText("Nombre y Apellidos");
 
         jLabel3.setText("DNI:");
 
@@ -491,7 +498,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2))
+                        .addComponent(jLabelNombreYApellidosDependiente))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -545,7 +552,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabelNombreYApellidosDependiente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -667,7 +674,6 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -680,6 +686,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -691,6 +698,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFechaAlta;
     private javax.swing.JLabel jLabelFechaNacimientoDependiente;
     private javax.swing.JLabel jLabelGeneroDependiente;
+    private javax.swing.JLabel jLabelNombreYApellidosDependiente;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

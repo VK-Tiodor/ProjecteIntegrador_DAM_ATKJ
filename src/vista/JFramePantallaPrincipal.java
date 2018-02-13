@@ -7,8 +7,10 @@ package vista;
 
 import controlador.Controlador;
 import hibernate.Dependiente;
+import java.util.Calendar;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 import modelo.conexion.Conexion;
 
 /**
@@ -646,13 +648,16 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     private void jButtonCrearDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearDependienteActionPerformed
         // TODO add your handling code here:
+        //Enf. Cronico, Persona Mayor, Discapacidad, Violencia de genero
         String dni = jTextFieldDNICrearDependiente.getText();
         String nombre = jTextFieldNombreCrearDependiente.getText();
         String apellidos = jTextFieldApellidosCrearDependiente.getText();
         Calendar fechaNac = dateChooserComboNacimientoCrearDependiente.getCurrent();
         String genero = (String) jComboBoxGeneroCrearDependiente.getSelectedItem();
         String tipo = (String) jComboBoxTipoCrearDependiente.getSelectedItem();
-        String pass = jPasswordFieldCrearDependiente.getPassword().toString(); //TODO comprobar si esta cogiendo bien la contraseña
+        String pass = new String(jPasswordFieldCrearDependiente.getPassword()); //TODO comprobar si esta cogiendo bien la contraseña
+        
+        this.controlador.crearDependiente(dni, nombre, apellidos, fechaNac, genero, tipo, pass);
         
     }//GEN-LAST:event_jButtonCrearDependienteActionPerformed
 
@@ -731,6 +736,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         this.controlador.rellenaTablaListaDependiente(this.jTableListaDependientes);
         
         tablaListaDependientes = (DefaultTableModel) jTableListaDependientes.getModel();
+        
+       
 
     }
 

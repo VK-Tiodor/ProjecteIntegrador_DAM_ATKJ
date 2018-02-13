@@ -11,6 +11,7 @@ import hibernate.Dependiente;
 import hibernate.HibernateUtil;
 import hibernate.TareasPendientes;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 
@@ -58,9 +59,9 @@ public class Conexion {
         return asistencia;
     }
     
-    public List<Dependiente> getDependientes(){
+    public ArrayList<Dependiente> getDependientes(){
         this.sessionHibernate.beginTransaction();
-        List<Dependiente> dependiente = (List<Dependiente>) this.sessionHibernate.createQuery("from Dependiente").list();
+        ArrayList<Dependiente> dependiente = (ArrayList<Dependiente>) this.sessionHibernate.createQuery("from Dependiente").list();
         this.sessionHibernate.getTransaction().commit();
         return dependiente;
     }

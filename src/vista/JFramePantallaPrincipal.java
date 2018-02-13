@@ -7,11 +7,8 @@ package vista;
 
 import controlador.Controlador;
 import hibernate.Dependiente;
-import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import modelo.conexion.Conexion;
 
 /**
@@ -593,7 +590,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTareaActionPerformed
-
+        DefaultComboBoxModel dcbm = new DefaultComboBoxModel(this.controlador.getListaDependientes().toArray());
+        jComboBoxDependientesAddTarea.setModel(dcbm);
         this.controlador.abreDialog(jDialogAñadirTarea, false);
 
     }//GEN-LAST:event_jButtonAddTareaActionPerformed
@@ -616,8 +614,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     private void jButtonVerDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteActionPerformed
 
-        String idDependienteSeleccionado=String.valueOf(jTableListaDependientes.getModel().getValueAt(jTableListaDependientes.getSelectedRow(),0));
-        this.controlador.abreFrame(new JFrameDependiente(controlador, this.controlador.getConexion().getDependienteById(idDependienteSeleccionado)));
+        this.controlador.abreFrame(new JFrameDependiente(controlador, (Dependiente) this.jTableListaDependientes.getModel().getValueAt(this.jTableListaDependientes.getSelectedRow(), 1)));
         
     }//GEN-LAST:event_jButtonVerDependienteActionPerformed
 

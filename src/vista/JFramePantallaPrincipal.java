@@ -7,8 +7,8 @@ package vista;
 
 import controlador.Controlador;
 import hibernate.Dependiente;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import modelo.conexion.Conexion;
 
 /**
@@ -496,8 +496,11 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVerDependienteHistActionPerformed
 
     private void jButtonVerDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteActionPerformed
-
+        if(this.jTableListaDependientes.getSelectedRow() != -1){
         this.controlador.abreFrame(new JFrameDependiente(controlador, (Dependiente) this.jTableListaDependientes.getModel().getValueAt(this.jTableListaDependientes.getSelectedRow(), 1)));
+        } else {
+            JOptionPane.showMessageDialog(this, "No se ha seleccionado ningún dependiente");
+        }
         
     }//GEN-LAST:event_jButtonVerDependienteActionPerformed
 
@@ -577,8 +580,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     }
 
-    public void abreDialogAlerta(int id) {
-        this.idDependienteLlamada = "1";
+    public void abreDialogAlerta(String id) {
+        this.idDependienteLlamada = id;
         jDialogAlertaLlamadaEntrante.pack();
         jDialogAlertaLlamadaEntrante.setVisible(true);
         jDialogAlertaLlamadaEntrante.setModal(true);

@@ -16,26 +16,31 @@ import javax.swing.table.DefaultTableModel;
 import modelo.conexion.Conexion;
 import vista.JFramePantallaPrincipal;
 
-
 /**
  *
  * @author vesprada
  */
 public class Controlador {
 
-    private final Conexion conexion;
-
+    // Atributos
     private JFrame ventanaActual;
+    private final Conexion conexion;
+    private final ArrayList<Dependiente> listaDependientes;
+    private final ArrayList<Asistencia> listaAsistencias;
+    private final ArrayList<TareasPendientes> listaTareasPendientes;
     private final JFramePantallaPrincipal pantallaPrincipal;
-    private ArrayList<Dependiente> listaDependientes;
 
+    // Constructor
     public Controlador() {
         this.conexion = new Conexion(this);
         this.listaDependientes = this.conexion.getDependientes();
-         pantallaPrincipal = new JFramePantallaPrincipal(this, conexion);
-            cambiaVentana(pantallaPrincipal);
+        this.listaAsistencias = this.conexion.getAsistencias();
+        this.listaTareasPendientes = this.conexion.getTareasPendientes();
+        pantallaPrincipal = new JFramePantallaPrincipal(this, conexion);
+        cambiaVentana(pantallaPrincipal);
     }
 
+    // Getters y Setters
     public ArrayList<Dependiente> getListaDependientes() {
         return listaDependientes;
     }
@@ -54,7 +59,6 @@ public class Controlador {
             nueva.setVisible(true);
             ventanaActual = nueva;
         }
-
     }
 
     public void abreFrame(JFrame nueva) {
@@ -74,7 +78,6 @@ public class Controlador {
 
     public void rellenaTablaAgenda(JTable tablaAgenda) {
         DefaultTableModel model = new DefaultTableModel();
-
         TareasPendientes.setColumns(model);
 
         for (TareasPendientes tareasPendiente : this.conexion.getTareasPendientes()) {
@@ -82,12 +85,10 @@ public class Controlador {
         }
 
         tablaAgenda.setModel(model);
-
-    }
+   }
 
     public void rellenaTablaHistorialLlamadas(JTable jTableHistorialLlamadas) {
         DefaultTableModel model = new DefaultTableModel();
-
         Asistencia.setColumns(model);
 
         for (Asistencia asistencia : this.conexion.getAsistencias()) {
@@ -95,12 +96,10 @@ public class Controlador {
         }
 
         jTableHistorialLlamadas.setModel(model);
-
     }
 
-    public void rellenaTablaListaDependiente(JTable jTableListaDependientes)  {
+    public void rellenaTablaListaDependiente(JTable jTableListaDependientes) {
         DefaultTableModel model = new DefaultTableModel();
-
         Dependiente.setColumns(model);
 
         for (Dependiente dependiente : this.listaDependientes) {
@@ -110,11 +109,8 @@ public class Controlador {
         jTableListaDependientes.setModel(model);
     }
 
-    public void lanzaAlerta(int id) {
-        //TODO
-        System.out.println("Llamada recibida del dependiente " + id);
+    public void lanzaAlerta(String id) {
         pantallaPrincipal.abreDialogAlerta(id);
-
     }
 
 }

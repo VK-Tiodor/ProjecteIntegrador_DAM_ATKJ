@@ -59,7 +59,7 @@ public class escuchadorLlamadas extends Thread {
                 bw.flush();
                 
                 // El cliente manda su id
-                this.controlador.lanzaAlerta(Integer.parseInt(br.readLine()));
+                this.controlador.lanzaAlerta(br.readLine());
             }
             bw.close();
             br.close();

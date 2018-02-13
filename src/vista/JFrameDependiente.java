@@ -6,7 +6,7 @@
 package vista;
 
 import controlador.Controlador;
-import modelo.conexion.Conexion;
+import hibernate.Dependiente;
 
 /**
  *
@@ -15,15 +15,23 @@ import modelo.conexion.Conexion;
 public class JFrameDependiente extends javax.swing.JFrame {
 
     
-    private Controlador controlador;
-    private Conexion conexion;
+    private final Controlador controlador;
+    private final Dependiente dependienteSeleccionado;
+    
     /**
      * Creates new form JFrameDependiente
+     * @param controlador
+     * @param dependienteSeleccionado
      */
-    public JFrameDependiente(Controlador controlador, Conexion conexion) {
+    public JFrameDependiente(Controlador controlador, Dependiente dependienteSeleccionado) {
         initComponents();
         this.controlador = controlador;
-        this.conexion = conexion;
+        this.dependienteSeleccionado = dependienteSeleccionado;
+        setUI();
+    }
+    
+    private void setUI(){
+        this.jLabelNombreYApellidosDependiente.setText(this.dependienteSeleccionado.getPersonas().getNombre() + ", " + this.dependienteSeleccionado.getPersonas().getApellidos());
     }
 
     /**
@@ -44,7 +52,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jTableRecursosLocalidadDependiente = new javax.swing.JTable();
         jButtonMarcarViviendaComoActivaDependiente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelNombreYApellidosDependiente = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabelDNIDependiente = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -141,8 +149,8 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Datos de Dependiente:");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setText("Nombre y Apellidos");
+        jLabelNombreYApellidosDependiente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelNombreYApellidosDependiente.setText("Nombre y Apellidos");
 
         jLabel3.setText("DNI:");
 
@@ -259,7 +267,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2))
+                        .addComponent(jLabelNombreYApellidosDependiente))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -287,25 +295,24 @@ public class JFrameDependiente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabelFechaAlta)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jComboBoxTipoDeDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButtonVerViviendasDependiente))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jButtonAñadirMedicacionDependiente)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jButtonEditarMedicacionDependiente)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jButtonEliminarMedicacionDependiente))
-                                        .addComponent(jLabel9))
-                                    .addGap(0, 0, Short.MAX_VALUE))))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelFechaAlta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxTipoDeDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonVerViviendasDependiente))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButtonAñadirMedicacionDependiente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonEditarMedicacionDependiente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonEliminarMedicacionDependiente))
+                                    .addComponent(jLabel9))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -314,7 +321,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabelNombreYApellidosDependiente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -393,7 +400,6 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -405,6 +411,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFechaAlta;
     private javax.swing.JLabel jLabelFechaNacimientoDependiente;
     private javax.swing.JLabel jLabelGeneroDependiente;
+    private javax.swing.JLabel jLabelNombreYApellidosDependiente;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

@@ -8,9 +8,6 @@ package controlador;
 import hibernate.Asistencia;
 import hibernate.Dependiente;
 import hibernate.TareasPendientes;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -34,14 +31,12 @@ public class Controlador {
     public Controlador() {
         this.ventanaLogin = new Login(this);
         this.conexion = new Conexion(this);
-        cambiaVentana(this.ventanaLogin);
+         pantallaPrincipal = new JFramePantallaPrincipal(this, conexion);
+            cambiaVentana(pantallaPrincipal);
     }
 
-    public void login(String user, String pass) { //presiona boton de login
-        if (this.conexion.login(user, pass)) {
-            pantallaPrincipal = new JFramePantallaPrincipal(this, conexion);
-            cambiaVentana(pantallaPrincipal);
-        }
+    public Conexion getConexion() {
+        return conexion;
     }
 
     public void cambiaVentana(JFrame nueva) {
@@ -70,30 +65,6 @@ public class Controlador {
         dialog.setVisible(true);
         dialog.setModal(modal);
         dialog.setLocationRelativeTo(null);
-    }
-
-    public void rellenaTabla(JTable tabla, ResultSet rs) throws SQLException {
-        ResultSetMetaData rsmd;
-        DefaultTableModel dtm = new DefaultTableModel();
-        //Creamos el objeto statement y obtenemos el ResultSetMetaData
-
-        rsmd = rs.getMetaData();
-        int numCols = rsmd.getColumnCount();
-        //vaciarTabla
-
-        for (int col = 1; col <= numCols; col++) {
-            //taResultado.append(rsmd.getColumnName(col)+"\t");
-            dtm.addColumn(rsmd.getColumnName(col));
-        }
-        while (rs.next()) {
-            Object[] obj = new Object[numCols];
-            for (int col = 0; col < numCols; col++) {
-                obj[col] = (rs.getObject(col + 1).toString());
-
-            }
-            dtm.addRow(obj);
-        }
-        tabla.setModel(dtm);
     }
 
     public void rellenaTablaAgenda(JTable tablaAgenda) {

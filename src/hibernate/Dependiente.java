@@ -124,7 +124,7 @@ public class Dependiente  implements java.io.Serializable {
     }
 
         public Object[] getDependienteForTable() {
-        return new Object[]{this.idDependiente, this.personas.getNombre(), this.personas.getApellidos(), this.tipoDeDependiente, this.personas.getGenero()};
+        return new Object[]{this.idDependiente, this, this.personas.getApellidos(), this.tipoDeDependiente, this.personas.getGenero()};
     }
 
     public static void setColumns(DefaultTableModel model) {
@@ -133,6 +133,10 @@ public class Dependiente  implements java.io.Serializable {
         model.addColumn("Apellidos");
         model.addColumn("Tipo dependiente");
         model.addColumn("Genero");
+    }
+    
+    public String toString(){
+        return this.getPersonas().getNombre() + " " + this.getPersonas().getApellidos();
     }
 
 

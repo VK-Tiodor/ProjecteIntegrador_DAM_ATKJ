@@ -8,13 +8,14 @@ package controlador;
 import hibernate.Asistencia;
 import hibernate.Dependiente;
 import hibernate.TareasPendientes;
+import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.conexion.Conexion;
 import vista.JFramePantallaPrincipal;
-import vista.Login;
+
 
 /**
  *
@@ -22,17 +23,21 @@ import vista.Login;
  */
 public class Controlador {
 
-    private final Login ventanaLogin;
     private final Conexion conexion;
 
     private JFrame ventanaActual;
-    private JFramePantallaPrincipal pantallaPrincipal;
+    private final JFramePantallaPrincipal pantallaPrincipal;
+    private ArrayList<Dependiente> listaDependientes;
 
     public Controlador() {
-        this.ventanaLogin = new Login(this);
         this.conexion = new Conexion(this);
+        this.listaDependientes = this.conexion.getDependientes();
          pantallaPrincipal = new JFramePantallaPrincipal(this, conexion);
             cambiaVentana(pantallaPrincipal);
+    }
+
+    public ArrayList<Dependiente> getListaDependientes() {
+        return listaDependientes;
     }
 
     public Conexion getConexion() {
@@ -98,7 +103,7 @@ public class Controlador {
 
         Dependiente.setColumns(model);
 
-        for (Dependiente dependiente : this.conexion.getDependientes()) {
+        for (Dependiente dependiente : this.listaDependientes) {
             model.addRow(dependiente.getDependienteForTable());
         }
 

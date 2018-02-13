@@ -11,6 +11,9 @@ import hibernate.TareasPendientes;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -140,6 +143,14 @@ public class Controlador {
         System.out.println("Llamada recibida del dependiente " + id);
         pantallaPrincipal.abreDialogAlerta(id);
 
+    }
+
+    public void creaTarea(Dependiente dependiente, Calendar fecha, String hora, String encabezado, String descripcion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void crearContacto(String dni, String nombre, String apellidos, Date time, String genero, Dependiente dependienteSeleccionado, ArrayList<String[]> telefonos) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -6,9 +6,12 @@
 package vista;
 
 import controlador.Controlador;
+import hibernate.Dependiente;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import modelo.conexion.Conexion;
 
 /**
@@ -20,6 +23,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private final Controlador controlador;
     private final Conexion conexion;
 
+    private DefaultTableModel tablaListaDependientes;
+    
     public JFramePantallaPrincipal(Controlador controlador, Conexion conexion) {
         initComponents();
         this.controlador = controlador;
@@ -66,6 +71,22 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jDialogAlertaLlamadaEntrante = new javax.swing.JDialog();
         jLabel9 = new javax.swing.JLabel();
         jButtonCogerLlamadaAviso = new javax.swing.JButton();
+        jDialogCrearDependiente = new javax.swing.JDialog();
+        jLabel13 = new javax.swing.JLabel();
+        jTextFieldDNICrearDependiente = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jTextFieldNombreCrearDependiente = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jTextFieldApellidosCrearDependiente = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        dateChooserComboNacimientoCrearDependiente = new datechooser.beans.DateChooserCombo();
+        jLabel17 = new javax.swing.JLabel();
+        jComboBoxGeneroCrearDependiente = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        jComboBoxTipoCrearDependiente = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
+        jPasswordFieldCrearDependiente = new javax.swing.JPasswordField();
+        jButtonCrearDependiente = new javax.swing.JButton();
         jTabbedPanePrincipal = new javax.swing.JTabbedPane();
         jPanelAgenda = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -82,6 +103,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableListaDependientes = new javax.swing.JTable();
         jButtonVerDependiente = new javax.swing.JButton();
+        jButtonAddDependiente = new javax.swing.JButton();
+        jButtonBorrarDependiente = new javax.swing.JButton();
 
         jLabel1.setText("Dependiente");
 
@@ -288,6 +311,94 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
+        jLabel13.setText("DNI");
+
+        jLabel14.setText("Nombre");
+
+        jLabel15.setText("Apellidos");
+
+        jLabel16.setText("Nacimiento");
+
+        jLabel17.setText("Genero");
+
+        jComboBoxGeneroCrearDependiente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "H", "I" }));
+
+        jLabel18.setText("Tipo");
+
+        jComboBoxTipoCrearDependiente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enf. Cronico", "Persona Mayor", "Discapacidad", "Violencia de genero" }));
+
+        jLabel19.setText("Contraseña");
+
+        jButtonCrearDependiente.setText("Crear Dependiente");
+        jButtonCrearDependiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearDependienteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogCrearDependienteLayout = new javax.swing.GroupLayout(jDialogCrearDependiente.getContentPane());
+        jDialogCrearDependiente.getContentPane().setLayout(jDialogCrearDependienteLayout);
+        jDialogCrearDependienteLayout.setHorizontalGroup(
+            jDialogCrearDependienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogCrearDependienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialogCrearDependienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldDNICrearDependiente)
+                    .addComponent(jTextFieldNombreCrearDependiente)
+                    .addComponent(jTextFieldApellidosCrearDependiente)
+                    .addComponent(dateChooserComboNacimientoCrearDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxGeneroCrearDependiente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxTipoCrearDependiente, 0, 258, Short.MAX_VALUE)
+                    .addComponent(jPasswordFieldCrearDependiente)
+                    .addGroup(jDialogCrearDependienteLayout.createSequentialGroup()
+                        .addGroup(jDialogCrearDependienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel19))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButtonCrearDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jDialogCrearDependienteLayout.setVerticalGroup(
+            jDialogCrearDependienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogCrearDependienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldDNICrearDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldNombreCrearDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldApellidosCrearDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dateChooserComboNacimientoCrearDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxGeneroCrearDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBoxTipoCrearDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPasswordFieldCrearDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCrearDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTableAgenda.setModel(new javax.swing.table.DefaultTableModel(
@@ -336,9 +447,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                         .addComponent(jButtonAddTarea)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonTareaRealizado)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonBorrarTarea)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonBorrarTarea)))
                 .addContainerGap())
         );
         jPanelAgendaLayout.setVerticalGroup(
@@ -393,7 +503,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
                     .addGroup(jPanelHistorialLlamadasLayout.createSequentialGroup()
                         .addComponent(jButtonVerDetallesLlamada)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonVerDependienteHist)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -432,6 +542,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButtonAddDependiente.setText("Añadir Dependiente");
+
+        jButtonBorrarDependiente.setText("Borrar Dependiente");
+
         javax.swing.GroupLayout jPanelDependientesLayout = new javax.swing.GroupLayout(jPanelDependientes);
         jPanelDependientes.setLayout(jPanelDependientesLayout);
         jPanelDependientesLayout.setHorizontalGroup(
@@ -440,9 +554,12 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelDependientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
-                    .addGroup(jPanelDependientesLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDependientesLayout.createSequentialGroup()
+                        .addComponent(jButtonAddDependiente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonVerDependiente)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonBorrarDependiente)))
                 .addContainerGap())
         );
         jPanelDependientesLayout.setVerticalGroup(
@@ -451,7 +568,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonVerDependiente)
+                .addGroup(jPanelDependientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVerDependiente)
+                    .addComponent(jButtonAddDependiente)
+                    .addComponent(jButtonBorrarDependiente))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -465,7 +585,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPanePrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
+            .addComponent(jTabbedPanePrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -495,11 +615,19 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     private void jButtonVerDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteActionPerformed
 
-        this.controlador.abreFrame(new JFrameDependiente(controlador, conexion));
+        this.controlador.abreFrame(new JFrameDependiente(controlador, null));
     }//GEN-LAST:event_jButtonVerDependienteActionPerformed
 
     private void jButtonCrearTareaAddTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearTareaAddTareaActionPerformed
 
+        Dependiente dependiente = (Dependiente) jComboBoxDependientesAddTarea.getSelectedItem();
+        Calendar fecha = dateChooserComboFechaAddTarea.getCurrent();
+        String hora = jFormattedTextFieldHoraAddTarea.getText();
+        String encabezado = jTextFieldEncabezadoAddTarea.getText();
+        String descripcion = jTextAreaDescripcionAddTarea.getText();
+        
+        this.controlador.creaTarea(dependiente,fecha,hora,encabezado,descripcion);
+        
     }//GEN-LAST:event_jButtonCrearTareaAddTareaActionPerformed
 
     private void jButtonAceptarDetallesLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarDetallesLlamadaActionPerformed
@@ -508,7 +636,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAceptarDetallesLlamadaActionPerformed
 
     private void jButtonCogerLlamadaAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCogerLlamadaAvisoActionPerformed
-        JFrameDependiente jfd = new JFrameDependiente(controlador, conexion);
+        JFrameDependiente jfd = new JFrameDependiente(controlador, null);
         this.controlador.abreFrame(jfd);
         this.controlador.abreDialog(jDialogDetallesLlamada, false);
         jfd.setLocation(50, 170);
@@ -516,28 +644,54 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonCogerLlamadaAvisoActionPerformed
 
+    private void jButtonCrearDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearDependienteActionPerformed
+        // TODO add your handling code here:
+        String dni = jTextFieldDNICrearDependiente.getText();
+        String nombre = jTextFieldNombreCrearDependiente.getText();
+        String apellidos = jTextFieldApellidosCrearDependiente.getText();
+        Calendar fechaNac = dateChooserComboNacimientoCrearDependiente.getCurrent();
+        String genero = (String) jComboBoxGeneroCrearDependiente.getSelectedItem();
+        String tipo = (String) jComboBoxTipoCrearDependiente.getSelectedItem();
+        String pass = jPasswordFieldCrearDependiente.getPassword().toString(); //TODO comprobar si esta cogiendo bien la contraseña
+        
+    }//GEN-LAST:event_jButtonCrearDependienteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datechooser.beans.DateChooserCombo dateChooserComboFechaAddTarea;
     private datechooser.beans.DateChooserCombo dateChooserComboFecjaDetallesLlamada;
+    private datechooser.beans.DateChooserCombo dateChooserComboNacimientoCrearDependiente;
     private javax.swing.JButton jButtonAceptarDetallesLlamada;
+    private javax.swing.JButton jButtonAddDependiente;
     private javax.swing.JButton jButtonAddTarea;
+    private javax.swing.JButton jButtonBorrarDependiente;
     private javax.swing.JButton jButtonBorrarTarea;
     private javax.swing.JButton jButtonCogerLlamadaAviso;
+    private javax.swing.JButton jButtonCrearDependiente;
     private javax.swing.JButton jButtonCrearTareaAddTarea;
     private javax.swing.JButton jButtonTareaRealizado;
     private javax.swing.JButton jButtonVerDependiente;
     private javax.swing.JButton jButtonVerDependienteHist;
     private javax.swing.JButton jButtonVerDetallesLlamada;
     private javax.swing.JComboBox<String> jComboBoxDependientesAddTarea;
+    private javax.swing.JComboBox<String> jComboBoxGeneroCrearDependiente;
+    private javax.swing.JComboBox<String> jComboBoxTipoCrearDependiente;
     private javax.swing.JDialog jDialogAlertaLlamadaEntrante;
     private javax.swing.JDialog jDialogAñadirTarea;
+    private javax.swing.JDialog jDialogCrearDependiente;
     private javax.swing.JDialog jDialogDetallesLlamada;
     private javax.swing.JFormattedTextField jFormattedTextFieldHoraAddTarea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -551,6 +705,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelAgenda;
     private javax.swing.JPanel jPanelDependientes;
     private javax.swing.JPanel jPanelHistorialLlamadas;
+    private javax.swing.JPasswordField jPasswordFieldCrearDependiente;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -562,8 +717,11 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jTableListaDependientes;
     private javax.swing.JTextArea jTextAreaDatosAsistenciaDetallesLlamada;
     private javax.swing.JTextArea jTextAreaDescripcionAddTarea;
+    private javax.swing.JTextField jTextFieldApellidosCrearDependiente;
+    private javax.swing.JTextField jTextFieldDNICrearDependiente;
     private javax.swing.JTextField jTextFieldEncabezadoAddTarea;
     private javax.swing.JTextField jTextFieldMotivoDetallesLlamada;
+    private javax.swing.JTextField jTextFieldNombreCrearDependiente;
     // End of variables declaration//GEN-END:variables
 
     private void setUI() {
@@ -571,6 +729,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         this.controlador.rellenaTablaAgenda(this.jTableAgenda);
         this.controlador.rellenaTablaHistorialLlamadas(this.jTableHistorialLlamadas);
         this.controlador.rellenaTablaListaDependiente(this.jTableListaDependientes);
+        
+        tablaListaDependientes = (DefaultTableModel) jTableListaDependientes.getModel();
 
     }
 

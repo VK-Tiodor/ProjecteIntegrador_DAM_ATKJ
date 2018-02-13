@@ -6,6 +6,11 @@
 package vista;
 
 import controlador.Controlador;
+import hibernate.Dependiente;
+import hibernate.Personas;
+import java.util.ArrayList;
+import java.util.Calendar;
+import javax.swing.table.DefaultTableModel;
 import modelo.conexion.Conexion;
 
 /**
@@ -16,14 +21,17 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
     
     private Controlador controlador;
-    private Conexion conexion;
+    private Dependiente dependienteSeleccionado;
+    
+    ArrayList<String[]> telefonos = new ArrayList<>();
+    
     /**
      * Creates new form JFrameDependiente
      */
-    public JFrameDependiente(Controlador controlador, Conexion conexion) {
+    public JFrameDependiente(Controlador controlador, Dependiente dependienteSeleccionado) {
         initComponents();
         this.controlador = controlador;
-        this.conexion = conexion;
+        this.dependienteSeleccionado = dependienteSeleccionado;
     }
 
     /**
@@ -43,6 +51,37 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableRecursosLocalidadDependiente = new javax.swing.JTable();
         jButtonMarcarViviendaComoActivaDependiente = new javax.swing.JButton();
+        jDialogCrearContacto = new javax.swing.JDialog();
+        jButtonCrearContacto = new javax.swing.JButton();
+        dateChooserComboNacimientoCrearContacto = new datechooser.beans.DateChooserCombo();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jComboBoxGeneroCrearContacto = new javax.swing.JComboBox<>();
+        jTextFieldDNICrearContacto = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jTextFieldNombreCrearContacto = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jTextFieldApellidosCrearContacto = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jTextFieldRelacionCrearContacto = new javax.swing.JTextField();
+        jCheckBoxCrearContacto = new javax.swing.JCheckBox();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTableTelefonosCrearContacto = new javax.swing.JTable();
+        jTextFieldNumeroCrearContacto = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jComboBoxTipoTelefonoCrearContacto = new javax.swing.JComboBox<>();
+        jButtonAddTelefono = new javax.swing.JButton();
+        jDialogCrearMedicina = new javax.swing.JDialog();
+        jLabel18 = new javax.swing.JLabel();
+        jTextFieldNombreAddMedicinaDependiente = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jTextFieldTomaAddMedicinaDependiente = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jTextFieldCantidadAddMedicinaDependiente = new javax.swing.JTextField();
+        jButtonAddMedicinaDependiente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -134,6 +173,199 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+        );
+
+        jButtonCrearContacto.setText("Crear Contacto");
+        jButtonCrearContacto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearContactoActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setText("Genero");
+
+        jLabel13.setText("DNI");
+
+        jComboBoxGeneroCrearContacto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "H", "I" }));
+
+        jLabel14.setText("Nombre");
+
+        jLabel15.setText("Apellidos");
+
+        jLabel16.setText("Nacimiento");
+
+        jLabel12.setText("Telefonos");
+
+        jLabel21.setText("Relación");
+
+        jCheckBoxCrearContacto.setText("Llave de casa");
+
+        jTableTelefonosCrearContacto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Tipo", "Número"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(jTableTelefonosCrearContacto);
+
+        jLabel22.setText("Tipo");
+
+        jLabel23.setText("Número");
+
+        jComboBoxTipoTelefonoCrearContacto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fijo", "Movil" }));
+
+        jButtonAddTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon_add_16.png"))); // NOI18N
+        jButtonAddTelefono.setToolTipText("");
+        jButtonAddTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddTelefonoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogCrearContactoLayout = new javax.swing.GroupLayout(jDialogCrearContacto.getContentPane());
+        jDialogCrearContacto.getContentPane().setLayout(jDialogCrearContactoLayout);
+        jDialogCrearContactoLayout.setHorizontalGroup(
+            jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogCrearContactoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogCrearContactoLayout.createSequentialGroup()
+                        .addGroup(jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxTipoTelefonoCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16)
+                            .addComponent(jCheckBoxCrearContacto)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel22))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel23)
+                            .addGroup(jDialogCrearContactoLayout.createSequentialGroup()
+                                .addComponent(jTextFieldNumeroCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonAddTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jTextFieldDNICrearContacto)
+                    .addComponent(jTextFieldNombreCrearContacto)
+                    .addComponent(jTextFieldApellidosCrearContacto)
+                    .addComponent(dateChooserComboNacimientoCrearContacto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxGeneroCrearContacto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCrearContacto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldRelacionCrearContacto))
+                .addContainerGap())
+        );
+        jDialogCrearContactoLayout.setVerticalGroup(
+            jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogCrearContactoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldDNICrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldNombreCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldApellidosCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dateChooserComboNacimientoCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxGeneroCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldRelacionCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBoxCrearContacto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxTipoTelefonoCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNumeroCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAddTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel18.setText("Nombre");
+
+        jLabel19.setText("Toma");
+
+        jLabel20.setText("Cantidad");
+
+        jButtonAddMedicinaDependiente.setText("Añadir Medicina");
+        jButtonAddMedicinaDependiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddMedicinaDependienteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogCrearMedicinaLayout = new javax.swing.GroupLayout(jDialogCrearMedicina.getContentPane());
+        jDialogCrearMedicina.getContentPane().setLayout(jDialogCrearMedicinaLayout);
+        jDialogCrearMedicinaLayout.setHorizontalGroup(
+            jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogCrearMedicinaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonAddMedicinaDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                    .addComponent(jTextFieldNombreAddMedicinaDependiente, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldTomaAddMedicinaDependiente, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldCantidadAddMedicinaDependiente, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogCrearMedicinaLayout.createSequentialGroup()
+                        .addGroup(jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel20))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jDialogCrearMedicinaLayout.setVerticalGroup(
+            jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogCrearMedicinaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldNombreAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldTomaAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldCantidadAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -287,25 +519,24 @@ public class JFrameDependiente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabelFechaAlta)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jComboBoxTipoDeDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButtonVerViviendasDependiente))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jButtonAñadirMedicacionDependiente)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jButtonEditarMedicacionDependiente)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jButtonEliminarMedicacionDependiente))
-                                        .addComponent(jLabel9))
-                                    .addGap(0, 0, Short.MAX_VALUE))))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelFechaAlta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxTipoDeDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonVerViviendasDependiente))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButtonAñadirMedicacionDependiente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonEditarMedicacionDependiente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonEliminarMedicacionDependiente))
+                                    .addComponent(jLabel9))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -351,7 +582,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddContactoDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddContactoDependienteActionPerformed
-        
+        this.controlador.abreDialog(jDialogCrearContacto, false);
     }//GEN-LAST:event_jButtonAddContactoDependienteActionPerformed
 
     private void jButtonEditarContactoDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarContactoDependienteActionPerformed
@@ -363,7 +594,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEliminarContactoDependienteActionPerformed
 
     private void jButtonAñadirMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirMedicacionDependienteActionPerformed
-        
+        this.controlador.abreDialog(jDialogCrearMedicina, false);
     }//GEN-LAST:event_jButtonAñadirMedicacionDependienteActionPerformed
 
     private void jButtonEditarMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarMedicacionDependienteActionPerformed
@@ -378,22 +609,77 @@ public class JFrameDependiente extends javax.swing.JFrame {
         this.controlador.abreDialog(jDialogViviendas,false);
     }//GEN-LAST:event_jButtonVerViviendasDependienteActionPerformed
 
+    private void jButtonCrearContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearContactoActionPerformed
+        // TODO add your handling code here:
+        String dni = jTextFieldDNICrearContacto.getText();
+        String nombre = jTextFieldNombreCrearContacto.getText();
+        String apellidos = jTextFieldApellidosCrearContacto.getText();
+        Calendar fechaNac = dateChooserComboNacimientoCrearContacto.getCurrent();
+        String genero = (String) jComboBoxGeneroCrearContacto.getSelectedItem();
+        String relacion = jTextFieldRelacionCrearContacto.getText();
+        boolean llave = jCheckBoxCrearContacto.isSelected();
+        //telefono
+        this.controlador.crearContacto(dni, nombre, apellidos, fechaNac.getTime(), genero, this.dependienteSeleccionado, this.telefonos);
+
+    }//GEN-LAST:event_jButtonCrearContactoActionPerformed
+
+    private void jButtonAddMedicinaDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMedicinaDependienteActionPerformed
+        // TODO add your handling code here:
+        String nombre = jTextFieldNombreAddMedicinaDependiente.getText();
+        String toma = jTextFieldTomaAddMedicinaDependiente.getText();
+        String cantidad = jTextFieldCantidadAddMedicinaDependiente.getText();
+        
+        
+    }//GEN-LAST:event_jButtonAddMedicinaDependienteActionPerformed
+
+    private void jButtonAddTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTelefonoActionPerformed
+        // TODO add your handling code here:
+        if (jTextFieldNumeroCrearContacto.getText().equals("")) {
+            String [] telefono = {jComboBoxTipoDeDependiente.getSelectedItem().toString(),jTextFieldNumeroCrearContacto.getText()};
+            telefonos.add(telefono);
+            DefaultTableModel tablaTelefonos = (DefaultTableModel) jTableTelefonosCrearContacto.getModel();
+            tablaTelefonos.addRow(telefono);
+        }
+        
+    }//GEN-LAST:event_jButtonAddTelefonoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private datechooser.beans.DateChooserCombo dateChooserComboNacimientoCrearContacto;
     private javax.swing.JButton jButtonAddContactoDependiente;
+    private javax.swing.JButton jButtonAddMedicinaDependiente;
+    private javax.swing.JButton jButtonAddTelefono;
     private javax.swing.JButton jButtonAñadirMedicacionDependiente;
+    private javax.swing.JButton jButtonCrearContacto;
     private javax.swing.JButton jButtonEditarContactoDependiente;
     private javax.swing.JButton jButtonEditarMedicacionDependiente;
     private javax.swing.JButton jButtonEliminarContactoDependiente;
     private javax.swing.JButton jButtonEliminarMedicacionDependiente;
     private javax.swing.JButton jButtonMarcarViviendaComoActivaDependiente;
     private javax.swing.JButton jButtonVerViviendasDependiente;
+    private javax.swing.JCheckBox jCheckBoxCrearContacto;
+    private javax.swing.JComboBox<String> jComboBoxGeneroCrearContacto;
     private javax.swing.JComboBox<String> jComboBoxTipoDeDependiente;
+    private javax.swing.JComboBox<String> jComboBoxTipoTelefonoCrearContacto;
+    private javax.swing.JDialog jDialogCrearContacto;
+    private javax.swing.JDialog jDialogCrearMedicina;
     private javax.swing.JDialog jDialogViviendas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -409,9 +695,19 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTableContactosDependiente;
     private javax.swing.JTable jTableMedicacionDependiente;
     private javax.swing.JTable jTableRecursosLocalidadDependiente;
+    private javax.swing.JTable jTableTelefonosCrearContacto;
     private javax.swing.JTable jTableViviendasDependiente;
+    private javax.swing.JTextField jTextFieldApellidosCrearContacto;
+    private javax.swing.JTextField jTextFieldCantidadAddMedicinaDependiente;
+    private javax.swing.JTextField jTextFieldDNICrearContacto;
+    private javax.swing.JTextField jTextFieldNombreAddMedicinaDependiente;
+    private javax.swing.JTextField jTextFieldNombreCrearContacto;
+    private javax.swing.JTextField jTextFieldNumeroCrearContacto;
+    private javax.swing.JTextField jTextFieldRelacionCrearContacto;
+    private javax.swing.JTextField jTextFieldTomaAddMedicinaDependiente;
     // End of variables declaration//GEN-END:variables
 }

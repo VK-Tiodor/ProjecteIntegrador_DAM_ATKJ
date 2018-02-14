@@ -123,7 +123,7 @@ public class Dependiente  implements java.io.Serializable {
         this.personases = personases;
     }
 
-        public Object[] getDependienteForTable() {
+    public Object[] getDependienteForTable() {
         return new Object[]{this.idDependiente, this, this.personas.getApellidos(), this.tipoDeDependiente, this.personas.getGenero()};
     }
 

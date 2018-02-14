@@ -1,6 +1,9 @@
 package hibernate;
 // Generated 12-feb-2018 18:52:59 by Hibernate Tools 4.3.1
 
+import javax.swing.table.DefaultTableModel;
+
+
 
 
 /**
@@ -101,7 +104,22 @@ public class RecursosLocalidad  implements java.io.Serializable {
         this.telefonoHospital = telefonoHospital;
     }
 
+    public Object[] getRecursosForTable() {
+        
+        return new Object[]{this.telefonoGuardiaCil, this.telefonoBomberos, this.telefonoPoliciaLocal, this.telefonoUrgencias, this.telefonoPoliciaNacional, this.telefonoAmbulatorio, this.telefonoHospital };
+    }
 
+    public static void setColumns(DefaultTableModel model) {
+       
+        model.addColumn("Telefono GuardiaCil");
+        model.addColumn("Telefono Bomberos");
+        model.addColumn("Telefono Policia Local");
+        model.addColumn("Tipo telefono Urgencias");
+        model.addColumn("Telefono Policia Nacional");
+        model.addColumn("Telefono Ambulatorio");
+        model.addColumn("Telefono Hospital");
+    }
+    
 
 
 }

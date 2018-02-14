@@ -797,6 +797,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="A&#xf1;adir Dependiente"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddDependienteActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonBorrarDependiente">
               <Properties>

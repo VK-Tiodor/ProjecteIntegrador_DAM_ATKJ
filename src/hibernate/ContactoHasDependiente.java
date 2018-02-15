@@ -68,7 +68,11 @@ public class ContactoHasDependiente  implements java.io.Serializable {
         this.llave = llave;
     }
     public Object[] getContactoForTable() {
-        return new Object[]{this.contacto, this.relacion, this.llave};
+        return new Object[]{this, this.relacion, this.llave};
+    }
+    
+    public String toString(){
+        return this.getContacto().getPersonas().toString();
     }
 
 }

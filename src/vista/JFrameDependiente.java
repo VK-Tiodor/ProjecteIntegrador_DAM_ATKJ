@@ -8,10 +8,14 @@ package vista;
 import controlador.Controlador;
 import hibernate.ContactoHasDependiente;
 import hibernate.Dependiente;
+import hibernate.DependienteHasMedicacion;
+import hibernate.Medicacion;
 import hibernate.Personas;
+import hibernate.TareasPendientes;
 import hibernate.Vivienda;
 import java.util.ArrayList;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.conexion.Conexion;
 
@@ -21,14 +25,14 @@ import modelo.conexion.Conexion;
  */
 public class JFrameDependiente extends javax.swing.JFrame {
 
-    
     private Controlador controlador;
     private Dependiente dependienteSeleccionado;
-    
+
     ArrayList<String[]> telefonos = new ArrayList<>();
-    
+
     /**
      * Creates new form JFrameDependiente
+     *
      * @param controlador
      * @param dependienteSeleccionado
      */
@@ -38,18 +42,18 @@ public class JFrameDependiente extends javax.swing.JFrame {
         this.dependienteSeleccionado = dependienteSeleccionado;
         setUI();
     }
-    
-    private void setUI(){
+
+    private void setUI() {
         this.jLabelNombreYApellidosDependiente.setText(this.dependienteSeleccionado.toString());
         this.jLabelDNIDependiente.setText(this.dependienteSeleccionado.getPersonas().getDni());
         this.jLabelFechaNacimientoDependiente.setText(this.dependienteSeleccionado.getPersonas().getNacimiento().toString());
         this.jLabelGeneroDependiente.setText(this.dependienteSeleccionado.getPersonas().getGenero());
         this.jLabelFechaAltaDependiente.setText(this.dependienteSeleccionado.getFechaAlta().toString());
         this.jLabelTipoDeDependiente.setText(this.dependienteSeleccionado.getTipoDeDependiente());
-        
+
         this.controlador.rellenaTablaContactosDependiente(jTableContactosDependiente, dependienteSeleccionado);
         this.controlador.rellenaTablaMedicacionDependiente(jTableMedicacionDependiente, dependienteSeleccionado);
-        
+
     }
 
     /**
@@ -810,11 +814,18 @@ public class JFrameDependiente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddContactoDependienteActionPerformed
 
     private void jButtonEditarContactoDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarContactoDependienteActionPerformed
-        
+
     }//GEN-LAST:event_jButtonEditarContactoDependienteActionPerformed
 
     private void jButtonEliminarContactoDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarContactoDependienteActionPerformed
-        
+        if (this.jTableContactosDependiente.getSelectedRow() != -1) {
+            if (JOptionPane.showConfirmDialog(this, "Seguro que quieres borrar esta persona?") == JOptionPane.YES_OPTION) {
+                ContactoHasDependiente contactoHasDependiente = (ContactoHasDependiente) this.jTableContactosDependiente.getModel().getValueAt(this.jTableContactosDependiente.getSelectedRow(), 0);
+                this.controlador.borraContactoHasDependiente(contactoHasDependiente, this.dependienteSeleccionado);
+                DefaultTableModel model = (DefaultTableModel) this.jTableContactosDependiente.getModel();
+                model.removeRow(this.jTableContactosDependiente.getSelectedRow());
+            }
+        }
     }//GEN-LAST:event_jButtonEliminarContactoDependienteActionPerformed
 
     private void jButtonAñadirMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirMedicacionDependienteActionPerformed
@@ -822,16 +833,23 @@ public class JFrameDependiente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAñadirMedicacionDependienteActionPerformed
 
     private void jButtonEditarMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarMedicacionDependienteActionPerformed
-        
+
     }//GEN-LAST:event_jButtonEditarMedicacionDependienteActionPerformed
 
     private void jButtonEliminarMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarMedicacionDependienteActionPerformed
-        
+        if (this.jTableMedicacionDependiente.getSelectedRow() != -1) {
+            if (JOptionPane.showConfirmDialog(this, "Seguro que quieres borrar esta medicación?") == JOptionPane.YES_OPTION) {
+                DependienteHasMedicacion medicacion = (DependienteHasMedicacion) this.jTableMedicacionDependiente.getModel().getValueAt(this.jTableMedicacionDependiente.getSelectedRow(), 0);
+                this.controlador.borraMedicacion(medicacion, this.dependienteSeleccionado);
+                DefaultTableModel model = (DefaultTableModel) this.jTableMedicacionDependiente.getModel();
+                model.removeRow(this.jTableMedicacionDependiente.getSelectedRow());
+            }
+        }
     }//GEN-LAST:event_jButtonEliminarMedicacionDependienteActionPerformed
 
     private void jButtonVerViviendasDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerViviendasDependienteActionPerformed
-        this.controlador.rellenaTablaViviendaDependiente(jTableViviendasDependiente,this.dependienteSeleccionado);
-        this.controlador.abreDialog(jDialogViviendas,false);
+        this.controlador.rellenaTablaViviendaDependiente(jTableViviendasDependiente, this.dependienteSeleccionado);
+        this.controlador.abreDialog(jDialogViviendas, false);
     }//GEN-LAST:event_jButtonVerViviendasDependienteActionPerformed
 
     private void jButtonCrearContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearContactoActionPerformed
@@ -853,19 +871,19 @@ public class JFrameDependiente extends javax.swing.JFrame {
         String nombre = jTextFieldNombreAddMedicinaDependiente.getText();
         String toma = jTextFieldTomaAddMedicinaDependiente.getText();
         String cantidad = jTextFieldCantidadAddMedicinaDependiente.getText();
-        this.controlador.crearMedicina(nombre,toma,cantidad);
-        
+        this.controlador.crearMedicina(nombre, toma, cantidad);
+
     }//GEN-LAST:event_jButtonAddMedicinaDependienteActionPerformed
 
     private void jButtonAddTelefonoCrearContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTelefonoCrearContactoActionPerformed
         // TODO add your handling code here:
         if (!jTextFieldNumeroCrearContacto.getText().equals("")) {
-            String [] telefono = {jComboBoxTipoTelefonoCrearContacto.getSelectedItem().toString(),jTextFieldNumeroCrearContacto.getText()};
+            String[] telefono = {jComboBoxTipoTelefonoCrearContacto.getSelectedItem().toString(), jTextFieldNumeroCrearContacto.getText()};
             telefonos.add(telefono);
             DefaultTableModel tablaTelefonos = (DefaultTableModel) jTableTelefonosCrearContacto.getModel();
             tablaTelefonos.addRow(telefono);
         }
-        
+
     }//GEN-LAST:event_jButtonAddTelefonoCrearContactoActionPerformed
 
     private void jButtonAddTelefonoModificarContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTelefonoModificarContactoActionPerformed
@@ -890,7 +908,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
     private void jTableViviendasDependienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableViviendasDependienteMouseClicked
         // Al hacer click en la tabla viviendas, coger los recursos de esa vivienda
-        this.controlador.rellenaTablaRecursos(jTableRecursosLocalidadDependiente,(Vivienda) jTableViviendasDependiente.getValueAt(jTableViviendasDependiente.getSelectedRow(), 0));
+        this.controlador.rellenaTablaRecursos(jTableRecursosLocalidadDependiente, (Vivienda) jTableViviendasDependiente.getValueAt(jTableViviendasDependiente.getSelectedRow(), 0));
     }//GEN-LAST:event_jTableViviendasDependienteMouseClicked
 
     private void jButtonMarcarViviendaComoActivaDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMarcarViviendaComoActivaDependienteActionPerformed

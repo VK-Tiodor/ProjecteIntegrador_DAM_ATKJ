@@ -117,6 +117,10 @@ public class Personas  implements java.io.Serializable {
     public void setContacto(Contacto contacto) {
         this.contacto = contacto;
     }
+    
+    public String toString(){
+        return this.getNombre() + " " + this.getApellidos();
+    }
 
 
 

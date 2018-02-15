@@ -7,8 +7,13 @@ package modelo.conexion;
 
 import controlador.Controlador;
 import hibernate.Asistencia;
+import hibernate.Contacto;
+import hibernate.ContactoHasDependiente;
 import hibernate.Dependiente;
+import hibernate.DependienteHasMedicacion;
 import hibernate.HibernateUtil;
+import hibernate.Medicacion;
+import hibernate.Personas;
 import hibernate.TareasPendientes;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -93,12 +98,12 @@ public class Conexion {
         this.sessionHibernate.saveOrUpdate(tareaPendiente);
         this.sessionHibernate.getTransaction().commit();
     }
-    
-    public void eliminaTareaPendiente(TareasPendientes tareaPendiente){
+
+    public void eliminaTareaPendiente(TareasPendientes tareaPendiente) {
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.delete(tareaPendiente);
         this.sessionHibernate.getTransaction().commit();
-        
+
     }
 
     public void eliminaDependiente(Dependiente dependiente) {
@@ -106,5 +111,26 @@ public class Conexion {
         this.sessionHibernate.delete(dependiente);
         this.sessionHibernate.getTransaction().commit();
     }
+
+    public void eliminaMedicacion(DependienteHasMedicacion medicacion) {
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.delete(medicacion);
+        this.sessionHibernate.getTransaction().commit();
+    }
+
+    public void eliminaContactoHasDependiente(ContactoHasDependiente contactoHasDependiente) {
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.delete(contactoHasDependiente);
+        this.sessionHibernate.getTransaction().commit();
+    }
+
+    
+    public void eliminaPersona(Personas persona){
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.delete(persona);
+        this.sessionHibernate.getTransaction().commit();
+    }
+
+
 
 }

@@ -10,6 +10,7 @@ import hibernate.Contacto;
 import hibernate.ContactoHasDependiente;
 import hibernate.Dependiente;
 import hibernate.DependienteHasMedicacion;
+import hibernate.Personas;
 import hibernate.RecursosLocalidad;
 import hibernate.TareasPendientes;
 import hibernate.Vivienda;
@@ -223,8 +224,14 @@ public class Controlador {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void crearDependiente(String dni, String nombre, String apellidos, Calendar fechaNac, String genero, String tipo, String pass) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void crearDependiente(String dni, String nombre, String apellidos, Calendar fechaNac, String genero, String tipo, String pass, DefaultTableModel tabla) {
+        Personas p = new Personas(dni, nombre, apellidos, fechaNac.getTime(), genero, null, null, null, null, null);
+        Dependiente d = new Dependiente(p, tipo, Calendar.getInstance().getTime(), pass, null, null, null, null, null, null);
+        p.setDependiente(d);
+        this.listaDependientes.add(d);
+        tabla.addRow(d.getDependienteForTable());
+        this.getConexion().guardaDependiente(d);
+        
     }
     
        public static String formateaFecha(Date date) {

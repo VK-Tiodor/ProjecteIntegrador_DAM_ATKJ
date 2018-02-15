@@ -859,7 +859,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
     private void jButtonAddTelefonoCrearContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTelefonoCrearContactoActionPerformed
         // TODO add your handling code here:
-        if (jTextFieldNumeroCrearContacto.getText().equals("")) {
+        if (!jTextFieldNumeroCrearContacto.getText().equals("")) {
             String [] telefono = {jComboBoxTipoTelefonoCrearContacto.getSelectedItem().toString(),jTextFieldNumeroCrearContacto.getText()};
             telefonos.add(telefono);
             DefaultTableModel tablaTelefonos = (DefaultTableModel) jTableTelefonosCrearContacto.getModel();
@@ -881,7 +881,11 @@ public class JFrameDependiente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRemoveTelefonoModificarContactoActionPerformed
 
     private void jButtonRemoveTelefonoCrearContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveTelefonoCrearContactoActionPerformed
-        // TODO add your handling code here:
+        if (jTableTelefonosCrearContacto.getSelectedRow() != -1) {
+            int s = jTableTelefonosCrearContacto.getSelectedRow();
+            DefaultTableModel tabla = (DefaultTableModel) jTableTelefonosCrearContacto.getModel();
+            tabla.removeRow(s);
+        }
     }//GEN-LAST:event_jButtonRemoveTelefonoCrearContactoActionPerformed
 
     private void jTableViviendasDependienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableViviendasDependienteMouseClicked

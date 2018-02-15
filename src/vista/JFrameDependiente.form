@@ -679,7 +679,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonModificarContacto">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Crear Contacto"/>
+            <Property name="text" type="java.lang.String" value="Modificar Contacto"/>
             <Property name="actionCommand" type="java.lang.String" value="Modificar Contacto"/>
           </Properties>
           <Events>

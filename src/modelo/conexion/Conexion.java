@@ -8,6 +8,7 @@ package modelo.conexion;
 import controlador.Controlador;
 import hibernate.Asistencia;
 import hibernate.Contacto;
+import hibernate.ContactoHasDependiente;
 import hibernate.Dependiente;
 import hibernate.HibernateUtil;
 import hibernate.TareasPendientes;
@@ -101,6 +102,11 @@ public class Conexion {
         this.sessionHibernate.getTransaction().commit();
     }
     
+    public void guardaContactoHasDependiente(ContactoHasDependiente chd) {
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.saveOrUpdate(chd);
+        this.sessionHibernate.getTransaction().commit();
+    }
     public void eliminaTareaPendiente(TareasPendientes tareaPendiente){
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.delete(tareaPendiente);
@@ -113,6 +119,7 @@ public class Conexion {
         this.sessionHibernate.delete(dependiente);
         this.sessionHibernate.getTransaction().commit();
     }
+
 
 
 }

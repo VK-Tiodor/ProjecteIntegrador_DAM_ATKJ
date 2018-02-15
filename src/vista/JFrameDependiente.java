@@ -6,12 +6,15 @@
 package vista;
 
 import controlador.Controlador;
+import hibernate.Contacto;
 import hibernate.ContactoHasDependiente;
 import hibernate.Dependiente;
 import hibernate.Personas;
 import hibernate.Vivienda;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 import modelo.conexion.Conexion;
 
@@ -24,8 +27,9 @@ public class JFrameDependiente extends javax.swing.JFrame {
     
     private Controlador controlador;
     private Dependiente dependienteSeleccionado;
+    private Contacto contactoSeleccionado;
     
-    ArrayList<String[]> telefonos = new ArrayList<>();
+    Set telefonos = new HashSet(); //TODO, LOS TELEFONOS NO VAN, HAY QUE CAMBIARLO A OBJETOS TELEFONO Y GUARDARLOS EN LA LISTA
     
     /**
      * Creates new form JFrameDependiente
@@ -478,7 +482,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
-        jButtonModificarContacto.setText("Crear Contacto");
+        jButtonModificarContacto.setText("Modificar Contacto");
         jButtonModificarContacto.setActionCommand("Modificar Contacto");
         jButtonModificarContacto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -806,11 +810,28 @@ public class JFrameDependiente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddContactoDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddContactoDependienteActionPerformed
+        this.telefonos = new HashSet();
         this.controlador.abreDialog(jDialogCrearContacto, false);
     }//GEN-LAST:event_jButtonAddContactoDependienteActionPerformed
 
     private void jButtonEditarContactoDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarContactoDependienteActionPerformed
-        
+        if (this.jTableContactosDependiente.getSelectedRow() != -1) {
+            this.telefonos = new HashSet();        
+            this.contactoSeleccionado = (Contacto)jTableContactosDependiente.getValueAt(this.jTableContactosDependiente.getSelectedRow() , 0);
+            //FALTA TELEFONOS
+            jTextFieldDNIModificarContacto.setText(contactoSeleccionado.getPersonas().getDni());
+            jTextFieldNombreModificarContacto.setText(contactoSeleccionado.getPersonas().getNombre());
+            jTextFieldApellidosModificarContacto.setText(contactoSeleccionado.getPersonas().getApellidos());
+            dateChooserComboNacimientoModificarContacto.setText(contactoSeleccionado.getPersonas().getNacimiento().toString()); //NO SE SI CUELA
+            jComboBoxGeneroModificarContacto.setSelectedItem(contactoSeleccionado.getPersonas().getGenero());
+            ContactoHasDependiente chd = (ContactoHasDependiente)contactoSeleccionado.getContactoHasDependientes().toArray()[0];
+            jTextFieldRelacionModificarContacto.setText(chd.getRelacion());
+            jCheckBoxModificarContacto.setSelected(chd.getLlave());
+            
+            
+            
+            this.controlador.abreDialog(jDialogModificarContacto, false);
+        }
     }//GEN-LAST:event_jButtonEditarContactoDependienteActionPerformed
 
     private void jButtonEliminarContactoDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarContactoDependienteActionPerformed
@@ -845,7 +866,9 @@ public class JFrameDependiente extends javax.swing.JFrame {
         boolean llave = jCheckBoxCrearContacto.isSelected();
         //telefono
         this.controlador.crearContacto(dni, nombre, apellidos, fechaNac.getTime(), genero, relacion, llave, this.dependienteSeleccionado, this.telefonos, jTableContactosDependiente);
-
+        jDialogCrearContacto.dispose();
+        
+        this.controlador.rellenaTablaContactosDependiente(jTableContactosDependiente, dependienteSeleccionado);
     }//GEN-LAST:event_jButtonCrearContactoActionPerformed
 
     private void jButtonAddMedicinaDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMedicinaDependienteActionPerformed
@@ -870,10 +893,40 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
     private void jButtonAddTelefonoModificarContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTelefonoModificarContactoActionPerformed
         // TODO add your handling code here:
+        if (!jTextFieldNumeroModificarContacto.getText().equals("")) {
+            String [] telefono = {jComboBoxTipoTelefonoModificarContacto.getSelectedItem().toString(),jTextFieldNumeroModificarContacto.getText()};
+            telefonos.add(telefono);
+            DefaultTableModel tablaTelefonos = (DefaultTableModel) jTableTelefonosModificarContacto.getModel();
+            tablaTelefonos.addRow(telefono);
+        }
     }//GEN-LAST:event_jButtonAddTelefonoModificarContactoActionPerformed
 
     private void jButtonModificarContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarContactoActionPerformed
-        // TODO add your handling code here:
+        String dni = jTextFieldDNIModificarContacto.getText();
+        String nombre = jTextFieldNombreModificarContacto.getText();
+        String apellidos = jTextFieldApellidosModificarContacto.getText();
+        Calendar fechaNac = dateChooserComboNacimientoModificarContacto.getCurrent();
+        String genero = (String) jComboBoxGeneroModificarContacto.getSelectedItem();
+        String relacion = jTextFieldRelacionModificarContacto.getText();
+        boolean llave = jCheckBoxModificarContacto.isSelected();
+        
+        contactoSeleccionado.getPersonas().setDni(dni);
+        contactoSeleccionado.getPersonas().setNombre(nombre);
+        contactoSeleccionado.getPersonas().setApellidos(apellidos);
+        contactoSeleccionado.getPersonas().setNacimiento(fechaNac.getTime());
+        contactoSeleccionado.getPersonas().setGenero(genero);
+        contactoSeleccionado.getPersonas().setTelefonoses((Set) this.telefonos);
+        ContactoHasDependiente chd = (ContactoHasDependiente)contactoSeleccionado.getContactoHasDependientes().toArray()[0];
+        chd.setLlave(llave);
+        chd.setRelacion(relacion);
+        
+        this.controlador.getConexion().guardaContacto(contactoSeleccionado);
+        this.controlador.getConexion().guardaContactoHasDependiente(chd);
+        
+        this.controlador.rellenaTablaContactosDependiente(jTableContactosDependiente, dependienteSeleccionado);
+        
+        jDialogModificarContacto.dispose();
+        
     }//GEN-LAST:event_jButtonModificarContactoActionPerformed
 
     private void jButtonRemoveTelefonoModificarContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveTelefonoModificarContactoActionPerformed

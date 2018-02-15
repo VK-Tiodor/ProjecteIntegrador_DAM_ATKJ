@@ -19,6 +19,8 @@ import java.util.Date;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import modelo.conexion.Conexion;
 import vista.JFramePantallaPrincipal;
@@ -92,7 +94,15 @@ public class Controlador {
         }
 
         tablaAgenda.setModel(model);
-   }
+
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        for (int i = 0; i < tablaAgenda.getColumnModel().getColumnCount(); i++) {
+            tablaAgenda.getColumnModel().getColumn(i).setCellRenderer(tcr);
+        }
+
+    }
 
     public void rellenaTablaHistorialLlamadas(JTable jTableHistorialLlamadas) {
         DefaultTableModel model = new DefaultTableModel();
@@ -103,6 +113,13 @@ public class Controlador {
         }
 
         jTableHistorialLlamadas.setModel(model);
+
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        for (int i = 0; i < jTableHistorialLlamadas.getColumnModel().getColumnCount(); i++) {
+            jTableHistorialLlamadas.getColumnModel().getColumn(i).setCellRenderer(tcr);
+        }
     }
 
     public void rellenaTablaListaDependiente(JTable jTableListaDependientes) {
@@ -114,6 +131,13 @@ public class Controlador {
         }
 
         jTableListaDependientes.setModel(model);
+
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        for (int i = 0; i < jTableListaDependientes.getColumnModel().getColumnCount(); i++) {
+            jTableListaDependientes.getColumnModel().getColumn(i).setCellRenderer(tcr);
+        }
     }
     public void rellenaTablaContactosDependiente(JTable jTableContactosDependiente, Dependiente dependiente) {
         DefaultTableModel model = new DefaultTableModel();

@@ -622,7 +622,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     private void jButtonVerDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteActionPerformed
         if(this.jTableListaDependientes.getSelectedRow() != -1){
-        this.controlador.abreFrame(new JFrameDependiente(controlador, (Dependiente) this.jTableListaDependientes.getModel().getValueAt(this.jTableListaDependientes.getSelectedRow(), 1)));
+        this.controlador.abreFrame(new JFrameDependiente(controlador, (Dependiente) this.jTableListaDependientes.getModel().getValueAt(this.jTableListaDependientes.getSelectedRow(), 0)));
         } else {
             JOptionPane.showMessageDialog(this, "No se ha seleccionado ningún dependiente");
         }

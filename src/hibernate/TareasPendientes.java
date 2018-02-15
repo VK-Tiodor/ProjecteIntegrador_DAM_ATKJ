@@ -80,16 +80,19 @@ public class TareasPendientes implements java.io.Serializable {
     }
 
     public Object[] getTareaPendienteForTable() {
-        return new Object[]{this.idTarea, this.dependiente.getPersonas().getNombre() + ", " + this.dependiente.getPersonas().getApellidos(), this.fecha, this.hora, this.encabezado, this.descripcion};
+        return new Object[]{this, this.fecha, this.hora, this.encabezado, this.descripcion};
     }
 
     public static void setColumns(DefaultTableModel model) {
-        model.addColumn("Id");
         model.addColumn("Dependiente");
         model.addColumn("Fecha");
         model.addColumn("Hora");
         model.addColumn("Encabezado");
         model.addColumn("Descripcion");
+    }
+
+    public String toString() {
+        return this.getDependiente().getPersonas().getNombre() + " " + this.getDependiente().getPersonas().getApellidos();
     }
 
 }

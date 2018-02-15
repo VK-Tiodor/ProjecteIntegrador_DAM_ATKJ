@@ -844,7 +844,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
         String relacion = jTextFieldRelacionCrearContacto.getText();
         boolean llave = jCheckBoxCrearContacto.isSelected();
         //telefono
-        this.controlador.crearContacto(dni, nombre, apellidos, fechaNac.getTime(), genero, this.dependienteSeleccionado, this.telefonos);
+        this.controlador.crearContacto(dni, nombre, apellidos, fechaNac.getTime(), genero, relacion, llave, this.dependienteSeleccionado, this.telefonos, jTableContactosDependiente);
 
     }//GEN-LAST:event_jButtonCrearContactoActionPerformed
 

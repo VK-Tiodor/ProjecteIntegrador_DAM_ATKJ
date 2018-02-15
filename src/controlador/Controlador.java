@@ -211,8 +211,15 @@ public class Controlador {
         model.addRow(this.listaTareasPendientes.get(this.listaTareasPendientes.size() - 1).getTareaPendienteForTable());
     }
 
-    public void crearContacto(String dni, String nombre, String apellidos, Date time, String genero, Dependiente dependienteSeleccionado, ArrayList<String[]> telefonos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void crearContacto(String dni, String nombre, String apellidos, Date fechaNac, String genero, String relacion, boolean llave, Dependiente dependiente, ArrayList<String[]> telefonos, JTable jTableContactosDependiente) {
+        Personas p = new Personas(dni, nombre, apellidos, fechaNac, genero, null, null, null, null, null);
+        Contacto c = new Contacto(p);
+        p.setContacto(c);
+        ContactoHasDependiente chd = new ContactoHasDependiente(null, c, dependiente, relacion, llave);
+        c.getContactoHasDependientes().add(chd);
+        this.conexion.guardaContacto(c);
+        
+        
     }
     
     public void borraTarea(TareasPendientes tarea){
@@ -238,6 +245,9 @@ public class Controlador {
         DateFormat dateFormat = new SimpleDateFormat("y-MM-d");
         return dateFormat.format(date);
     }
+
+    
+    
         
 
 }

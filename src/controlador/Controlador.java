@@ -6,8 +6,13 @@
 package controlador;
 
 import hibernate.Asistencia;
+import hibernate.Contacto;
+import hibernate.ContactoHasDependiente;
 import hibernate.Dependiente;
+import hibernate.DependienteHasMedicacion;
+import hibernate.RecursosLocalidad;
 import hibernate.TareasPendientes;
+import hibernate.Vivienda;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -134,6 +139,61 @@ public class Controlador {
             jTableListaDependientes.getColumnModel().getColumn(i).setCellRenderer(tcr);
         }
     }
+    public void rellenaTablaContactosDependiente(JTable jTableContactosDependiente, Dependiente dependiente) {
+        DefaultTableModel model = new DefaultTableModel();
+        Contacto.setColumns(model);
+
+        if ( dependiente.getContactoHasDependientes() != null) {
+            //DefaultTableModel tablaContactos = (DefaultTableModel)jTableContactosDependiente.getModel();
+            for (Object object :  dependiente.getContactoHasDependientes().toArray()) {
+                ContactoHasDependiente contactoHasDependiente = (ContactoHasDependiente) object;
+                model.addRow(contactoHasDependiente.getContactoForTable());
+            }
+        }
+
+        jTableContactosDependiente.setModel(model);
+    }
+    
+    public void rellenaTablaMedicacionDependiente(JTable jTableMedicacionDependiente, Dependiente dependiente) {
+        DefaultTableModel model = new DefaultTableModel();
+        Contacto.setColumns(model);
+
+        if ( dependiente.getDependienteHasMedicacions() != null) {
+            //DefaultTableModel tablaContactos = (DefaultTableModel)jTableContactosDependiente.getModel();
+            for (Object object :  dependiente.getDependienteHasMedicacions().toArray()) {
+                DependienteHasMedicacion dependienteHasMedicacion = (DependienteHasMedicacion) object;
+                model.addRow(dependienteHasMedicacion.getMedicacionForTable());
+            }
+        }
+        jTableMedicacionDependiente.setModel(model);
+    }
+
+    public void rellenaTablaViviendaDependiente(JTable jTableViviendasDependiente, Dependiente dependiente) {
+        DefaultTableModel model = new DefaultTableModel();
+        Vivienda.setColumns(model);
+
+        if ( dependiente.getPersonas().getViviendas() != null) {
+            //DefaultTableModel tablaContactos = (DefaultTableModel)jTableContactosDependiente.getModel();
+            for (Object object :  dependiente.getPersonas().getViviendas().toArray()) {
+                Vivienda vivienda = (Vivienda) object;
+                model.addRow(vivienda.getViviendaForTable());
+            }
+        }
+
+        jTableViviendasDependiente.setModel(model);
+    }
+    
+    public void rellenaTablaRecursos(JTable jTableRecursosLocalidadDependiente, Vivienda vivienda) {
+        DefaultTableModel model = new DefaultTableModel();
+        RecursosLocalidad.setColumns(model);
+
+        if ( vivienda.getPoblacion().getRecursosLocalidad() != null) {
+            //DefaultTableModel tablaContactos = (DefaultTableModel)jTableContactosDependiente.getModel();
+            model.addRow(vivienda.getPoblacion().getRecursosLocalidad().getRecursosForTable());
+        }
+
+        jTableRecursosLocalidadDependiente.setModel(model);
+    }
 
     public void lanzaAlerta(String id) {
         pantallaPrincipal.abreDialogAlerta(id);
@@ -155,4 +215,7 @@ public class Controlador {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+
+
+    
 }

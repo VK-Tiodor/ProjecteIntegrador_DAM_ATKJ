@@ -544,6 +544,11 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         });
 
         jButtonAddDependiente.setText("Añadir Dependiente");
+        jButtonAddDependiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddDependienteActionPerformed(evt);
+            }
+        });
 
         jButtonBorrarDependiente.setText("Borrar Dependiente");
 
@@ -664,6 +669,11 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         this.controlador.crearDependiente(dni, nombre, apellidos, fechaNac, genero, tipo, pass);
         
     }//GEN-LAST:event_jButtonCrearDependienteActionPerformed
+
+    private void jButtonAddDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddDependienteActionPerformed
+        // TODO add your handling code here:
+        this.controlador.abreDialog(jDialogCrearDependiente, false);
+    }//GEN-LAST:event_jButtonAddDependienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

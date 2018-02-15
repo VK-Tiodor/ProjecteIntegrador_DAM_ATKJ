@@ -67,9 +67,9 @@ public class DependienteHasMedicacion  implements java.io.Serializable {
     public void setCantidad(Double cantidad) {
         this.cantidad = cantidad;
     }
-
-
-
+    public Object[] getMedicacionForTable() {
+        return new Object[]{this.medicacion, this.toma, this.cantidad};
+    }
 
 }
 

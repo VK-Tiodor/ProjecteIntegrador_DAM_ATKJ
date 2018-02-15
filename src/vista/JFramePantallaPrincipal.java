@@ -7,6 +7,8 @@ package vista;
 
 import controlador.Controlador;
 import hibernate.Dependiente;
+import hibernate.TareasPendientes;
+import java.sql.Date;
 import java.util.Calendar;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -25,7 +27,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private String idDependienteLlamada;
 
     private DefaultTableModel tablaListaDependientes;
-    
+
     public JFramePantallaPrincipal(Controlador controlador, Conexion conexion) {
         initComponents();
         this.controlador = controlador;
@@ -609,7 +611,14 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonTareaRealizadoActionPerformed
 
     private void jButtonBorrarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarTareaActionPerformed
-
+        if (this.jTableAgenda.getSelectedRow() != -1) {
+            if (JOptionPane.showConfirmDialog(this, "Seguro que quieres borrar esta tarea?") == JOptionPane.YES_OPTION) {
+                TareasPendientes tarea = (TareasPendientes) this.jTableAgenda.getModel().getValueAt(this.jTableAgenda.getSelectedRow(), 0);
+                this.controlador.borraTarea(tarea);
+                DefaultTableModel model = (DefaultTableModel) this.jTableAgenda.getModel();
+                model.removeRow(this.jTableAgenda.getSelectedRow());
+            }
+        }
     }//GEN-LAST:event_jButtonBorrarTareaActionPerformed
 
     private void jButtonVerDetallesLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDetallesLlamadaActionPerformed
@@ -621,24 +630,26 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVerDependienteHistActionPerformed
 
     private void jButtonVerDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteActionPerformed
-        if(this.jTableListaDependientes.getSelectedRow() != -1){
-        this.controlador.abreFrame(new JFrameDependiente(controlador, (Dependiente) this.jTableListaDependientes.getModel().getValueAt(this.jTableListaDependientes.getSelectedRow(), 0)));
+        if (this.jTableListaDependientes.getSelectedRow() != -1) {
+            this.controlador.abreFrame(new JFrameDependiente(controlador, (Dependiente) this.jTableListaDependientes.getModel().getValueAt(this.jTableListaDependientes.getSelectedRow(), 0)));
         } else {
             JOptionPane.showMessageDialog(this, "No se ha seleccionado ningún dependiente");
         }
-        
+
     }//GEN-LAST:event_jButtonVerDependienteActionPerformed
 
     private void jButtonCrearTareaAddTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearTareaAddTareaActionPerformed
 
         Dependiente dependiente = (Dependiente) jComboBoxDependientesAddTarea.getSelectedItem();
-        Calendar fecha = dateChooserComboFechaAddTarea.getCurrent();
+        Calendar fecha = dateChooserComboFechaAddTarea.getSelectedDate();
         String hora = jFormattedTextFieldHoraAddTarea.getText();
         String encabezado = jTextFieldEncabezadoAddTarea.getText();
         String descripcion = jTextAreaDescripcionAddTarea.getText();
-        
-        this.controlador.creaTarea(dependiente,fecha,hora,encabezado,descripcion);
-        
+
+        this.controlador.creaTarea(dependiente, fecha.getInstance().getTime(), hora, encabezado, descripcion, (DefaultTableModel) this.jTableAgenda.getModel());
+
+        this.jDialogAñadirTarea.dispose();
+
     }//GEN-LAST:event_jButtonCrearTareaAddTareaActionPerformed
 
     private void jButtonAceptarDetallesLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarDetallesLlamadaActionPerformed
@@ -665,9 +676,9 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         String genero = (String) jComboBoxGeneroCrearDependiente.getSelectedItem();
         String tipo = (String) jComboBoxTipoCrearDependiente.getSelectedItem();
         String pass = new String(jPasswordFieldCrearDependiente.getPassword()); //TODO comprobar si esta cogiendo bien la contraseña
-        
+
         this.controlador.crearDependiente(dni, nombre, apellidos, fechaNac, genero, tipo, pass);
-        
+
     }//GEN-LAST:event_jButtonCrearDependienteActionPerformed
 
     private void jButtonAddDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddDependienteActionPerformed
@@ -748,10 +759,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         this.controlador.rellenaTablaAgenda(this.jTableAgenda);
         this.controlador.rellenaTablaHistorialLlamadas(this.jTableHistorialLlamadas);
         this.controlador.rellenaTablaListaDependiente(this.jTableListaDependientes);
-        
+
         tablaListaDependientes = (DefaultTableModel) jTableListaDependientes.getModel();
-        
-       
 
     }
 

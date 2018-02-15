@@ -1,6 +1,7 @@
 package hibernate;
 // Generated 12-feb-2018 18:52:59 by Hibernate Tools 4.3.1
 
+import controlador.Controlador;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
@@ -80,7 +81,7 @@ public class TareasPendientes implements java.io.Serializable {
     }
 
     public Object[] getTareaPendienteForTable() {
-        return new Object[]{this, this.fecha, this.hora, this.encabezado, this.descripcion};
+        return new Object[]{this, Controlador.formateaFecha(this.fecha), this.hora, this.encabezado, this.descripcion};
     }
 
     public static void setColumns(DefaultTableModel model) {

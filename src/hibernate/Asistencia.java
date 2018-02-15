@@ -2,6 +2,7 @@ package hibernate;
 // Generated 12-feb-2018 18:52:59 by Hibernate Tools 4.3.1
 
 
+import controlador.Controlador;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
@@ -68,7 +69,7 @@ public class Asistencia  implements java.io.Serializable {
     }
     
     public Object[] getAsistenciaForTable() {
-        return new Object[]{this, this.fecha, this.motivo, this.datosAsistencia};
+        return new Object[]{this, Controlador.formateaFecha(this.fecha), this.motivo, this.datosAsistencia};
     }
 
     public static void setColumns(DefaultTableModel model) {

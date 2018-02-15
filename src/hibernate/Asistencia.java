@@ -68,15 +68,18 @@ public class Asistencia  implements java.io.Serializable {
     }
     
     public Object[] getAsistenciaForTable() {
-        return new Object[]{this.idAsistencia, this.dependiente, this.fecha, this.motivo, this.datosAsistencia};
+        return new Object[]{this, this.fecha, this.motivo, this.datosAsistencia};
     }
 
     public static void setColumns(DefaultTableModel model) {
-        model.addColumn("Id");
         model.addColumn("Dependiente");
         model.addColumn("Fecha");
         model.addColumn("Motivo");
         model.addColumn("Datos Asistencia");
+    }
+    
+    public String toString(){
+        return this.getDependiente().getPersonas().getNombre() + " " + this.getDependiente().getPersonas().getApellidos();
     }
     
 }

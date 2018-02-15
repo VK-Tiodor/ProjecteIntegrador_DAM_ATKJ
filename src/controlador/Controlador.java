@@ -13,6 +13,9 @@ import hibernate.DependienteHasMedicacion;
 import hibernate.RecursosLocalidad;
 import hibernate.TareasPendientes;
 import hibernate.Vivienda;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -97,7 +100,7 @@ public class Controlador {
 
         DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
         tcr.setHorizontalAlignment(SwingConstants.CENTER);
-        
+
         for (int i = 0; i < tablaAgenda.getColumnModel().getColumnCount(); i++) {
             tablaAgenda.getColumnModel().getColumn(i).setCellRenderer(tcr);
         }
@@ -116,7 +119,7 @@ public class Controlador {
 
         DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
         tcr.setHorizontalAlignment(SwingConstants.CENTER);
-        
+
         for (int i = 0; i < jTableHistorialLlamadas.getColumnModel().getColumnCount(); i++) {
             jTableHistorialLlamadas.getColumnModel().getColumn(i).setCellRenderer(tcr);
         }
@@ -134,18 +137,19 @@ public class Controlador {
 
         DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
         tcr.setHorizontalAlignment(SwingConstants.CENTER);
-        
+
         for (int i = 0; i < jTableListaDependientes.getColumnModel().getColumnCount(); i++) {
             jTableListaDependientes.getColumnModel().getColumn(i).setCellRenderer(tcr);
         }
     }
+
     public void rellenaTablaContactosDependiente(JTable jTableContactosDependiente, Dependiente dependiente) {
         DefaultTableModel model = new DefaultTableModel();
         Contacto.setColumns(model);
 
-        if ( dependiente.getContactoHasDependientes() != null) {
+        if (dependiente.getContactoHasDependientes() != null) {
             //DefaultTableModel tablaContactos = (DefaultTableModel)jTableContactosDependiente.getModel();
-            for (Object object :  dependiente.getContactoHasDependientes().toArray()) {
+            for (Object object : dependiente.getContactoHasDependientes().toArray()) {
                 ContactoHasDependiente contactoHasDependiente = (ContactoHasDependiente) object;
                 model.addRow(contactoHasDependiente.getContactoForTable());
             }
@@ -153,14 +157,14 @@ public class Controlador {
 
         jTableContactosDependiente.setModel(model);
     }
-    
+
     public void rellenaTablaMedicacionDependiente(JTable jTableMedicacionDependiente, Dependiente dependiente) {
         DefaultTableModel model = new DefaultTableModel();
         Contacto.setColumns(model);
 
-        if ( dependiente.getDependienteHasMedicacions() != null) {
+        if (dependiente.getDependienteHasMedicacions() != null) {
             //DefaultTableModel tablaContactos = (DefaultTableModel)jTableContactosDependiente.getModel();
-            for (Object object :  dependiente.getDependienteHasMedicacions().toArray()) {
+            for (Object object : dependiente.getDependienteHasMedicacions().toArray()) {
                 DependienteHasMedicacion dependienteHasMedicacion = (DependienteHasMedicacion) object;
                 model.addRow(dependienteHasMedicacion.getMedicacionForTable());
             }
@@ -172,9 +176,9 @@ public class Controlador {
         DefaultTableModel model = new DefaultTableModel();
         Vivienda.setColumns(model);
 
-        if ( dependiente.getPersonas().getViviendas() != null) {
+        if (dependiente.getPersonas().getViviendas() != null) {
             //DefaultTableModel tablaContactos = (DefaultTableModel)jTableContactosDependiente.getModel();
-            for (Object object :  dependiente.getPersonas().getViviendas().toArray()) {
+            for (Object object : dependiente.getPersonas().getViviendas().toArray()) {
                 Vivienda vivienda = (Vivienda) object;
                 model.addRow(vivienda.getViviendaForTable());
             }
@@ -182,12 +186,12 @@ public class Controlador {
 
         jTableViviendasDependiente.setModel(model);
     }
-    
+
     public void rellenaTablaRecursos(JTable jTableRecursosLocalidadDependiente, Vivienda vivienda) {
         DefaultTableModel model = new DefaultTableModel();
         RecursosLocalidad.setColumns(model);
 
-        if ( vivienda.getPoblacion().getRecursosLocalidad() != null) {
+        if (vivienda.getPoblacion().getRecursosLocalidad() != null) {
             //DefaultTableModel tablaContactos = (DefaultTableModel)jTableContactosDependiente.getModel();
             model.addRow(vivienda.getPoblacion().getRecursosLocalidad().getRecursosForTable());
         }
@@ -199,12 +203,20 @@ public class Controlador {
         pantallaPrincipal.abreDialogAlerta(id);
     }
 
-    public void creaTarea(Dependiente dependiente, Calendar fecha, String hora, String encabezado, String descripcion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void creaTarea(Dependiente dependiente, Date fecha, String hora, String encabezado, String descripcion, DefaultTableModel model) {
+        TareasPendientes nuevaTarea = new TareasPendientes(dependiente,fecha, hora, encabezado, descripcion);
+        this.listaTareasPendientes.add(nuevaTarea);
+        this.conexion.guardaTareaPendiente(nuevaTarea);
+        model.addRow(this.listaTareasPendientes.get(this.listaTareasPendientes.size() - 1).getTareaPendienteForTable());
     }
 
     public void crearContacto(String dni, String nombre, String apellidos, Date time, String genero, Dependiente dependienteSeleccionado, ArrayList<String[]> telefonos) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void borraTarea(TareasPendientes tarea){
+        this.listaTareasPendientes.remove(tarea);
+        this.conexion.eliminaTareaPendiente(tarea);
     }
 
     public void crearMedicina(String nombre, String toma, String cantidad) {
@@ -214,8 +226,11 @@ public class Controlador {
     public void crearDependiente(String dni, String nombre, String apellidos, Calendar fechaNac, String genero, String tipo, String pass) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-
-
     
+       public static String formateaFecha(Date date) {
+        DateFormat dateFormat = new SimpleDateFormat("y-MM-d");
+        return dateFormat.format(date);
+    }
+        
+
 }

@@ -93,5 +93,12 @@ public class Conexion {
         this.sessionHibernate.saveOrUpdate(tareaPendiente);
         this.sessionHibernate.getTransaction().commit();
     }
+    
+    public void eliminaTareaPendiente(TareasPendientes tareaPendiente){
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.delete(tareaPendiente);
+        this.sessionHibernate.getTransaction().commit();
+        
+    }
 
 }

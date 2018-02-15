@@ -11,6 +11,7 @@ import hibernate.ContactoHasDependiente;
 import hibernate.ContactoHasDependienteId;
 import hibernate.Dependiente;
 import hibernate.DependienteHasMedicacion;
+import hibernate.Medicacion;
 import hibernate.Personas;
 import hibernate.RecursosLocalidad;
 import hibernate.TareasPendientes;
@@ -232,6 +233,19 @@ public class Controlador {
         this.listaTareasPendientes.remove(tarea);
         this.conexion.eliminaTareaPendiente(tarea);
     }
+    
+    public void borraMedicacion(DependienteHasMedicacion medicacion, Dependiente dependiente){
+        dependiente.getDependienteHasMedicacions().remove(medicacion);
+        this.conexion.eliminaMedicacion(medicacion);
+    }
+    
+
+    public void borraContactoHasDependiente(ContactoHasDependiente contactoHasDependiente, Dependiente dependiente) {
+        dependiente.getContactoHasDependientes().remove(contactoHasDependiente.getContacto());
+        dependiente.getContactoHasDependientes().remove(contactoHasDependiente);
+        this.conexion.eliminaContactoHasDependiente(contactoHasDependiente);
+        
+    }
 
     public void crearMedicina(String nombre, String toma, String cantidad) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -252,8 +266,7 @@ public class Controlador {
         return dateFormat.format(date);
     }
 
-    
-    
+   
         
 
 }

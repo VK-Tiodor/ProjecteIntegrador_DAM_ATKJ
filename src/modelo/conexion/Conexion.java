@@ -101,4 +101,10 @@ public class Conexion {
         
     }
 
+    public void eliminaDependiente(Dependiente dependiente) {
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.delete(dependiente);
+        this.sessionHibernate.getTransaction().commit();
+    }
+
 }

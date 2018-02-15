@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.Controlador;
+import hibernate.Asistencia;
 import hibernate.Dependiente;
 import hibernate.TareasPendientes;
 import java.sql.Date;
@@ -58,14 +59,12 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButtonCrearTareaAddTarea = new javax.swing.JButton();
         jDialogDetallesLlamada = new javax.swing.JDialog();
-        jLabel6 = new javax.swing.JLabel();
-        jLabelAsistenteDetallesLlamada = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabelDependienteDetallesLlamada = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        dateChooserComboFecjaDetallesLlamada = new datechooser.beans.DateChooserCombo();
+        dateChooserComboFechaDetallesLlamada = new datechooser.beans.DateChooserCombo();
         jTextFieldMotivoDetallesLlamada = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextAreaDatosAsistenciaDetallesLlamada = new javax.swing.JTextArea();
@@ -184,11 +183,6 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel6.setText("Asistente:");
-
-        jLabelAsistenteDetallesLlamada.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabelAsistenteDetallesLlamada.setText("jLabel7");
-
         jLabel8.setText("Dependiente:");
 
         jLabelDependienteDetallesLlamada.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -201,6 +195,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jLabel12.setText("Datos de Asistencia:");
 
         jTextAreaDatosAsistenciaDetallesLlamada.setColumns(20);
+        jTextAreaDatosAsistenciaDetallesLlamada.setLineWrap(true);
         jTextAreaDatosAsistenciaDetallesLlamada.setRows(5);
         jScrollPane5.setViewportView(jTextAreaDatosAsistenciaDetallesLlamada);
 
@@ -231,14 +226,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                         .addGroup(jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldMotivoDetallesLlamada)
                             .addGroup(jDialogDetallesLlamadaLayout.createSequentialGroup()
-                                .addComponent(dateChooserComboFecjaDetallesLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dateChooserComboFechaDetallesLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jDialogDetallesLlamadaLayout.createSequentialGroup()
                         .addGroup(jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDialogDetallesLlamadaLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabelAsistenteDetallesLlamada))
                             .addGroup(jDialogDetallesLlamadaLayout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -259,16 +250,12 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addGroup(jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabelAsistenteDetallesLlamada))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jLabelDependienteDetallesLlamada))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addComponent(dateChooserComboFecjaDetallesLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dateChooserComboFechaDetallesLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDialogDetallesLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -553,6 +540,11 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         });
 
         jButtonBorrarDependiente.setText("Borrar Dependiente");
+        jButtonBorrarDependiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarDependienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelDependientesLayout = new javax.swing.GroupLayout(jPanelDependientes);
         jPanelDependientes.setLayout(jPanelDependientesLayout);
@@ -623,10 +615,27 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     private void jButtonVerDetallesLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDetallesLlamadaActionPerformed
         //TODO funcion por especificar (no se sabe si se va a poder editar una llamada en el historial o no)
+        if(this.jTableHistorialLlamadas.getSelectedRow() != -1){
+            Asistencia asis = (Asistencia) this.jTableHistorialLlamadas.getModel().getValueAt(this.jTableHistorialLlamadas.getSelectedRow(), 0);
+            jLabelDependienteDetallesLlamada.setText(asis.getDependiente().toString());
+            dateChooserComboFechaDetallesLlamada.setText(asis.getFecha().toString());
+            jTextFieldMotivoDetallesLlamada.setText(asis.getMotivo());
+            jTextAreaDatosAsistenciaDetallesLlamada.setText(asis.getDatosAsistencia());
+            
+            this.controlador.abreDialog(jDialogDetallesLlamada, false);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se ha seleccionado ninguna llamada");
+        }
     }//GEN-LAST:event_jButtonVerDetallesLlamadaActionPerformed
 
     private void jButtonVerDependienteHistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteHistActionPerformed
 
+        if(this.jTableHistorialLlamadas.getSelectedRow() != -1){
+            Asistencia asis = (Asistencia) this.jTableHistorialLlamadas.getModel().getValueAt(this.jTableHistorialLlamadas.getSelectedRow(), 0);
+            this.controlador.abreFrame(new JFrameDependiente(controlador, asis.getDependiente()));
+        } else {
+            JOptionPane.showMessageDialog(this, "No se ha seleccionado ningún dependiente");
+        }
     }//GEN-LAST:event_jButtonVerDependienteHistActionPerformed
 
     private void jButtonVerDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteActionPerformed
@@ -654,7 +663,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     private void jButtonAceptarDetallesLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarDetallesLlamadaActionPerformed
         //TODO --- si se puede editar el historial de llamadas, hay que hacer o otro dialog o bien modificar este (jDialogDetallesLlamada)
-
+        jDialogDetallesLlamada.dispose();
+       
     }//GEN-LAST:event_jButtonAceptarDetallesLlamadaActionPerformed
 
     private void jButtonCogerLlamadaAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCogerLlamadaAvisoActionPerformed
@@ -676,9 +686,11 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         String genero = (String) jComboBoxGeneroCrearDependiente.getSelectedItem();
         String tipo = (String) jComboBoxTipoCrearDependiente.getSelectedItem();
         String pass = new String(jPasswordFieldCrearDependiente.getPassword()); //TODO comprobar si esta cogiendo bien la contraseña
-
-        this.controlador.crearDependiente(dni, nombre, apellidos, fechaNac, genero, tipo, pass);
-
+        
+        this.controlador.crearDependiente(dni, nombre, apellidos, fechaNac, genero, tipo, pass, (DefaultTableModel)jTableListaDependientes.getModel());
+        jDialogCrearDependiente.dispose();
+        
+        
     }//GEN-LAST:event_jButtonCrearDependienteActionPerformed
 
     private void jButtonAddDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddDependienteActionPerformed
@@ -686,10 +698,24 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         this.controlador.abreDialog(jDialogCrearDependiente, false);
     }//GEN-LAST:event_jButtonAddDependienteActionPerformed
 
+    private void jButtonBorrarDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarDependienteActionPerformed
+        if(this.jTableListaDependientes.getSelectedRow() != -1){
+            int s = this.jTableListaDependientes.getSelectedRow();
+            Dependiente d = (Dependiente) this.jTableListaDependientes.getModel().getValueAt(this.jTableListaDependientes.getSelectedRow(), 0);
+            if(JOptionPane.showConfirmDialog(this, "Seguro que quieres borrar a "+d.toString()) == JOptionPane.YES_OPTION){
+                this.controlador.getConexion().eliminaDependiente(d);
+                DefaultTableModel tabla = (DefaultTableModel) jTableListaDependientes.getModel();
+                tabla.removeRow(s);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No se ha seleccionado ningún dependiente");
+        }
+    }//GEN-LAST:event_jButtonBorrarDependienteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datechooser.beans.DateChooserCombo dateChooserComboFechaAddTarea;
-    private datechooser.beans.DateChooserCombo dateChooserComboFecjaDetallesLlamada;
+    private datechooser.beans.DateChooserCombo dateChooserComboFechaDetallesLlamada;
     private datechooser.beans.DateChooserCombo dateChooserComboNacimientoCrearDependiente;
     private javax.swing.JButton jButtonAceptarDetallesLlamada;
     private javax.swing.JButton jButtonAddDependiente;
@@ -726,11 +752,9 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelAsistenteDetallesLlamada;
     private javax.swing.JLabel jLabelDependienteDetallesLlamada;
     private javax.swing.JPanel jPanelAgenda;
     private javax.swing.JPanel jPanelDependientes;

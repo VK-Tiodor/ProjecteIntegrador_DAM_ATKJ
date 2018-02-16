@@ -20,7 +20,9 @@ import java.util.Calendar;
 import javax.swing.JOptionPane;
 import java.util.HashSet;
 import java.util.Set;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import modelo.conexion.Conexion;
 
 /**
@@ -32,6 +34,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private Controlador controlador;
     private Dependiente dependienteSeleccionado;
     private Contacto contactoSeleccionado;
+    private TableRowSorter trsFiltro;
     
     Set telefonos = new HashSet(); //TODO, LOS TELEFONOS NO VAN, HAY QUE CAMBIARLO A OBJETOS TELEFONO Y GUARDARLOS EN LA LISTA
     
@@ -110,6 +113,9 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jTextFieldCantidadAddMedicinaDependiente = new javax.swing.JTextField();
         jButtonAddMedicinaDependiente = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTableAddMedicinas = new javax.swing.JTable();
+        jButtonAddMedicina = new javax.swing.JButton();
         jDialogModificarContacto = new javax.swing.JDialog();
         jTextFieldRelacionModificarContacto = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
@@ -393,6 +399,12 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
         jLabel18.setText("Medicina");
 
+        jTextFieldNombreAddMedicinaDependiente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNombreAddMedicinaDependienteKeyTyped(evt);
+            }
+        });
+
         jLabel19.setText("Toma");
 
         jLabel20.setText("Cantidad");
@@ -404,22 +416,53 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
+        jTableAddMedicinas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Medicina"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane7.setViewportView(jTableAddMedicinas);
+
+        jButtonAddMedicina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon_add_16.png"))); // NOI18N
+        jButtonAddMedicina.setToolTipText("");
+        jButtonAddMedicina.setEnabled(false);
+        jButtonAddMedicina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddMedicinaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jDialogCrearMedicinaLayout = new javax.swing.GroupLayout(jDialogCrearMedicina.getContentPane());
         jDialogCrearMedicina.getContentPane().setLayout(jDialogCrearMedicinaLayout);
         jDialogCrearMedicinaLayout.setHorizontalGroup(
             jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogCrearMedicinaLayout.createSequentialGroup()
+            .addGroup(jDialogCrearMedicinaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonAddMedicinaDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                    .addComponent(jTextFieldNombreAddMedicinaDependiente, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldTomaAddMedicinaDependiente, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldCantidadAddMedicinaDependiente, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogCrearMedicinaLayout.createSequentialGroup()
+                .addGroup(jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jTextFieldTomaAddMedicinaDependiente)
+                    .addComponent(jTextFieldCantidadAddMedicinaDependiente)
+                    .addComponent(jButtonAddMedicinaDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jDialogCrearMedicinaLayout.createSequentialGroup()
                         .addGroup(jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
                             .addComponent(jLabel19)
-                            .addComponent(jLabel20))
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel18)
+                            .addGroup(jDialogCrearMedicinaLayout.createSequentialGroup()
+                                .addComponent(jTextFieldNombreAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonAddMedicina, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -429,8 +472,12 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldNombreAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextFieldNombreAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAddMedicina, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldTomaAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -488,7 +535,6 @@ public class JFrameDependiente extends javax.swing.JFrame {
         });
 
         jButtonModificarContacto.setText("Modificar Contacto");
-        jButtonModificarContacto.setActionCommand("Modificar Contacto");
         jButtonModificarContacto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarContactoActionPerformed(evt);
@@ -873,7 +919,9 @@ public class JFrameDependiente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEliminarContactoDependienteActionPerformed
 
     private void jButtonAñadirMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirMedicacionDependienteActionPerformed
+        this.controlador.rellenaTablaMedicacionDependiente(jTableAddMedicinas);
         this.controlador.abreDialog(jDialogCrearMedicina, false);
+        // TODO  - http://www.codigojavalibre.com/2015/08/filtrar-o-buscar-datos-en-una-jtable-en-Java.html
     }//GEN-LAST:event_jButtonAñadirMedicacionDependienteActionPerformed
 
     private void jButtonEditarMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarMedicacionDependienteActionPerformed
@@ -913,10 +961,11 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
     private void jButtonAddMedicinaDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMedicinaDependienteActionPerformed
         // TODO add your handling code here:
-        String nombre = jTextFieldNombreAddMedicinaDependiente.getText();
+        Medicacion medicina = (Medicacion) jTableAddMedicinas.getValueAt(jTableAddMedicinas.getSelectedRow(), 0);
+        //String nombre = jTextFieldNombreAddMedicinaDependiente.getText();
         String toma = jTextFieldTomaAddMedicinaDependiente.getText();
         String cantidad = jTextFieldCantidadAddMedicinaDependiente.getText();
-        this.controlador.crearMedicina(nombre, toma, cantidad);
+        this.controlador.crearMedicacionDependiente(medicina, toma, cantidad, this.dependienteSeleccionado);
 
     }//GEN-LAST:event_jButtonAddMedicinaDependienteActionPerformed
 
@@ -1003,11 +1052,33 @@ public class JFrameDependiente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonMarcarViviendaComoActivaDependienteActionPerformed
 
+    private void jTextFieldNombreAddMedicinaDependienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreAddMedicinaDependienteKeyTyped
+        // Cuando escriba algo en el campo de medicinas que lo busque en la tabla
+        trsFiltro = new TableRowSorter(jTableAddMedicinas.getModel());
+        trsFiltro.setRowFilter(RowFilter.regexFilter(jTextFieldNombreAddMedicinaDependiente.getText(), 0));
+        jTableAddMedicinas.setRowSorter(trsFiltro);
+        if (jTableAddMedicinas.getRowCount() == 0) {
+            jButtonAddMedicina.setEnabled(true);
+        }else{
+            jButtonAddMedicina.setEnabled(false);
+        }
+    }//GEN-LAST:event_jTextFieldNombreAddMedicinaDependienteKeyTyped
+
+    private void jButtonAddMedicinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMedicinaActionPerformed
+        // Crear medicina con el nombre del textField
+        Medicacion med = new Medicacion(jTextFieldNombreAddMedicinaDependiente.getText(), null);
+        this.controlador.crearMedicina(med);
+        DefaultTableModel dtm = (DefaultTableModel) jTableAddMedicinas.getModel();
+        dtm.addRow(med.getMedicinaForSimpleTable());
+        
+    }//GEN-LAST:event_jButtonAddMedicinaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datechooser.beans.DateChooserCombo dateChooserComboNacimientoCrearContacto;
     private datechooser.beans.DateChooserCombo dateChooserComboNacimientoModificarContacto;
     private javax.swing.JButton jButtonAddContactoDependiente;
+    private javax.swing.JButton jButtonAddMedicina;
     private javax.swing.JButton jButtonAddMedicinaDependiente;
     private javax.swing.JButton jButtonAddTelefonoCrearContacto;
     private javax.swing.JButton jButtonAddTelefonoModificarContacto;
@@ -1075,6 +1146,8 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTable jTableAddMedicinas;
     private javax.swing.JTable jTableContactosDependiente;
     private javax.swing.JTable jTableMedicacionDependiente;
     private javax.swing.JTable jTableRecursosLocalidadDependiente;

@@ -203,6 +203,17 @@ public class Controlador {
 
         jTableRecursosLocalidadDependiente.setModel(model);
     }
+    
+    public void rellenaTablaMedicacionDependiente(JTable jTableAddMedicinas) {
+        DefaultTableModel model = new DefaultTableModel();
+        Medicacion.setSimpleColumns(model);
+        ArrayList<Medicacion> medicinas = this.conexion.getMedicinas();
+        for (Medicacion medicina : medicinas) {
+            model.addRow(medicina.getMedicinaForSimpleTable());
+        }
+
+        jTableAddMedicinas.setModel(model);
+    }
 
     public void lanzaAlerta(String id) {
         pantallaPrincipal.abreDialogAlerta(id);
@@ -253,7 +264,7 @@ public class Controlador {
         
     }
 
-    public void crearMedicina(String nombre, String toma, String cantidad) {
+    public void crearMedicacionDependiente(Medicacion medicina, String toma, String cantidad, Dependiente dependienteSeleccionado) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -271,6 +282,15 @@ public class Controlador {
         DateFormat dateFormat = new SimpleDateFormat("y-MM-d");
         return dateFormat.format(date);
     }
+
+    public void crearMedicina(Medicacion medicacion) {
+        this.conexion.guardaMedicina(medicacion);
+    }
+
+    
+
+   
+
 
    
         

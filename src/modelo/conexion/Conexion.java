@@ -15,6 +15,7 @@ import hibernate.HibernateUtil;
 import hibernate.Medicacion;
 import hibernate.Personas;
 import hibernate.TareasPendientes;
+import hibernate.Telefonos;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -110,6 +111,18 @@ public class Conexion {
         this.sessionHibernate.saveOrUpdate(chd);
         this.sessionHibernate.getTransaction().commit();
     }
+    public void guardaPersona(Personas p) {
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.saveOrUpdate(p);
+        this.sessionHibernate.getTransaction().commit();
+    }
+    
+    
+    public void guardaTelefono(Telefonos telefono) {
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.saveOrUpdate(telefono);
+        this.sessionHibernate.getTransaction().commit();
+    }
     public void eliminaTareaPendiente(TareasPendientes tareaPendiente){
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.delete(tareaPendiente);
@@ -141,6 +154,8 @@ public class Conexion {
         this.sessionHibernate.delete(persona);
         this.sessionHibernate.getTransaction().commit();
     }
+
+
 
 
 

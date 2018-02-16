@@ -15,6 +15,7 @@ import hibernate.Medicacion;
 import hibernate.Personas;
 import hibernate.RecursosLocalidad;
 import hibernate.TareasPendientes;
+import hibernate.Telefonos;
 import hibernate.Vivienda;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -218,6 +219,12 @@ public class Controlador {
         Personas p = new Personas(dni, nombre, apellidos, fechaNac, genero, null, null, (Set) telefonos, null, null);
         Contacto c = new Contacto(p);
         p.setContacto(c);
+        this.conexion.guardaPersona(p);
+        ArrayList<Telefonos> arrayTelefonos = new ArrayList<>(p.getTelefonoses());
+        for (Telefonos telefono : arrayTelefonos) {
+            telefono.setPersonas(p);
+            this.conexion.guardaTelefono(telefono);
+        }
         this.conexion.guardaContacto(c);
         ContactoHasDependienteId chdi = new ContactoHasDependienteId(c.getIdContacto(), dependiente.getIdDependiente());
         ContactoHasDependiente chd = new ContactoHasDependiente(chdi, c, dependiente, relacion, llave);
@@ -225,8 +232,7 @@ public class Controlador {
         dependiente.getContactoHasDependientes().add(chd);
         this.conexion.guardaContacto(c);
         this.conexion.guardaContactoHasDependiente(chd);
-        
-        //TODO -- NO GUARDA LOS TELEFONOS
+       
     }
     
     public void borraTarea(TareasPendientes tarea){

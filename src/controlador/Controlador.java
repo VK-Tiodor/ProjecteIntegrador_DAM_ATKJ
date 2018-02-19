@@ -5,6 +5,8 @@
  */
 package controlador;
 
+import com.teamdev.jxbrowser.chromium.Browser;
+import com.teamdev.jxbrowser.chromium.swing.BrowserView;
 import hibernate.Asistencia;
 import hibernate.Contacto;
 import hibernate.ContactoHasDependiente;
@@ -17,6 +19,9 @@ import hibernate.RecursosLocalidad;
 import hibernate.TareasPendientes;
 import hibernate.Telefonos;
 import hibernate.Vivienda;
+import java.awt.BorderLayout;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,6 +34,7 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import modelo.conexion.Conexion;
@@ -56,6 +62,7 @@ public class Controlador {
         this.listaTareasPendientes = this.conexion.getTareasPendientes();
         pantallaPrincipal = new JFramePantallaPrincipal(this, conexion);
         cambiaVentana(pantallaPrincipal);
+        abreMapa( -0.4469839, 38.724797);
     }
 
     // Getters y Setters
@@ -147,7 +154,7 @@ public class Controlador {
         }
 
         jTableContactosDependiente.setModel(model);
-        
+
         centraTabla(jTableContactosDependiente);
     }
 
@@ -163,7 +170,7 @@ public class Controlador {
             }
         }
         jTableMedicacionDependiente.setModel(model);
-        
+
         centraTabla(jTableMedicacionDependiente);
     }
 
@@ -180,32 +187,25 @@ public class Controlador {
         }
 
         jTableViviendasDependiente.setModel(model);
-        
+
         centraTabla(jTableViviendasDependiente);
     }
 
     public void rellenaListRecursos(JList listaRecursos, Vivienda vivienda) {
-        
-        listaRecursos.setModel(new javax.swing.AbstractListModel<String>() {
-    String[] strings = vivienda.getPoblacion().getRecursosLocalidad().returnRecursosForList();
-    public int getSize() { return strings.length; }
-    public String getElementAt(int i) { return strings[i]; }
-});
 
-        
-//        DefaultTableModel model = new DefaultTableModel();
-//        RecursosLocalidad.setColumns(model);
-//
-//        if (vivienda.getPoblacion().getRecursosLocalidad() != null) {
-//            //DefaultTableModel tablaContactos = (DefaultTableModel)jTableContactosDependiente.getModel();
-//            vivienda.getPoblacion().getRecursosLocalidad().getRecursosForTable(model);
-//        }
-//
-//        jTableRecursosLocalidadDependiente.setModel(model);
-//        
-//        //centraTabla(jTableRecursosLocalidadDependiente);
+        listaRecursos.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = vivienda.getPoblacion().getRecursosLocalidad().returnRecursosForList();
+
+            public int getSize() {
+                return strings.length;
+            }
+
+            public String getElementAt(int i) {
+                return strings[i];
+            }
+        });
     }
-    
+
     public void rellenaTablaMedicacionDependiente(JTable jTableAddMedicinas) {
         DefaultTableModel model = new DefaultTableModel();
         Medicacion.setSimpleColumns(model);
@@ -215,27 +215,74 @@ public class Controlador {
         }
 
         jTableAddMedicinas.setModel(model);
-        
+
         centraTabla(jTableAddMedicinas);
-        
-      
-    }
-    
-    public void centraTabla(JTable tabla){
-          DefaultTableCellRenderer tcr = new DefaultTableCellRenderer(); 
-        tcr.setHorizontalAlignment(SwingConstants.CENTER); 
-         
-        for (int i = 0; i < tabla.getColumnModel().getColumnCount(); i++) { 
-            tabla.getColumnModel().getColumn(i).setCellRenderer(tcr); 
-        } 
+
     }
 
-    public void lanzaAlerta(String id) {
-        pantallaPrincipal.abreDialogAlerta(id);
+    public void centraTabla(JTable tabla) {
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < tabla.getColumnModel().getColumnCount(); i++) {
+            tabla.getColumnModel().getColumn(i).setCellRenderer(tcr);
+        }
+    }
+
+    public void abreMapa(Double longitud, Double latitud) {
+        GraphicsDevice grafica = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+
+        Browser browser = new Browser();
+        BrowserView view = new BrowserView(browser);
+
+        JFrame frame = new JFrame("Posición Acual");
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.add(view, BorderLayout.CENTER);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
+        browser.loadHTML("<!DOCTYPE html>\n"
+                + "<html>\n"
+                + "  <head>\n"
+                + "    <style>\n"
+                + "       #map {\n"
+                + "        height: 600px;\n"
+                + "        width: 100%;\n"
+                + "       }\n"
+                + "    </style>\n"
+                + "  </head>\n"
+                + "  <body>\n"
+                + "    <h3>Posición Actual del Dependiente</h3>\n"
+                + "    <div id=\"map\"></div>\n"
+                + "    <script>\n"
+                + "      function initMap() {\n"
+                + "        var uluru = {lat: " + latitud + ", lng: " + longitud + "};\n"
+                + "        var map = new google.maps.Map(document.getElementById('map'), {\n"
+                + "          zoom: 17,\n"
+                + "          center: uluru\n"
+                + "        });\n"
+                + "        var marker = new google.maps.Marker({\n"
+                + "          position: uluru,\n"
+                + "          map: map\n"
+                + "        });\n"
+                + "      }\n"
+                + "    </script>\n"
+                + "    <script async defer\n"
+                + "    src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyCibsAi2HsAAXYqwQBOMpKJUvec8ol2eKM&callback=initMap\">\n"
+                + "    </script>\n"
+                + "  </body>\n"
+                + "</html>");
+
+        grafica.setFullScreenWindow(frame);
+    }
+
+    public void lanzaAlerta(String id, String longitud, String latitud) {
+        pantallaPrincipal.abreDialogAlerta(id, longitud, latitud);
     }
 
     public void creaTarea(Dependiente dependiente, Date fecha, String hora, String encabezado, String descripcion, DefaultTableModel model) {
-        TareasPendientes nuevaTarea = new TareasPendientes(dependiente,fecha, hora, encabezado, descripcion);
+        TareasPendientes nuevaTarea = new TareasPendientes(dependiente, fecha, hora, encabezado, descripcion);
         this.listaTareasPendientes.add(nuevaTarea);
         this.conexion.guardaTareaPendiente(nuevaTarea);
         model.addRow(this.listaTareasPendientes.get(this.listaTareasPendientes.size() - 1).getTareaPendienteForTable());
@@ -258,25 +305,24 @@ public class Controlador {
         dependiente.getContactoHasDependientes().add(chd);
         this.conexion.guardaContacto(c);
         this.conexion.guardaContactoHasDependiente(chd);
-       
+
     }
-    
-    public void borraTarea(TareasPendientes tarea){
+
+    public void borraTarea(TareasPendientes tarea) {
         this.listaTareasPendientes.remove(tarea);
         this.conexion.eliminaTareaPendiente(tarea);
     }
-    
-    public void borraMedicacion(DependienteHasMedicacion medicacion, Dependiente dependiente){
+
+    public void borraMedicacion(DependienteHasMedicacion medicacion, Dependiente dependiente) {
         dependiente.getDependienteHasMedicacions().remove(medicacion);
         this.conexion.eliminaMedicacion(medicacion);
     }
-    
 
     public void borraContactoHasDependiente(ContactoHasDependiente contactoHasDependiente, Dependiente dependiente) {
         dependiente.getContactoHasDependientes().remove(contactoHasDependiente.getContacto());
         dependiente.getContactoHasDependientes().remove(contactoHasDependiente);
         this.conexion.eliminaContactoHasDependiente(contactoHasDependiente);
-        
+
     }
 
     public void crearMedicacionDependiente(Medicacion medicina, String toma, String cantidad, Dependiente dependienteSeleccionado) {
@@ -290,10 +336,10 @@ public class Controlador {
         this.listaDependientes.add(d);
         tabla.addRow(d.getDependienteForTable());
         this.getConexion().guardaDependiente(d);
-        
+
     }
-    
-       public static String formateaFecha(Date date) {
+
+    public static String formateaFecha(Date date) {
         DateFormat dateFormat = new SimpleDateFormat("y-MM-d");
         return dateFormat.format(date);
     }
@@ -301,13 +347,5 @@ public class Controlador {
     public void crearMedicina(Medicacion medicacion) {
         this.conexion.guardaMedicina(medicacion);
     }
-
-    
-
-   
-
-
-   
-        
 
 }

@@ -26,6 +26,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private final Controlador controlador;
     private final Conexion conexion;
     private String idDependienteLlamada;
+    private Double longitudDependienteLlamada;
+    private Double latitudDependienteLlamada;
 
     private DefaultTableModel tablaListaDependientes;
 
@@ -615,13 +617,13 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     private void jButtonVerDetallesLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDetallesLlamadaActionPerformed
         //TODO funcion por especificar (no se sabe si se va a poder editar una llamada en el historial o no)
-        if(this.jTableHistorialLlamadas.getSelectedRow() != -1){
+        if (this.jTableHistorialLlamadas.getSelectedRow() != -1) {
             Asistencia asis = (Asistencia) this.jTableHistorialLlamadas.getModel().getValueAt(this.jTableHistorialLlamadas.getSelectedRow(), 0);
             jLabelDependienteDetallesLlamada.setText(asis.getDependiente().toString());
             dateChooserComboFechaDetallesLlamada.setText(asis.getFecha().toString());
             jTextFieldMotivoDetallesLlamada.setText(asis.getMotivo());
             jTextAreaDatosAsistenciaDetallesLlamada.setText(asis.getDatosAsistencia());
-            
+
             this.controlador.abreDialog(jDialogDetallesLlamada, false);
         } else {
             JOptionPane.showMessageDialog(this, "No se ha seleccionado ninguna llamada");
@@ -630,7 +632,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     private void jButtonVerDependienteHistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDependienteHistActionPerformed
 
-        if(this.jTableHistorialLlamadas.getSelectedRow() != -1){
+        if (this.jTableHistorialLlamadas.getSelectedRow() != -1) {
             Asistencia asis = (Asistencia) this.jTableHistorialLlamadas.getModel().getValueAt(this.jTableHistorialLlamadas.getSelectedRow(), 0);
             this.controlador.abreFrame(new JFrameDependiente(controlador, asis.getDependiente()));
         } else {
@@ -664,7 +666,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private void jButtonAceptarDetallesLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarDetallesLlamadaActionPerformed
         //TODO --- si se puede editar el historial de llamadas, hay que hacer o otro dialog o bien modificar este (jDialogDetallesLlamada)
         jDialogDetallesLlamada.dispose();
-       
+
     }//GEN-LAST:event_jButtonAceptarDetallesLlamadaActionPerformed
 
     private void jButtonCogerLlamadaAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCogerLlamadaAvisoActionPerformed
@@ -686,11 +688,11 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         String genero = (String) jComboBoxGeneroCrearDependiente.getSelectedItem();
         String tipo = (String) jComboBoxTipoCrearDependiente.getSelectedItem();
         String pass = new String(jPasswordFieldCrearDependiente.getPassword()); //TODO comprobar si esta cogiendo bien la contraseña
-        
-        this.controlador.crearDependiente(dni, nombre, apellidos, fechaNac, genero, tipo, pass, (DefaultTableModel)jTableListaDependientes.getModel());
+
+        this.controlador.crearDependiente(dni, nombre, apellidos, fechaNac, genero, tipo, pass, (DefaultTableModel) jTableListaDependientes.getModel());
         jDialogCrearDependiente.dispose();
-        
-        
+
+
     }//GEN-LAST:event_jButtonCrearDependienteActionPerformed
 
     private void jButtonAddDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddDependienteActionPerformed
@@ -699,10 +701,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddDependienteActionPerformed
 
     private void jButtonBorrarDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarDependienteActionPerformed
-        if(this.jTableListaDependientes.getSelectedRow() != -1){
+        if (this.jTableListaDependientes.getSelectedRow() != -1) {
             int s = this.jTableListaDependientes.getSelectedRow();
             Dependiente d = (Dependiente) this.jTableListaDependientes.getModel().getValueAt(this.jTableListaDependientes.getSelectedRow(), 0);
-            if(JOptionPane.showConfirmDialog(this, "Seguro que quieres borrar a "+d.toString()) == JOptionPane.YES_OPTION){
+            if (JOptionPane.showConfirmDialog(this, "Seguro que quieres borrar a " + d.toString()) == JOptionPane.YES_OPTION) {
                 this.controlador.getConexion().eliminaDependiente(d);
                 DefaultTableModel tabla = (DefaultTableModel) jTableListaDependientes.getModel();
                 tabla.removeRow(s);
@@ -788,8 +790,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     }
 
-    public void abreDialogAlerta(String id) {
+    public void abreDialogAlerta(String id, String longitud, String latitud) {
         this.idDependienteLlamada = id;
+        this.longitudDependienteLlamada = Double.parseDouble(longitud);
+        this.latitudDependienteLlamada = Double.parseDouble(latitud);
         jDialogAlertaLlamadaEntrante.pack();
         jDialogAlertaLlamadaEntrante.setVisible(true);
         jDialogAlertaLlamadaEntrante.setModal(true);

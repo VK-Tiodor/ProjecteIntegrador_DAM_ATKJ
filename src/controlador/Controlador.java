@@ -14,6 +14,7 @@ import hibernate.DependienteHasMedicacion;
 import hibernate.DependienteHasMedicacionId;
 import hibernate.Medicacion;
 import hibernate.Personas;
+import hibernate.Poblacion;
 import hibernate.RecursosLocalidad;
 import hibernate.TareasPendientes;
 import hibernate.Telefonos;
@@ -188,10 +189,10 @@ public class Controlador {
     public void rellenaListRecursos(JList listaRecursos, Vivienda vivienda) {
         
         listaRecursos.setModel(new javax.swing.AbstractListModel<String>() {
-    String[] strings = vivienda.getPoblacion().getRecursosLocalidad().returnRecursosForList();
-    public int getSize() { return strings.length; }
-    public String getElementAt(int i) { return strings[i]; }
-});
+        String[] strings = vivienda.getPoblacion().getRecursosLocalidad().returnRecursosForList();
+        public int getSize() { return strings.length; }
+        public String getElementAt(int i) { return strings[i]; }
+    });
 
         
 //        DefaultTableModel model = new DefaultTableModel();
@@ -220,6 +221,18 @@ public class Controlador {
         centraTabla(jTableAddMedicinas);
         
       
+    }
+    public void rellenaTablaPoblaciones(JTable jTablePoblacionesCrearVivienda) {
+        DefaultTableModel model = new DefaultTableModel();
+        Poblacion.setColumns(model);
+        ArrayList<Poblacion> poblaciones = this.conexion.getPoblaciones();
+        for (Poblacion poblacion : poblaciones) {
+            model.addRow(poblacion.getPoblacionForTable());
+        }
+
+        jTablePoblacionesCrearVivienda.setModel(model);
+        
+        centraTabla(jTablePoblacionesCrearVivienda);
     }
     
     public void centraTabla(JTable tabla){
@@ -261,25 +274,6 @@ public class Controlador {
         this.conexion.guardaContactoHasDependiente(chd);
        
     }
-    
-    public void borraTarea(TareasPendientes tarea){
-        this.listaTareasPendientes.remove(tarea);
-        this.conexion.eliminaTareaPendiente(tarea);
-    }
-    
-    public void borraMedicacion(DependienteHasMedicacion medicacion, Dependiente dependiente){
-        dependiente.getDependienteHasMedicacions().remove(medicacion);
-        this.conexion.eliminaMedicacion(medicacion);
-    }
-    
-
-    public void borraContactoHasDependiente(ContactoHasDependiente contactoHasDependiente, Dependiente dependiente) {
-        dependiente.getContactoHasDependientes().remove(contactoHasDependiente.getContacto());
-        dependiente.getContactoHasDependientes().remove(contactoHasDependiente);
-        this.conexion.eliminaContactoHasDependiente(contactoHasDependiente);
-        
-    }
-
     public void crearMedicacionDependiente(Medicacion medicina, String toma, Double cantidad, Dependiente dependiente) {
         DependienteHasMedicacionId dhmid = new DependienteHasMedicacionId(dependiente.getIdDependiente(), medicina.getIdMedicacion());
         DependienteHasMedicacion dhm = new DependienteHasMedicacion(dhmid, dependiente, medicina, toma, cantidad);
@@ -298,15 +292,62 @@ public class Controlador {
         this.getConexion().guardaDependiente(d);
         
     }
+    public void crearMedicina(Medicacion medicacion) {
+        this.conexion.guardaMedicina(medicacion);
+    }
+
+    public void crearAsistencia(Asistencia asistencia) {
+        this.conexion.guardaAsistencia(asistencia);
+    }
+    
+    public void creaVivienda(Poblacion poblacion, String direccion, Dependiente dependiente, JTable tablaViviendas) {
+        Vivienda vivienda = new Vivienda(poblacion);
+        vivienda.setDireccion(direccion);
+        vivienda.getPersonases().add(dependiente.getPersonas());
+        dependiente.getPersonas().getViviendas().add(vivienda);
+        
+        DefaultTableModel dtm = (DefaultTableModel) tablaViviendas.getModel();
+        dtm.addRow(vivienda.getViviendaForTable());
+        this.conexion.guardaVivienda(vivienda);
+        
+    }
+    
+    
+    public void borraTarea(TareasPendientes tarea){
+        this.listaTareasPendientes.remove(tarea);
+        this.conexion.eliminaTareaPendiente(tarea);
+    }
+    
+    public void borraMedicacion(DependienteHasMedicacion medicacion, Dependiente dependiente){
+        dependiente.getDependienteHasMedicacions().remove(medicacion);
+        this.conexion.eliminaMedicacion(medicacion);
+    }
+    
+
+    public void borraContactoHasDependiente(ContactoHasDependiente contactoHasDependiente, Dependiente dependiente) {
+        dependiente.getContactoHasDependientes().remove(contactoHasDependiente.getContacto());
+        dependiente.getContactoHasDependientes().remove(contactoHasDependiente);
+        this.conexion.eliminaContactoHasDependiente(contactoHasDependiente);
+        
+    }    
+    public void borraVivienda(Vivienda vivienda, Dependiente dependiente) {
+        dependiente.getPersonas().getViviendas().remove(vivienda);
+        this.conexion.eliminaVivienda(vivienda);
+    }
     
        public static String formateaFecha(Date date) {
         DateFormat dateFormat = new SimpleDateFormat("y-MM-d");
         return dateFormat.format(date);
     }
 
-    public void crearMedicina(Medicacion medicacion) {
-        this.conexion.guardaMedicina(medicacion);
-    }
+    
+
+    
+
+
+    
+
+    
 
     
 

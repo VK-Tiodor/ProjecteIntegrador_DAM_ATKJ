@@ -12,6 +12,7 @@ import hibernate.Dependiente;
 import hibernate.DependienteHasMedicacion;
 import hibernate.Medicacion;
 import hibernate.Personas;
+import hibernate.Poblacion;
 import hibernate.TareasPendientes;
 import hibernate.Telefonos;
 import hibernate.Vivienda;
@@ -34,7 +35,8 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private Controlador controlador;
     private Dependiente dependienteSeleccionado;
     private Contacto contactoSeleccionado;
-    private TableRowSorter trsFiltro;
+    private TableRowSorter trsFiltroMedicinas;
+    private TableRowSorter trsFiltroPoblaciones;
     
     Set telefonos = new HashSet();
     
@@ -81,6 +83,8 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jButtonMarcarViviendaComoActivaDependiente = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         jListRecursos = new javax.swing.JList<>();
+        jButton1 = new javax.swing.JButton();
+        jButtonAddViviendaDependiente = new javax.swing.JButton();
         jDialogCrearContacto = new javax.swing.JDialog();
         jButtonCrearContacto = new javax.swing.JButton();
         dateChooserComboNacimientoCrearContacto = new datechooser.beans.DateChooserCombo();
@@ -140,7 +144,15 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jButtonRemoveTelefonoModificarContacto = new javax.swing.JButton();
-        dateChooserDialog1 = new datechooser.beans.DateChooserDialog();
+        jDialogCrearVivienda = new javax.swing.JDialog();
+        jTextFieldDireccionCrearVivienda = new javax.swing.JTextField();
+        jButtonCrearVivienda = new javax.swing.JButton();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTablePoblacionesCrearVivienda = new javax.swing.JTable();
+        jButtonCrearPoblacionCrearVivienda = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
+        jTextFieldNombrePoblacionCrearVivienda = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabelNombreYApellidosDependiente = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -198,6 +210,20 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
         jScrollPane8.setViewportView(jListRecursos);
 
+        jButton1.setText("Eliminar Vivienda");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButtonAddViviendaDependiente.setText("Añadir Vivienda");
+        jButtonAddViviendaDependiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddViviendaDependienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jDialogViviendasLayout = new javax.swing.GroupLayout(jDialogViviendas.getContentPane());
         jDialogViviendas.getContentPane().setLayout(jDialogViviendasLayout);
         jDialogViviendasLayout.setHorizontalGroup(
@@ -205,32 +231,42 @@ public class JFrameDependiente extends javax.swing.JFrame {
             .addGroup(jDialogViviendasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogViviendasLayout.createSequentialGroup()
-                        .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonMarcarViviendaComoActivaDependiente))
                     .addGroup(jDialogViviendasLayout.createSequentialGroup()
                         .addComponent(jLabel10)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
+                        .addGap(148, 148, 148))
+                    .addGroup(jDialogViviendasLayout.createSequentialGroup()
+                        .addComponent(jButtonMarcarViviendaComoActivaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jDialogViviendasLayout.createSequentialGroup()
+                        .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jDialogViviendasLayout.createSequentialGroup()
+                                .addComponent(jButtonAddViviendaDependiente)
+                                .addGap(242, 242, 242)
+                                .addComponent(jButton1))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jDialogViviendasLayout.setVerticalGroup(
             jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogViviendasLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogViviendasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
+                .addGap(12, 12, 12)
                 .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonMarcarViviendaComoActivaDependiente)
-                    .addGroup(jDialogViviendasLayout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAddViviendaDependiente)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonMarcarViviendaComoActivaDependiente)
                 .addContainerGap())
         );
 
@@ -424,6 +460,9 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
         jScrollPane7.setViewportView(jTableAddMedicinas);
+        if (jTableAddMedicinas.getColumnModel().getColumnCount() > 0) {
+            jTableAddMedicinas.getColumnModel().getColumn(0).setHeaderValue("Medicina");
+        }
 
         jButtonAddMedicina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon_add_16.png"))); // NOI18N
         jButtonAddMedicina.setToolTipText("");
@@ -634,6 +673,83 @@ public class JFrameDependiente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButtonModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButtonRemoveTelefonoModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jButtonCrearVivienda.setText("Crear Vivienda");
+        jButtonCrearVivienda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearViviendaActionPerformed(evt);
+            }
+        });
+
+        jTablePoblacionesCrearVivienda.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane9.setViewportView(jTablePoblacionesCrearVivienda);
+
+        jButtonCrearPoblacionCrearVivienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon_add_16.png"))); // NOI18N
+        jButtonCrearPoblacionCrearVivienda.setToolTipText("");
+        jButtonCrearPoblacionCrearVivienda.setEnabled(false);
+        jButtonCrearPoblacionCrearVivienda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearPoblacionCrearViviendaActionPerformed(evt);
+            }
+        });
+
+        jLabel34.setText("Población");
+
+        jTextFieldNombrePoblacionCrearVivienda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNombrePoblacionCrearViviendaKeyTyped(evt);
+            }
+        });
+
+        jLabel35.setText("Dirección");
+
+        javax.swing.GroupLayout jDialogCrearViviendaLayout = new javax.swing.GroupLayout(jDialogCrearVivienda.getContentPane());
+        jDialogCrearVivienda.getContentPane().setLayout(jDialogCrearViviendaLayout);
+        jDialogCrearViviendaLayout.setHorizontalGroup(
+            jDialogCrearViviendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogCrearViviendaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialogCrearViviendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jTextFieldDireccionCrearVivienda)
+                    .addComponent(jButtonCrearVivienda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jDialogCrearViviendaLayout.createSequentialGroup()
+                        .addGroup(jDialogCrearViviendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel35)
+                            .addComponent(jLabel34)
+                            .addGroup(jDialogCrearViviendaLayout.createSequentialGroup()
+                                .addComponent(jTextFieldNombrePoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonCrearPoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jDialogCrearViviendaLayout.setVerticalGroup(
+            jDialogCrearViviendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogCrearViviendaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDialogCrearViviendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextFieldNombrePoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCrearPoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldDireccionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -955,13 +1071,19 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
     private void jButtonAddMedicinaDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMedicinaDependienteActionPerformed
         // TODO add your handling code here:
-        Medicacion medicina = (Medicacion) jTableAddMedicinas.getValueAt(jTableAddMedicinas.getSelectedRow(), 0);
-        //String nombre = jTextFieldNombreAddMedicinaDependiente.getText();
-        String toma = jTextFieldTomaAddMedicinaDependiente.getText();
-        Double cantidad = Double.parseDouble(jFormattedTextFieldCantidadAddMedicinaDependiente.getText().replace(',', '.'));
-        this.controlador.crearMedicacionDependiente(medicina, toma, cantidad, this.dependienteSeleccionado);
-        this.controlador.rellenaTablaMedicacionDependiente(jTableMedicacionDependiente, dependienteSeleccionado);
-        jDialogCrearMedicina.dispose();
+        int selectedRow = jTableAddMedicinas.getSelectedRow();
+        if (selectedRow != -1) {
+            Medicacion medicina = (Medicacion) jTableAddMedicinas.getValueAt(selectedRow, 0);
+            //String nombre = jTextFieldNombreAddMedicinaDependiente.getText();
+            String toma = jTextFieldTomaAddMedicinaDependiente.getText();
+            Double cantidad = Double.parseDouble(jFormattedTextFieldCantidadAddMedicinaDependiente.getText().replace(',', '.'));
+            this.controlador.crearMedicacionDependiente(medicina, toma, cantidad, this.dependienteSeleccionado);
+            this.controlador.rellenaTablaMedicacionDependiente(jTableMedicacionDependiente, dependienteSeleccionado);
+            jDialogCrearMedicina.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Selecciona una medicina");
+        }
+       
     }//GEN-LAST:event_jButtonAddMedicinaDependienteActionPerformed
 
     private void jButtonAddTelefonoCrearContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTelefonoCrearContactoActionPerformed
@@ -1049,9 +1171,9 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
     private void jTextFieldNombreAddMedicinaDependienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreAddMedicinaDependienteKeyTyped
         // Cuando escriba algo en el campo de medicinas que lo busque en la tabla
-        trsFiltro = new TableRowSorter(jTableAddMedicinas.getModel());
-        trsFiltro.setRowFilter(RowFilter.regexFilter(jTextFieldNombreAddMedicinaDependiente.getText(), 0));
-        jTableAddMedicinas.setRowSorter(trsFiltro);
+        trsFiltroMedicinas = new TableRowSorter(jTableAddMedicinas.getModel());
+        trsFiltroMedicinas.setRowFilter(RowFilter.regexFilter(jTextFieldNombreAddMedicinaDependiente.getText(), 0));
+        jTableAddMedicinas.setRowSorter(trsFiltroMedicinas);
         if (jTableAddMedicinas.getRowCount() == 0) {
             jButtonAddMedicina.setEnabled(true);
         }else{
@@ -1068,18 +1190,68 @@ public class JFrameDependiente extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonAddMedicinaActionPerformed
 
+    private void jButtonCrearViviendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearViviendaActionPerformed
+        
+        int selectedRow = jTablePoblacionesCrearVivienda.getSelectedRow();
+        if (selectedRow != -1) {
+            Poblacion poblacion = (Poblacion) jTablePoblacionesCrearVivienda.getValueAt(selectedRow, 0);
+            String direccion = jTextFieldDireccionCrearVivienda.getText();
+            this.controlador.creaVivienda(poblacion,direccion,this.dependienteSeleccionado,jTableViviendasDependiente);
+            
+            jDialogCrearVivienda.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Selecciona una Población");
+        }
+               
+    }//GEN-LAST:event_jButtonCrearViviendaActionPerformed
+
+    private void jButtonCrearPoblacionCrearViviendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearPoblacionCrearViviendaActionPerformed
+        // TODO DECIDIR SI SE PUEDEN CREAR POBLACIONES O DE ESO SE ENCARGA EL QUE RELLENA LA BASE DE DATOS
+    }//GEN-LAST:event_jButtonCrearPoblacionCrearViviendaActionPerformed
+
+    private void jTextFieldNombrePoblacionCrearViviendaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombrePoblacionCrearViviendaKeyTyped
+        // Cuando escriba algo en el campo de medicinas que lo busque en la tabla
+        trsFiltroPoblaciones = new TableRowSorter(jTablePoblacionesCrearVivienda.getModel());
+        trsFiltroPoblaciones.setRowFilter(RowFilter.regexFilter(jTextFieldNombrePoblacionCrearVivienda.getText(), 0));
+        jTablePoblacionesCrearVivienda.setRowSorter(trsFiltroPoblaciones);
+        if (jTablePoblacionesCrearVivienda.getRowCount() == 0) {
+            jButtonCrearPoblacionCrearVivienda.setEnabled(true);
+        }else{
+            jButtonCrearPoblacionCrearVivienda.setEnabled(false);
+        }
+    }//GEN-LAST:event_jTextFieldNombrePoblacionCrearViviendaKeyTyped
+
+    private void jButtonAddViviendaDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddViviendaDependienteActionPerformed
+        this.controlador.rellenaTablaPoblaciones(jTablePoblacionesCrearVivienda);
+        this.controlador.abreDialog(jDialogCrearVivienda, false);
+    }//GEN-LAST:event_jButtonAddViviendaDependienteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (this.jTableViviendasDependiente.getSelectedRow() != -1) {
+            if (JOptionPane.showConfirmDialog(this, "Seguro que quieres borrar esta Vivienda?") == JOptionPane.YES_OPTION) {
+                Vivienda vivienda = (Vivienda) this.jTableViviendasDependiente.getModel().getValueAt(this.jTableViviendasDependiente.getSelectedRow(), 0);
+                this.controlador.borraVivienda(vivienda,dependienteSeleccionado);
+                DefaultTableModel model = (DefaultTableModel) this.jTableViviendasDependiente.getModel();
+                model.removeRow(this.jTableViviendasDependiente.getSelectedRow());
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datechooser.beans.DateChooserCombo dateChooserComboNacimientoCrearContacto;
     private datechooser.beans.DateChooserCombo dateChooserComboNacimientoModificarContacto;
-    private datechooser.beans.DateChooserDialog dateChooserDialog1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAddContactoDependiente;
     private javax.swing.JButton jButtonAddMedicina;
     private javax.swing.JButton jButtonAddMedicinaDependiente;
     private javax.swing.JButton jButtonAddTelefonoCrearContacto;
     private javax.swing.JButton jButtonAddTelefonoModificarContacto;
+    private javax.swing.JButton jButtonAddViviendaDependiente;
     private javax.swing.JButton jButtonAñadirMedicacionDependiente;
     private javax.swing.JButton jButtonCrearContacto;
+    private javax.swing.JButton jButtonCrearPoblacionCrearVivienda;
+    private javax.swing.JButton jButtonCrearVivienda;
     private javax.swing.JButton jButtonEditarContactoDependiente;
     private javax.swing.JButton jButtonEditarMedicacionDependiente;
     private javax.swing.JButton jButtonEliminarContactoDependiente;
@@ -1097,6 +1269,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxTipoTelefonoModificarContacto;
     private javax.swing.JDialog jDialogCrearContacto;
     private javax.swing.JDialog jDialogCrearMedicina;
+    private javax.swing.JDialog jDialogCrearVivienda;
     private javax.swing.JDialog jDialogModificarContacto;
     private javax.swing.JDialog jDialogViviendas;
     private javax.swing.JFormattedTextField jFormattedTextFieldCantidadAddMedicinaDependiente;
@@ -1125,6 +1298,8 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1145,9 +1320,11 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTableAddMedicinas;
     private javax.swing.JTable jTableContactosDependiente;
     private javax.swing.JTable jTableMedicacionDependiente;
+    private javax.swing.JTable jTablePoblacionesCrearVivienda;
     private javax.swing.JTable jTableTelefonosCrearContacto;
     private javax.swing.JTable jTableTelefonosModificarContacto;
     private javax.swing.JTable jTableViviendasDependiente;
@@ -1155,9 +1332,11 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldApellidosModificarContacto;
     private javax.swing.JTextField jTextFieldDNICrearContacto;
     private javax.swing.JTextField jTextFieldDNIModificarContacto;
+    private javax.swing.JTextField jTextFieldDireccionCrearVivienda;
     private javax.swing.JTextField jTextFieldNombreAddMedicinaDependiente;
     private javax.swing.JTextField jTextFieldNombreCrearContacto;
     private javax.swing.JTextField jTextFieldNombreModificarContacto;
+    private javax.swing.JTextField jTextFieldNombrePoblacionCrearVivienda;
     private javax.swing.JTextField jTextFieldNumeroCrearContacto;
     private javax.swing.JTextField jTextFieldNumeroModificarContacto;
     private javax.swing.JTextField jTextFieldRelacionCrearContacto;

@@ -14,8 +14,10 @@ import hibernate.DependienteHasMedicacion;
 import hibernate.HibernateUtil;
 import hibernate.Medicacion;
 import hibernate.Personas;
+import hibernate.Poblacion;
 import hibernate.TareasPendientes;
 import hibernate.Telefonos;
+import hibernate.Vivienda;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -87,6 +89,12 @@ public class Conexion {
         this.sessionHibernate.getTransaction().commit();
         return medicaciones;
     }
+    public ArrayList<Poblacion> getPoblaciones() {
+        this.sessionHibernate.beginTransaction();
+        ArrayList<Poblacion> poblaciones = (ArrayList<Poblacion>) this.sessionHibernate.createQuery("from Poblacion").list();
+        this.sessionHibernate.getTransaction().commit();
+        return poblaciones;
+    }
 
     public void guardaDependiente(Dependiente dependiente) {
         this.sessionHibernate.beginTransaction();
@@ -140,6 +148,11 @@ public class Conexion {
         this.sessionHibernate.saveOrUpdate(dhm);
         this.sessionHibernate.getTransaction().commit();
     }
+    public void guardaVivienda(Vivienda vivienda) {
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.saveOrUpdate(vivienda);
+        this.sessionHibernate.getTransaction().commit();
+    }
     public void eliminaTareaPendiente(TareasPendientes tareaPendiente){
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.delete(tareaPendiente);
@@ -169,6 +182,16 @@ public class Conexion {
         this.sessionHibernate.delete(persona);
         this.sessionHibernate.getTransaction().commit();
     }
+
+    public void eliminaVivienda(Vivienda vivienda) {
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.delete(vivienda);
+        this.sessionHibernate.getTransaction().commit();
+    }
+
+    
+
+    
 
 
     

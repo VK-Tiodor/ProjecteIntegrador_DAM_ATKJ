@@ -240,6 +240,9 @@
           </Properties>
         </Component>
         <Component class="datechooser.beans.DateChooserCombo" name="dateChooserComboFechaDetallesLlamada">
+          <Properties>
+            <Property name="dch_locked" type="boolean" value="true"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldMotivoDetallesLlamada">
         </Component>

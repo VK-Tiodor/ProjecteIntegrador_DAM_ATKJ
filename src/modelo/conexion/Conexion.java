@@ -135,6 +135,11 @@ public class Conexion {
         this.sessionHibernate.getTransaction().commit();
     }
     
+    public void guardaDependienteHasMedicacion(DependienteHasMedicacion dhm) {
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.saveOrUpdate(dhm);
+        this.sessionHibernate.getTransaction().commit();
+    }
     public void eliminaTareaPendiente(TareasPendientes tareaPendiente){
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.delete(tareaPendiente);
@@ -166,6 +171,7 @@ public class Conexion {
         this.sessionHibernate.delete(persona);
         this.sessionHibernate.getTransaction().commit();
     }
+
 
     
 

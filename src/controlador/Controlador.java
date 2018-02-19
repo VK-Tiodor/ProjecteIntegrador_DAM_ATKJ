@@ -11,6 +11,7 @@ import hibernate.ContactoHasDependiente;
 import hibernate.ContactoHasDependienteId;
 import hibernate.Dependiente;
 import hibernate.DependienteHasMedicacion;
+import hibernate.DependienteHasMedicacionId;
 import hibernate.Medicacion;
 import hibernate.Personas;
 import hibernate.RecursosLocalidad;
@@ -165,7 +166,7 @@ public class Controlador {
 
     public void rellenaTablaMedicacionDependiente(JTable jTableMedicacionDependiente, Dependiente dependiente) {
         DefaultTableModel model = new DefaultTableModel();
-        Contacto.setColumns(model);
+        Medicacion.setColumns(model);
 
         if (dependiente.getDependienteHasMedicacions() != null) {
             //DefaultTableModel tablaContactos = (DefaultTableModel)jTableContactosDependiente.getModel();
@@ -264,8 +265,13 @@ public class Controlador {
         
     }
 
-    public void crearMedicacionDependiente(Medicacion medicina, String toma, String cantidad, Dependiente dependienteSeleccionado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void crearMedicacionDependiente(Medicacion medicina, String toma, Double cantidad, Dependiente dependiente) {
+        DependienteHasMedicacionId dhmid = new DependienteHasMedicacionId(dependiente.getIdDependiente(), medicina.getIdMedicacion());
+        DependienteHasMedicacion dhm = new DependienteHasMedicacion(dhmid, dependiente, medicina, toma, cantidad);
+        this.conexion.guardaDependienteHasMedicacion(dhm);
+        dependiente.getDependienteHasMedicacions().add(dhm);
+        medicina.getDependienteHasMedicacions().add(dhm);
+        
     }
 
     public void crearDependiente(String dni, String nombre, String apellidos, Calendar fechaNac, String genero, String tipo, String pass, DefaultTableModel tabla) {

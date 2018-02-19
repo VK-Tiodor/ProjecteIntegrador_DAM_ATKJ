@@ -36,7 +36,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private Contacto contactoSeleccionado;
     private TableRowSorter trsFiltro;
     
-    Set telefonos = new HashSet(); //TODO, LOS TELEFONOS NO VAN, HAY QUE CAMBIARLO A OBJETOS TELEFONO Y GUARDARLOS EN LA LISTA
+    Set telefonos = new HashSet();
     
     /**
      * Creates new form JFrameDependiente
@@ -111,11 +111,11 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jTextFieldTomaAddMedicinaDependiente = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        jTextFieldCantidadAddMedicinaDependiente = new javax.swing.JTextField();
         jButtonAddMedicinaDependiente = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTableAddMedicinas = new javax.swing.JTable();
         jButtonAddMedicina = new javax.swing.JButton();
+        jFormattedTextFieldCantidadAddMedicinaDependiente = new javax.swing.JFormattedTextField();
         jDialogModificarContacto = new javax.swing.JDialog();
         jTextFieldRelacionModificarContacto = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
@@ -409,7 +409,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
         jLabel20.setText("Cantidad");
 
-        jButtonAddMedicinaDependiente.setText("Añadir Medicina");
+        jButtonAddMedicinaDependiente.setText("Añadir Medicación");
         jButtonAddMedicinaDependiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddMedicinaDependienteActionPerformed(evt);
@@ -443,6 +443,8 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
+        jFormattedTextFieldCantidadAddMedicinaDependiente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+
         javax.swing.GroupLayout jDialogCrearMedicinaLayout = new javax.swing.GroupLayout(jDialogCrearMedicina.getContentPane());
         jDialogCrearMedicina.getContentPane().setLayout(jDialogCrearMedicinaLayout);
         jDialogCrearMedicinaLayout.setHorizontalGroup(
@@ -452,7 +454,6 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addGroup(jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jTextFieldTomaAddMedicinaDependiente)
-                    .addComponent(jTextFieldCantidadAddMedicinaDependiente)
                     .addComponent(jButtonAddMedicinaDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jDialogCrearMedicinaLayout.createSequentialGroup()
                         .addGroup(jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -463,7 +464,8 @@ public class JFrameDependiente extends javax.swing.JFrame {
                                 .addComponent(jTextFieldNombreAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonAddMedicina, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jFormattedTextFieldCantidadAddMedicinaDependiente))
                 .addContainerGap())
         );
         jDialogCrearMedicinaLayout.setVerticalGroup(
@@ -484,7 +486,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldCantidadAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jFormattedTextFieldCantidadAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -920,8 +922,9 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
     private void jButtonAñadirMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirMedicacionDependienteActionPerformed
         this.controlador.rellenaTablaMedicacionDependiente(jTableAddMedicinas);
+        jTextFieldTomaAddMedicinaDependiente.setText("");
+        jFormattedTextFieldCantidadAddMedicinaDependiente.setText("");
         this.controlador.abreDialog(jDialogCrearMedicina, false);
-        // TODO  - http://www.codigojavalibre.com/2015/08/filtrar-o-buscar-datos-en-una-jtable-en-Java.html
     }//GEN-LAST:event_jButtonAñadirMedicacionDependienteActionPerformed
 
     private void jButtonEditarMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarMedicacionDependienteActionPerformed
@@ -964,9 +967,10 @@ public class JFrameDependiente extends javax.swing.JFrame {
         Medicacion medicina = (Medicacion) jTableAddMedicinas.getValueAt(jTableAddMedicinas.getSelectedRow(), 0);
         //String nombre = jTextFieldNombreAddMedicinaDependiente.getText();
         String toma = jTextFieldTomaAddMedicinaDependiente.getText();
-        String cantidad = jTextFieldCantidadAddMedicinaDependiente.getText();
+        Double cantidad = Double.parseDouble(jFormattedTextFieldCantidadAddMedicinaDependiente.getText().replace(',', '.'));
         this.controlador.crearMedicacionDependiente(medicina, toma, cantidad, this.dependienteSeleccionado);
-
+        this.controlador.rellenaTablaMedicacionDependiente(jTableMedicacionDependiente, dependienteSeleccionado);
+        jDialogCrearMedicina.dispose();
     }//GEN-LAST:event_jButtonAddMedicinaDependienteActionPerformed
 
     private void jButtonAddTelefonoCrearContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTelefonoCrearContactoActionPerformed
@@ -1103,6 +1107,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JDialog jDialogCrearMedicina;
     private javax.swing.JDialog jDialogModificarContacto;
     private javax.swing.JDialog jDialogViviendas;
+    private javax.swing.JFormattedTextField jFormattedTextFieldCantidadAddMedicinaDependiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1156,7 +1161,6 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JTable jTableViviendasDependiente;
     private javax.swing.JTextField jTextFieldApellidosCrearContacto;
     private javax.swing.JTextField jTextFieldApellidosModificarContacto;
-    private javax.swing.JTextField jTextFieldCantidadAddMedicinaDependiente;
     private javax.swing.JTextField jTextFieldDNICrearContacto;
     private javax.swing.JTextField jTextFieldDNIModificarContacto;
     private javax.swing.JTextField jTextFieldNombreAddMedicinaDependiente;

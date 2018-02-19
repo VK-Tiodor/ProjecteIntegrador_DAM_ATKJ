@@ -26,6 +26,7 @@ import java.util.Date;
 import java.util.Set;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -103,12 +104,7 @@ public class Controlador {
 
         tablaAgenda.setModel(model);
 
-        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
-        tcr.setHorizontalAlignment(SwingConstants.CENTER);
-
-        for (int i = 0; i < tablaAgenda.getColumnModel().getColumnCount(); i++) {
-            tablaAgenda.getColumnModel().getColumn(i).setCellRenderer(tcr);
-        }
+        centraTabla(tablaAgenda);
 
     }
 
@@ -122,12 +118,7 @@ public class Controlador {
 
         jTableHistorialLlamadas.setModel(model);
 
-        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
-        tcr.setHorizontalAlignment(SwingConstants.CENTER);
-
-        for (int i = 0; i < jTableHistorialLlamadas.getColumnModel().getColumnCount(); i++) {
-            jTableHistorialLlamadas.getColumnModel().getColumn(i).setCellRenderer(tcr);
-        }
+        centraTabla(jTableHistorialLlamadas);
     }
 
     public void rellenaTablaListaDependiente(JTable jTableListaDependientes) {
@@ -140,12 +131,7 @@ public class Controlador {
 
         jTableListaDependientes.setModel(model);
 
-        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
-        tcr.setHorizontalAlignment(SwingConstants.CENTER);
-
-        for (int i = 0; i < jTableListaDependientes.getColumnModel().getColumnCount(); i++) {
-            jTableListaDependientes.getColumnModel().getColumn(i).setCellRenderer(tcr);
-        }
+        centraTabla(jTableListaDependientes);
     }
 
     public void rellenaTablaContactosDependiente(JTable jTableContactosDependiente, Dependiente dependiente) {
@@ -161,6 +147,8 @@ public class Controlador {
         }
 
         jTableContactosDependiente.setModel(model);
+        
+        centraTabla(jTableContactosDependiente);
     }
 
     public void rellenaTablaMedicacionDependiente(JTable jTableMedicacionDependiente, Dependiente dependiente) {
@@ -175,6 +163,8 @@ public class Controlador {
             }
         }
         jTableMedicacionDependiente.setModel(model);
+        
+        centraTabla(jTableMedicacionDependiente);
     }
 
     public void rellenaTablaViviendaDependiente(JTable jTableViviendasDependiente, Dependiente dependiente) {
@@ -190,18 +180,30 @@ public class Controlador {
         }
 
         jTableViviendasDependiente.setModel(model);
+        
+        centraTabla(jTableViviendasDependiente);
     }
 
-    public void rellenaTablaRecursos(JTable jTableRecursosLocalidadDependiente, Vivienda vivienda) {
-        DefaultTableModel model = new DefaultTableModel();
-        RecursosLocalidad.setColumns(model);
+    public void rellenaListRecursos(JList listaRecursos, Vivienda vivienda) {
+        
+        listaRecursos.setModel(new javax.swing.AbstractListModel<String>() {
+    String[] strings = vivienda.getPoblacion().getRecursosLocalidad().returnRecursosForList();
+    public int getSize() { return strings.length; }
+    public String getElementAt(int i) { return strings[i]; }
+});
 
-        if (vivienda.getPoblacion().getRecursosLocalidad() != null) {
-            //DefaultTableModel tablaContactos = (DefaultTableModel)jTableContactosDependiente.getModel();
-            model.addRow(vivienda.getPoblacion().getRecursosLocalidad().getRecursosForTable());
-        }
-
-        jTableRecursosLocalidadDependiente.setModel(model);
+        
+//        DefaultTableModel model = new DefaultTableModel();
+//        RecursosLocalidad.setColumns(model);
+//
+//        if (vivienda.getPoblacion().getRecursosLocalidad() != null) {
+//            //DefaultTableModel tablaContactos = (DefaultTableModel)jTableContactosDependiente.getModel();
+//            vivienda.getPoblacion().getRecursosLocalidad().getRecursosForTable(model);
+//        }
+//
+//        jTableRecursosLocalidadDependiente.setModel(model);
+//        
+//        //centraTabla(jTableRecursosLocalidadDependiente);
     }
     
     public void rellenaTablaMedicacionDependiente(JTable jTableAddMedicinas) {
@@ -213,6 +215,19 @@ public class Controlador {
         }
 
         jTableAddMedicinas.setModel(model);
+        
+        centraTabla(jTableAddMedicinas);
+        
+      
+    }
+    
+    public void centraTabla(JTable tabla){
+          DefaultTableCellRenderer tcr = new DefaultTableCellRenderer(); 
+        tcr.setHorizontalAlignment(SwingConstants.CENTER); 
+         
+        for (int i = 0; i < tabla.getColumnModel().getColumnCount(); i++) { 
+            tabla.getColumnModel().getColumn(i).setCellRenderer(tcr); 
+        } 
     }
 
     public void lanzaAlerta(String id) {

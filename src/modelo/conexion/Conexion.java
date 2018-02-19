@@ -139,7 +139,6 @@ public class Conexion {
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.delete(tareaPendiente);
         this.sessionHibernate.getTransaction().commit();
-
     }
 
     public void eliminaDependiente(Dependiente dependiente) {
@@ -160,7 +159,6 @@ public class Conexion {
         this.sessionHibernate.getTransaction().commit();
     }
 
-    
     public void eliminaPersona(Personas persona){
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.delete(persona);

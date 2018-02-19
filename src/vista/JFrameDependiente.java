@@ -78,9 +78,9 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jTableViviendasDependiente = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTableRecursosLocalidadDependiente = new javax.swing.JTable();
         jButtonMarcarViviendaComoActivaDependiente = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jListRecursos = new javax.swing.JList<>();
         jDialogCrearContacto = new javax.swing.JDialog();
         jButtonCrearContacto = new javax.swing.JButton();
         dateChooserComboNacimientoCrearContacto = new datechooser.beans.DateChooserCombo();
@@ -140,6 +140,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jButtonRemoveTelefonoModificarContacto = new javax.swing.JButton();
+        dateChooserDialog1 = new datechooser.beans.DateChooserDialog();
         jLabel1 = new javax.swing.JLabel();
         jLabelNombreYApellidosDependiente = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -188,25 +189,14 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
         jLabel11.setText("Recursos Localidad");
 
-        jTableRecursosLocalidadDependiente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane4.setViewportView(jTableRecursosLocalidadDependiente);
-
         jButtonMarcarViviendaComoActivaDependiente.setText("Marcar como activa");
         jButtonMarcarViviendaComoActivaDependiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMarcarViviendaComoActivaDependienteActionPerformed(evt);
             }
         });
+
+        jScrollPane8.setViewportView(jListRecursos);
 
         javax.swing.GroupLayout jDialogViviendasLayout = new javax.swing.GroupLayout(jDialogViviendas.getContentPane());
         jDialogViviendas.getContentPane().setLayout(jDialogViviendasLayout);
@@ -215,15 +205,15 @@ public class JFrameDependiente extends javax.swing.JFrame {
             .addGroup(jDialogViviendasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogViviendasLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonMarcarViviendaComoActivaDependiente))
                     .addGroup(jDialogViviendasLayout.createSequentialGroup()
-                        .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11))
+                        .addComponent(jLabel10)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -235,11 +225,12 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonMarcarViviendaComoActivaDependiente)
-                .addGap(4, 4, 4)
-                .addComponent(jLabel11)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonMarcarViviendaComoActivaDependiente)
+                    .addGroup(jDialogViviendasLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -1049,7 +1040,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
     private void jTableViviendasDependienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableViviendasDependienteMouseClicked
         // Al hacer click en la tabla viviendas, coger los recursos de esa vivienda
-        this.controlador.rellenaTablaRecursos(jTableRecursosLocalidadDependiente, (Vivienda) jTableViviendasDependiente.getValueAt(jTableViviendasDependiente.getSelectedRow(), 0));
+        this.controlador.rellenaListRecursos(jListRecursos, (Vivienda) jTableViviendasDependiente.getValueAt(jTableViviendasDependiente.getSelectedRow(), 0));
     }//GEN-LAST:event_jTableViviendasDependienteMouseClicked
 
     private void jButtonMarcarViviendaComoActivaDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMarcarViviendaComoActivaDependienteActionPerformed
@@ -1081,6 +1072,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datechooser.beans.DateChooserCombo dateChooserComboNacimientoCrearContacto;
     private datechooser.beans.DateChooserCombo dateChooserComboNacimientoModificarContacto;
+    private datechooser.beans.DateChooserDialog dateChooserDialog1;
     private javax.swing.JButton jButtonAddContactoDependiente;
     private javax.swing.JButton jButtonAddMedicina;
     private javax.swing.JButton jButtonAddMedicinaDependiente;
@@ -1145,17 +1137,17 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelGeneroDependiente;
     private javax.swing.JLabel jLabelNombreYApellidosDependiente;
     private javax.swing.JLabel jLabelTipoDeDependiente;
+    private javax.swing.JList<String> jListRecursos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTable jTableAddMedicinas;
     private javax.swing.JTable jTableContactosDependiente;
     private javax.swing.JTable jTableMedicacionDependiente;
-    private javax.swing.JTable jTableRecursosLocalidadDependiente;
     private javax.swing.JTable jTableTelefonosCrearContacto;
     private javax.swing.JTable jTableTelefonosModificarContacto;
     private javax.swing.JTable jTableViviendasDependiente;

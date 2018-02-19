@@ -16,7 +16,7 @@ import modelo.escuchadorLlamadas;
  */
 public class Main {
 
-    private static final String MACHINE = "172.16.226.22";
+    private static final String MACHINE = "localhost";
     private static final int PORT = 9090;
     private static Controlador controlador;
 

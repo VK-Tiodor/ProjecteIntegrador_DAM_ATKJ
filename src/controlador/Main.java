@@ -5,6 +5,11 @@
  */
 package controlador;
 
+import com.teamdev.jxbrowser.chromium.Browser;
+import com.teamdev.jxbrowser.chromium.swing.BrowserView;
+
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
@@ -21,8 +26,10 @@ public class Main {
     private static Controlador controlador;
 
     public static void main(String args[]) {
+
         controlador = new Controlador();
         iniciaEscucha();
+
     }
 
     private static void iniciaEscucha() {

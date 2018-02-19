@@ -196,6 +196,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
         jLabel12.setText("Datos de Asistencia:");
 
+        dateChooserComboFechaDetallesLlamada.setLocked(true);
+
         jTextAreaDatosAsistenciaDetallesLlamada.setColumns(20);
         jTextAreaDatosAsistenciaDetallesLlamada.setLineWrap(true);
         jTextAreaDatosAsistenciaDetallesLlamada.setRows(5);
@@ -665,12 +667,22 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     private void jButtonAceptarDetallesLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarDetallesLlamadaActionPerformed
         //TODO --- si se puede editar el historial de llamadas, hay que hacer o otro dialog o bien modificar este (jDialogDetallesLlamada)
+        if (this.idDependienteLlamada != null) {
+            String motivo = jTextFieldMotivoDetallesLlamada.getText();
+            String datos = jTextAreaDatosAsistenciaDetallesLlamada.getText();
+            Asistencia asistencia = new Asistencia(this.controlador.getConexion().getDependienteById(idDependienteLlamada), Calendar.getInstance().getTime(), motivo, datos);
+            this.controlador.crearAsistencia(asistencia);
+            this.idDependienteLlamada = null;
+            DefaultTableModel dtm = (DefaultTableModel) jTableHistorialLlamadas.getModel();
+            dtm.addRow(asistencia.getAsistenciaForTable());
+        }
         jDialogDetallesLlamada.dispose();
 
     }//GEN-LAST:event_jButtonAceptarDetallesLlamadaActionPerformed
 
     private void jButtonCogerLlamadaAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCogerLlamadaAvisoActionPerformed
         JFrameDependiente jfd = new JFrameDependiente(controlador, this.controlador.getConexion().getDependienteById(this.idDependienteLlamada));
+        this.controlador.abreMapa( this.longitudDependienteLlamada, this.latitudDependienteLlamada);
         this.controlador.abreFrame(jfd);
         this.controlador.abreDialog(jDialogDetallesLlamada, false);
         jfd.setLocation(50, 170);

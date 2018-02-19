@@ -15,6 +15,7 @@ import hibernate.HibernateUtil;
 import hibernate.Medicacion;
 import hibernate.Personas;
 import hibernate.TareasPendientes;
+import hibernate.Telefonos;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +81,12 @@ public class Conexion {
         this.sessionHibernate.getTransaction().commit();
         return dependiente.get(0);
     }
+    public ArrayList<Medicacion> getMedicinas() {
+        this.sessionHibernate.beginTransaction();
+        ArrayList<Medicacion> medicaciones = (ArrayList<Medicacion>) this.sessionHibernate.createQuery("from Medicacion").list();
+        this.sessionHibernate.getTransaction().commit();
+        return medicaciones;
+    }
 
     public void guardaDependiente(Dependiente dependiente) {
         this.sessionHibernate.beginTransaction();
@@ -98,8 +105,37 @@ public class Conexion {
         this.sessionHibernate.saveOrUpdate(tareaPendiente);
         this.sessionHibernate.getTransaction().commit();
     }
-
-    public void eliminaTareaPendiente(TareasPendientes tareaPendiente) {
+    
+    public void guardaContacto(Contacto contacto) {
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.saveOrUpdate(contacto);
+        this.sessionHibernate.getTransaction().commit();
+    }
+    
+    public void guardaContactoHasDependiente(ContactoHasDependiente chd) {
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.saveOrUpdate(chd);
+        this.sessionHibernate.getTransaction().commit();
+    }
+    public void guardaPersona(Personas p) {
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.saveOrUpdate(p);
+        this.sessionHibernate.getTransaction().commit();
+    }
+    
+    
+    public void guardaTelefono(Telefonos telefono) {
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.saveOrUpdate(telefono);
+        this.sessionHibernate.getTransaction().commit();
+    }
+    public void guardaMedicina(Medicacion medicacion) {
+        this.sessionHibernate.beginTransaction();
+        this.sessionHibernate.saveOrUpdate(medicacion);
+        this.sessionHibernate.getTransaction().commit();
+    }
+    
+    public void eliminaTareaPendiente(TareasPendientes tareaPendiente){
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.delete(tareaPendiente);
         this.sessionHibernate.getTransaction().commit();
@@ -130,6 +166,12 @@ public class Conexion {
         this.sessionHibernate.delete(persona);
         this.sessionHibernate.getTransaction().commit();
     }
+
+    
+
+    
+
+
 
 
 

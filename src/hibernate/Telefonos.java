@@ -1,6 +1,10 @@
 package hibernate;
 // Generated 12-feb-2018 18:52:59 by Hibernate Tools 4.3.1
 
+import controlador.Controlador;
+import javax.swing.table.DefaultTableModel;
+
+
 
 
 /**
@@ -55,7 +59,20 @@ public class Telefonos  implements java.io.Serializable {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+     public Object[] getTelefonoForTable() {
+        return new Object[]{this.tipo,this};
+    }
 
+    public static void setColumns(DefaultTableModel model) {
+        model.addColumn("Tipo");
+        model.addColumn("Numero");
+    }
+
+    @Override
+    public String toString() {
+        return this.numero;
+    }
+    
 
 
 

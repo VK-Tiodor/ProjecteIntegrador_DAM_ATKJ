@@ -4,6 +4,7 @@ package hibernate;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -56,7 +57,13 @@ public class Medicacion  implements java.io.Serializable {
         model.addColumn("Toma");
         model.addColumn("Cantidad");
     }
+    public static void setSimpleColumns(DefaultTableModel model) {
+        model.addColumn("Nombre");
+    }
 
+    public Object[] getMedicinaForSimpleTable() {
+        return new Object[]{this};
+    }
 
 }
 

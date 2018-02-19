@@ -8,12 +8,14 @@ package controlador;
 import hibernate.Asistencia;
 import hibernate.Contacto;
 import hibernate.ContactoHasDependiente;
+import hibernate.ContactoHasDependienteId;
 import hibernate.Dependiente;
 import hibernate.DependienteHasMedicacion;
 import hibernate.Medicacion;
 import hibernate.Personas;
 import hibernate.RecursosLocalidad;
 import hibernate.TareasPendientes;
+import hibernate.Telefonos;
 import hibernate.Vivienda;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -21,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Set;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -200,6 +203,17 @@ public class Controlador {
 
         jTableRecursosLocalidadDependiente.setModel(model);
     }
+    
+    public void rellenaTablaMedicacionDependiente(JTable jTableAddMedicinas) {
+        DefaultTableModel model = new DefaultTableModel();
+        Medicacion.setSimpleColumns(model);
+        ArrayList<Medicacion> medicinas = this.conexion.getMedicinas();
+        for (Medicacion medicina : medicinas) {
+            model.addRow(medicina.getMedicinaForSimpleTable());
+        }
+
+        jTableAddMedicinas.setModel(model);
+    }
 
     public void lanzaAlerta(String id) {
         pantallaPrincipal.abreDialogAlerta(id);
@@ -212,8 +226,24 @@ public class Controlador {
         model.addRow(this.listaTareasPendientes.get(this.listaTareasPendientes.size() - 1).getTareaPendienteForTable());
     }
 
-    public void crearContacto(String dni, String nombre, String apellidos, Date time, String genero, Dependiente dependienteSeleccionado, ArrayList<String[]> telefonos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void crearContacto(String dni, String nombre, String apellidos, Date fechaNac, String genero, String relacion, boolean llave, Dependiente dependiente, Set telefonos, JTable jTableContactosDependiente) {
+        Personas p = new Personas(dni, nombre, apellidos, fechaNac, genero, null, null, (Set) telefonos, null, null);
+        Contacto c = new Contacto(p);
+        p.setContacto(c);
+        this.conexion.guardaPersona(p);
+        ArrayList<Telefonos> arrayTelefonos = new ArrayList<>(p.getTelefonoses());
+        for (Telefonos telefono : arrayTelefonos) {
+            telefono.setPersonas(p);
+            this.conexion.guardaTelefono(telefono);
+        }
+        this.conexion.guardaContacto(c);
+        ContactoHasDependienteId chdi = new ContactoHasDependienteId(c.getIdContacto(), dependiente.getIdDependiente());
+        ContactoHasDependiente chd = new ContactoHasDependiente(chdi, c, dependiente, relacion, llave);
+        c.getContactoHasDependientes().add(chd);
+        dependiente.getContactoHasDependientes().add(chd);
+        this.conexion.guardaContacto(c);
+        this.conexion.guardaContactoHasDependiente(chd);
+       
     }
     
     public void borraTarea(TareasPendientes tarea){
@@ -234,7 +264,7 @@ public class Controlador {
         
     }
 
-    public void crearMedicina(String nombre, String toma, String cantidad) {
+    public void crearMedicacionDependiente(Medicacion medicina, String toma, String cantidad, Dependiente dependienteSeleccionado) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -252,6 +282,15 @@ public class Controlador {
         DateFormat dateFormat = new SimpleDateFormat("y-MM-d");
         return dateFormat.format(date);
     }
+
+    public void crearMedicina(Medicacion medicacion) {
+        this.conexion.guardaMedicina(medicacion);
+    }
+
+    
+
+   
+
 
    
         

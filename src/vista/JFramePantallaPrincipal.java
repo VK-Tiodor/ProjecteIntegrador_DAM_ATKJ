@@ -35,19 +35,14 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private String idDependienteLlamada;
     private Double longitudDependienteLlamada;
     private Double latitudDependienteLlamada;
-    private JFrame frame;
 
     private DefaultTableModel tablaListaDependientes;
-
     public JFramePantallaPrincipal(Controlador controlador, Conexion conexion) {
         initComponents();
         this.controlador = controlador;
         this.conexion = conexion;
         setUI();
         this.setExtendedState(MAXIMIZED_BOTH);
-        this.frame = this;
-        Main.recorreComponentesRecursivo(this);
-        ;
     }
 
     /**
@@ -85,6 +80,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jButtonAceptarDetallesLlamada = new javax.swing.JButton();
         jDialogAlertaLlamadaEntrante = new javax.swing.JDialog();
+        jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jButtonCogerLlamadaAviso = new javax.swing.JButton();
         jDialogCrearDependiente = new javax.swing.JDialog();
@@ -122,23 +118,35 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jButtonAddDependiente = new javax.swing.JButton();
         jButtonBorrarDependiente = new javax.swing.JButton();
 
+        jComboBoxDependientesAddTarea.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Dependiente");
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Fecha");
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Hora");
 
         jFormattedTextFieldHoraAddTarea.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jFormattedTextFieldHoraAddTarea.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Encabezado");
 
+        jTextFieldEncabezadoAddTarea.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
         jTextAreaDescripcionAddTarea.setColumns(20);
+        jTextAreaDescripcionAddTarea.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextAreaDescripcionAddTarea.setLineWrap(true);
         jTextAreaDescripcionAddTarea.setRows(5);
         jScrollPane4.setViewportView(jTextAreaDescripcionAddTarea);
 
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setText("Descripción");
 
+        jButtonCrearTareaAddTarea.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonCrearTareaAddTarea.setText("Crear");
         jButtonCrearTareaAddTarea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +165,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                     .addComponent(dateChooserComboFechaAddTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jFormattedTextFieldHoraAddTarea)
                     .addComponent(jTextFieldEncabezadoAddTarea)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
                     .addGroup(jDialogAñadirTareaLayout.createSequentialGroup()
                         .addGroup(jDialogAñadirTareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -191,34 +199,41 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonCrearTareaAddTarea)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setText("Dependiente:");
 
-        jLabelDependienteDetallesLlamada.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelDependienteDetallesLlamada.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabelDependienteDetallesLlamada.setText("jLabel9");
 
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel10.setText("Fecha:");
 
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel11.setText("Motivo:");
 
+        jLabel12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel12.setText("Datos de Asistencia:");
 
         dateChooserComboFechaDetallesLlamada.setLocked(true);
+
+        jTextFieldMotivoDetallesLlamada.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         jTextAreaDatosAsistenciaDetallesLlamada.setColumns(20);
         jTextAreaDatosAsistenciaDetallesLlamada.setLineWrap(true);
         jTextAreaDatosAsistenciaDetallesLlamada.setRows(5);
         jScrollPane5.setViewportView(jTextAreaDatosAsistenciaDetallesLlamada);
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Detalles Llamada");
 
+        jButtonAceptarDetallesLlamada.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonAceptarDetallesLlamada.setText("Aceptar");
         jButtonAceptarDetallesLlamada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,16 +294,23 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonAceptarDetallesLlamada)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
+        jDialogAlertaLlamadaEntrante.setBackground(new java.awt.Color(255, 255, 153));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 153));
+
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("AVISO - LLAMADA ENTRANTE");
 
+        jButtonCogerLlamadaAviso.setBackground(new java.awt.Color(255, 102, 102));
         jButtonCogerLlamadaAviso.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButtonCogerLlamadaAviso.setForeground(new java.awt.Color(255, 255, 255));
         jButtonCogerLlamadaAviso.setText("COGER LLAMADA");
         jButtonCogerLlamadaAviso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,45 +318,73 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonCogerLlamadaAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(38, 38, 38))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCogerLlamadaAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jDialogAlertaLlamadaEntranteLayout = new javax.swing.GroupLayout(jDialogAlertaLlamadaEntrante.getContentPane());
         jDialogAlertaLlamadaEntrante.getContentPane().setLayout(jDialogAlertaLlamadaEntranteLayout);
         jDialogAlertaLlamadaEntranteLayout.setHorizontalGroup(
             jDialogAlertaLlamadaEntranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogAlertaLlamadaEntranteLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
-                .addGroup(jDialogAlertaLlamadaEntranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButtonCogerLlamadaAviso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(34, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jDialogAlertaLlamadaEntranteLayout.setVerticalGroup(
             jDialogAlertaLlamadaEntranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogAlertaLlamadaEntranteLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCogerLlamadaAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setText("DNI");
+
+        jTextFieldDNICrearDependiente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
 
         jLabel14.setText("Nombre");
 
+        jTextFieldNombreCrearDependiente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+
+        jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel15.setText("Apellidos");
 
+        jTextFieldApellidosCrearDependiente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+
+        jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel16.setText("Nacimiento");
 
+        jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel17.setText("Genero");
 
+        jComboBoxGeneroCrearDependiente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jComboBoxGeneroCrearDependiente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "H", "I" }));
 
+        jLabel18.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel18.setText("Tipo");
 
+        jComboBoxTipoCrearDependiente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jComboBoxTipoCrearDependiente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enf. Cronico", "Persona Mayor", "Discapacidad", "Violencia de genero" }));
 
+        jLabel19.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel19.setText("Contraseña");
 
+        jPasswordFieldCrearDependiente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+
+        jButtonCrearDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonCrearDependiente.setText("Crear Dependiente");
         jButtonCrearDependiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -354,7 +404,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                     .addComponent(jTextFieldApellidosCrearDependiente)
                     .addComponent(dateChooserComboNacimientoCrearDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxGeneroCrearDependiente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBoxTipoCrearDependiente, 0, 258, Short.MAX_VALUE)
+                    .addComponent(jComboBoxTipoCrearDependiente, 0, 277, Short.MAX_VALUE)
                     .addComponent(jPasswordFieldCrearDependiente)
                     .addGroup(jDialogCrearDependienteLayout.createSequentialGroup()
                         .addGroup(jDialogCrearDependienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,12 +451,15 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPasswordFieldCrearDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonCrearDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addComponent(jButtonCrearDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTabbedPanePrincipal.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+
+        jTableAgenda.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTableAgenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -418,8 +471,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
             }
         ));
+        jTableAgenda.setRowHeight(18);
         jScrollPane3.setViewportView(jTableAgenda);
 
+        jButtonAddTarea.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonAddTarea.setText("Añadir Tarea");
         jButtonAddTarea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -427,6 +482,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButtonTareaRealizado.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonTareaRealizado.setText("Tarea Realizada");
         jButtonTareaRealizado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -434,6 +490,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButtonBorrarTarea.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonBorrarTarea.setText("Borrar Tarea");
         jButtonBorrarTarea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -461,17 +518,18 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAgendaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAddTarea)
                     .addComponent(jButtonTareaRealizado)
                     .addComponent(jButtonBorrarTarea))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPanePrincipal.addTab("Agenda", jPanelAgenda);
 
+        jTableHistorialLlamadas.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTableHistorialLlamadas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -483,8 +541,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
             }
         ));
+        jTableHistorialLlamadas.setRowHeight(18);
         jScrollPane2.setViewportView(jTableHistorialLlamadas);
 
+        jButtonVerDetallesLlamada.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonVerDetallesLlamada.setText("Ver Detalles");
         jButtonVerDetallesLlamada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -492,6 +552,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButtonVerDependienteHist.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonVerDependienteHist.setText("Ver Dependiente");
         jButtonVerDependienteHist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -518,16 +579,17 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             jPanelHistorialLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHistorialLlamadasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelHistorialLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVerDetallesLlamada)
                     .addComponent(jButtonVerDependienteHist))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPanePrincipal.addTab("Historial Llamadas", jPanelHistorialLlamadas);
 
+        jTableListaDependientes.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTableListaDependientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -539,8 +601,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
             }
         ));
+        jTableListaDependientes.setRowHeight(18);
         jScrollPane1.setViewportView(jTableListaDependientes);
 
+        jButtonVerDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonVerDependiente.setText("Ver Dependiente");
         jButtonVerDependiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -548,6 +612,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButtonAddDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonAddDependiente.setText("Añadir Dependiente");
         jButtonAddDependiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -555,6 +620,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButtonBorrarDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonBorrarDependiente.setText("Borrar Dependiente");
         jButtonBorrarDependiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -582,13 +648,13 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             jPanelDependientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDependientesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDependientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVerDependiente)
                     .addComponent(jButtonAddDependiente)
                     .addComponent(jButtonBorrarDependiente))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPanePrincipal.addTab("Dependientes", jPanelDependientes);
@@ -784,6 +850,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelDependienteDetallesLlamada;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelAgenda;
     private javax.swing.JPanel jPanelDependientes;
     private javax.swing.JPanel jPanelHistorialLlamadas;
@@ -806,39 +873,14 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNombreCrearDependiente;
     // End of variables declaration//GEN-END:variables
 
-    private class FrameListen implements ComponentListener {
-
-        public void componentHidden(ComponentEvent arg0) {
-        }
-
-        public void componentMoved(ComponentEvent arg0) {
-        }
-
-        public void componentResized(ComponentEvent arg0) {
-            if (frame.getWidth() < 800) {
-                Main.TAMANYOLETRA = 1;
-            } else if (frame.getWidth() < 1200) {
-                Main.TAMANYOLETRA = 2;
-            } else if (frame.getWidth() < 1600) {
-                Main.TAMANYOLETRA = 3;
-            } else if (frame.getWidth() < 2000) {
-                Main.TAMANYOLETRA = 4;
-            }
-            
-            Main.recorreComponentesRecursivo(frame);
-        }
-
-        public void componentShown(ComponentEvent arg0) {
-
-        }
-    }
+    
 
     private void setUI() {
-        this.addComponentListener(new FrameListen());
         this.controlador.rellenaTablaAgenda(this.jTableAgenda);
         this.controlador.rellenaTablaHistorialLlamadas(this.jTableHistorialLlamadas);
         this.controlador.rellenaTablaListaDependiente(this.jTableListaDependientes);
         tablaListaDependientes = (DefaultTableModel) jTableListaDependientes.getModel();
+        
     }
 
     public void abreDialogAlerta(String id, String longitud, String latitud) {

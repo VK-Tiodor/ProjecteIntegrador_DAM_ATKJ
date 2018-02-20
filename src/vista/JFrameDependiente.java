@@ -52,7 +52,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
         this.controlador = controlador;
         this.dependienteSeleccionado = dependienteSeleccionado;
         setUI();
-        Main.recorreComponentesRecursivo(this);
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     private void setUI() {
@@ -199,10 +199,13 @@ public class JFrameDependiente extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTableViviendasDependiente);
 
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel10.setText("Viviendas");
 
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel11.setText("Recursos Localidad");
 
+        jButtonMarcarViviendaComoActivaDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonMarcarViviendaComoActivaDependiente.setText("Marcar como activa");
         jButtonMarcarViviendaComoActivaDependiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,6 +215,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
         jScrollPane8.setViewportView(jListRecursos);
 
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButton1.setText("Eliminar Vivienda");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,6 +223,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
+        jButtonAddViviendaDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonAddViviendaDependiente.setText("Añadir Vivienda");
         jButtonAddViviendaDependiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,23 +239,24 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDialogViviendasLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel11)
-                        .addGap(148, 148, 148))
-                    .addGroup(jDialogViviendasLayout.createSequentialGroup()
-                        .addComponent(jButtonMarcarViviendaComoActivaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jDialogViviendasLayout.createSequentialGroup()
                         .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jDialogViviendasLayout.createSequentialGroup()
                                 .addComponent(jButtonAddViviendaDependiente)
-                                .addGap(242, 242, 242)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonMarcarViviendaComoActivaDependiente)
+                                .addGap(66, 66, 66)
                                 .addComponent(jButton1))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
-                        .addContainerGap())))
+                            .addComponent(jScrollPane3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(jDialogViviendasLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(476, 476, 476)))
+                .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogViviendasLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane8))
+                .addContainerGap())
         );
         jDialogViviendasLayout.setVerticalGroup(
             jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,14 +267,13 @@ public class JFrameDependiente extends javax.swing.JFrame {
                     .addComponent(jLabel11))
                 .addGap(12, 12, 12)
                 .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAddViviendaDependiente)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonMarcarViviendaComoActivaDependiente)
+                    .addComponent(jButton1)
+                    .addComponent(jButtonMarcarViviendaComoActivaDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -408,7 +413,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
@@ -423,7 +428,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButtonCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButtonRemoveTelefonoCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jLabel18.setText("Medicina");
@@ -510,7 +515,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                     .addComponent(jTextFieldNombreAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAddMedicina, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -521,7 +526,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addComponent(jFormattedTextFieldCantidadAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jLabel24.setText("DNI");
@@ -660,7 +665,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel30)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDialogModificarContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
@@ -675,7 +680,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButtonModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButtonRemoveTelefonoModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jButtonCrearVivienda.setText("Crear Vivienda");
@@ -745,14 +750,14 @@ public class JFrameDependiente extends javax.swing.JFrame {
                     .addComponent(jTextFieldNombrePoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCrearPoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel35)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldDireccionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -760,34 +765,40 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Datos de Dependiente:");
 
-        jLabelNombreYApellidosDependiente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelNombreYApellidosDependiente.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabelNombreYApellidosDependiente.setText("Nombre y Apellidos");
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("DNI:");
 
-        jLabelDNIDependiente.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelDNIDependiente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabelDNIDependiente.setText("jLabel4");
 
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setText("Fecha Nacimiento:");
 
-        jLabelFechaNacimientoDependiente.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelFechaNacimientoDependiente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabelFechaNacimientoDependiente.setText("jLabel6");
 
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel7.setText("Género:");
 
-        jLabelGeneroDependiente.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelGeneroDependiente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabelGeneroDependiente.setText("jLabel8");
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Tipo:");
 
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setText("Fecha Alta:");
 
-        jLabelFechaAltaDependiente.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelFechaAltaDependiente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabelFechaAltaDependiente.setText("jLabel8");
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel8.setText("Contactos");
 
+        jTableContactosDependiente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTableContactosDependiente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -799,8 +810,10 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
             }
         ));
+        jTableContactosDependiente.setRowHeight(18);
         jScrollPane1.setViewportView(jTableContactosDependiente);
 
+        jButtonAddContactoDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonAddContactoDependiente.setText("Añadir Contacto");
         jButtonAddContactoDependiente.setToolTipText("");
         jButtonAddContactoDependiente.addActionListener(new java.awt.event.ActionListener() {
@@ -812,6 +825,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel9.setText("Medicación");
 
+        jTableMedicacionDependiente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTableMedicacionDependiente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -823,8 +837,10 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
             }
         ));
+        jTableMedicacionDependiente.setRowHeight(18);
         jScrollPane2.setViewportView(jTableMedicacionDependiente);
 
+        jButtonEditarContactoDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonEditarContactoDependiente.setText("Editar Contacto");
         jButtonEditarContactoDependiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -832,6 +848,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
+        jButtonEliminarContactoDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonEliminarContactoDependiente.setText("Eliminar Contacto");
         jButtonEliminarContactoDependiente.setToolTipText("");
         jButtonEliminarContactoDependiente.addActionListener(new java.awt.event.ActionListener() {
@@ -840,6 +857,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
+        jButtonAñadirMedicacionDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonAñadirMedicacionDependiente.setText("Añadir Medicación");
         jButtonAñadirMedicacionDependiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -847,6 +865,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
+        jButtonEditarMedicacionDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonEditarMedicacionDependiente.setText("Editar Medicación");
         jButtonEditarMedicacionDependiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -854,6 +873,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
+        jButtonEliminarMedicacionDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonEliminarMedicacionDependiente.setText("Eliminar Medicación");
         jButtonEliminarMedicacionDependiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -861,6 +881,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
+        jButtonVerViviendasDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonVerViviendasDependiente.setText("Ver Viviendas");
         jButtonVerViviendasDependiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -868,7 +889,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
-        jLabelTipoDeDependiente.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabelTipoDeDependiente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabelTipoDeDependiente.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -883,7 +904,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelNombreYApellidosDependiente))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -899,16 +920,15 @@ public class JFrameDependiente extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel6))
                             .addComponent(jLabel8)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButtonAddContactoDependiente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButtonEditarContactoDependiente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonEliminarContactoDependiente)))
+                                .addComponent(jButtonEliminarContactoDependiente))
+                            .addComponent(jScrollPane1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelFechaAltaDependiente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -917,16 +937,17 @@ public class JFrameDependiente extends javax.swing.JFrame {
                                 .addComponent(jLabelTipoDeDependiente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButtonVerViviendasDependiente))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButtonAñadirMedicacionDependiente)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jButtonEditarMedicacionDependiente)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButtonEliminarMedicacionDependiente))
-                                    .addComponent(jLabel9))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                        .addComponent(jButtonEliminarMedicacionDependiente)))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -955,8 +976,8 @@ public class JFrameDependiente extends javax.swing.JFrame {
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAddContactoDependiente)
@@ -965,7 +986,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                     .addComponent(jButtonAñadirMedicacionDependiente)
                     .addComponent(jButtonEditarMedicacionDependiente)
                     .addComponent(jButtonEliminarMedicacionDependiente))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();

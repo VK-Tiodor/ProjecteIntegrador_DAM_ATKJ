@@ -6,15 +6,22 @@
 package vista;
 
 import controlador.Controlador;
+import controlador.Main;
 import hibernate.Asistencia;
 import hibernate.Dependiente;
 import hibernate.TareasPendientes;
-import java.sql.Date;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.util.Calendar;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.plaf.FontUIResource;
 import modelo.conexion.Conexion;
 
 /**
@@ -28,6 +35,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private String idDependienteLlamada;
     private Double longitudDependienteLlamada;
     private Double latitudDependienteLlamada;
+    private JFrame frame;
 
     private DefaultTableModel tablaListaDependientes;
 
@@ -36,6 +44,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         this.controlador = controlador;
         this.conexion = conexion;
         setUI();
+        this.setExtendedState(MAXIMIZED_BOTH);
+        this.frame = this;
+        Main.recorreComponentesRecursivo(this);
+        ;
     }
 
     /**
@@ -682,7 +694,9 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     private void jButtonCogerLlamadaAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCogerLlamadaAvisoActionPerformed
         JFrameDependiente jfd = new JFrameDependiente(controlador, this.controlador.getConexion().getDependienteById(this.idDependienteLlamada));
-        this.controlador.abreMapa( this.longitudDependienteLlamada, this.latitudDependienteLlamada);
+        if (this.latitudDependienteLlamada != 0 && this.longitudDependienteLlamada != 0) { // Se lanza el mapa si las coordenadas son correctas
+            this.controlador.abreMapa(this.longitudDependienteLlamada, this.latitudDependienteLlamada);
+        }
         this.controlador.abreFrame(jfd);
         this.controlador.abreDialog(jDialogDetallesLlamada, false);
         jfd.setLocation(50, 170);
@@ -792,14 +806,39 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNombreCrearDependiente;
     // End of variables declaration//GEN-END:variables
 
-    private void setUI() {
+    private class FrameListen implements ComponentListener {
 
+        public void componentHidden(ComponentEvent arg0) {
+        }
+
+        public void componentMoved(ComponentEvent arg0) {
+        }
+
+        public void componentResized(ComponentEvent arg0) {
+            if (frame.getWidth() < 800) {
+                Main.TAMANYOLETRA = 1;
+            } else if (frame.getWidth() < 1200) {
+                Main.TAMANYOLETRA = 2;
+            } else if (frame.getWidth() < 1600) {
+                Main.TAMANYOLETRA = 3;
+            } else if (frame.getWidth() < 2000) {
+                Main.TAMANYOLETRA = 4;
+            }
+            
+            Main.recorreComponentesRecursivo(frame);
+        }
+
+        public void componentShown(ComponentEvent arg0) {
+
+        }
+    }
+
+    private void setUI() {
+        this.addComponentListener(new FrameListen());
         this.controlador.rellenaTablaAgenda(this.jTableAgenda);
         this.controlador.rellenaTablaHistorialLlamadas(this.jTableHistorialLlamadas);
         this.controlador.rellenaTablaListaDependiente(this.jTableListaDependientes);
-
         tablaListaDependientes = (DefaultTableModel) jTableListaDependientes.getModel();
-
     }
 
     public void abreDialogAlerta(String id, String longitud, String latitud) {

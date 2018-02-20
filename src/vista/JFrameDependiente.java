@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.Controlador;
+import controlador.Main;
 import hibernate.Contacto;
 import hibernate.ContactoHasDependiente;
 import hibernate.Dependiente;
@@ -51,6 +52,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
         this.controlador = controlador;
         this.dependienteSeleccionado = dependienteSeleccionado;
         setUI();
+        Main.recorreComponentesRecursivo(this);
     }
 
     private void setUI() {

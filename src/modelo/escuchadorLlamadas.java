@@ -58,7 +58,7 @@ public class escuchadorLlamadas extends Thread {
                 bw.newLine();
                 bw.flush();
                 
-                // El cliente manda su id
+                // El cliente manda su id, su latitud y su longitud,
                 this.controlador.lanzaAlerta(br.readLine(), br.readLine(), br.readLine());
             }
             bw.close();

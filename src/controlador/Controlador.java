@@ -64,7 +64,7 @@ public class Controlador {
         this.listaTareasPendientes = this.conexion.getTareasPendientes();
         pantallaPrincipal = new JFramePantallaPrincipal(this, conexion);
         cambiaVentana(pantallaPrincipal);
-        
+
     }
 
     // Getters y Setters
@@ -108,7 +108,9 @@ public class Controlador {
         TareasPendientes.setColumns(model);
 
         for (TareasPendientes tareasPendiente : this.conexion.getTareasPendientes()) {
-            model.addRow(tareasPendiente.getTareaPendienteForTable());
+            if (!tareasPendiente.getRealizada() && tareasPendiente.getTareaAsistente()) {
+                model.addRow(tareasPendiente.getTareaPendienteForTable());
+            }
         }
 
         tablaAgenda.setModel(model);
@@ -221,6 +223,7 @@ public class Controlador {
         centraTabla(jTableAddMedicinas);
 
     }
+
     public void rellenaTablaPoblaciones(JTable jTablePoblacionesCrearVivienda) {
         DefaultTableModel model = new DefaultTableModel();
         Poblacion.setColumns(model);
@@ -230,17 +233,17 @@ public class Controlador {
         }
 
         jTablePoblacionesCrearVivienda.setModel(model);
-        
+
         centraTabla(jTablePoblacionesCrearVivienda);
     }
-    
-    public void centraTabla(JTable tabla){
-          DefaultTableCellRenderer tcr = new DefaultTableCellRenderer(); 
-        tcr.setHorizontalAlignment(SwingConstants.CENTER); 
-         
-        for (int i = 0; i < tabla.getColumnModel().getColumnCount(); i++) { 
-            tabla.getColumnModel().getColumn(i).setCellRenderer(tcr); 
-        } 
+
+    public void centraTabla(JTable tabla) {
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < tabla.getColumnModel().getColumnCount(); i++) {
+            tabla.getColumnModel().getColumn(i).setCellRenderer(tcr);
+        }
     }
 
     public void abreMapa(Double longitud, Double latitud) {
@@ -302,7 +305,7 @@ public class Controlador {
     }
 
     public void creaTarea(Dependiente dependiente, Date fecha, String hora, String encabezado, String descripcion, DefaultTableModel model) {
-        TareasPendientes nuevaTarea = new TareasPendientes(dependiente, fecha, hora, encabezado, descripcion);
+        TareasPendientes nuevaTarea = new TareasPendientes(dependiente, fecha, encabezado, descripcion);
         this.listaTareasPendientes.add(nuevaTarea);
         this.conexion.guardaTareaPendiente(nuevaTarea);
         model.addRow(this.listaTareasPendientes.get(this.listaTareasPendientes.size() - 1).getTareaPendienteForTable());
@@ -327,13 +330,14 @@ public class Controlador {
         this.conexion.guardaContactoHasDependiente(chd);
 
     }
+
     public void crearMedicacionDependiente(Medicacion medicina, String toma, Double cantidad, Dependiente dependiente) {
         DependienteHasMedicacionId dhmid = new DependienteHasMedicacionId(dependiente.getIdDependiente(), medicina.getIdMedicacion());
         DependienteHasMedicacion dhm = new DependienteHasMedicacion(dhmid, dependiente, medicina, toma, cantidad);
         this.conexion.guardaDependienteHasMedicacion(dhm);
         dependiente.getDependienteHasMedicacions().add(dhm);
         medicina.getDependienteHasMedicacions().add(dhm);
-        
+
     }
 
     public void crearDependiente(String dni, String nombre, String apellidos, Calendar fechaNac, String genero, String tipo, String pass, DefaultTableModel tabla) {
@@ -343,8 +347,9 @@ public class Controlador {
         this.listaDependientes.add(d);
         tabla.addRow(d.getDependienteForTable());
         this.getConexion().guardaDependiente(d);
-        
+
     }
+
     public void crearMedicina(Medicacion medicacion) {
         this.conexion.guardaMedicina(medicacion);
     }
@@ -352,21 +357,20 @@ public class Controlador {
     public void crearAsistencia(Asistencia asistencia) {
         this.conexion.guardaAsistencia(asistencia);
     }
-    
+
     public void creaVivienda(Poblacion poblacion, String direccion, Dependiente dependiente, JTable tablaViviendas) {
         Vivienda vivienda = new Vivienda(poblacion);
         vivienda.setDireccion(direccion);
         vivienda.getPersonases().add(dependiente.getPersonas());
         dependiente.getPersonas().getViviendas().add(vivienda);
-        
+
         DefaultTableModel dtm = (DefaultTableModel) tablaViviendas.getModel();
         dtm.addRow(vivienda.getViviendaForTable());
         this.conexion.guardaVivienda(vivienda);
-        
+
     }
-    
-    
-    public void borraTarea(TareasPendientes tarea){
+
+    public void borraTarea(TareasPendientes tarea) {
         this.listaTareasPendientes.remove(tarea);
         this.conexion.eliminaTareaPendiente(tarea);
     }
@@ -380,18 +384,17 @@ public class Controlador {
         dependiente.getContactoHasDependientes().remove(contactoHasDependiente.getContacto());
         dependiente.getContactoHasDependientes().remove(contactoHasDependiente);
         this.conexion.eliminaContactoHasDependiente(contactoHasDependiente);
-        
-    }    
+
+    }
+
     public void borraVivienda(Vivienda vivienda, Dependiente dependiente) {
         dependiente.getPersonas().getViviendas().remove(vivienda);
         this.conexion.eliminaVivienda(vivienda);
     }
-    
-       public static String formateaFecha(Date date) {
-        DateFormat dateFormat = new SimpleDateFormat("y-MM-d");
+
+    public static String formateaFecha(Date date) {
+        DateFormat dateFormat = new SimpleDateFormat("y-MM-d hh:mm");
         return dateFormat.format(date);
     }
-
-    
 
 }

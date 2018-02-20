@@ -13,9 +13,11 @@ public class TareasPendientes implements java.io.Serializable {
     private Integer idTarea;
     private Dependiente dependiente;
     private Date fecha;
-    private String hora;
     private String encabezado;
     private String descripcion;
+    private Double horasRepeticion;
+    private Boolean tareaAsistente;
+    private Boolean realizada;
 
     public TareasPendientes() {
     }
@@ -23,13 +25,22 @@ public class TareasPendientes implements java.io.Serializable {
     public TareasPendientes(Dependiente dependiente) {
         this.dependiente = dependiente;
     }
-
-    public TareasPendientes(Dependiente dependiente, Date fecha, String hora, String encabezado, String descripcion) {
+    
+    public TareasPendientes(Dependiente dependiente, Date fecha, String encabezado, String descripcion) {
         this.dependiente = dependiente;
         this.fecha = fecha;
-        this.hora = hora;
         this.encabezado = encabezado;
         this.descripcion = descripcion;
+    }
+
+    public TareasPendientes(Dependiente dependiente, Date fecha, String encabezado, String descripcion, Double horasRepeticion, Boolean tareaAsistente, Boolean realizada) {
+        this.dependiente = dependiente;
+        this.fecha = fecha;
+        this.encabezado = encabezado;
+        this.descripcion = descripcion;
+        this.horasRepeticion = horasRepeticion;
+        this.tareaAsistente = tareaAsistente;
+        this.realizada = realizada;
     }
 
     public Integer getIdTarea() {
@@ -56,14 +67,6 @@ public class TareasPendientes implements java.io.Serializable {
         this.fecha = fecha;
     }
 
-    public String getHora() {
-        return this.hora;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
-    }
-
     public String getEncabezado() {
         return this.encabezado;
     }
@@ -80,14 +83,37 @@ public class TareasPendientes implements java.io.Serializable {
         this.descripcion = descripcion;
     }
 
+    public Double getHorasRepeticion() {
+        return horasRepeticion;
+    }
+
+    public void setHorasRepeticion(Double horasRepeticion) {
+        this.horasRepeticion = horasRepeticion;
+    }
+
+    public Boolean getTareaAsistente() {
+        return tareaAsistente;
+    }
+
+    public void setTareaAsistente(Boolean tareaAsistente) {
+        this.tareaAsistente = tareaAsistente;
+    }
+
+    public Boolean getRealizada() {
+        return realizada;
+    }
+
+    public void setRealizada(Boolean realizada) {
+        this.realizada = realizada;
+    }
+
     public Object[] getTareaPendienteForTable() {
-        return new Object[]{this, Controlador.formateaFecha(this.fecha), this.hora, this.encabezado, this.descripcion};
+        return new Object[]{this, this.fecha, this.encabezado, this.descripcion};
     }
 
     public static void setColumns(DefaultTableModel model) {
         model.addColumn("Dependiente");
         model.addColumn("Fecha");
-        model.addColumn("Hora");
         model.addColumn("Encabezado");
         model.addColumn("Descripcion");
     }

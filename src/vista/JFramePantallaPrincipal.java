@@ -15,12 +15,15 @@ import java.awt.Font;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.FontUIResource;
 import modelo.conexion.Conexion;
 
@@ -38,6 +41,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     private DefaultTableModel tablaListaDependientes;
     public JFramePantallaPrincipal(Controlador controlador, Conexion conexion) {
+        super("DependenciApp");
+        setAspecto("Nimbus");
         initComponents();
         this.controlador = controlador;
         this.conexion = conexion;
@@ -302,13 +307,13 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
         jDialogAlertaLlamadaEntrante.setBackground(new java.awt.Color(255, 255, 153));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel1.setBackground(new java.awt.Color(255, 245, 157));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("AVISO - LLAMADA ENTRANTE");
 
-        jButtonCogerLlamadaAviso.setBackground(new java.awt.Color(255, 102, 102));
+        jButtonCogerLlamadaAviso.setBackground(new java.awt.Color(244, 67, 54));
         jButtonCogerLlamadaAviso.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButtonCogerLlamadaAviso.setForeground(new java.awt.Color(255, 255, 255));
         jButtonCogerLlamadaAviso.setText("COGER LLAMADA");
@@ -767,6 +772,9 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         this.controlador.abreDialog(jDialogDetallesLlamada, false);
         jfd.setLocation(50, 170);
         jDialogDetallesLlamada.setLocation(1150, 170);
+        jDialogDetallesLlamada.setAlwaysOnTop(true);
+        
+        jDialogAlertaLlamadaEntrante.dispose();
 
     }//GEN-LAST:event_jButtonCogerLlamadaAvisoActionPerformed
 
@@ -876,17 +884,35 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     
 
     private void setUI() {
+        
+        
         this.controlador.rellenaTablaAgenda(this.jTableAgenda);
         this.controlador.rellenaTablaHistorialLlamadas(this.jTableHistorialLlamadas);
         this.controlador.rellenaTablaListaDependiente(this.jTableListaDependientes);
         tablaListaDependientes = (DefaultTableModel) jTableListaDependientes.getModel();
         
+        
+        
+    }
+    private void setAspecto(String aspecto){
+        //set Nimbus o otro
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if (aspecto.equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException |InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(JFramePantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
     }
 
     public void abreDialogAlerta(String id, String longitud, String latitud) {
         this.idDependienteLlamada = id;
         this.longitudDependienteLlamada = Double.parseDouble(longitud);
         this.latitudDependienteLlamada = Double.parseDouble(latitud);
+        System.out.println("Lat: "+ this.latitudDependienteLlamada + "long: "+this.longitudDependienteLlamada);
         jDialogAlertaLlamadaEntrante.pack();
         jDialogAlertaLlamadaEntrante.setVisible(true);
         jDialogAlertaLlamadaEntrante.setModal(true);

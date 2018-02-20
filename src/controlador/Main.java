@@ -24,6 +24,9 @@ import modelo.escuchadorLlamadas;
  */
 public class Main {
 
+    //TODO - la vista de dependientes, que sea mitad mapa mitad dependiente, 
+
+    
     private static final String MACHINE = "localhost";
     private static final int PORT = 9090;
     public static int TAMANYOLETRA = 2;

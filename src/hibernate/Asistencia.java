@@ -69,7 +69,7 @@ public class Asistencia  implements java.io.Serializable {
     }
     
     public Object[] getAsistenciaForTable() {
-        return new Object[]{this.fecha, this.motivo, this.datosAsistencia};
+        return new Object[]{this, this.fecha, this.motivo, this.datosAsistencia};
     }
 
     public static void setColumns(DefaultTableModel model) {

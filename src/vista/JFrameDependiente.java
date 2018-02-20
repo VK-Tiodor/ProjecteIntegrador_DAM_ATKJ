@@ -48,6 +48,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
      * @param dependienteSeleccionado
      */
     public JFrameDependiente(Controlador controlador, Dependiente dependienteSeleccionado) {
+        super("Dependiente");
         initComponents();
         this.controlador = controlador;
         this.dependienteSeleccionado = dependienteSeleccionado;
@@ -270,13 +271,15 @@ public class JFrameDependiente extends javax.swing.JFrame {
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAddViviendaDependiente)
-                    .addComponent(jButton1)
-                    .addComponent(jButtonMarcarViviendaComoActivaDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonMarcarViviendaComoActivaDependiente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonAddViviendaDependiente)
+                        .addComponent(jButton1)))
                 .addContainerGap())
         );
 
+        jButtonCrearContacto.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonCrearContacto.setText("Crear Contacto");
         jButtonCrearContacto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,24 +287,41 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
+        jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel17.setText("Genero");
 
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setText("DNI");
 
         jComboBoxGeneroCrearContacto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "H", "I" }));
 
+        jTextFieldDNICrearContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel14.setText("Nombre");
 
+        jTextFieldNombreCrearContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel15.setText("Apellidos");
 
+        jTextFieldApellidosCrearContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel16.setText("Nacimiento");
 
+        jLabel12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel12.setText("Telefonos");
 
+        jLabel21.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel21.setText("Relación");
 
+        jTextFieldRelacionCrearContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jCheckBoxCrearContacto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jCheckBoxCrearContacto.setText("Llave de casa");
 
+        jTableTelefonosCrearContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTableTelefonosCrearContacto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -318,12 +338,18 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableTelefonosCrearContacto.setRowHeight(18);
         jScrollPane5.setViewportView(jTableTelefonosCrearContacto);
 
+        jTextFieldNumeroCrearContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jLabel22.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel22.setText("Tipo");
 
+        jLabel23.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel23.setText("Número");
 
+        jComboBoxTipoTelefonoCrearContacto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jComboBoxTipoTelefonoCrearContacto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fijo", "Movil" }));
 
         jButtonAddTelefonoCrearContacto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon_add_16.png"))); // NOI18N
@@ -413,7 +439,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
@@ -431,16 +457,22 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel18.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel18.setText("Medicina");
 
+        jTextFieldNombreAddMedicinaDependiente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextFieldNombreAddMedicinaDependiente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldNombreAddMedicinaDependienteKeyTyped(evt);
             }
         });
 
+        jLabel19.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel19.setText("Toma");
 
+        jTextFieldTomaAddMedicinaDependiente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jLabel20.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel20.setText("Cantidad");
 
         jButtonAddMedicinaDependiente.setText("Añadir Medicación");
@@ -450,6 +482,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
+        jTableAddMedicinas.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTableAddMedicinas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -466,6 +499,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableAddMedicinas.setRowHeight(18);
         jScrollPane7.setViewportView(jTableAddMedicinas);
         if (jTableAddMedicinas.getColumnModel().getColumnCount() > 0) {
             jTableAddMedicinas.getColumnModel().getColumn(0).setHeaderValue("Medicina");
@@ -515,7 +549,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                     .addComponent(jTextFieldNombreAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAddMedicina, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -529,12 +563,17 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jTextFieldRelacionModificarContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jLabel24.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel24.setText("DNI");
 
+        jCheckBoxModificarContacto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jCheckBoxModificarContacto.setText("Llave de casa");
 
         jComboBoxGeneroModificarContacto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "H", "I" }));
 
+        jTableTelefonosModificarContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTableTelefonosModificarContacto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -551,18 +590,33 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableTelefonosModificarContacto.setRowHeight(18);
         jScrollPane6.setViewportView(jTableTelefonosModificarContacto);
 
+        jTextFieldDNIModificarContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jLabel25.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel25.setText("Nombre");
 
+        jTextFieldNumeroModificarContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jTextFieldNombreModificarContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jLabel26.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel26.setText("Tipo");
 
+        jLabel27.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel27.setText("Apellidos");
 
+        jLabel28.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel28.setText("Número");
 
+        jTextFieldApellidosModificarContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jComboBoxTipoTelefonoModificarContacto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jComboBoxTipoTelefonoModificarContacto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fijo", "Movil" }));
 
+        jLabel29.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel29.setText("Nacimiento");
 
         jButtonAddTelefonoModificarContacto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon_add_16.png"))); // NOI18N
@@ -573,6 +627,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
+        jButtonModificarContacto.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonModificarContacto.setText("Modificar Contacto");
         jButtonModificarContacto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -580,10 +635,13 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
+        jLabel30.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel30.setText("Telefonos");
 
+        jLabel31.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel31.setText("Relación");
 
+        jLabel32.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel32.setText("Genero");
 
         jButtonRemoveTelefonoModificarContacto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon_delete_16.png"))); // NOI18N
@@ -665,7 +723,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel30)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDialogModificarContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
@@ -683,6 +741,9 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jTextFieldDireccionCrearVivienda.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jButtonCrearVivienda.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonCrearVivienda.setText("Crear Vivienda");
         jButtonCrearVivienda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -690,6 +751,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
+        jTablePoblacionesCrearVivienda.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTablePoblacionesCrearVivienda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -698,6 +760,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
             }
         ));
+        jTablePoblacionesCrearVivienda.setRowHeight(18);
         jScrollPane9.setViewportView(jTablePoblacionesCrearVivienda);
 
         jButtonCrearPoblacionCrearVivienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon_add_16.png"))); // NOI18N
@@ -709,14 +772,17 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
+        jLabel34.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel34.setText("Población");
 
+        jTextFieldNombrePoblacionCrearVivienda.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextFieldNombrePoblacionCrearVivienda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldNombrePoblacionCrearViviendaKeyTyped(evt);
             }
         });
 
+        jLabel35.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel35.setText("Dirección");
 
         javax.swing.GroupLayout jDialogCrearViviendaLayout = new javax.swing.GroupLayout(jDialogCrearVivienda.getContentPane());
@@ -750,7 +816,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                     .addComponent(jTextFieldNombrePoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCrearPoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel35)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -904,50 +970,52 @@ public class JFrameDependiente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelNombreYApellidosDependiente))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabelDNIDependiente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelFechaNacimientoDependiente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabelGeneroDependiente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel6))
-                            .addComponent(jLabel8)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonAddContactoDependiente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonEditarContactoDependiente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonEliminarContactoDependiente))
-                            .addComponent(jScrollPane1))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButtonAddContactoDependiente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonEditarContactoDependiente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonEliminarContactoDependiente))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabelDNIDependiente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabelFechaNacimientoDependiente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabelGeneroDependiente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabelFechaAltaDependiente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabelTipoDeDependiente)))
+                                .addGap(0, 12, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonVerViviendasDependiente)
+                            .addComponent(jScrollPane2)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelFechaAltaDependiente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabelTipoDeDependiente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonVerViviendasDependiente))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButtonAñadirMedicacionDependiente)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jButtonEditarMedicacionDependiente)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButtonEliminarMedicacionDependiente)))))))
+                                        .addComponent(jButtonEliminarMedicacionDependiente)))
+                                .addGap(0, 98, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -976,7 +1044,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

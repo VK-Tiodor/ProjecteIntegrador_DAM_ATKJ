@@ -41,6 +41,8 @@ public class JFrameDependiente extends javax.swing.JFrame {
     
     Set telefonos = new HashSet();
     
+    private DependienteHasMedicacion medicinaEditandonse;
+    
     /**
      * Creates new form JFrameDependiente
      *
@@ -156,6 +158,14 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         jTextFieldNombrePoblacionCrearVivienda = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
+        jDialogEditarMedicacion = new javax.swing.JDialog();
+        jFormattedTextFieldCantidadModificarMedicinaDependiente = new javax.swing.JFormattedTextField();
+        jLabel33 = new javax.swing.JLabel();
+        jTextFieldNombreModificarMedicinaDependiente = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        jTextFieldTomaModificarMedicinaDependiente = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        jButtonModificarMedicinaDependiente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabelNombreYApellidosDependiente = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -826,6 +836,73 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jFormattedTextFieldCantidadModificarMedicinaDependiente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+
+        jLabel33.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel33.setText("Medicina");
+
+        jTextFieldNombreModificarMedicinaDependiente.setEditable(false);
+        jTextFieldNombreModificarMedicinaDependiente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jTextFieldNombreModificarMedicinaDependiente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNombreModificarMedicinaDependienteKeyTyped(evt);
+            }
+        });
+
+        jLabel36.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel36.setText("Toma");
+
+        jTextFieldTomaModificarMedicinaDependiente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jLabel37.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel37.setText("Cantidad");
+
+        jButtonModificarMedicinaDependiente.setText("Modificar Medicación");
+        jButtonModificarMedicinaDependiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarMedicinaDependienteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogEditarMedicacionLayout = new javax.swing.GroupLayout(jDialogEditarMedicacion.getContentPane());
+        jDialogEditarMedicacion.getContentPane().setLayout(jDialogEditarMedicacionLayout);
+        jDialogEditarMedicacionLayout.setHorizontalGroup(
+            jDialogEditarMedicacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogEditarMedicacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDialogEditarMedicacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldTomaModificarMedicinaDependiente)
+                    .addComponent(jButtonModificarMedicinaDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jDialogEditarMedicacionLayout.createSequentialGroup()
+                        .addGroup(jDialogEditarMedicacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel36)
+                            .addComponent(jLabel37)
+                            .addComponent(jLabel33))
+                        .addGap(0, 258, Short.MAX_VALUE))
+                    .addComponent(jFormattedTextFieldCantidadModificarMedicinaDependiente)
+                    .addComponent(jTextFieldNombreModificarMedicinaDependiente))
+                .addContainerGap())
+        );
+        jDialogEditarMedicacionLayout.setVerticalGroup(
+            jDialogEditarMedicacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogEditarMedicacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel33)
+                .addGap(9, 9, 9)
+                .addComponent(jTextFieldNombreModificarMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldTomaModificarMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jFormattedTextFieldCantidadModificarMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonModificarMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -1128,7 +1205,14 @@ public class JFrameDependiente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAñadirMedicacionDependienteActionPerformed
 
     private void jButtonEditarMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarMedicacionDependienteActionPerformed
-
+        if (this.jTableMedicacionDependiente.getSelectedRow() != -1) {
+            DependienteHasMedicacion medicacion = (DependienteHasMedicacion) this.jTableMedicacionDependiente.getModel().getValueAt(this.jTableMedicacionDependiente.getSelectedRow(), 0);
+            this.jTextFieldNombreModificarMedicinaDependiente.setText(medicacion.getMedicacion().getNombre());
+            this.jTextFieldTomaModificarMedicinaDependiente.setText(medicacion.getToma());
+            this.jFormattedTextFieldCantidadModificarMedicinaDependiente.setText(medicacion.getCantidad().toString());
+            this.medicinaEditandonse = medicacion;
+            this.controlador.abreDialog(jDialogEditarMedicacion,false);
+        }
     }//GEN-LAST:event_jButtonEditarMedicacionDependienteActionPerformed
 
     private void jButtonEliminarMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarMedicacionDependienteActionPerformed
@@ -1330,6 +1414,22 @@ public class JFrameDependiente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButtonModificarMedicinaDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarMedicinaDependienteActionPerformed
+        //String nombre = jTextFieldNombreAddMedicinaDependiente.getText();
+        String toma = jTextFieldTomaModificarMedicinaDependiente.getText();
+        Double cantidad = Double.parseDouble(jFormattedTextFieldCantidadModificarMedicinaDependiente.getText().replace(',', '.'));
+        medicinaEditandonse.setToma(toma);
+        medicinaEditandonse.setCantidad(cantidad);
+        this.controlador.guardaMedicinaEditada(medicinaEditandonse);
+        this.controlador.rellenaTablaMedicacionDependiente(jTableMedicacionDependiente, dependienteSeleccionado);
+        jDialogEditarMedicacion.dispose();
+        
+    }//GEN-LAST:event_jButtonModificarMedicinaDependienteActionPerformed
+
+    private void jTextFieldNombreModificarMedicinaDependienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreModificarMedicinaDependienteKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombreModificarMedicinaDependienteKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datechooser.beans.DateChooserCombo dateChooserComboNacimientoCrearContacto;
@@ -1351,6 +1451,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEliminarMedicacionDependiente;
     private javax.swing.JButton jButtonMarcarViviendaComoActivaDependiente;
     private javax.swing.JButton jButtonModificarContacto;
+    private javax.swing.JButton jButtonModificarMedicinaDependiente;
     private javax.swing.JButton jButtonRemoveTelefonoCrearContacto;
     private javax.swing.JButton jButtonRemoveTelefonoModificarContacto;
     private javax.swing.JButton jButtonVerViviendasDependiente;
@@ -1363,9 +1464,11 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JDialog jDialogCrearContacto;
     private javax.swing.JDialog jDialogCrearMedicina;
     private javax.swing.JDialog jDialogCrearVivienda;
+    private javax.swing.JDialog jDialogEditarMedicacion;
     private javax.swing.JDialog jDialogModificarContacto;
     private javax.swing.JDialog jDialogViviendas;
     private javax.swing.JFormattedTextField jFormattedTextFieldCantidadAddMedicinaDependiente;
+    private javax.swing.JFormattedTextField jFormattedTextFieldCantidadModificarMedicinaDependiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1391,8 +1494,11 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1429,11 +1535,13 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNombreAddMedicinaDependiente;
     private javax.swing.JTextField jTextFieldNombreCrearContacto;
     private javax.swing.JTextField jTextFieldNombreModificarContacto;
+    private javax.swing.JTextField jTextFieldNombreModificarMedicinaDependiente;
     private javax.swing.JTextField jTextFieldNombrePoblacionCrearVivienda;
     private javax.swing.JTextField jTextFieldNumeroCrearContacto;
     private javax.swing.JTextField jTextFieldNumeroModificarContacto;
     private javax.swing.JTextField jTextFieldRelacionCrearContacto;
     private javax.swing.JTextField jTextFieldRelacionModificarContacto;
     private javax.swing.JTextField jTextFieldTomaAddMedicinaDependiente;
+    private javax.swing.JTextField jTextFieldTomaModificarMedicinaDependiente;
     // End of variables declaration//GEN-END:variables
 }

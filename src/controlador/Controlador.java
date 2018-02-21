@@ -353,4 +353,8 @@ public class Controlador {
         return dateFormat.format(date);
     }
 
+    public void guardaMedicinaEditada(DependienteHasMedicacion medicinaEditandonse) {
+        this.conexion.guardaDependienteHasMedicacion(medicinaEditandonse);
+    }
+
 }

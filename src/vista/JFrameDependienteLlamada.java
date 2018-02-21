@@ -68,11 +68,11 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
         super("Dependiente " + dependiente.getPersonas().getNombre());
         initComponents();
         this.controlador = controlador;
-        this.dependienteLlamada = dependiente;
-        setUI();
+        this.dependienteLlamada = dependiente;        
         this.longitudDependienteLlamada = longitudDependienteLlamada;
         this.latitudDependienteLlamada = latitudDependienteLlamada;
         this.tablaHistorialLlamadas = jTableHistorialLlamadas;
+        setUI();
     }
 
 
@@ -1325,9 +1325,7 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
         
         Browser browser = new Browser();
         BrowserView view = new BrowserView(browser);
-        
 
-        //browser.loadURL("https://google.com");
         browser.loadHTML("<!DOCTYPE html>\n"
                 + "<html>\n"
                 + "  <head>\n"
@@ -1365,12 +1363,6 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
                 + "    </script>\n"
                 + "  </body>\n"
                 + "</html>");
-        
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(JFrameDependienteLlamada.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
         jPanelMapaDependiente.removeAll();
         jPanelMapaDependiente.add(view, BorderLayout.CENTER);

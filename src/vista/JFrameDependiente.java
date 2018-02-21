@@ -66,7 +66,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
         this.controlador.rellenaTablaContactosDependiente(jTableContactosDependiente, dependienteSeleccionado);
         this.controlador.rellenaTablaMedicacionDependiente(jTableMedicacionDependiente, dependienteSeleccionado);
-
+        this.controlador.abreMapa(74d, 34d);
     }
 
     /**

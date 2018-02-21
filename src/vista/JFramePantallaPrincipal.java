@@ -11,6 +11,7 @@ import hibernate.Asistencia;
 import hibernate.Dependiente;
 import hibernate.TareasPendientes;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -111,6 +112,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jButtonAddTarea = new javax.swing.JButton();
         jButtonTareaRealizado = new javax.swing.JButton();
         jButtonBorrarTarea = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanelHistorialLlamadas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableHistorialLlamadas = new javax.swing.JTable();
@@ -503,6 +505,13 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelAgendaLayout = new javax.swing.GroupLayout(jPanelAgenda);
         jPanelAgenda.setLayout(jPanelAgendaLayout);
         jPanelAgendaLayout.setHorizontalGroup(
@@ -515,6 +524,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                         .addComponent(jButtonAddTarea)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonTareaRealizado)
+                        .addGap(98, 98, 98)
+                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonBorrarTarea)))
                 .addContainerGap())
@@ -528,7 +539,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAddTarea)
                     .addComponent(jButtonTareaRealizado)
-                    .addComponent(jButtonBorrarTarea))
+                    .addComponent(jButtonBorrarTarea)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -764,15 +776,14 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAceptarDetallesLlamadaActionPerformed
 
     private void jButtonCogerLlamadaAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCogerLlamadaAvisoActionPerformed
-        JFrameDependiente jfd = new JFrameDependiente(controlador, this.controlador.getConexion().getDependienteById(this.idDependienteLlamada));
+        
         if (this.latitudDependienteLlamada != 0 && this.longitudDependienteLlamada != 0) { // Se lanza el mapa si las coordenadas son correctas
-            this.controlador.abreMapa(this.longitudDependienteLlamada, this.latitudDependienteLlamada);
+            //this.controlador.abreMapa(this.longitudDependienteLlamada, this.latitudDependienteLlamada);
         }
-        this.controlador.abreFrame(jfd);
-        this.controlador.abreDialog(jDialogDetallesLlamada, false);
-        jfd.setLocation(50, 170);
-        jDialogDetallesLlamada.setLocation(1150, 170);
-        jDialogDetallesLlamada.setAlwaysOnTop(true);
+        
+        JFrameDependienteLlamada jfdl = new JFrameDependienteLlamada(controlador, this.controlador.getConexion().getDependienteById(this.idDependienteLlamada), this.longitudDependienteLlamada, this.latitudDependienteLlamada, this.jTableHistorialLlamadas);
+        this.controlador.abreFrame(jfdl);
+        
         
         jDialogAlertaLlamadaEntrante.dispose();
 
@@ -814,11 +825,17 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonBorrarDependienteActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        abreDialogAlerta("1", "-0.484756", "38.346041");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datechooser.beans.DateChooserCombo dateChooserComboFechaAddTarea;
     private datechooser.beans.DateChooserCombo dateChooserComboFechaDetallesLlamada;
     private datechooser.beans.DateChooserCombo dateChooserComboNacimientoCrearDependiente;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAceptarDetallesLlamada;
     private javax.swing.JButton jButtonAddDependiente;
     private javax.swing.JButton jButtonAddTarea;
@@ -912,11 +929,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         this.idDependienteLlamada = id;
         this.longitudDependienteLlamada = Double.parseDouble(longitud);
         this.latitudDependienteLlamada = Double.parseDouble(latitud);
-        System.out.println("Lat: "+ this.latitudDependienteLlamada + "long: "+this.longitudDependienteLlamada);
         jDialogAlertaLlamadaEntrante.pack();
-        jDialogAlertaLlamadaEntrante.setVisible(true);
         jDialogAlertaLlamadaEntrante.setModal(true);
         jDialogAlertaLlamadaEntrante.setLocationRelativeTo(null);
+        jDialogAlertaLlamadaEntrante.setVisible(true);
     }
 
 }

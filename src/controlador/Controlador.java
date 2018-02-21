@@ -22,6 +22,7 @@ import hibernate.TareasPendientes;
 import hibernate.Telefonos;
 import hibernate.Vivienda;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.text.DateFormat;
@@ -55,7 +56,8 @@ public class Controlador {
     private final ArrayList<Asistencia> listaAsistencias;
     private final ArrayList<TareasPendientes> listaTareasPendientes;
     private final JFramePantallaPrincipal pantallaPrincipal;
-
+    public final double alturaDePantalla;
+    public final double anchuraDePantalla;
     // Constructor
     public Controlador() {
         this.conexion = new Conexion(this);
@@ -63,7 +65,11 @@ public class Controlador {
         this.listaAsistencias = this.conexion.getAsistencias();
         this.listaTareasPendientes = this.conexion.getTareasPendientes();
         pantallaPrincipal = new JFramePantallaPrincipal(this, conexion);
-        cambiaVentana(pantallaPrincipal);
+        abreFrame(pantallaPrincipal);
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        Dimension tamanyo = gd.getDefaultConfiguration().getBounds().getSize();
+        alturaDePantalla = tamanyo.getHeight();
+        anchuraDePantalla = tamanyo.getWidth();
 
     }
 
@@ -92,9 +98,11 @@ public class Controlador {
         if (nueva != null) {
             nueva.pack();
             nueva.setLocationRelativeTo(null);
+            nueva.setExtendedState(JFrame.MAXIMIZED_BOTH);
             nueva.setVisible(true);
         }
     }
+    
 
     public void abreDialog(JDialog dialog, boolean modal) {
         dialog.pack();
@@ -246,59 +254,7 @@ public class Controlador {
         }
     }
 
-    public void abreMapa(Double longitud, Double latitud) {
-        GraphicsDevice grafica = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-
-        Browser browser = new Browser();
-        BrowserView view = new BrowserView(browser);
-
-        JFrame frame = new JFrame("Posición Acual");
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.add(view, BorderLayout.CENTER);
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-
-        browser.loadHTML("<!DOCTYPE html>\n"
-                + "<html>\n"
-                + "  <head>\n"
-                + " <style>\n"
-                + "      /* Always set the map height explicitly to define the size of the div\n"
-                + "       * element that contains the map. */\n"
-                + "      #map {\n"
-                + "        height: 100%;\n"
-                + "      }\n"
-                + "      /* Optional: Makes the sample page fill the window. */\n"
-                + "      html, body {\n"
-                + "        height: 100%;\n"
-                + "        margin: 0;\n"
-                + "        padding: 0;\n"
-                + "      }\n"
-                + "    </style>"
-                + "  </head>\n"
-                + "  <body>\n"
-                + "    <div id=\"map\"></div>\n"
-                + "    <script>\n"
-                + "      function initMap() {\n"
-                + "        var uluru = {lat: " + latitud + ", lng: " + longitud + "};\n"
-                + "        var map = new google.maps.Map(document.getElementById('map'), {\n"
-                + "          zoom: 17,\n"
-                + "          center: uluru\n"
-                + "        });\n"
-                + "        var marker = new google.maps.Marker({\n"
-                + "          position: uluru,\n"
-                + "          map: map\n"
-                + "        });\n"
-                + "      }\n"
-                + "    </script>\n"
-                + "    <script async defer\n"
-                + "    src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyCibsAi2HsAAXYqwQBOMpKJUvec8ol2eKM&callback=initMap\">\n"
-                + "    </script>\n"
-                + "  </body>\n"
-                + "</html>");
-
-        grafica.setFullScreenWindow(frame);
-    }
+    
 
     public void lanzaAlerta(String id, String longitud, String latitud) {
         pantallaPrincipal.abreDialogAlerta(id, longitud, latitud);

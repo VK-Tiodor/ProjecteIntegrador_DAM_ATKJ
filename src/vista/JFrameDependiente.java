@@ -17,6 +17,7 @@ import hibernate.Poblacion;
 import hibernate.TareasPendientes;
 import hibernate.Telefonos;
 import hibernate.Vivienda;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -66,7 +67,6 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
         this.controlador.rellenaTablaContactosDependiente(jTableContactosDependiente, dependienteSeleccionado);
         this.controlador.rellenaTablaMedicacionDependiente(jTableMedicacionDependiente, dependienteSeleccionado);
-        this.controlador.abreMapa(74d, 34d);
     }
 
     /**
@@ -1166,11 +1166,12 @@ public class JFrameDependiente extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedRow = jTableAddMedicinas.getSelectedRow();
         if (selectedRow != -1) {
+            System.out.println(jTableAddMedicinas.getValueAt(selectedRow, 0));
             Medicacion medicina = (Medicacion) jTableAddMedicinas.getValueAt(selectedRow, 0);
-            //String nombre = jTextFieldNombreAddMedicinaDependiente.getText();
             String toma = jTextFieldTomaAddMedicinaDependiente.getText();
             Double cantidad = Double.parseDouble(jFormattedTextFieldCantidadAddMedicinaDependiente.getText().replace(',', '.'));
             this.controlador.crearMedicacionDependiente(medicina, toma, cantidad, this.dependienteSeleccionado);
+            this.controlador.crearTarea(this.dependienteSeleccionado, Calendar.getInstance().getTime(), "Tomar " + medicina + " " + cantidad, null, Double.parseDouble(toma), 0, 0);
             this.controlador.rellenaTablaMedicacionDependiente(jTableMedicacionDependiente, dependienteSeleccionado);
             jDialogCrearMedicina.dispose();
         }else{

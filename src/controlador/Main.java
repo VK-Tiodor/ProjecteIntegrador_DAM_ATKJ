@@ -24,8 +24,9 @@ import modelo.escuchadorLlamadas;
  */
 public class Main {
 
-    //TODO - la vista de dependientes, que sea mitad mapa mitad dependiente, 
-
+    // TODO Logica de Tarea realizada
+    // TODO refrescar tabla tareas al introducir medicina
+    // TODO borrar tareas cuando se borre medicina
     
     private static final String MACHINE = "localhost";
     private static final int PORT = 9090;

@@ -353,4 +353,8 @@ public class Controlador {
         return dateFormat.format(date);
     }
 
+    public void crearTarea(Dependiente dependienteSeleccionado, Date time, String encabezado, String descripcion, Double toma, int tareaAsistente, int realizada) {
+        this.conexion.guardaTareaPendiente(new TareasPendientes(dependienteSeleccionado, time, encabezado, descripcion, toma, Boolean.TRUE, Boolean.FALSE));
+    }
+
 }

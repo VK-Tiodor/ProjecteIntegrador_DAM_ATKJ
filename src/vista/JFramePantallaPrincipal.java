@@ -26,6 +26,7 @@ import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.FontUIResource;
@@ -114,6 +115,9 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jPasswordFieldCrearDependiente = new javax.swing.JPasswordField();
         jButtonCrearDependiente = new javax.swing.JButton();
+        jDialogHistorialAgenda = new javax.swing.JDialog();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTableHistorialAgenda = new javax.swing.JTable();
         jTabbedPanePrincipal = new javax.swing.JTabbedPane();
         jPanelAgenda = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -124,6 +128,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         jTextFieldBuscadorTarea = new javax.swing.JTextField();
+        jButtonVerHistorialAgenda = new javax.swing.JButton();
         jPanelHistorialLlamadas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableHistorialLlamadas = new javax.swing.JTable();
@@ -505,6 +510,30 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jTableHistorialAgenda.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane6.setViewportView(jTableHistorialAgenda);
+
+        javax.swing.GroupLayout jDialogHistorialAgendaLayout = new javax.swing.GroupLayout(jDialogHistorialAgenda.getContentPane());
+        jDialogHistorialAgenda.getContentPane().setLayout(jDialogHistorialAgendaLayout);
+        jDialogHistorialAgendaLayout.setHorizontalGroup(
+            jDialogHistorialAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 950, Short.MAX_VALUE)
+        );
+        jDialogHistorialAgendaLayout.setVerticalGroup(
+            jDialogHistorialAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -569,6 +598,14 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButtonVerHistorialAgenda.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jButtonVerHistorialAgenda.setText("Ver Historial");
+        jButtonVerHistorialAgenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerHistorialAgendaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelAgendaLayout = new javax.swing.GroupLayout(jPanelAgenda);
         jPanelAgenda.setLayout(jPanelAgendaLayout);
         jPanelAgendaLayout.setHorizontalGroup(
@@ -581,9 +618,11 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                         .addComponent(jButtonAddTarea)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonTareaRealizado)
-                        .addGap(98, 98, 98)
-                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonVerHistorialAgenda)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(59, 59, 59)
                         .addComponent(jButtonBorrarTarea))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgendaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -606,7 +645,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButtonAddTarea)
                     .addComponent(jButtonTareaRealizado)
                     .addComponent(jButtonBorrarTarea)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButtonVerHistorialAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -970,6 +1010,12 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         this.conexion.cierraConexion();
     }//GEN-LAST:event_formWindowClosing
 
+    private void jButtonVerHistorialAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerHistorialAgendaActionPerformed
+        // TODO add your handling code here:
+        this.controlador.rellenaTablaAgendaHistorial(jTableHistorialAgenda);
+        this.controlador.abreDialog(jDialogHistorialAgenda, false);
+    }//GEN-LAST:event_jButtonVerHistorialAgendaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datechooser.beans.DateChooserCombo dateChooserComboFechaAddTarea;
@@ -988,6 +1034,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVerDependiente;
     private javax.swing.JButton jButtonVerDependienteHist;
     private javax.swing.JButton jButtonVerDetallesLlamada;
+    private javax.swing.JButton jButtonVerHistorialAgenda;
     private javax.swing.JCheckBox jCheckBoxAsistente;
     private javax.swing.JComboBox<String> jComboBoxDependientesAddTarea;
     private javax.swing.JComboBox<String> jComboBoxGeneroCrearDependiente;
@@ -996,6 +1043,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JDialog jDialogAñadirTarea;
     private javax.swing.JDialog jDialogCrearDependiente;
     private javax.swing.JDialog jDialogDetallesLlamada;
+    private javax.swing.JDialog jDialogHistorialAgenda;
     private javax.swing.JFormattedTextField jFormattedTextFieldHoraAddTarea;
     private javax.swing.JFormattedTextField jFormattedTextFieldHorasRepeticion;
     private javax.swing.JLabel jLabel1;
@@ -1031,8 +1079,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPanePrincipal;
     private javax.swing.JTable jTableAgenda;
+    private javax.swing.JTable jTableHistorialAgenda;
     private javax.swing.JTable jTableHistorialLlamadas;
     private javax.swing.JTable jTableListaDependientes;
     private javax.swing.JTextArea jTextAreaDatosAsistenciaDetallesLlamada;
@@ -1078,6 +1128,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jDialogAlertaLlamadaEntrante.setModal(true);
         jDialogAlertaLlamadaEntrante.setLocationRelativeTo(null);
         jDialogAlertaLlamadaEntrante.setVisible(true);
+    }
+
+    public JTable getjTableAgenda() {
+        return jTableAgenda;
     }
     
     

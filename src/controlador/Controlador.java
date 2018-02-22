@@ -111,6 +111,10 @@ public class Controlador {
         dialog.setLocationRelativeTo(null);
     }
 
+    public void actualizaTablaAgenda() {
+        rellenaTablaAgenda(pantallaPrincipal.getjTableAgenda());
+    }
+
     /**
      * Modelo de tabla para evitar que se puedan modificar las celdas
      */
@@ -135,6 +139,23 @@ public class Controlador {
         tablaAgenda.setModel(model);
 
         centraTabla(tablaAgenda);
+
+    }
+    
+        public void rellenaTablaAgendaHistorial(JTable tablaHistorial) {
+
+        DefaultTableModel model = new MiModelo();
+        TareasPendientes.setColumns(model);
+
+        for (TareasPendientes tareasPendiente : this.conexion.getTareasPendientes()) {
+            if (tareasPendiente.getRealizada()) {
+                model.addRow(tareasPendiente.getTareaPendienteForTable());
+            }
+        }
+
+        tablaHistorial.setModel(model);
+
+        centraTabla(tablaHistorial);
 
     }
 
@@ -340,18 +361,32 @@ public class Controlador {
         this.conexion.eliminaTareaPendiente(tarea);
     }
 
-    public void borraMedicacion(DependienteHasMedicacion medicacion, Dependiente dependiente) {
-        TareasPendientes tar = new TareasPendientes();
-        for (TareasPendientes tarea : this.listaTareasPendientes) {
+    public void borraTareaMedicacion(DependienteHasMedicacion medicacion, Dependiente dependiente) {
+        for (int i = 0; i < this.listaTareasPendientes.size(); i++) {
+            TareasPendientes tarea = this.listaTareasPendientes.get(i);
             if (tarea.getEncabezado().contains(medicacion.getMedicacion().toString()) && tarea.getDependiente() == dependiente && !tarea.getRealizada()) {
-                tar = tarea;
+                this.listaTareasPendientes.remove(tarea);
+                this.conexion.eliminaTareaPendiente(tarea);
             }
         }
-        this.listaTareasPendientes.remove(tar);
-        this.conexion.eliminaTareaPendiente(tar);
 
         dependiente.getDependienteHasMedicacions().remove(medicacion);
         this.conexion.eliminaMedicacion(medicacion);
+
+        actualizaTablaAgenda();
+    }
+
+    public void modificaTareaMedicacion(DependienteHasMedicacion medicacion) {
+        for (int i = 0; i < this.listaTareasPendientes.size(); i++) {
+            TareasPendientes tarea = this.listaTareasPendientes.get(i);
+            if (tarea.getEncabezado().contains(medicacion.getMedicacion().toString()) && tarea.getDependiente() == medicacion.getDependiente() && !tarea.getRealizada()) {
+                tarea.setHorasRepeticion(Double.parseDouble(medicacion.getToma()));
+                tarea.setEncabezado(medicacion.getMedicacion().getNombre() + " " + medicacion.getCantidad());
+                this.conexion.guardaTareaPendiente(tarea);
+            }
+        }
+
+        actualizaTablaAgenda();
     }
 
     public void borraContactoHasDependiente(ContactoHasDependiente contactoHasDependiente, Dependiente dependiente) {

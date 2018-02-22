@@ -148,9 +148,14 @@ public class Conexion {
     }
 
     public void guardaDependienteHasMedicacion(DependienteHasMedicacion dhm) {
-        this.sessionHibernate.beginTransaction();
-        this.sessionHibernate.saveOrUpdate(dhm);
-        this.sessionHibernate.getTransaction().commit();
+        try{
+            this.sessionHibernate.beginTransaction();
+            this.sessionHibernate.saveOrUpdate(dhm);
+        }catch(org.hibernate.NonUniqueObjectException ex){
+            throw ex;
+        }finally{
+            this.sessionHibernate.getTransaction().commit();
+        }
     }
 
     public void guardaVivienda(Vivienda vivienda) {

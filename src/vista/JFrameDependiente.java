@@ -1198,6 +1198,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jTextFieldTomaAddMedicinaDependiente.setText("");
         jFormattedTextFieldCantidadAddMedicinaDependiente.setText("");
         this.controlador.abreDialog(jDialogCrearMedicina, false);
+        
     }//GEN-LAST:event_jButtonAñadirMedicacionDependienteActionPerformed
 
     private void jButtonEditarMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarMedicacionDependienteActionPerformed
@@ -1215,9 +1216,10 @@ public class JFrameDependiente extends javax.swing.JFrame {
         if (this.jTableMedicacionDependiente.getSelectedRow() != -1) {
             if (JOptionPane.showConfirmDialog(this, "Seguro que quieres borrar esta medicación?") == JOptionPane.YES_OPTION) {
                 DependienteHasMedicacion medicacion = (DependienteHasMedicacion) this.jTableMedicacionDependiente.getModel().getValueAt(this.jTableMedicacionDependiente.getSelectedRow(), 0);
-                this.controlador.borraMedicacion(medicacion, this.dependienteSeleccionado);
+                this.controlador.borraTareaMedicacion(medicacion, this.dependienteSeleccionado);
                 DefaultTableModel model = (DefaultTableModel) this.jTableMedicacionDependiente.getModel();
                 model.removeRow(this.jTableMedicacionDependiente.getSelectedRow());
+                
             }
         }
     }//GEN-LAST:event_jButtonEliminarMedicacionDependienteActionPerformed
@@ -1251,10 +1253,15 @@ public class JFrameDependiente extends javax.swing.JFrame {
             Medicacion medicina = (Medicacion) jTableAddMedicinas.getValueAt(selectedRow, 0);
             String toma = jTextFieldTomaAddMedicinaDependiente.getText();
             Double cantidad = Double.parseDouble(jFormattedTextFieldCantidadAddMedicinaDependiente.getText().replace(',', '.'));
+        try{
             this.controlador.crearMedicacionDependiente(medicina, toma, cantidad, this.dependienteSeleccionado);
             this.controlador.crearTareaMedicina(this.dependienteSeleccionado, Calendar.getInstance().getTime(), "Tomar " + medicina + " " + cantidad, null, Double.parseDouble(toma), false, false);
             this.controlador.rellenaTablaMedicacionDependiente(jTableMedicacionDependiente, dependienteSeleccionado);
             jDialogCrearMedicina.dispose();
+            this.controlador.actualizaTablaAgenda();
+        }catch(org.hibernate.NonUniqueObjectException ex){
+            JOptionPane.showMessageDialog(null, "la medicina ya está añadida");
+        }
             
         }else{
             JOptionPane.showMessageDialog(this, "Selecciona una medicina");
@@ -1421,6 +1428,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
         this.controlador.guardaMedicinaEditada(medicinaEditandonse);
         this.controlador.rellenaTablaMedicacionDependiente(jTableMedicacionDependiente, dependienteSeleccionado);
         jDialogEditarMedicacion.dispose();
+        this.controlador.modificaTareaMedicacion(medicinaEditandonse);
         
     }//GEN-LAST:event_jButtonModificarMedicinaDependienteActionPerformed
 

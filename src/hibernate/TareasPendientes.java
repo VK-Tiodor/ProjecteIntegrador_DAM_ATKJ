@@ -111,6 +111,7 @@ public class TareasPendientes implements java.io.Serializable {
         return new Object[]{this, Controlador.formateaFecha(this.fecha), this.encabezado, this.descripcion, this.horasRepeticion != null ? this.horasRepeticion.intValue():0, this.tareaAsistente?"Si":"No"};
     }
 
+
     public static void setColumns(DefaultTableModel model) {
         model.addColumn("Dependiente");
         model.addColumn("Fecha");

@@ -62,9 +62,9 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private void setUI() {
         this.jLabelNombreYApellidosDependiente.setText(this.dependienteSeleccionado.toString());
         this.jLabelDNIDependiente.setText(this.dependienteSeleccionado.getPersonas().getDni());
-        this.jLabelFechaNacimientoDependiente.setText(this.dependienteSeleccionado.getPersonas().getNacimiento().toString());
+        this.jLabelFechaNacimientoDependiente.setText(Controlador.formateaFecha(this.dependienteSeleccionado.getPersonas().getNacimiento()));
         this.jLabelGeneroDependiente.setText(this.dependienteSeleccionado.getPersonas().getGenero());
-        this.jLabelFechaAltaDependiente.setText(this.dependienteSeleccionado.getFechaAlta().toString());
+        this.jLabelFechaAltaDependiente.setText(Controlador.formateaFecha(this.dependienteSeleccionado.getFechaAlta()));
         this.jLabelTipoDeDependiente.setText(this.dependienteSeleccionado.getTipoDeDependiente());
 
         this.controlador.rellenaTablaContactosDependiente(jTableContactosDependiente, dependienteSeleccionado);
@@ -156,7 +156,6 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jButtonCrearVivienda = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
         jTablePoblacionesCrearVivienda = new javax.swing.JTable();
-        jButtonCrearPoblacionCrearVivienda = new javax.swing.JButton();
         jLabel34 = new javax.swing.JLabel();
         jTextFieldNombrePoblacionCrearVivienda = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
@@ -782,15 +781,6 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jTablePoblacionesCrearVivienda.setRowHeight(18);
         jScrollPane9.setViewportView(jTablePoblacionesCrearVivienda);
 
-        jButtonCrearPoblacionCrearVivienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon_add_16.png"))); // NOI18N
-        jButtonCrearPoblacionCrearVivienda.setToolTipText("");
-        jButtonCrearPoblacionCrearVivienda.setEnabled(false);
-        jButtonCrearPoblacionCrearVivienda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCrearPoblacionCrearViviendaActionPerformed(evt);
-            }
-        });
-
         jLabel34.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel34.setText("Población");
 
@@ -817,12 +807,9 @@ public class JFrameDependiente extends javax.swing.JFrame {
                     .addGroup(jDialogCrearViviendaLayout.createSequentialGroup()
                         .addGroup(jDialogCrearViviendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel35)
-                            .addComponent(jLabel34)
-                            .addGroup(jDialogCrearViviendaLayout.createSequentialGroup()
-                                .addComponent(jTextFieldNombrePoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonCrearPoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabel34))
+                        .addGap(0, 251, Short.MAX_VALUE))
+                    .addComponent(jTextFieldNombrePoblacionCrearVivienda))
                 .addContainerGap())
         );
         jDialogCrearViviendaLayout.setVerticalGroup(
@@ -830,10 +817,8 @@ public class JFrameDependiente extends javax.swing.JFrame {
             .addGroup(jDialogCrearViviendaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel34)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDialogCrearViviendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextFieldNombrePoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCrearPoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addComponent(jTextFieldNombrePoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -1054,56 +1039,58 @@ public class JFrameDependiente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelNombreYApellidosDependiente))
+                        .addComponent(jLabelNombreYApellidosDependiente)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonAddContactoDependiente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonEditarContactoDependiente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonEliminarContactoDependiente))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabelDNIDependiente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelFechaNacimientoDependiente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabelGeneroDependiente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelFechaAltaDependiente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelTipoDeDependiente)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonAñadirMedicacionDependiente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonEditarMedicacionDependiente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonEliminarMedicacionDependiente)
+                                .addGap(0, 92, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButtonVerViviendasDependiente))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButtonAddContactoDependiente)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButtonEditarContactoDependiente)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButtonEliminarContactoDependiente))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabelDNIDependiente)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabelFechaNacimientoDependiente)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabelGeneroDependiente)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabelFechaAltaDependiente)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabelTipoDeDependiente)))
-                                .addGap(0, 12, Short.MAX_VALUE)))
+                            .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButtonAñadirMedicacionDependiente)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButtonEditarMedicacionDependiente)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButtonEliminarMedicacionDependiente)))
-                                .addGap(0, 98, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButtonVerViviendasDependiente)))))
+                                .addComponent(jLabel9)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1400,20 +1387,12 @@ public class JFrameDependiente extends javax.swing.JFrame {
                
     }//GEN-LAST:event_jButtonCrearViviendaActionPerformed
 
-    private void jButtonCrearPoblacionCrearViviendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearPoblacionCrearViviendaActionPerformed
-        // TODO DECIDIR SI SE PUEDEN CREAR POBLACIONES O DE ESO SE ENCARGA EL QUE RELLENA LA BASE DE DATOS
-    }//GEN-LAST:event_jButtonCrearPoblacionCrearViviendaActionPerformed
-
     private void jTextFieldNombrePoblacionCrearViviendaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombrePoblacionCrearViviendaKeyTyped
         // Cuando escriba algo en el campo de medicinas que lo busque en la tabla
         trsFiltroPoblaciones = new TableRowSorter(jTablePoblacionesCrearVivienda.getModel());
         trsFiltroPoblaciones.setRowFilter(RowFilter.regexFilter(jTextFieldNombrePoblacionCrearVivienda.getText(), 0));
         jTablePoblacionesCrearVivienda.setRowSorter(trsFiltroPoblaciones);
-        if (jTablePoblacionesCrearVivienda.getRowCount() == 0) {
-            jButtonCrearPoblacionCrearVivienda.setEnabled(true);
-        }else{
-            jButtonCrearPoblacionCrearVivienda.setEnabled(false);
-        }
+        
     }//GEN-LAST:event_jTextFieldNombrePoblacionCrearViviendaKeyTyped
 
     private void jButtonAddViviendaDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddViviendaDependienteActionPerformed
@@ -1462,7 +1441,6 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAddViviendaDependiente;
     private javax.swing.JButton jButtonAñadirMedicacionDependiente;
     private javax.swing.JButton jButtonCrearContacto;
-    private javax.swing.JButton jButtonCrearPoblacionCrearVivienda;
     private javax.swing.JButton jButtonCrearVivienda;
     private javax.swing.JButton jButtonEditarContactoDependiente;
     private javax.swing.JButton jButtonEditarMedicacionDependiente;

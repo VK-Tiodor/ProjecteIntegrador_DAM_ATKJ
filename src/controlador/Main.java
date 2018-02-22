@@ -24,10 +24,9 @@ import modelo.escuchadorLlamadas;
  */
 public class Main {
 
-    //TODO - QUITAR TABLE EDITABLES
-    //TODO - al guardar un aviso, la fecha no esta en el formato correcto
+    //TODO - , la fecha no esta en el formato correcto
     
-    // TODO Logica de Tarea realizada
+
     // TODO refrescar tabla tareas al introducir medicina
     // TODO borrar tareas cuando se borre medicina
     

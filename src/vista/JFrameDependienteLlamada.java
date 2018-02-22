@@ -23,6 +23,7 @@ import hibernate.Vivienda;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -32,6 +33,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
@@ -197,6 +199,7 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
         jButtonVerViviendasDependiente = new javax.swing.JButton();
         jLabelTipoDeDependiente = new javax.swing.JLabel();
         jPanelMapaDependiente = new javax.swing.JPanel();
+        jLabel36 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
@@ -937,6 +940,11 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
 
         jPanelMapaDependiente.setLayout(new java.awt.BorderLayout());
 
+        jLabel36.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel36.setText("Ubicación no encontrada");
+        jPanelMapaDependiente.add(jLabel36, java.awt.BorderLayout.CENTER);
+
         jLabel33.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText("Detalles Llamada");
@@ -1322,11 +1330,13 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
 
     
     public void abreMapa(Double longitud, Double latitud) {
+        if(longitud != 0 && latitud != 0){
+            jPanelMapaDependiente.removeAll();
         
-        Browser browser = new Browser();
-        BrowserView view = new BrowserView(browser);
+            Browser browser = new Browser();
+            BrowserView view = new BrowserView(browser);
 
-        browser.loadHTML("<!DOCTYPE html>\n"
+            browser.loadHTML("<!DOCTYPE html>\n"
                 + "<html>\n"
                 + "  <head>\n"
                 + " <style>\n"
@@ -1363,14 +1373,14 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
                 + "    </script>\n"
                 + "  </body>\n"
                 + "</html>");
-        
-        jPanelMapaDependiente.removeAll();
-        jPanelMapaDependiente.add(view, BorderLayout.CENTER);
-        jPanelMapaDependiente.updateUI();
-        jPanelMapaDependiente.repaint();
-        this.repaint();
-          
-
+            
+            
+            jPanelMapaDependiente.add(view, BorderLayout.CENTER);
+            
+            jPanelMapaDependiente.updateUI();
+            jPanelMapaDependiente.repaint();
+            this.repaint();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1433,6 +1443,7 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;

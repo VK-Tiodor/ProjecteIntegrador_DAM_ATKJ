@@ -24,8 +24,10 @@ import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.RowFilter;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.FontUIResource;
+import javax.swing.table.TableRowSorter;
 import modelo.conexion.Conexion;
 
 /**
@@ -41,6 +43,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private Double latitudDependienteLlamada;
 
     private DefaultTableModel tablaListaDependientes;
+    private TableRowSorter trsFiltroDependientes;
+    
     public JFramePantallaPrincipal(Controlador controlador, Conexion conexion) {
         super("DependenciApp");
         setAspecto("Nimbus");
@@ -113,17 +117,23 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jButtonTareaRealizado = new javax.swing.JButton();
         jButtonBorrarTarea = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jTextFieldBuscadorTarea = new javax.swing.JTextField();
         jPanelHistorialLlamadas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableHistorialLlamadas = new javax.swing.JTable();
         jButtonVerDetallesLlamada = new javax.swing.JButton();
         jButtonVerDependienteHist = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jTextFieldBuscadorLlamada = new javax.swing.JTextField();
         jPanelDependientes = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableListaDependientes = new javax.swing.JTable();
         jButtonVerDependiente = new javax.swing.JButton();
         jButtonAddDependiente = new javax.swing.JButton();
         jButtonBorrarDependiente = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jTextFieldBuscadorDependiente = new javax.swing.JTextField();
 
         jComboBoxDependientesAddTarea.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
 
@@ -505,10 +515,19 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
+        jButton1.setText("pruebaAviso");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel21.setText("Buscar Tarea por Dependiente:");
+
+        jTextFieldBuscadorTarea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldBuscadorTareaKeyTyped(evt);
             }
         });
 
@@ -519,7 +538,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanelAgendaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 859, Short.MAX_VALUE)
                     .addGroup(jPanelAgendaLayout.createSequentialGroup()
                         .addComponent(jButtonAddTarea)
                         .addGap(18, 18, 18)
@@ -527,14 +546,23 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                         .addGap(98, 98, 98)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonBorrarTarea)))
+                        .addComponent(jButtonBorrarTarea))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAgendaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldBuscadorTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelAgendaLayout.setVerticalGroup(
             jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAgendaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                .addGroup(jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(jTextFieldBuscadorTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAddTarea)
@@ -577,6 +605,15 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel20.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel20.setText("Buscar Llamada por Dependiente:");
+
+        jTextFieldBuscadorLlamada.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldBuscadorLlamadaKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelHistorialLlamadasLayout = new javax.swing.GroupLayout(jPanelHistorialLlamadas);
         jPanelHistorialLlamadas.setLayout(jPanelHistorialLlamadasLayout);
         jPanelHistorialLlamadasLayout.setHorizontalGroup(
@@ -584,19 +621,28 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanelHistorialLlamadasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelHistorialLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 859, Short.MAX_VALUE)
                     .addGroup(jPanelHistorialLlamadasLayout.createSequentialGroup()
                         .addComponent(jButtonVerDetallesLlamada)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonVerDependienteHist)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelHistorialLlamadasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldBuscadorLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelHistorialLlamadasLayout.setVerticalGroup(
             jPanelHistorialLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHistorialLlamadasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                .addGroup(jPanelHistorialLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(jTextFieldBuscadorLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelHistorialLlamadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVerDetallesLlamada)
@@ -645,6 +691,15 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel6.setText("Buscar Dependiente:");
+
+        jTextFieldBuscadorDependiente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldBuscadorDependienteKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelDependientesLayout = new javax.swing.GroupLayout(jPanelDependientes);
         jPanelDependientes.setLayout(jPanelDependientesLayout);
         jPanelDependientesLayout.setHorizontalGroup(
@@ -652,20 +707,29 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanelDependientesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelDependientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 859, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDependientesLayout.createSequentialGroup()
                         .addComponent(jButtonAddDependiente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonVerDependiente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonBorrarDependiente)))
+                        .addComponent(jButtonBorrarDependiente))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDependientesLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldBuscadorDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelDependientesLayout.setVerticalGroup(
             jPanelDependientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDependientesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                .addGroup(jPanelDependientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextFieldBuscadorDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDependientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVerDependiente)
@@ -777,15 +841,12 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     private void jButtonCogerLlamadaAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCogerLlamadaAvisoActionPerformed
         
-        if (this.latitudDependienteLlamada != 0 && this.longitudDependienteLlamada != 0) { // Se lanza el mapa si las coordenadas son correctas
-            //this.controlador.abreMapa(this.longitudDependienteLlamada, this.latitudDependienteLlamada);
-        }
+        jDialogAlertaLlamadaEntrante.dispose();
         
         JFrameDependienteLlamada jfdl = new JFrameDependienteLlamada(controlador, this.controlador.getConexion().getDependienteById(this.idDependienteLlamada), this.longitudDependienteLlamada, this.latitudDependienteLlamada, this.jTableHistorialLlamadas);
         this.controlador.abreFrame(jfdl);
         
         
-        jDialogAlertaLlamadaEntrante.dispose();
 
     }//GEN-LAST:event_jButtonCogerLlamadaAvisoActionPerformed
 
@@ -830,6 +891,23 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         abreDialogAlerta("1", "-0.484756", "38.346041");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jTextFieldBuscadorDependienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscadorDependienteKeyTyped
+        // TODO add your handling code here:
+        // Cuando escriba algo en el campo de medicinas que lo busque en la tabla
+        trsFiltroDependientes = new TableRowSorter(jTableListaDependientes.getModel());
+        trsFiltroDependientes.setRowFilter(RowFilter.regexFilter(jTextFieldBuscadorDependiente.getText(), 0));
+        jTableListaDependientes.setRowSorter(trsFiltroDependientes);
+        
+    }//GEN-LAST:event_jTextFieldBuscadorDependienteKeyTyped
+
+    private void jTextFieldBuscadorLlamadaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscadorLlamadaKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldBuscadorLlamadaKeyTyped
+
+    private void jTextFieldBuscadorTareaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscadorTareaKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldBuscadorTareaKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datechooser.beans.DateChooserCombo dateChooserComboFechaAddTarea;
@@ -868,9 +946,12 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -892,6 +973,9 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextAreaDatosAsistenciaDetallesLlamada;
     private javax.swing.JTextArea jTextAreaDescripcionAddTarea;
     private javax.swing.JTextField jTextFieldApellidosCrearDependiente;
+    private javax.swing.JTextField jTextFieldBuscadorDependiente;
+    private javax.swing.JTextField jTextFieldBuscadorLlamada;
+    private javax.swing.JTextField jTextFieldBuscadorTarea;
     private javax.swing.JTextField jTextFieldDNICrearDependiente;
     private javax.swing.JTextField jTextFieldEncabezadoAddTarea;
     private javax.swing.JTextField jTextFieldMotivoDetallesLlamada;

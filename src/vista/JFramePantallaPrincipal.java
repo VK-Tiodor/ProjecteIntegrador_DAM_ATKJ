@@ -506,6 +506,11 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jTabbedPanePrincipal.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
@@ -961,6 +966,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxAsistenteActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        this.conexion.cierraConexion();
+    }//GEN-LAST:event_formWindowClosing
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datechooser.beans.DateChooserCombo dateChooserComboFechaAddTarea;
@@ -1070,5 +1079,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jDialogAlertaLlamadaEntrante.setLocationRelativeTo(null);
         jDialogAlertaLlamadaEntrante.setVisible(true);
     }
+    
+    
 
 }

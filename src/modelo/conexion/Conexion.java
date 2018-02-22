@@ -204,11 +204,11 @@ public class Conexion {
             calendar.setTime(tarea.getFecha());
             calendar.add(Calendar.HOUR, tarea.getHorasRepeticion().intValue());
             nuevaTarea.setFecha(calendar.getTime());
-            this.sessionHibernate.saveOrUpdate(nuevaTarea);
+            this.sessionHibernate.save(nuevaTarea);
         }
         
         tarea.setRealizada(true);
-        this.sessionHibernate.saveOrUpdate(tarea);
+        this.sessionHibernate.update(tarea);
 
         this.sessionHibernate.getTransaction().commit();
     }

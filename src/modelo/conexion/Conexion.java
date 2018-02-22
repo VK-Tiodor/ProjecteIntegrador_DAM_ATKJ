@@ -20,6 +20,7 @@ import hibernate.Telefonos;
 import hibernate.Vivienda;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import org.hibernate.Session;
 
@@ -83,12 +84,14 @@ public class Conexion {
         this.sessionHibernate.getTransaction().commit();
         return dependiente.get(0);
     }
+
     public ArrayList<Medicacion> getMedicinas() {
         this.sessionHibernate.beginTransaction();
         ArrayList<Medicacion> medicaciones = (ArrayList<Medicacion>) this.sessionHibernate.createQuery("from Medicacion").list();
         this.sessionHibernate.getTransaction().commit();
         return medicaciones;
     }
+
     public ArrayList<Poblacion> getPoblaciones() {
         this.sessionHibernate.beginTransaction();
         ArrayList<Poblacion> poblaciones = (ArrayList<Poblacion>) this.sessionHibernate.createQuery("from Poblacion").list();
@@ -113,47 +116,50 @@ public class Conexion {
         this.sessionHibernate.saveOrUpdate(tareaPendiente);
         this.sessionHibernate.getTransaction().commit();
     }
-    
+
     public void guardaContacto(Contacto contacto) {
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.saveOrUpdate(contacto);
         this.sessionHibernate.getTransaction().commit();
     }
-    
+
     public void guardaContactoHasDependiente(ContactoHasDependiente chd) {
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.saveOrUpdate(chd);
         this.sessionHibernate.getTransaction().commit();
     }
+
     public void guardaPersona(Personas p) {
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.saveOrUpdate(p);
         this.sessionHibernate.getTransaction().commit();
     }
-    
-    
+
     public void guardaTelefono(Telefonos telefono) {
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.saveOrUpdate(telefono);
         this.sessionHibernate.getTransaction().commit();
     }
+
     public void guardaMedicina(Medicacion medicacion) {
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.saveOrUpdate(medicacion);
         this.sessionHibernate.getTransaction().commit();
     }
-    
+
     public void guardaDependienteHasMedicacion(DependienteHasMedicacion dhm) {
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.saveOrUpdate(dhm);
         this.sessionHibernate.getTransaction().commit();
     }
+
     public void guardaVivienda(Vivienda vivienda) {
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.saveOrUpdate(vivienda);
         this.sessionHibernate.getTransaction().commit();
     }
-    public void eliminaTareaPendiente(TareasPendientes tareaPendiente){
+
+    public void eliminaTareaPendiente(TareasPendientes tareaPendiente) {
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.delete(tareaPendiente);
         this.sessionHibernate.getTransaction().commit();
@@ -177,7 +183,7 @@ public class Conexion {
         this.sessionHibernate.getTransaction().commit();
     }
 
-    public void eliminaPersona(Personas persona){
+    public void eliminaPersona(Personas persona) {
         this.sessionHibernate.beginTransaction();
         this.sessionHibernate.delete(persona);
         this.sessionHibernate.getTransaction().commit();
@@ -189,19 +195,22 @@ public class Conexion {
         this.sessionHibernate.getTransaction().commit();
     }
 
-    
+    public void estableceLaTareaRealizada(TareasPendientes tarea) {
+        this.sessionHibernate.beginTransaction();
+        if (tarea.getHorasRepeticion() != null) {
+            TareasPendientes nuevaTarea = new TareasPendientes(tarea.getDependiente(), tarea.getFecha(), tarea.getEncabezado(), tarea.getDescripcion(), tarea.getHorasRepeticion(), tarea.getTareaAsistente(), false);
 
-    
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(tarea.getFecha());
+            calendar.add(Calendar.HOUR, tarea.getHorasRepeticion().intValue());
+            nuevaTarea.setFecha(calendar.getTime());
+            this.sessionHibernate.saveOrUpdate(nuevaTarea);
+        }
+        
+        tarea.setRealizada(true);
+        this.sessionHibernate.saveOrUpdate(tarea);
 
-    
-
-
-    
-
-    
-
-
-
-
+        this.sessionHibernate.getTransaction().commit();
+    }
 
 }

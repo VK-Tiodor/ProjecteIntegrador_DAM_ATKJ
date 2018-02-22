@@ -58,6 +58,7 @@ public class Controlador {
     private final JFramePantallaPrincipal pantallaPrincipal;
     public final double alturaDePantalla;
     public final double anchuraDePantalla;
+
     // Constructor
     public Controlador() {
         this.conexion = new Conexion(this);
@@ -102,7 +103,6 @@ public class Controlador {
             nueva.setVisible(true);
         }
     }
-    
 
     public void abreDialog(JDialog dialog, boolean modal) {
         dialog.pack();
@@ -110,13 +110,24 @@ public class Controlador {
         dialog.setModal(modal);
         dialog.setLocationRelativeTo(null);
     }
+    
+        /**
+     * Modelo de tabla para evitar que se puedan modificar las celdas
+     */
+    public class MiModelo extends DefaultTableModel {
 
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    }
+   
     public void rellenaTablaAgenda(JTable tablaAgenda) {
-        DefaultTableModel model = new DefaultTableModel();
+
+        DefaultTableModel model = new MiModelo();
         TareasPendientes.setColumns(model);
 
         for (TareasPendientes tareasPendiente : this.conexion.getTareasPendientes()) {
-            if (!tareasPendiente.getRealizada() && tareasPendiente.getTareaAsistente()) {
+            if (!tareasPendiente.getRealizada()) {
                 model.addRow(tareasPendiente.getTareaPendienteForTable());
             }
         }
@@ -128,7 +139,7 @@ public class Controlador {
     }
 
     public void rellenaTablaHistorialLlamadas(JTable jTableHistorialLlamadas) {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new MiModelo();
         Asistencia.setColumns(model);
 
         for (Asistencia asistencia : this.conexion.getAsistencias()) {
@@ -141,7 +152,7 @@ public class Controlador {
     }
 
     public void rellenaTablaListaDependiente(JTable jTableListaDependientes) {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new MiModelo();
         Dependiente.setColumns(model);
 
         for (Dependiente dependiente : this.listaDependientes) {
@@ -154,7 +165,7 @@ public class Controlador {
     }
 
     public void rellenaTablaContactosDependiente(JTable jTableContactosDependiente, Dependiente dependiente) {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new MiModelo();
         Contacto.setColumns(model);
 
         if (dependiente.getContactoHasDependientes() != null) {
@@ -171,7 +182,7 @@ public class Controlador {
     }
 
     public void rellenaTablaMedicacionDependiente(JTable jTableMedicacionDependiente, Dependiente dependiente) {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new MiModelo();
         Medicacion.setColumns(model);
 
         if (dependiente.getDependienteHasMedicacions() != null) {
@@ -187,7 +198,7 @@ public class Controlador {
     }
 
     public void rellenaTablaViviendaDependiente(JTable jTableViviendasDependiente, Dependiente dependiente) {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new MiModelo();
         Vivienda.setColumns(model);
 
         if (dependiente.getPersonas().getViviendas() != null) {
@@ -219,7 +230,7 @@ public class Controlador {
     }
 
     public void rellenaTablaMedicacionDependiente(JTable jTableAddMedicinas) {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new MiModelo();
         Medicacion.setSimpleColumns(model);
         ArrayList<Medicacion> medicinas = this.conexion.getMedicinas();
         for (Medicacion medicina : medicinas) {
@@ -233,7 +244,7 @@ public class Controlador {
     }
 
     public void rellenaTablaPoblaciones(JTable jTablePoblacionesCrearVivienda) {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new MiModelo();
         Poblacion.setColumns(model);
         ArrayList<Poblacion> poblaciones = this.conexion.getPoblaciones();
         for (Poblacion poblacion : poblaciones) {
@@ -253,8 +264,6 @@ public class Controlador {
             tabla.getColumnModel().getColumn(i).setCellRenderer(tcr);
         }
     }
-
-    
 
     public void lanzaAlerta(String id, String longitud, String latitud) {
         pantallaPrincipal.abreDialogAlerta(id, longitud, latitud);
@@ -348,8 +357,13 @@ public class Controlador {
         this.conexion.eliminaVivienda(vivienda);
     }
 
+    public static Date parseaFecha(String date) throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat("y-MM-d HH:mm");
+        return dateFormat.parse(date);
+    }
+
     public static String formateaFecha(Date date) {
-        DateFormat dateFormat = new SimpleDateFormat("y-MM-d hh:mm");
+        DateFormat dateFormat = new SimpleDateFormat("y-MM-d HH:mm");
         return dateFormat.format(date);
     }
 
@@ -357,8 +371,8 @@ public class Controlador {
         this.conexion.guardaDependienteHasMedicacion(medicinaEditandonse);
     }
 
-    public void crearTarea(Dependiente dependienteSeleccionado, Date time, String encabezado, String descripcion, Double toma, int tareaAsistente, int realizada) {
-        this.conexion.guardaTareaPendiente(new TareasPendientes(dependienteSeleccionado, time, encabezado, descripcion, toma, Boolean.TRUE, Boolean.FALSE));
+    public void crearTareaMedicina(Dependiente dependienteSeleccionado, Date time, String encabezado, String descripcion, Double horasRepeticion, Boolean tareaAsistente, Boolean realizada) {
+        this.conexion.guardaTareaPendiente(new TareasPendientes(dependienteSeleccionado, time, encabezado, descripcion, horasRepeticion, tareaAsistente, realizada));
     }
 
     

@@ -56,8 +56,8 @@ public class Contacto  implements java.io.Serializable {
     }
 
     public static void setColumns(DefaultTableModel model) {
-        model.addColumn("DNI");
         model.addColumn("Nombre");
+        model.addColumn("DNI");
         model.addColumn("Relacion");
         model.addColumn("Llave");
     }

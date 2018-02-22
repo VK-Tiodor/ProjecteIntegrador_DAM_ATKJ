@@ -70,11 +70,7 @@ public class ContactoHasDependiente implements java.io.Serializable {
     }
 
     public Object[] getContactoForTable() {
-        if (this.llave) {
-            return new Object[]{this.getContacto().getPersonas().getDni(), this, this.relacion, "Si"};
-        } else {
-            return new Object[]{this.getContacto().getPersonas().getDni(), this, this.relacion, "No"};
-        }
+        return new Object[]{ this, this.getContacto().getPersonas().getDni(), this.relacion, this.llave ? "Si" : "No"};
     }
 
     public String toString() {

@@ -1,5 +1,5 @@
 package hibernate;
-// Generated 12-feb-2018 18:52:59 by Hibernate Tools 4.3.1
+// Generated 22-feb-2018 17:08:25 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -13,6 +13,7 @@ public class Personas  implements java.io.Serializable {
 
 
      private Integer idPersona;
+     private Vivienda vivienda;
      private String dni;
      private String nombre;
      private String apellidos;
@@ -27,7 +28,8 @@ public class Personas  implements java.io.Serializable {
     public Personas() {
     }
 
-    public Personas(String dni, String nombre, String apellidos, Date nacimiento, String genero, Set viviendas, Dependiente dependiente, Set telefonoses, Set dependientes, Contacto contacto) {
+    public Personas(Vivienda vivienda, String dni, String nombre, String apellidos, Date nacimiento, String genero, Set viviendas, Dependiente dependiente, Set telefonoses, Set dependientes, Contacto contacto) {
+       this.vivienda = vivienda;
        this.dni = dni;
        this.nombre = nombre;
        this.apellidos = apellidos;
@@ -39,6 +41,19 @@ public class Personas  implements java.io.Serializable {
        this.dependientes = dependientes;
        this.contacto = contacto;
     }
+
+    public Personas(String dni, String nombre, String apellidos, Date nacimiento, String genero, Set viviendas, Dependiente dependiente, Set telefonoses, Set dependientes, Contacto contacto){
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.nacimiento = nacimiento;
+        this.genero = genero;
+        this.viviendas = viviendas;
+        this.dependiente = dependiente;
+        this.telefonoses = telefonoses;
+        this.dependientes = dependientes;
+        this.contacto = contacto;
+    }
    
     public Integer getIdPersona() {
         return this.idPersona;
@@ -46,6 +61,13 @@ public class Personas  implements java.io.Serializable {
     
     public void setIdPersona(Integer idPersona) {
         this.idPersona = idPersona;
+    }
+    public Vivienda getVivienda() {
+        return this.vivienda;
+    }
+    
+    public void setVivienda(Vivienda vivienda) {
+        this.vivienda = vivienda;
     }
     public String getDni() {
         return this.dni;
@@ -117,12 +139,10 @@ public class Personas  implements java.io.Serializable {
     public void setContacto(Contacto contacto) {
         this.contacto = contacto;
     }
-    
+
     public String toString(){
         return this.getNombre() + " " + this.getApellidos();
     }
-
-
 
 
 }

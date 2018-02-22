@@ -95,12 +95,6 @@ public class Conexion {
         this.sessionHibernate.getTransaction().commit();
         return poblaciones;
     }
-    public Vivienda getViviendaActiva(Dependiente dependiente) {
-        this.sessionHibernate.beginTransaction();
-        List<Vivienda> vivienda = (List<Vivienda>) this.sessionHibernate.createQuery("FROM Vivienda v WHERE idDependiente=" + dependiente.getIdDependiente()).list();
-        this.sessionHibernate.getTransaction().commit();
-        return vivienda.get(0);
-    }
 
     public void guardaDependiente(Dependiente dependiente) {
         this.sessionHibernate.beginTransaction();

@@ -108,79 +108,10 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
         jTableViviendasDependiente = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jButtonMarcarViviendaComoActivaDependiente = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         jListRecursos = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jButtonAddViviendaDependiente = new javax.swing.JButton();
-        jDialogCrearContacto = new javax.swing.JDialog();
-        jButtonCrearContacto = new javax.swing.JButton();
-        dateChooserComboNacimientoCrearContacto = new datechooser.beans.DateChooserCombo();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jComboBoxGeneroCrearContacto = new javax.swing.JComboBox<>();
-        jTextFieldDNICrearContacto = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jTextFieldNombreCrearContacto = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        jTextFieldApellidosCrearContacto = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jTextFieldRelacionCrearContacto = new javax.swing.JTextField();
-        jCheckBoxCrearContacto = new javax.swing.JCheckBox();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTableTelefonosCrearContacto = new javax.swing.JTable();
-        jTextFieldNumeroCrearContacto = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jComboBoxTipoTelefonoCrearContacto = new javax.swing.JComboBox<>();
-        jButtonAddTelefonoCrearContacto = new javax.swing.JButton();
-        jButtonRemoveTelefonoCrearContacto = new javax.swing.JButton();
-        jDialogCrearMedicina = new javax.swing.JDialog();
-        jLabel18 = new javax.swing.JLabel();
-        jTextFieldNombreAddMedicinaDependiente = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        jTextFieldTomaAddMedicinaDependiente = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
-        jButtonAddMedicinaDependiente = new javax.swing.JButton();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jTableAddMedicinas = new javax.swing.JTable();
-        jButtonAddMedicina = new javax.swing.JButton();
-        jFormattedTextFieldCantidadAddMedicinaDependiente = new javax.swing.JFormattedTextField();
-        jDialogModificarContacto = new javax.swing.JDialog();
-        jTextFieldRelacionModificarContacto = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        jCheckBoxModificarContacto = new javax.swing.JCheckBox();
-        jComboBoxGeneroModificarContacto = new javax.swing.JComboBox<>();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTableTelefonosModificarContacto = new javax.swing.JTable();
-        jTextFieldDNIModificarContacto = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
-        jTextFieldNumeroModificarContacto = new javax.swing.JTextField();
-        jTextFieldNombreModificarContacto = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jTextFieldApellidosModificarContacto = new javax.swing.JTextField();
-        jComboBoxTipoTelefonoModificarContacto = new javax.swing.JComboBox<>();
-        jLabel29 = new javax.swing.JLabel();
-        jButtonAddTelefonoModificarContacto = new javax.swing.JButton();
-        jButtonModificarContacto = new javax.swing.JButton();
-        jLabel30 = new javax.swing.JLabel();
-        dateChooserComboNacimientoModificarContacto = new datechooser.beans.DateChooserCombo();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jButtonRemoveTelefonoModificarContacto = new javax.swing.JButton();
-        jDialogCrearVivienda = new javax.swing.JDialog();
-        jTextFieldDireccionCrearVivienda = new javax.swing.JTextField();
-        jButtonCrearVivienda = new javax.swing.JButton();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        jTablePoblacionesCrearVivienda = new javax.swing.JTable();
-        jButtonCrearPoblacionCrearVivienda = new javax.swing.JButton();
-        jLabel34 = new javax.swing.JLabel();
-        jTextFieldNombrePoblacionCrearVivienda = new javax.swing.JTextField();
-        jLabel35 = new javax.swing.JLabel();
+        jTextFieldViviendaActual = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabelNombreYApellidosDependiente = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -238,31 +169,11 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel11.setText("Recursos Localidad");
 
-        jButtonMarcarViviendaComoActivaDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jButtonMarcarViviendaComoActivaDependiente.setText("Marcar como activa");
-        jButtonMarcarViviendaComoActivaDependiente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMarcarViviendaComoActivaDependienteActionPerformed(evt);
-            }
-        });
-
         jScrollPane8.setViewportView(jListRecursos);
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jButton1.setText("Eliminar Vivienda");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jTextFieldViviendaActual.setEditable(false);
 
-        jButtonAddViviendaDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jButtonAddViviendaDependiente.setText("Añadir Vivienda");
-        jButtonAddViviendaDependiente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddViviendaDependienteActionPerformed(evt);
-            }
-        });
+        jLabel40.setText("Actual:");
 
         javax.swing.GroupLayout jDialogViviendasLayout = new javax.swing.GroupLayout(jDialogViviendas.getContentPane());
         jDialogViviendas.getContentPane().setLayout(jDialogViviendasLayout);
@@ -272,18 +183,13 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDialogViviendasLayout.createSequentialGroup()
-                        .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jDialogViviendasLayout.createSequentialGroup()
-                                .addComponent(jButtonAddViviendaDependiente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonMarcarViviendaComoActivaDependiente)
-                                .addGap(66, 66, 66)
-                                .addComponent(jButton1))
-                            .addComponent(jScrollPane3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(jDialogViviendasLayout.createSequentialGroup()
                         .addComponent(jLabel10)
-                        .addGap(476, 476, 476)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldViviendaActual, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDialogViviendasLayout.createSequentialGroup()
                         .addComponent(jLabel11)
@@ -295,566 +201,20 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
             jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogViviendasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
-                .addGap(12, 12, 12)
                 .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                    .addGroup(jDialogViviendasLayout.createSequentialGroup()
+                        .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogViviendasLayout.createSequentialGroup()
+                        .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel40)
+                            .addComponent(jTextFieldViviendaActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonMarcarViviendaComoActivaDependiente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonAddViviendaDependiente)
-                        .addComponent(jButton1)))
-                .addContainerGap())
-        );
-
-        jButtonCrearContacto.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jButtonCrearContacto.setText("Crear Contacto");
-        jButtonCrearContacto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCrearContactoActionPerformed(evt);
-            }
-        });
-
-        jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel17.setText("Genero");
-
-        jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel13.setText("DNI");
-
-        jComboBoxGeneroCrearContacto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "H", "I" }));
-
-        jTextFieldDNICrearContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel14.setText("Nombre");
-
-        jTextFieldNombreCrearContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel15.setText("Apellidos");
-
-        jTextFieldApellidosCrearContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel16.setText("Nacimiento");
-
-        jLabel12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel12.setText("Telefonos");
-
-        jLabel21.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel21.setText("Relación");
-
-        jTextFieldRelacionCrearContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        jCheckBoxCrearContacto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jCheckBoxCrearContacto.setText("Llave de casa");
-
-        jTableTelefonosCrearContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTableTelefonosCrearContacto.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Tipo", "Número"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTableTelefonosCrearContacto.setRowHeight(18);
-        jScrollPane5.setViewportView(jTableTelefonosCrearContacto);
-
-        jTextFieldNumeroCrearContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        jLabel22.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel22.setText("Tipo");
-
-        jLabel23.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel23.setText("Número");
-
-        jComboBoxTipoTelefonoCrearContacto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jComboBoxTipoTelefonoCrearContacto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fijo", "Movil" }));
-
-        jButtonAddTelefonoCrearContacto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon_add_16.png"))); // NOI18N
-        jButtonAddTelefonoCrearContacto.setToolTipText("");
-        jButtonAddTelefonoCrearContacto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddTelefonoCrearContactoActionPerformed(evt);
-            }
-        });
-
-        jButtonRemoveTelefonoCrearContacto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon_delete_16.png"))); // NOI18N
-        jButtonRemoveTelefonoCrearContacto.setToolTipText("");
-        jButtonRemoveTelefonoCrearContacto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRemoveTelefonoCrearContactoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jDialogCrearContactoLayout = new javax.swing.GroupLayout(jDialogCrearContacto.getContentPane());
-        jDialogCrearContacto.getContentPane().setLayout(jDialogCrearContactoLayout);
-        jDialogCrearContactoLayout.setHorizontalGroup(
-            jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogCrearContactoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialogCrearContactoLayout.createSequentialGroup()
-                        .addGroup(jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxTipoTelefonoCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel16)
-                            .addComponent(jCheckBoxCrearContacto)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel22))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel23)
-                            .addGroup(jDialogCrearContactoLayout.createSequentialGroup()
-                                .addComponent(jTextFieldNumeroCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonAddTelefonoCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonRemoveTelefonoCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jTextFieldDNICrearContacto)
-                    .addComponent(jTextFieldNombreCrearContacto)
-                    .addComponent(jTextFieldApellidosCrearContacto)
-                    .addComponent(dateChooserComboNacimientoCrearContacto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBoxGeneroCrearContacto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonCrearContacto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldRelacionCrearContacto))
-                .addContainerGap())
-        );
-        jDialogCrearContactoLayout.setVerticalGroup(
-            jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogCrearContactoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldDNICrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldNombreCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldApellidosCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dateChooserComboNacimientoCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBoxGeneroCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel21)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldRelacionCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBoxCrearContacto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel23))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialogCrearContactoLayout.createSequentialGroup()
-                        .addGroup(jDialogCrearContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxTipoTelefonoCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldNumeroCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAddTelefonoCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButtonRemoveTelefonoCrearContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        jLabel18.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel18.setText("Medicina");
-
-        jTextFieldNombreAddMedicinaDependiente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTextFieldNombreAddMedicinaDependiente.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldNombreAddMedicinaDependienteKeyTyped(evt);
-            }
-        });
-
-        jLabel19.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel19.setText("Toma");
-
-        jTextFieldTomaAddMedicinaDependiente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        jLabel20.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel20.setText("Cantidad");
-
-        jButtonAddMedicinaDependiente.setText("Añadir Medicación");
-        jButtonAddMedicinaDependiente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddMedicinaDependienteActionPerformed(evt);
-            }
-        });
-
-        jTableAddMedicinas.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTableAddMedicinas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Medicina"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTableAddMedicinas.setRowHeight(18);
-        jScrollPane7.setViewportView(jTableAddMedicinas);
-        if (jTableAddMedicinas.getColumnModel().getColumnCount() > 0) {
-            jTableAddMedicinas.getColumnModel().getColumn(0).setHeaderValue("Medicina");
-        }
-
-        jButtonAddMedicina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon_add_16.png"))); // NOI18N
-        jButtonAddMedicina.setToolTipText("");
-        jButtonAddMedicina.setEnabled(false);
-        jButtonAddMedicina.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddMedicinaActionPerformed(evt);
-            }
-        });
-
-        jFormattedTextFieldCantidadAddMedicinaDependiente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-
-        javax.swing.GroupLayout jDialogCrearMedicinaLayout = new javax.swing.GroupLayout(jDialogCrearMedicina.getContentPane());
-        jDialogCrearMedicina.getContentPane().setLayout(jDialogCrearMedicinaLayout);
-        jDialogCrearMedicinaLayout.setHorizontalGroup(
-            jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogCrearMedicinaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jTextFieldTomaAddMedicinaDependiente)
-                    .addComponent(jButtonAddMedicinaDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jDialogCrearMedicinaLayout.createSequentialGroup()
-                        .addGroup(jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel18)
-                            .addGroup(jDialogCrearMedicinaLayout.createSequentialGroup()
-                                .addComponent(jTextFieldNombreAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonAddMedicina, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jFormattedTextFieldCantidadAddMedicinaDependiente))
-                .addContainerGap())
-        );
-        jDialogCrearMedicinaLayout.setVerticalGroup(
-            jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogCrearMedicinaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDialogCrearMedicinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextFieldNombreAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonAddMedicina, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldTomaAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedTextFieldCantidadAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonAddMedicinaDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jTextFieldRelacionModificarContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        jLabel24.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel24.setText("DNI");
-
-        jCheckBoxModificarContacto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jCheckBoxModificarContacto.setText("Llave de casa");
-
-        jComboBoxGeneroModificarContacto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "H", "I" }));
-
-        jTableTelefonosModificarContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTableTelefonosModificarContacto.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Tipo", "Número"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTableTelefonosModificarContacto.setRowHeight(18);
-        jScrollPane6.setViewportView(jTableTelefonosModificarContacto);
-
-        jTextFieldDNIModificarContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        jLabel25.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel25.setText("Nombre");
-
-        jTextFieldNumeroModificarContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        jTextFieldNombreModificarContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        jLabel26.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel26.setText("Tipo");
-
-        jLabel27.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel27.setText("Apellidos");
-
-        jLabel28.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel28.setText("Número");
-
-        jTextFieldApellidosModificarContacto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        jComboBoxTipoTelefonoModificarContacto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jComboBoxTipoTelefonoModificarContacto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fijo", "Movil" }));
-
-        jLabel29.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel29.setText("Nacimiento");
-
-        jButtonAddTelefonoModificarContacto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon_add_16.png"))); // NOI18N
-        jButtonAddTelefonoModificarContacto.setToolTipText("");
-        jButtonAddTelefonoModificarContacto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddTelefonoModificarContactoActionPerformed(evt);
-            }
-        });
-
-        jButtonModificarContacto.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jButtonModificarContacto.setText("Modificar Contacto");
-        jButtonModificarContacto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModificarContactoActionPerformed(evt);
-            }
-        });
-
-        jLabel30.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel30.setText("Telefonos");
-
-        jLabel31.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel31.setText("Relación");
-
-        jLabel32.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel32.setText("Genero");
-
-        jButtonRemoveTelefonoModificarContacto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon_delete_16.png"))); // NOI18N
-        jButtonRemoveTelefonoModificarContacto.setToolTipText("");
-        jButtonRemoveTelefonoModificarContacto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRemoveTelefonoModificarContactoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jDialogModificarContactoLayout = new javax.swing.GroupLayout(jDialogModificarContacto.getContentPane());
-        jDialogModificarContacto.getContentPane().setLayout(jDialogModificarContactoLayout);
-        jDialogModificarContactoLayout.setHorizontalGroup(
-            jDialogModificarContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogModificarContactoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jDialogModificarContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialogModificarContactoLayout.createSequentialGroup()
-                        .addGroup(jDialogModificarContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxTipoTelefonoModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel24)
-                            .addComponent(jLabel25)
-                            .addComponent(jLabel27)
-                            .addComponent(jLabel29)
-                            .addComponent(jCheckBoxModificarContacto)
-                            .addComponent(jLabel32)
-                            .addComponent(jLabel30)
-                            .addComponent(jLabel31)
-                            .addComponent(jLabel26))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jDialogModificarContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel28)
-                            .addGroup(jDialogModificarContactoLayout.createSequentialGroup()
-                                .addComponent(jTextFieldNumeroModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonAddTelefonoModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonRemoveTelefonoModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jTextFieldDNIModificarContacto)
-                    .addComponent(jTextFieldNombreModificarContacto)
-                    .addComponent(jTextFieldApellidosModificarContacto)
-                    .addComponent(dateChooserComboNacimientoModificarContacto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBoxGeneroModificarContacto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonModificarContacto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldRelacionModificarContacto))
-                .addContainerGap())
-        );
-        jDialogModificarContactoLayout.setVerticalGroup(
-            jDialogModificarContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogModificarContactoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel24)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldDNIModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldNombreModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel27)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldApellidosModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel29)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dateChooserComboNacimientoModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel32)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBoxGeneroModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel31)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldRelacionModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBoxModificarContacto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel30)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDialogModificarContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(jLabel28))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDialogModificarContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialogModificarContactoLayout.createSequentialGroup()
-                        .addGroup(jDialogModificarContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxTipoTelefonoModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldNumeroModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAddTelefonoModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButtonRemoveTelefonoModificarContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        jTextFieldDireccionCrearVivienda.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
-        jButtonCrearVivienda.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jButtonCrearVivienda.setText("Crear Vivienda");
-        jButtonCrearVivienda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCrearViviendaActionPerformed(evt);
-            }
-        });
-
-        jTablePoblacionesCrearVivienda.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTablePoblacionesCrearVivienda.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jTablePoblacionesCrearVivienda.setRowHeight(18);
-        jScrollPane9.setViewportView(jTablePoblacionesCrearVivienda);
-
-        jButtonCrearPoblacionCrearVivienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon_add_16.png"))); // NOI18N
-        jButtonCrearPoblacionCrearVivienda.setToolTipText("");
-        jButtonCrearPoblacionCrearVivienda.setEnabled(false);
-        jButtonCrearPoblacionCrearVivienda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCrearPoblacionCrearViviendaActionPerformed(evt);
-            }
-        });
-
-        jLabel34.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel34.setText("Población");
-
-        jTextFieldNombrePoblacionCrearVivienda.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTextFieldNombrePoblacionCrearVivienda.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldNombrePoblacionCrearViviendaKeyTyped(evt);
-            }
-        });
-
-        jLabel35.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel35.setText("Dirección");
-
-        javax.swing.GroupLayout jDialogCrearViviendaLayout = new javax.swing.GroupLayout(jDialogCrearVivienda.getContentPane());
-        jDialogCrearVivienda.getContentPane().setLayout(jDialogCrearViviendaLayout);
-        jDialogCrearViviendaLayout.setHorizontalGroup(
-            jDialogCrearViviendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogCrearViviendaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jDialogCrearViviendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jTextFieldDireccionCrearVivienda)
-                    .addComponent(jButtonCrearVivienda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jDialogCrearViviendaLayout.createSequentialGroup()
-                        .addGroup(jDialogCrearViviendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel35)
-                            .addComponent(jLabel34)
-                            .addGroup(jDialogCrearViviendaLayout.createSequentialGroup()
-                                .addComponent(jTextFieldNombrePoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonCrearPoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jDialogCrearViviendaLayout.setVerticalGroup(
-            jDialogCrearViviendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogCrearViviendaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel34)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDialogCrearViviendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextFieldNombrePoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCrearPoblacionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel35)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldDireccionCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCrearVivienda, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1132,191 +492,15 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
 
     private void jButtonVerViviendasDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerViviendasDependienteActionPerformed
         this.controlador.rellenaTablaViviendaDependiente(jTableViviendasDependiente, this.dependienteLlamada);
+        if (this.dependienteLlamada.getPersonas().getVivienda() != null) 
+        this.jTextFieldViviendaActual.setText(this.dependienteLlamada.getPersonas().getVivienda().getDireccion());
         this.controlador.abreDialog(jDialogViviendas, false);
     }//GEN-LAST:event_jButtonVerViviendasDependienteActionPerformed
-
-    private void jButtonCrearContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearContactoActionPerformed
-        // TODO add your handling code here:
-        String dni = jTextFieldDNICrearContacto.getText();
-        String nombre = jTextFieldNombreCrearContacto.getText();
-        String apellidos = jTextFieldApellidosCrearContacto.getText();
-        Calendar fechaNac = dateChooserComboNacimientoCrearContacto.getCurrent();
-        String genero = (String) jComboBoxGeneroCrearContacto.getSelectedItem();
-        String relacion = jTextFieldRelacionCrearContacto.getText();
-        boolean llave = jCheckBoxCrearContacto.isSelected();
-        this.controlador.crearContacto(dni, nombre, apellidos, fechaNac.getTime(), genero, relacion, llave, this.dependienteLlamada, this.telefonos, jTableContactosDependiente);
-        jDialogCrearContacto.dispose();
-        
-        this.controlador.rellenaTablaContactosDependiente(jTableContactosDependiente, dependienteLlamada);
-    }//GEN-LAST:event_jButtonCrearContactoActionPerformed
-
-    private void jButtonAddMedicinaDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMedicinaDependienteActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = jTableAddMedicinas.getSelectedRow();
-        if (selectedRow != -1) {
-            Medicacion medicina = (Medicacion) jTableAddMedicinas.getValueAt(selectedRow, 0);
-            //String nombre = jTextFieldNombreAddMedicinaDependiente.getText();
-            String toma = jTextFieldTomaAddMedicinaDependiente.getText();
-            Double cantidad = Double.parseDouble(jFormattedTextFieldCantidadAddMedicinaDependiente.getText().replace(',', '.'));
-            this.controlador.crearMedicacionDependiente(medicina, toma, cantidad, this.dependienteLlamada);
-            this.controlador.rellenaTablaMedicacionDependiente(jTableMedicacionDependiente, dependienteLlamada);
-            jDialogCrearMedicina.dispose();
-        }else{
-            JOptionPane.showMessageDialog(this, "Selecciona una medicina");
-        }
-       
-    }//GEN-LAST:event_jButtonAddMedicinaDependienteActionPerformed
-
-    private void jButtonAddTelefonoCrearContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTelefonoCrearContactoActionPerformed
-        // TODO add your handling code here:
-        if (!jTextFieldNumeroCrearContacto.getText().equals("")) {
-            Telefonos telefono = new Telefonos(null, jTextFieldNumeroCrearContacto.getText(), jComboBoxTipoTelefonoCrearContacto.getSelectedItem().toString());
-            
-            telefonos.add(telefono);
-            DefaultTableModel tablaTelefonos = (DefaultTableModel) jTableTelefonosCrearContacto.getModel();
-            tablaTelefonos.addRow(telefono.getTelefonoForTable());
-        }
-
-    }//GEN-LAST:event_jButtonAddTelefonoCrearContactoActionPerformed
-
-    private void jButtonAddTelefonoModificarContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTelefonoModificarContactoActionPerformed
-        // TODO add your handling code here:
-        if (!jTextFieldNumeroModificarContacto.getText().equals("")) {
-            Telefonos telefono = new Telefonos(null, jTextFieldNumeroModificarContacto.getText(), jComboBoxTipoTelefonoModificarContacto.getSelectedItem().toString());
-            telefonos.add(telefono);
-            DefaultTableModel tablaTelefonos = (DefaultTableModel) jTableTelefonosModificarContacto.getModel();
-            tablaTelefonos.addRow(telefono.getTelefonoForTable());
-        }
-    }//GEN-LAST:event_jButtonAddTelefonoModificarContactoActionPerformed
-
-    private void jButtonModificarContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarContactoActionPerformed
-        String dni = jTextFieldDNIModificarContacto.getText();
-        String nombre = jTextFieldNombreModificarContacto.getText();
-        String apellidos = jTextFieldApellidosModificarContacto.getText();
-        Calendar fechaNac = dateChooserComboNacimientoModificarContacto.getCurrent();
-        String genero = (String) jComboBoxGeneroModificarContacto.getSelectedItem();
-        String relacion = jTextFieldRelacionModificarContacto.getText();
-        boolean llave = jCheckBoxModificarContacto.isSelected();
-        
-        contactoSeleccionado.getPersonas().setDni(dni);
-        contactoSeleccionado.getPersonas().setNombre(nombre);
-        contactoSeleccionado.getPersonas().setApellidos(apellidos);
-        contactoSeleccionado.getPersonas().setNacimiento(fechaNac.getTime());
-        contactoSeleccionado.getPersonas().setGenero(genero);
-        contactoSeleccionado.getPersonas().setTelefonoses((Set) this.telefonos);
-        ArrayList<Telefonos> arrayTelefonos = new ArrayList<>(this.telefonos);
-        for (Telefonos telefono : arrayTelefonos) {
-            telefono.setPersonas(contactoSeleccionado.getPersonas());
-            this.controlador.getConexion().guardaTelefono(telefono);
-        }
-        ContactoHasDependiente chd = (ContactoHasDependiente)contactoSeleccionado.getContactoHasDependientes().toArray()[0];
-        chd.setLlave(llave);
-        chd.setRelacion(relacion);
-        
-        this.controlador.getConexion().guardaContacto(contactoSeleccionado);
-        this.controlador.getConexion().guardaContactoHasDependiente(chd);
-        
-        
-        this.controlador.rellenaTablaContactosDependiente(jTableContactosDependiente, dependienteLlamada);
-        
-        jDialogModificarContacto.dispose();
-        
-    }//GEN-LAST:event_jButtonModificarContactoActionPerformed
-
-    private void jButtonRemoveTelefonoModificarContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveTelefonoModificarContactoActionPerformed
-        if (jTableTelefonosModificarContacto.getSelectedRow() != -1) {
-            int s = jTableTelefonosModificarContacto.getSelectedRow();
-            DefaultTableModel tabla = (DefaultTableModel) jTableTelefonosModificarContacto.getModel();
-            this.telefonos.remove(tabla.getValueAt(s, 1));
-            tabla.removeRow(s);
-        }
-    }//GEN-LAST:event_jButtonRemoveTelefonoModificarContactoActionPerformed
-
-    private void jButtonRemoveTelefonoCrearContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveTelefonoCrearContactoActionPerformed
-        if (jTableTelefonosCrearContacto.getSelectedRow() != -1) {
-            int s = jTableTelefonosCrearContacto.getSelectedRow();
-            DefaultTableModel tabla = (DefaultTableModel) jTableTelefonosCrearContacto.getModel();
-            this.telefonos.remove(tabla.getValueAt(s, 1));
-            tabla.removeRow(s);
-        }
-    }//GEN-LAST:event_jButtonRemoveTelefonoCrearContactoActionPerformed
 
     private void jTableViviendasDependienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableViviendasDependienteMouseClicked
         // Al hacer click en la tabla viviendas, coger los recursos de esa vivienda
         this.controlador.rellenaListRecursos(jListRecursos, (Vivienda) jTableViviendasDependiente.getValueAt(jTableViviendasDependiente.getSelectedRow(), 0));
     }//GEN-LAST:event_jTableViviendasDependienteMouseClicked
-
-    private void jButtonMarcarViviendaComoActivaDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMarcarViviendaComoActivaDependienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonMarcarViviendaComoActivaDependienteActionPerformed
-
-    private void jTextFieldNombreAddMedicinaDependienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreAddMedicinaDependienteKeyTyped
-        // Cuando escriba algo en el campo de medicinas que lo busque en la tabla
-        trsFiltroMedicinas = new TableRowSorter(jTableAddMedicinas.getModel());
-        trsFiltroMedicinas.setRowFilter(RowFilter.regexFilter(jTextFieldNombreAddMedicinaDependiente.getText(), 0));
-        jTableAddMedicinas.setRowSorter(trsFiltroMedicinas);
-        if (jTableAddMedicinas.getRowCount() == 0) {
-            jButtonAddMedicina.setEnabled(true);
-        }else{
-            jButtonAddMedicina.setEnabled(false);
-        }
-    }//GEN-LAST:event_jTextFieldNombreAddMedicinaDependienteKeyTyped
-
-    private void jButtonAddMedicinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMedicinaActionPerformed
-        // Crear medicina con el nombre del textField
-        Medicacion med = new Medicacion(jTextFieldNombreAddMedicinaDependiente.getText(), null);
-        this.controlador.crearMedicina(med);
-        DefaultTableModel dtm = (DefaultTableModel) jTableAddMedicinas.getModel();
-        dtm.addRow(med.getMedicinaForSimpleTable());
-        
-    }//GEN-LAST:event_jButtonAddMedicinaActionPerformed
-
-    private void jButtonCrearViviendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearViviendaActionPerformed
-        
-        int selectedRow = jTablePoblacionesCrearVivienda.getSelectedRow();
-        if (selectedRow != -1) {
-            Poblacion poblacion = (Poblacion) jTablePoblacionesCrearVivienda.getValueAt(selectedRow, 0);
-            String direccion = jTextFieldDireccionCrearVivienda.getText();
-            this.controlador.creaVivienda(poblacion,direccion,this.dependienteLlamada,jTableViviendasDependiente);
-            
-            jDialogCrearVivienda.dispose();
-        }else{
-            JOptionPane.showMessageDialog(this, "Selecciona una Población");
-        }
-               
-    }//GEN-LAST:event_jButtonCrearViviendaActionPerformed
-
-    private void jButtonCrearPoblacionCrearViviendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearPoblacionCrearViviendaActionPerformed
-        // TODO DECIDIR SI SE PUEDEN CREAR POBLACIONES O DE ESO SE ENCARGA EL QUE RELLENA LA BASE DE DATOS
-    }//GEN-LAST:event_jButtonCrearPoblacionCrearViviendaActionPerformed
-
-    private void jTextFieldNombrePoblacionCrearViviendaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombrePoblacionCrearViviendaKeyTyped
-        // Cuando escriba algo en el campo de medicinas que lo busque en la tabla
-        trsFiltroPoblaciones = new TableRowSorter(jTablePoblacionesCrearVivienda.getModel());
-        trsFiltroPoblaciones.setRowFilter(RowFilter.regexFilter(jTextFieldNombrePoblacionCrearVivienda.getText(), 0));
-        jTablePoblacionesCrearVivienda.setRowSorter(trsFiltroPoblaciones);
-        if (jTablePoblacionesCrearVivienda.getRowCount() == 0) {
-            jButtonCrearPoblacionCrearVivienda.setEnabled(true);
-        }else{
-            jButtonCrearPoblacionCrearVivienda.setEnabled(false);
-        }
-    }//GEN-LAST:event_jTextFieldNombrePoblacionCrearViviendaKeyTyped
-
-    private void jButtonAddViviendaDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddViviendaDependienteActionPerformed
-        this.controlador.rellenaTablaPoblaciones(jTablePoblacionesCrearVivienda);
-        this.controlador.abreDialog(jDialogCrearVivienda, false);
-    }//GEN-LAST:event_jButtonAddViviendaDependienteActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (this.jTableViviendasDependiente.getSelectedRow() != -1) {
-            if (JOptionPane.showConfirmDialog(this, "Seguro que quieres borrar esta Vivienda?") == JOptionPane.YES_OPTION) {
-                Vivienda vivienda = (Vivienda) this.jTableViviendasDependiente.getModel().getValueAt(this.jTableViviendasDependiente.getSelectedRow(), 0);
-                this.controlador.borraVivienda(vivienda,dependienteLlamada);
-                DefaultTableModel model = (DefaultTableModel) this.jTableViviendasDependiente.getModel();
-                model.removeRow(this.jTableViviendasDependiente.getSelectedRow());
-            }
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonAceptarDetallesLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarDetallesLlamadaActionPerformed
         //TODO --- si se puede editar el historial de llamadas, hay que hacer o otro dialog o bien modificar este (jDialogDetallesLlamada)
@@ -1387,69 +571,21 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datechooser.beans.DateChooserCombo dateChooserComboFechaDetallesLlamada;
-    private datechooser.beans.DateChooserCombo dateChooserComboNacimientoCrearContacto;
-    private datechooser.beans.DateChooserCombo dateChooserComboNacimientoModificarContacto;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAceptarDetallesLlamada;
-    private javax.swing.JButton jButtonAddMedicina;
-    private javax.swing.JButton jButtonAddMedicinaDependiente;
-    private javax.swing.JButton jButtonAddTelefonoCrearContacto;
-    private javax.swing.JButton jButtonAddTelefonoModificarContacto;
-    private javax.swing.JButton jButtonAddViviendaDependiente;
-    private javax.swing.JButton jButtonCrearContacto;
-    private javax.swing.JButton jButtonCrearPoblacionCrearVivienda;
-    private javax.swing.JButton jButtonCrearVivienda;
-    private javax.swing.JButton jButtonMarcarViviendaComoActivaDependiente;
-    private javax.swing.JButton jButtonModificarContacto;
-    private javax.swing.JButton jButtonRemoveTelefonoCrearContacto;
-    private javax.swing.JButton jButtonRemoveTelefonoModificarContacto;
     private javax.swing.JButton jButtonVerViviendasDependiente;
-    private javax.swing.JCheckBox jCheckBoxCrearContacto;
-    private javax.swing.JCheckBox jCheckBoxModificarContacto;
-    private javax.swing.JComboBox<String> jComboBoxGeneroCrearContacto;
-    private javax.swing.JComboBox<String> jComboBoxGeneroModificarContacto;
-    private javax.swing.JComboBox<String> jComboBoxTipoTelefonoCrearContacto;
-    private javax.swing.JComboBox<String> jComboBoxTipoTelefonoModificarContacto;
-    private javax.swing.JDialog jDialogCrearContacto;
-    private javax.swing.JDialog jDialogCrearMedicina;
-    private javax.swing.JDialog jDialogCrearVivienda;
-    private javax.swing.JDialog jDialogModificarContacto;
     private javax.swing.JDialog jDialogViviendas;
-    private javax.swing.JFormattedTextField jFormattedTextFieldCantidadAddMedicinaDependiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1468,33 +604,12 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTable jTableAddMedicinas;
     private javax.swing.JTable jTableContactosDependiente;
     private javax.swing.JTable jTableMedicacionDependiente;
-    private javax.swing.JTable jTablePoblacionesCrearVivienda;
-    private javax.swing.JTable jTableTelefonosCrearContacto;
-    private javax.swing.JTable jTableTelefonosModificarContacto;
     private javax.swing.JTable jTableViviendasDependiente;
     private javax.swing.JTextArea jTextAreaDatosAsistenciaDetallesLlamada;
-    private javax.swing.JTextField jTextFieldApellidosCrearContacto;
-    private javax.swing.JTextField jTextFieldApellidosModificarContacto;
-    private javax.swing.JTextField jTextFieldDNICrearContacto;
-    private javax.swing.JTextField jTextFieldDNIModificarContacto;
-    private javax.swing.JTextField jTextFieldDireccionCrearVivienda;
     private javax.swing.JTextField jTextFieldMotivoDetallesLlamada;
-    private javax.swing.JTextField jTextFieldNombreAddMedicinaDependiente;
-    private javax.swing.JTextField jTextFieldNombreCrearContacto;
-    private javax.swing.JTextField jTextFieldNombreModificarContacto;
-    private javax.swing.JTextField jTextFieldNombrePoblacionCrearVivienda;
-    private javax.swing.JTextField jTextFieldNumeroCrearContacto;
-    private javax.swing.JTextField jTextFieldNumeroModificarContacto;
-    private javax.swing.JTextField jTextFieldRelacionCrearContacto;
-    private javax.swing.JTextField jTextFieldRelacionModificarContacto;
-    private javax.swing.JTextField jTextFieldTomaAddMedicinaDependiente;
+    private javax.swing.JTextField jTextFieldViviendaActual;
     // End of variables declaration//GEN-END:variables
 }

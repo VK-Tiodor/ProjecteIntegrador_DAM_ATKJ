@@ -90,6 +90,8 @@ public class JFrameDependiente extends javax.swing.JFrame {
         jListRecursos = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
         jButtonAddViviendaDependiente = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldViviendaActual = new javax.swing.JTextField();
         jDialogCrearContacto = new javax.swing.JDialog();
         jButtonCrearContacto = new javax.swing.JButton();
         dateChooserComboNacimientoCrearContacto = new datechooser.beans.DateChooserCombo();
@@ -242,6 +244,10 @@ public class JFrameDependiente extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Actual:");
+
+        jTextFieldViviendaActual.setEditable(false);
+
         javax.swing.GroupLayout jDialogViviendasLayout = new javax.swing.GroupLayout(jDialogViviendas.getContentPane());
         jDialogViviendas.getContentPane().setLayout(jDialogViviendasLayout);
         jDialogViviendasLayout.setHorizontalGroup(
@@ -250,18 +256,19 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDialogViviendasLayout.createSequentialGroup()
-                        .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jDialogViviendasLayout.createSequentialGroup()
-                                .addComponent(jButtonAddViviendaDependiente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonMarcarViviendaComoActivaDependiente)
-                                .addGap(66, 66, 66)
-                                .addComponent(jButton1))
-                            .addComponent(jScrollPane3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(jDialogViviendasLayout.createSequentialGroup()
                         .addComponent(jLabel10)
-                        .addGap(476, 476, 476)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldViviendaActual, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogViviendasLayout.createSequentialGroup()
+                        .addComponent(jButtonAddViviendaDependiente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonMarcarViviendaComoActivaDependiente)
+                        .addGap(66, 66, 66)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDialogViviendasLayout.createSequentialGroup()
                         .addComponent(jLabel11)
@@ -275,10 +282,12 @@ public class JFrameDependiente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel11))
-                .addGap(12, 12, 12)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextFieldViviendaActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDialogViviendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1228,6 +1237,8 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
     private void jButtonVerViviendasDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerViviendasDependienteActionPerformed
         this.controlador.rellenaTablaViviendaDependiente(jTableViviendasDependiente, this.dependienteSeleccionado);
+        if (this.dependienteSeleccionado.getPersonas().getVivienda() != null) 
+        this.jTextFieldViviendaActual.setText(this.dependienteSeleccionado.getPersonas().getVivienda().getDireccion());
         this.controlador.abreDialog(jDialogViviendas, false);
     }//GEN-LAST:event_jButtonVerViviendasDependienteActionPerformed
 
@@ -1346,9 +1357,10 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private void jButtonMarcarViviendaComoActivaDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMarcarViviendaComoActivaDependienteActionPerformed
         if (this.jTableViviendasDependiente.getSelectedRow() != -1) {
             Vivienda vivienda = (Vivienda) this.jTableViviendasDependiente.getModel().getValueAt(this.jTableViviendasDependiente.getSelectedRow(), 0);
-            Vivienda viviendaActiva = this.controlador.getViviendaActiva(this.dependienteSeleccionado);
-            
-            
+            Vivienda viviendaActiva = this.dependienteSeleccionado.getPersonas().getVivienda();
+            this.dependienteSeleccionado.getPersonas().setVivienda(vivienda);
+            this.jTextFieldViviendaActual.setText(vivienda.getDireccion());
+            this.controlador.getConexion().guardaVivienda(vivienda);
         }
     }//GEN-LAST:event_jButtonMarcarViviendaComoActivaDependienteActionPerformed
 
@@ -1406,6 +1418,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
 
     private void jButtonAddViviendaDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddViviendaDependienteActionPerformed
         this.controlador.rellenaTablaPoblaciones(jTablePoblacionesCrearVivienda);
+        this.jTextFieldDireccionCrearVivienda.setText("");
         this.controlador.abreDialog(jDialogCrearVivienda, false);
     }//GEN-LAST:event_jButtonAddViviendaDependienteActionPerformed
 
@@ -1486,6 +1499,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1549,5 +1563,6 @@ public class JFrameDependiente extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldRelacionModificarContacto;
     private javax.swing.JTextField jTextFieldTomaAddMedicinaDependiente;
     private javax.swing.JTextField jTextFieldTomaModificarMedicinaDependiente;
+    private javax.swing.JTextField jTextFieldViviendaActual;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,5 @@
 package hibernate;
-// Generated 12-feb-2018 18:52:59 by Hibernate Tools 4.3.1
+// Generated 22-feb-2018 17:08:25 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -15,10 +15,9 @@ public class Vivienda  implements java.io.Serializable {
      private Integer idVivienda;
      private Poblacion poblacion;
      private String direccion;
+     private Byte viviendaActiva;
      private Set personases = new HashSet(0);
-     private Boolean viviendaActiva;
-
-    
+     private Set personases_1 = new HashSet(0);
 
     public Vivienda() {
     }
@@ -27,11 +26,12 @@ public class Vivienda  implements java.io.Serializable {
     public Vivienda(Poblacion poblacion) {
         this.poblacion = poblacion;
     }
-    public Vivienda(Poblacion poblacion, String direccion, Set personases, Boolean viviendaActiva) {
+    public Vivienda(Poblacion poblacion, String direccion, Byte viviendaActiva, Set personases, Set personases_1) {
        this.poblacion = poblacion;
        this.direccion = direccion;
-       this.personases = personases;
        this.viviendaActiva = viviendaActiva;
+       this.personases = personases;
+       this.personases_1 = personases_1;
     }
    
     public Integer getIdVivienda() {
@@ -55,6 +55,13 @@ public class Vivienda  implements java.io.Serializable {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+    public Byte getViviendaActiva() {
+        return this.viviendaActiva;
+    }
+    
+    public void setViviendaActiva(Byte viviendaActiva) {
+        this.viviendaActiva = viviendaActiva;
+    }
     public Set getPersonases() {
         return this.personases;
     }
@@ -62,12 +69,12 @@ public class Vivienda  implements java.io.Serializable {
     public void setPersonases(Set personases) {
         this.personases = personases;
     }
-    public Boolean getViviendaActiva() {
-        return viviendaActiva;
+    public Set getPersonases_1() {
+        return this.personases_1;
     }
-
-    public void setViviendaActiva(Boolean viviendaActiva) {
-        this.viviendaActiva = viviendaActiva;
+    
+    public void setPersonases_1(Set personases_1) {
+        this.personases_1 = personases_1;
     }
 
     public Object[] getViviendaForTable() {
@@ -85,6 +92,8 @@ public class Vivienda  implements java.io.Serializable {
     public String toString(){
         return this.direccion;
     }
+
+
 }
 
 

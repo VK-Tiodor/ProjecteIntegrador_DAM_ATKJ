@@ -14,6 +14,7 @@ import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import vista.JFrameDependienteLlamada;
 
 /**
  *
@@ -34,6 +35,9 @@ public class escuchadorLlamadas extends Thread {
         this.socket = socket;
         this.controlador = controlador;
     }
+    public void preCargarDependientesLlamada(){
+        new JFrameDependienteLlamada();
+    }
 
     /**
      *  Método run del Thread, se ejecuta cuándo se abre una conexión y se encarga de escuchar el mensaje 
@@ -43,6 +47,7 @@ public class escuchadorLlamadas extends Thread {
      */
     @Override
     public void run() {
+        
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -67,5 +72,7 @@ public class escuchadorLlamadas extends Thread {
         } catch (IOException ex) {
             Logger.getLogger(escuchadorLlamadas.class.getName()).log(Level.SEVERE, null, ex);
         } 
+        
+        preCargarDependientesLlamada();
     }
 }

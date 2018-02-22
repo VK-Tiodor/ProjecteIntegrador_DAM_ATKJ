@@ -318,6 +318,7 @@ public class Controlador {
         Vivienda vivienda = new Vivienda(poblacion);
         vivienda.setDireccion(direccion);
         vivienda.getPersonases().add(dependiente.getPersonas());
+        vivienda.setViviendaActiva(Boolean.FALSE);
         dependiente.getPersonas().getViviendas().add(vivienda);
 
         DefaultTableModel dtm = (DefaultTableModel) tablaViviendas.getModel();
@@ -359,6 +360,10 @@ public class Controlador {
 
     public void crearTarea(Dependiente dependienteSeleccionado, Date time, String encabezado, String descripcion, Double toma, int tareaAsistente, int realizada) {
         this.conexion.guardaTareaPendiente(new TareasPendientes(dependienteSeleccionado, time, encabezado, descripcion, toma, Boolean.TRUE, Boolean.FALSE));
+    }
+
+    public Vivienda getViviendaActiva(Dependiente dependiente) {
+        return this.conexion.getViviendaActiva(dependiente);
     }
 
 }

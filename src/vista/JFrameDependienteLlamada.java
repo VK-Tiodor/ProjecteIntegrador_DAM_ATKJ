@@ -66,7 +66,7 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
      * @param dependienteSeleccionado
      */
 
-    JFrameDependienteLlamada(Controlador controlador, Dependiente dependiente, Double longitudDependienteLlamada, Double latitudDependienteLlamada, JTable jTableHistorialLlamadas) {
+    public JFrameDependienteLlamada(Controlador controlador, Dependiente dependiente, Double longitudDependienteLlamada, Double latitudDependienteLlamada, JTable jTableHistorialLlamadas) {
         super("Dependiente " + dependiente.getPersonas().getNombre());
         initComponents();
         this.controlador = controlador;
@@ -76,7 +76,9 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
         this.tablaHistorialLlamadas = jTableHistorialLlamadas;
         setUI();
     }
-
+    public JFrameDependienteLlamada() {
+        initComponents();
+    }
 
     private void setUI() {
         this.jLabelNombreYApellidosDependiente.setText(this.dependienteLlamada.toString());
@@ -989,8 +991,8 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
                     .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel37)
-                            .addComponent(jLabel38))
+                            .addComponent(jLabel38)
+                            .addComponent(jLabel37))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldMotivoDetallesLlamada)
@@ -1008,10 +1010,10 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel33)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel37)
-                    .addComponent(dateChooserComboFechaDetallesLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dateChooserComboFechaDetallesLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel37))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel38)
@@ -1019,7 +1021,7 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel39)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane10)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonAceptarDetallesLlamada)
                 .addContainerGap())

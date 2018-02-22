@@ -16,6 +16,9 @@ public class Vivienda  implements java.io.Serializable {
      private Poblacion poblacion;
      private String direccion;
      private Set personases = new HashSet(0);
+     private Boolean viviendaActiva;
+
+    
 
     public Vivienda() {
     }
@@ -24,10 +27,11 @@ public class Vivienda  implements java.io.Serializable {
     public Vivienda(Poblacion poblacion) {
         this.poblacion = poblacion;
     }
-    public Vivienda(Poblacion poblacion, String direccion, Set personases) {
+    public Vivienda(Poblacion poblacion, String direccion, Set personases, Boolean viviendaActiva) {
        this.poblacion = poblacion;
        this.direccion = direccion;
        this.personases = personases;
+       this.viviendaActiva = viviendaActiva;
     }
    
     public Integer getIdVivienda() {
@@ -57,6 +61,13 @@ public class Vivienda  implements java.io.Serializable {
     
     public void setPersonases(Set personases) {
         this.personases = personases;
+    }
+    public Boolean getViviendaActiva() {
+        return viviendaActiva;
+    }
+
+    public void setViviendaActiva(Boolean viviendaActiva) {
+        this.viviendaActiva = viviendaActiva;
     }
 
     public Object[] getViviendaForTable() {

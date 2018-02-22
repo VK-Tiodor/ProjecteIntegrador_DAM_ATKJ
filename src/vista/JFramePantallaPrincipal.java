@@ -892,8 +892,6 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextFieldBuscadorDependienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscadorDependienteKeyTyped
-        // TODO add your handling code here:
-        // Cuando escriba algo en el campo de medicinas que lo busque en la tabla
         trsFiltroDependientes = new TableRowSorter(jTableListaDependientes.getModel());
         trsFiltroDependientes.setRowFilter(RowFilter.regexFilter(jTextFieldBuscadorDependiente.getText(), 0));
         jTableListaDependientes.setRowSorter(trsFiltroDependientes);
@@ -901,11 +899,15 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldBuscadorDependienteKeyTyped
 
     private void jTextFieldBuscadorLlamadaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscadorLlamadaKeyTyped
-        // TODO add your handling code here:
+        trsFiltroDependientes = new TableRowSorter(jTableHistorialLlamadas.getModel());
+        trsFiltroDependientes.setRowFilter(RowFilter.regexFilter(jTextFieldBuscadorLlamada.getText(), 0));
+        jTableHistorialLlamadas.setRowSorter(trsFiltroDependientes);
     }//GEN-LAST:event_jTextFieldBuscadorLlamadaKeyTyped
 
     private void jTextFieldBuscadorTareaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscadorTareaKeyTyped
-        // TODO add your handling code here:
+        trsFiltroDependientes = new TableRowSorter(jTableAgenda.getModel());
+        trsFiltroDependientes.setRowFilter(RowFilter.regexFilter(jTextFieldBuscadorTarea.getText(), 0));
+        jTableAgenda.setRowSorter(trsFiltroDependientes);
     }//GEN-LAST:event_jTextFieldBuscadorTareaKeyTyped
 
 

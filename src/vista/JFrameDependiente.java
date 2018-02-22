@@ -1344,7 +1344,12 @@ public class JFrameDependiente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableViviendasDependienteMouseClicked
 
     private void jButtonMarcarViviendaComoActivaDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMarcarViviendaComoActivaDependienteActionPerformed
-        // TODO add your handling code here:
+        if (this.jTableViviendasDependiente.getSelectedRow() != -1) {
+            Vivienda vivienda = (Vivienda) this.jTableViviendasDependiente.getModel().getValueAt(this.jTableViviendasDependiente.getSelectedRow(), 0);
+            Vivienda viviendaActiva = this.controlador.getViviendaActiva(this.dependienteSeleccionado);
+            
+            
+        }
     }//GEN-LAST:event_jButtonMarcarViviendaComoActivaDependienteActionPerformed
 
     private void jTextFieldNombreAddMedicinaDependienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreAddMedicinaDependienteKeyTyped

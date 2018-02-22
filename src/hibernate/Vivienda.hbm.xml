@@ -22,5 +22,8 @@
                 <column name="idPersona" not-null="true" />
             </many-to-many>
         </set>
+        <property name="viviendaActiva" type="java.lang.Boolean">
+            <column name="viviendaActiva" />
+        </property>
     </class>
 </hibernate-mapping>

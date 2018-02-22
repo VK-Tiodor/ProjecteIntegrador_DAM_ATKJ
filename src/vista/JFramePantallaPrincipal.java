@@ -1078,5 +1078,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jDialogAlertaLlamadaEntrante.setLocationRelativeTo(null);
         jDialogAlertaLlamadaEntrante.setVisible(true);
     }
+    
+    
 
 }

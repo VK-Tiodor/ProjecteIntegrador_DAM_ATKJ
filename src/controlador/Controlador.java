@@ -110,8 +110,8 @@ public class Controlador {
         dialog.setModal(modal);
         dialog.setLocationRelativeTo(null);
     }
-    
-        /**
+
+    /**
      * Modelo de tabla para evitar que se puedan modificar las celdas
      */
     public class MiModelo extends DefaultTableModel {
@@ -120,7 +120,7 @@ public class Controlador {
             return false;
         }
     }
-   
+
     public void rellenaTablaAgenda(JTable tablaAgenda) {
 
         DefaultTableModel model = new MiModelo();
@@ -341,6 +341,15 @@ public class Controlador {
     }
 
     public void borraMedicacion(DependienteHasMedicacion medicacion, Dependiente dependiente) {
+        TareasPendientes tar = new TareasPendientes();
+        for (TareasPendientes tarea : this.listaTareasPendientes) {
+            if (tarea.getEncabezado().contains(medicacion.getMedicacion().toString()) && tarea.getDependiente() == dependiente && !tarea.getRealizada()) {
+                tar = tarea;
+            }
+        }
+        this.listaTareasPendientes.remove(tar);
+        this.conexion.eliminaTareaPendiente(tar);
+
         dependiente.getDependienteHasMedicacions().remove(medicacion);
         this.conexion.eliminaMedicacion(medicacion);
     }
@@ -374,7 +383,5 @@ public class Controlador {
     public void crearTareaMedicina(Dependiente dependienteSeleccionado, Date time, String encabezado, String descripcion, Double horasRepeticion, Boolean tareaAsistente, Boolean realizada) {
         this.conexion.guardaTareaPendiente(new TareasPendientes(dependienteSeleccionado, time, encabezado, descripcion, horasRepeticion, tareaAsistente, realizada));
     }
-
-    
 
 }

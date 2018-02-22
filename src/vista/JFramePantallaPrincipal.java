@@ -718,6 +718,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
         jButtonBorrarDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButtonBorrarDependiente.setText("Borrar Dependiente");
+        jButtonBorrarDependiente.setEnabled(false);
         jButtonBorrarDependiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBorrarDependienteActionPerformed(evt);

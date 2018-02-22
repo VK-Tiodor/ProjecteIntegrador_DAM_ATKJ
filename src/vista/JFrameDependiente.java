@@ -1250,14 +1250,14 @@ public class JFrameDependiente extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedRow = jTableAddMedicinas.getSelectedRow();
         if (selectedRow != -1) {
-            System.out.println(jTableAddMedicinas.getValueAt(selectedRow, 0));
             Medicacion medicina = (Medicacion) jTableAddMedicinas.getValueAt(selectedRow, 0);
             String toma = jTextFieldTomaAddMedicinaDependiente.getText();
             Double cantidad = Double.parseDouble(jFormattedTextFieldCantidadAddMedicinaDependiente.getText().replace(',', '.'));
             this.controlador.crearMedicacionDependiente(medicina, toma, cantidad, this.dependienteSeleccionado);
-            this.controlador.crearTarea(this.dependienteSeleccionado, Calendar.getInstance().getTime(), "Tomar " + medicina + " " + cantidad, null, Double.parseDouble(toma), 0, 0);
+            this.controlador.crearTareaMedicina(this.dependienteSeleccionado, Calendar.getInstance().getTime(), "Tomar " + medicina + " " + cantidad, null, Double.parseDouble(toma), false, false);
             this.controlador.rellenaTablaMedicacionDependiente(jTableMedicacionDependiente, dependienteSeleccionado);
             jDialogCrearMedicina.dispose();
+            
         }else{
             JOptionPane.showMessageDialog(this, "Selecciona una medicina");
         }

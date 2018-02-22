@@ -15,6 +15,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.sql.Date;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,7 +46,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
 
     private DefaultTableModel tablaListaDependientes;
     private TableRowSorter trsFiltroDependientes;
-    
+
     public JFramePantallaPrincipal(Controlador controlador, Conexion conexion) {
         super("DependenciApp");
         setAspecto("Nimbus");
@@ -77,6 +79,9 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jTextAreaDescripcionAddTarea = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jButtonCrearTareaAddTarea = new javax.swing.JButton();
+        jFormattedTextFieldHorasRepeticion = new javax.swing.JFormattedTextField();
+        jCheckBoxAsistente = new javax.swing.JCheckBox();
+        jLabel22 = new javax.swing.JLabel();
         jDialogDetallesLlamada = new javax.swing.JDialog();
         jLabel8 = new javax.swing.JLabel();
         jLabelDependienteDetallesLlamada = new javax.swing.JLabel();
@@ -171,6 +176,22 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jFormattedTextFieldHorasRepeticion.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##"))));
+        jFormattedTextFieldHorasRepeticion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jCheckBoxAsistente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jCheckBoxAsistente.setText("Tarea de Asistente");
+        jCheckBoxAsistente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jCheckBoxAsistente.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jCheckBoxAsistente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxAsistenteActionPerformed(evt);
+            }
+        });
+
+        jLabel22.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel22.setText("Repetición (horas)");
+
         javax.swing.GroupLayout jDialogAñadirTareaLayout = new javax.swing.GroupLayout(jDialogAñadirTarea.getContentPane());
         jDialogAñadirTarea.getContentPane().setLayout(jDialogAñadirTareaLayout);
         jDialogAñadirTareaLayout.setHorizontalGroup(
@@ -178,20 +199,26 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             .addGroup(jDialogAñadirTareaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDialogAñadirTareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxAsistente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxDependientesAddTarea, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(dateChooserComboFechaAddTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jFormattedTextFieldHoraAddTarea)
                     .addComponent(jTextFieldEncabezadoAddTarea)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                    .addComponent(jButtonCrearTareaAddTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jDialogAñadirTareaLayout.createSequentialGroup()
                         .addGroup(jDialogAñadirTareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFormattedTextFieldHoraAddTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4)
                             .addComponent(jLabel5))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButtonCrearTareaAddTarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jDialogAñadirTareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDialogAñadirTareaLayout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jFormattedTextFieldHorasRepeticion))))
                 .addContainerGap())
         );
         jDialogAñadirTareaLayout.setVerticalGroup(
@@ -206,17 +233,23 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dateChooserComboFechaAddTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addGroup(jDialogAñadirTareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel22))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jFormattedTextFieldHoraAddTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(jDialogAñadirTareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jFormattedTextFieldHoraAddTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextFieldHorasRepeticion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBoxAsistente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldEncabezadoAddTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonCrearTareaAddTarea)
                 .addContainerGap())
@@ -762,7 +795,12 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddTareaActionPerformed
 
     private void jButtonTareaRealizadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTareaRealizadoActionPerformed
-
+        if (this.jTableAgenda.getSelectedRow() != -1) {
+            if (JOptionPane.showConfirmDialog(this, "Seguro que quieres marcar esta tarea como realizada?") == JOptionPane.YES_OPTION) {
+                this.conexion.estableceLaTareaRealizada((TareasPendientes) this.jTableAgenda.getValueAt(this.jTableAgenda.getSelectedRow(), 0));
+                this.controlador.rellenaTablaAgenda(jTableAgenda);
+            }
+        }
     }//GEN-LAST:event_jButtonTareaRealizadoActionPerformed
 
     private void jButtonBorrarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarTareaActionPerformed
@@ -817,10 +855,19 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         String hora = jFormattedTextFieldHoraAddTarea.getText();
         String encabezado = jTextFieldEncabezadoAddTarea.getText();
         String descripcion = jTextAreaDescripcionAddTarea.getText();
+        String fechaHora = fecha.getInstance().get(Calendar.YEAR) + "-" + fecha.getInstance().get(Calendar.MONTH) + "-" + fecha.getInstance().get(Calendar.DAY_OF_MONTH) + " " + hora;
 
-        this.controlador.creaTarea(dependiente, fecha.getInstance().getTime(), hora, encabezado, descripcion, (DefaultTableModel) this.jTableAgenda.getModel());
+        Double horasRepeticon = jFormattedTextFieldHorasRepeticion.getText().equals("") ? null : Double.parseDouble(jFormattedTextFieldHorasRepeticion.getText());
+
+        try {
+            this.controlador.crearTareaMedicina(dependiente, Controlador.parseaFecha(fechaHora), encabezado, descripcion, horasRepeticon, jCheckBoxAsistente.isSelected(), false);
+        } catch (ParseException ex) {
+            Logger.getLogger(JFramePantallaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         this.jDialogAñadirTarea.dispose();
+        this.controlador.rellenaTablaAgenda(jTableAgenda);
+
 
     }//GEN-LAST:event_jButtonCrearTareaAddTareaActionPerformed
 
@@ -840,13 +887,12 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAceptarDetallesLlamadaActionPerformed
 
     private void jButtonCogerLlamadaAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCogerLlamadaAvisoActionPerformed
-        
+
         jDialogAlertaLlamadaEntrante.dispose();
-        
+
         JFrameDependienteLlamada jfdl = new JFrameDependienteLlamada(controlador, this.controlador.getConexion().getDependienteById(this.idDependienteLlamada), this.longitudDependienteLlamada, this.latitudDependienteLlamada, this.jTableHistorialLlamadas);
         this.controlador.abreFrame(jfdl);
-        
-        
+
 
     }//GEN-LAST:event_jButtonCogerLlamadaAvisoActionPerformed
 
@@ -897,7 +943,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         trsFiltroDependientes = new TableRowSorter(jTableListaDependientes.getModel());
         trsFiltroDependientes.setRowFilter(RowFilter.regexFilter(jTextFieldBuscadorDependiente.getText(), 0));
         jTableListaDependientes.setRowSorter(trsFiltroDependientes);
-        
+
     }//GEN-LAST:event_jTextFieldBuscadorDependienteKeyTyped
 
     private void jTextFieldBuscadorLlamadaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscadorLlamadaKeyTyped
@@ -907,6 +953,10 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private void jTextFieldBuscadorTareaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscadorTareaKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldBuscadorTareaKeyTyped
+
+    private void jCheckBoxAsistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAsistenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxAsistenteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -926,6 +976,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVerDependiente;
     private javax.swing.JButton jButtonVerDependienteHist;
     private javax.swing.JButton jButtonVerDetallesLlamada;
+    private javax.swing.JCheckBox jCheckBoxAsistente;
     private javax.swing.JComboBox<String> jComboBoxDependientesAddTarea;
     private javax.swing.JComboBox<String> jComboBoxGeneroCrearDependiente;
     private javax.swing.JComboBox<String> jComboBoxTipoCrearDependiente;
@@ -934,6 +985,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JDialog jDialogCrearDependiente;
     private javax.swing.JDialog jDialogDetallesLlamada;
     private javax.swing.JFormattedTextField jFormattedTextFieldHoraAddTarea;
+    private javax.swing.JFormattedTextField jFormattedTextFieldHorasRepeticion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -948,6 +1000,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -982,20 +1035,16 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNombreCrearDependiente;
     // End of variables declaration//GEN-END:variables
 
-    
-
     private void setUI() {
-        
-        
+
         this.controlador.rellenaTablaAgenda(this.jTableAgenda);
         this.controlador.rellenaTablaHistorialLlamadas(this.jTableHistorialLlamadas);
         this.controlador.rellenaTablaListaDependiente(this.jTableListaDependientes);
         tablaListaDependientes = (DefaultTableModel) jTableListaDependientes.getModel();
-        
-        
-        
+
     }
-    private void setAspecto(String aspecto){
+
+    private void setAspecto(String aspecto) {
         //set Nimbus o otro
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1004,7 +1053,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException |InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JFramePantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }

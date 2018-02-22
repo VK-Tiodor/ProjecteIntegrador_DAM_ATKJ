@@ -108,7 +108,7 @@ public class TareasPendientes implements java.io.Serializable {
     }
 
     public Object[] getTareaPendienteForTable() {
-        return new Object[]{this, this.fecha, this.encabezado, this.descripcion};
+        return new Object[]{this, Controlador.formateaFecha(this.fecha), this.encabezado, this.descripcion, this.horasRepeticion != null ? this.horasRepeticion.intValue():0, this.tareaAsistente?"Si":"No"};
     }
 
     public static void setColumns(DefaultTableModel model) {
@@ -116,6 +116,8 @@ public class TareasPendientes implements java.io.Serializable {
         model.addColumn("Fecha");
         model.addColumn("Encabezado");
         model.addColumn("Descripcion");
+        model.addColumn("Repetición (horas)");
+        model.addColumn("Tarea de Asistente");
     }
 
     public String toString() {

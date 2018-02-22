@@ -116,7 +116,7 @@ public class Controlador {
         TareasPendientes.setColumns(model);
 
         for (TareasPendientes tareasPendiente : this.conexion.getTareasPendientes()) {
-            if (!tareasPendiente.getRealizada() && tareasPendiente.getTareaAsistente()) {
+            if (!tareasPendiente.getRealizada()) {
                 model.addRow(tareasPendiente.getTareaPendienteForTable());
             }
         }
@@ -348,8 +348,13 @@ public class Controlador {
         this.conexion.eliminaVivienda(vivienda);
     }
 
+    public static Date parseaFecha(String date) throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat("y-MM-d HH:mm");
+        return dateFormat.parse(date);
+    }
+    
     public static String formateaFecha(Date date) {
-        DateFormat dateFormat = new SimpleDateFormat("y-MM-d hh:mm");
+        DateFormat dateFormat = new SimpleDateFormat("y-MM-d HH:mm");
         return dateFormat.format(date);
     }
 
@@ -357,8 +362,8 @@ public class Controlador {
         this.conexion.guardaDependienteHasMedicacion(medicinaEditandonse);
     }
 
-    public void crearTarea(Dependiente dependienteSeleccionado, Date time, String encabezado, String descripcion, Double toma, int tareaAsistente, int realizada) {
-        this.conexion.guardaTareaPendiente(new TareasPendientes(dependienteSeleccionado, time, encabezado, descripcion, toma, Boolean.TRUE, Boolean.FALSE));
+    public void crearTareaMedicina(Dependiente dependienteSeleccionado, Date time, String encabezado, String descripcion, Double horasRepeticion, Boolean tareaAsistente, Boolean realizada) {
+        this.conexion.guardaTareaPendiente(new TareasPendientes(dependienteSeleccionado, time, encabezado, descripcion, horasRepeticion, tareaAsistente, realizada));
     }
 
 }

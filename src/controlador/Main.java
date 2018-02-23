@@ -24,15 +24,15 @@ import modelo.escuchadorLlamadas;
  */
 public class Main {
 
-    //TODO - , la fecha no esta en el formato correcto
-    
+    //TODO - , la fecha no esta en el formato correcto // fixed
+    //TODO - que las tablas se ordenen por fecha
+    //TODO - datechooser del aviso de llamada no funciona
 
     // TODO refrescar tabla tareas al introducir medicina
     // TODO borrar tareas cuando se borre medicina
     
     private static final String MACHINE = "localhost";
     private static final int PORT = 9090;
-    public static int TAMANYOLETRA = 2;
     private static Controlador controlador;
 
     public static void main(String args[]) {
@@ -54,62 +54,62 @@ public class Main {
         }
     }
 
-    public static void cambiaTamanyo(Component elemento) {
-        elemento.setFont(new Font("sansserif", 0, elemento.getFont().getSize() * TAMANYOLETRA));
-    }
-
-    public static void recorreComponentesRecursivo(Component comp) {
-
-        if (comp instanceof JButton) {
-            Main.cambiaTamanyo((JButton) comp);
-        } else if (comp instanceof JTextField) {
-            Main.cambiaTamanyo((JTextField) comp);
-        } else if (comp instanceof JLabel) {
-            Main.cambiaTamanyo((JLabel) comp);
-        } else if (comp instanceof JTable) {
-            JTable jp = (JTable) comp;
-            Main.cambiaTamanyo((JTable) comp);
-        } else if (comp instanceof JList) {
-            Main.cambiaTamanyo((JList) comp);
-        } else if (comp instanceof JComboBox) {
-            Main.cambiaTamanyo((JComboBox) comp);
-        } else if (comp instanceof JCheckBox) {
-            Main.cambiaTamanyo((JCheckBox) comp);
-        } else if (comp instanceof DateChooserCombo) {
-
-        } else if (comp instanceof JTextField) {
-            Main.cambiaTamanyo((JCheckBox) comp);
-        } else if (comp instanceof JPanel) {
-            JPanel jp = (JPanel) comp;
-            for (Component compo : jp.getComponents()) {
-                recorreComponentesRecursivo(compo);
-            }
-        } else if (comp instanceof JScrollPane) {
-            JScrollPane jp = (JScrollPane) comp;
-            for (Component compo : jp.getComponents()) {
-                recorreComponentesRecursivo(compo);
-            }
-        } else if (comp instanceof JFrame) {
-            JFrame jp = (JFrame) comp;
-            for (Component compo : jp.getComponents()) {
-                recorreComponentesRecursivo(compo);
-            }
-        } else if (comp instanceof JTabbedPane) {
-            JTabbedPane jp = (JTabbedPane) comp;
-            Main.cambiaTamanyo(jp);
-            for (Component compo : jp.getComponents()) {
-                recorreComponentesRecursivo(compo);
-            }
-        } else if (comp instanceof JRootPane) {
-            JRootPane jp = (JRootPane) comp;
-            for (Component compo : jp.getComponents()) {
-                recorreComponentesRecursivo(compo);
-            }
-        } else if (comp instanceof JLayeredPane) {
-            JLayeredPane jp = (JLayeredPane) comp;
-            for (Component compo : jp.getComponents()) {
-                recorreComponentesRecursivo(compo);
-            }
-        }
-    }
+//    public static void cambiaTamanyo(Component elemento) {
+//        elemento.setFont(new Font("sansserif", 0, elemento.getFont().getSize() * TAMANYOLETRA));
+//    }
+//
+//    public static void recorreComponentesRecursivo(Component comp) {
+//
+//        if (comp instanceof JButton) {
+//            Main.cambiaTamanyo((JButton) comp);
+//        } else if (comp instanceof JTextField) {
+//            Main.cambiaTamanyo((JTextField) comp);
+//        } else if (comp instanceof JLabel) {
+//            Main.cambiaTamanyo((JLabel) comp);
+//        } else if (comp instanceof JTable) {
+//            JTable jp = (JTable) comp;
+//            Main.cambiaTamanyo((JTable) comp);
+//        } else if (comp instanceof JList) {
+//            Main.cambiaTamanyo((JList) comp);
+//        } else if (comp instanceof JComboBox) {
+//            Main.cambiaTamanyo((JComboBox) comp);
+//        } else if (comp instanceof JCheckBox) {
+//            Main.cambiaTamanyo((JCheckBox) comp);
+//        } else if (comp instanceof DateChooserCombo) {
+//
+//        } else if (comp instanceof JTextField) {
+//            Main.cambiaTamanyo((JCheckBox) comp);
+//        } else if (comp instanceof JPanel) {
+//            JPanel jp = (JPanel) comp;
+//            for (Component compo : jp.getComponents()) {
+//                recorreComponentesRecursivo(compo);
+//            }
+//        } else if (comp instanceof JScrollPane) {
+//            JScrollPane jp = (JScrollPane) comp;
+//            for (Component compo : jp.getComponents()) {
+//                recorreComponentesRecursivo(compo);
+//            }
+//        } else if (comp instanceof JFrame) {
+//            JFrame jp = (JFrame) comp;
+//            for (Component compo : jp.getComponents()) {
+//                recorreComponentesRecursivo(compo);
+//            }
+//        } else if (comp instanceof JTabbedPane) {
+//            JTabbedPane jp = (JTabbedPane) comp;
+//            Main.cambiaTamanyo(jp);
+//            for (Component compo : jp.getComponents()) {
+//                recorreComponentesRecursivo(compo);
+//            }
+//        } else if (comp instanceof JRootPane) {
+//            JRootPane jp = (JRootPane) comp;
+//            for (Component compo : jp.getComponents()) {
+//                recorreComponentesRecursivo(compo);
+//            }
+//        } else if (comp instanceof JLayeredPane) {
+//            JLayeredPane jp = (JLayeredPane) comp;
+//            for (Component compo : jp.getComponents()) {
+//                recorreComponentesRecursivo(compo);
+//            }
+//        }
+//    }
 }

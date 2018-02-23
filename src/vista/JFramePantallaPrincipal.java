@@ -901,7 +901,9 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         String hora = jFormattedTextFieldHoraAddTarea.getText();
         String encabezado = jTextFieldEncabezadoAddTarea.getText();
         String descripcion = jTextAreaDescripcionAddTarea.getText();
-        String fechaHora = fecha.getInstance().get(Calendar.YEAR) + "-" + fecha.getInstance().get(Calendar.MONTH) + "-" + fecha.getInstance().get(Calendar.DAY_OF_MONTH) + " " + hora;
+        
+        // Se le suma 1 al mes porque devuelve 1 de menos que el seleccionado.
+        String fechaHora = fecha.get(Calendar.YEAR) + "-" + (fecha.get(Calendar.MONTH) + 1) +  "-" + fecha.get(Calendar.DAY_OF_MONTH) + " " + hora;
 
         Double horasRepeticon = jFormattedTextFieldHorasRepeticion.getText().equals("") ? null : Double.parseDouble(jFormattedTextFieldHorasRepeticion.getText());
 

@@ -5,8 +5,6 @@
  */
 package controlador;
 
-import com.teamdev.jxbrowser.chromium.Browser;
-import com.teamdev.jxbrowser.chromium.swing.BrowserView;
 import hibernate.Asistencia;
 import hibernate.Contacto;
 import hibernate.ContactoHasDependiente;
@@ -17,11 +15,9 @@ import hibernate.DependienteHasMedicacionId;
 import hibernate.Medicacion;
 import hibernate.Personas;
 import hibernate.Poblacion;
-import hibernate.RecursosLocalidad;
 import hibernate.TareasPendientes;
 import hibernate.Telefonos;
 import hibernate.Vivienda;
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -38,7 +34,6 @@ import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.RowSorter;
 import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -140,11 +135,7 @@ public class Controlador {
         }
 
         tablaAgenda.setModel(model);
-
-        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
-        tablaAgenda.setRowSorter(sorter);
-        tablaAgenda.getRowSorter().toggleSortOrder(1);
-
+        
         centraTabla(tablaAgenda);
 
     }
@@ -162,9 +153,6 @@ public class Controlador {
 
         tablaHistorial.setModel(model);
 
-        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
-        tablaHistorial.setRowSorter(sorter);
-        tablaHistorial.getRowSorter().toggleSortOrder(1);
 
         centraTabla(tablaHistorial);
 
@@ -180,10 +168,6 @@ public class Controlador {
 
         jTableHistorialLlamadas.setModel(model);
 
-        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
-        jTableHistorialLlamadas.setRowSorter(sorter);
-        jTableHistorialLlamadas.getRowSorter().toggleSortOrder(1);
-
         centraTabla(jTableHistorialLlamadas);
     }
 
@@ -196,10 +180,6 @@ public class Controlador {
         }
 
         jTableListaDependientes.setModel(model);
-
-        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
-        jTableListaDependientes.setRowSorter(sorter);
-        jTableListaDependientes.getRowSorter().toggleSortOrder(0);
 
         centraTabla(jTableListaDependientes);
     }
@@ -218,17 +198,13 @@ public class Controlador {
 
         jTableContactosDependiente.setModel(model);
 
-        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
-        jTableContactosDependiente.setRowSorter(sorter);
-        jTableContactosDependiente.getRowSorter().toggleSortOrder(0);
-
         centraTabla(jTableContactosDependiente);
     }
 
     public void rellenaTablaMedicacionDependiente(JTable jTableMedicacionDependiente, Dependiente dependiente) {
         DefaultTableModel model = new MiModelo();
         Medicacion.setColumns(model);
-
+        
         if (dependiente.getDependienteHasMedicacions() != null) {
             //DefaultTableModel tablaContactos = (DefaultTableModel)jTableContactosDependiente.getModel();
             for (Object object : dependiente.getDependienteHasMedicacions().toArray()) {
@@ -237,10 +213,6 @@ public class Controlador {
             }
         }
         jTableMedicacionDependiente.setModel(model);
-
-        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
-        jTableMedicacionDependiente.setRowSorter(sorter);
-        jTableMedicacionDependiente.getRowSorter().toggleSortOrder(0);
 
         centraTabla(jTableMedicacionDependiente);
     }
@@ -258,10 +230,6 @@ public class Controlador {
         }
 
         jTableViviendasDependiente.setModel(model);
-
-        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
-        jTableViviendasDependiente.setRowSorter(sorter);
-        jTableViviendasDependiente.getRowSorter().toggleSortOrder(0);
 
         centraTabla(jTableViviendasDependiente);
     }
@@ -281,7 +249,7 @@ public class Controlador {
         });
     }
 
-    public void rellenaTablaMedicacionDependiente(JTable jTableAddMedicinas) {
+    public void rellenaTablaSimpleMedicacionDependiente(JTable jTableAddMedicinas) {
         DefaultTableModel model = new MiModelo();
         Medicacion.setSimpleColumns(model);
         ArrayList<Medicacion> medicinas = this.conexion.getMedicinas();

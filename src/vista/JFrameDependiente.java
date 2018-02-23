@@ -6,18 +6,14 @@
 package vista;
 
 import controlador.Controlador;
-import controlador.Main;
 import hibernate.Contacto;
 import hibernate.ContactoHasDependiente;
 import hibernate.Dependiente;
 import hibernate.DependienteHasMedicacion;
 import hibernate.Medicacion;
-import hibernate.Personas;
 import hibernate.Poblacion;
-import hibernate.TareasPendientes;
 import hibernate.Telefonos;
 import hibernate.Vivienda;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -26,7 +22,6 @@ import java.util.Set;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import modelo.conexion.Conexion;
 
 /**
  *
@@ -1194,7 +1189,7 @@ public class JFrameDependiente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEliminarContactoDependienteActionPerformed
 
     private void jButtonAñadirMedicacionDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirMedicacionDependienteActionPerformed
-        this.controlador.rellenaTablaMedicacionDependiente(jTableAddMedicinas);
+        this.controlador.rellenaTablaSimpleMedicacionDependiente(jTableAddMedicinas);
         jTextFieldTomaAddMedicinaDependiente.setText("");
         jFormattedTextFieldCantidadAddMedicinaDependiente.setText("");
         this.controlador.abreDialog(jDialogCrearMedicina, false);
@@ -1217,8 +1212,9 @@ public class JFrameDependiente extends javax.swing.JFrame {
             if (JOptionPane.showConfirmDialog(this, "Seguro que quieres borrar esta medicación?") == JOptionPane.YES_OPTION) {
                 DependienteHasMedicacion medicacion = (DependienteHasMedicacion) this.jTableMedicacionDependiente.getModel().getValueAt(this.jTableMedicacionDependiente.getSelectedRow(), 0);
                 this.controlador.borraTareaMedicacion(medicacion, this.dependienteSeleccionado);
-                DefaultTableModel model = (DefaultTableModel) this.jTableMedicacionDependiente.getModel();
-                model.removeRow(this.jTableMedicacionDependiente.getSelectedRow());
+                this.controlador.rellenaTablaMedicacionDependiente(jTableMedicacionDependiente, dependienteSeleccionado);
+//                DefaultTableModel model = (DefaultTableModel) this.jTableMedicacionDependiente.getModel();
+//                model.removeRow(this.jTableMedicacionDependiente.getSelectedRow());
                 
             }
         }

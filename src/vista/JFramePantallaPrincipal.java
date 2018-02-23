@@ -6,31 +6,20 @@
 package vista;
 
 import controlador.Controlador;
-import controlador.Main;
 import hibernate.Asistencia;
 import hibernate.Dependiente;
 import hibernate.TareasPendientes;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.sql.Date;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.PatternSyntaxException;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.plaf.FontUIResource;
 import javax.swing.table.TableRowSorter;
 import modelo.conexion.Conexion;
 
@@ -279,10 +268,12 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         dateChooserComboFechaDetallesLlamada.setLocked(true);
 
         jTextFieldMotivoDetallesLlamada.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jTextFieldMotivoDetallesLlamada.setEnabled(false);
 
         jTextAreaDatosAsistenciaDetallesLlamada.setColumns(20);
         jTextAreaDatosAsistenciaDetallesLlamada.setLineWrap(true);
         jTextAreaDatosAsistenciaDetallesLlamada.setRows(5);
+        jTextAreaDatosAsistenciaDetallesLlamada.setEnabled(false);
         jScrollPane5.setViewportView(jTextAreaDatosAsistenciaDetallesLlamada);
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N

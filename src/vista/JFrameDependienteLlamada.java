@@ -24,8 +24,10 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import java.util.HashSet;
 import java.util.Set;
@@ -87,6 +89,7 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
         this.jLabelGeneroDependiente.setText(this.dependienteLlamada.getPersonas().getGenero());
         this.jLabelFechaAltaDependiente.setText(this.dependienteLlamada.getFechaAlta().toString());
         this.jLabelTipoDeDependiente.setText(this.dependienteLlamada.getTipoDeDependiente());
+        this.jLabelFechaDetallesLlamada.setText(this.controlador.formateaFecha(Calendar.getInstance().getTime()));
 
         this.controlador.rellenaTablaContactosDependiente(jTableContactosDependiente, dependienteLlamada);
         this.controlador.rellenaTablaMedicacionDependiente(jTableMedicacionDependiente, dependienteLlamada);
@@ -138,11 +141,11 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
-        dateChooserComboFechaDetallesLlamada = new datechooser.beans.DateChooserCombo();
         jTextFieldMotivoDetallesLlamada = new javax.swing.JTextField();
         jScrollPane10 = new javax.swing.JScrollPane();
         jTextAreaDatosAsistenciaDetallesLlamada = new javax.swing.JTextArea();
         jButtonAceptarDetallesLlamada = new javax.swing.JButton();
+        jLabelFechaDetallesLlamada = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         jTableViviendasDependiente.setModel(new javax.swing.table.DefaultTableModel(
@@ -323,8 +326,6 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
         jLabel39.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel39.setText("Datos de Asistencia:");
 
-        dateChooserComboFechaDetallesLlamada.setLocked(true);
-
         jTextFieldMotivoDetallesLlamada.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         jTextAreaDatosAsistenciaDetallesLlamada.setColumns(20);
@@ -340,6 +341,9 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
             }
         });
 
+        jLabelFechaDetallesLlamada.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabelFechaDetallesLlamada.setText("jLabelFechaDetallesLlamada");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -351,7 +355,7 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel33)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel38)
@@ -360,7 +364,7 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldMotivoDetallesLlamada)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(dateChooserComboFechaDetallesLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelFechaDetallesLlamada)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel39)
@@ -373,18 +377,18 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel33)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateChooserComboFechaDetallesLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel37))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(jLabelFechaDetallesLlamada))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel38)
                     .addComponent(jTextFieldMotivoDetallesLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel39)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonAceptarDetallesLlamada)
                 .addContainerGap())
@@ -430,7 +434,7 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabelTipoDeDependiente))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -440,11 +444,12 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 719, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonVerViviendasDependiente))
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel9)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -475,7 +480,7 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -505,15 +510,19 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableViviendasDependienteMouseClicked
 
     private void jButtonAceptarDetallesLlamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarDetallesLlamadaActionPerformed
-        //TODO --- si se puede editar el historial de llamadas, hay que hacer o otro dialog o bien modificar este (jDialogDetallesLlamada)
-        
-        String motivo = jTextFieldMotivoDetallesLlamada.getText();
-        String datos = jTextAreaDatosAsistenciaDetallesLlamada.getText();
-        Asistencia asistencia = new Asistencia(dependienteLlamada, Calendar.getInstance().getTime(), motivo, datos);
-        this.controlador.crearAsistencia(asistencia);
-        DefaultTableModel dtm = (DefaultTableModel) tablaHistorialLlamadas.getModel();
-        dtm.addRow(asistencia.getAsistenciaForTable());
-        this.dispose();
+
+        try {
+            Date fecha = this.controlador.parseaFecha(jLabelFechaDetallesLlamada.getText());
+            String motivo = jTextFieldMotivoDetallesLlamada.getText();
+            String datos = jTextAreaDatosAsistenciaDetallesLlamada.getText();
+            Asistencia asistencia = new Asistencia(dependienteLlamada, fecha , motivo, datos);
+            this.controlador.crearAsistencia(asistencia);
+            DefaultTableModel dtm = (DefaultTableModel) tablaHistorialLlamadas.getModel();
+            dtm.addRow(asistencia.getAsistenciaForTable());
+            this.dispose();
+        } catch (ParseException ex) {
+            Logger.getLogger(JFrameDependienteLlamada.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonAceptarDetallesLlamadaActionPerformed
 
     
@@ -572,7 +581,6 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private datechooser.beans.DateChooserCombo dateChooserComboFechaDetallesLlamada;
     private javax.swing.JButton jButtonAceptarDetallesLlamada;
     private javax.swing.JButton jButtonVerViviendasDependiente;
     private javax.swing.JDialog jDialogViviendas;
@@ -595,6 +603,7 @@ public class JFrameDependienteLlamada extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelDNIDependiente;
     private javax.swing.JLabel jLabelFechaAltaDependiente;
+    private javax.swing.JLabel jLabelFechaDetallesLlamada;
     private javax.swing.JLabel jLabelFechaNacimientoDependiente;
     private javax.swing.JLabel jLabelGeneroDependiente;
     private javax.swing.JLabel jLabelNombreYApellidosDependiente;

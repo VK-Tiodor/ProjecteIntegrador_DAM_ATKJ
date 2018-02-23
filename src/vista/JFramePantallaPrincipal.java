@@ -20,6 +20,7 @@ import java.text.ParseException;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.PatternSyntaxException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -641,12 +642,13 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAddTarea)
-                    .addComponent(jButtonTareaRealizado)
-                    .addComponent(jButtonBorrarTarea)
-                    .addComponent(jButton1)
-                    .addComponent(jButtonVerHistorialAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonVerHistorialAgenda, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonAddTarea)
+                        .addComponent(jButtonTareaRealizado)
+                        .addComponent(jButtonBorrarTarea)
+                        .addComponent(jButton1)))
                 .addContainerGap())
         );
 
@@ -986,22 +988,34 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextFieldBuscadorDependienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscadorDependienteKeyTyped
-        trsFiltroDependientes = new TableRowSorter(jTableListaDependientes.getModel());
-        trsFiltroDependientes.setRowFilter(RowFilter.regexFilter(jTextFieldBuscadorDependiente.getText(), 0));
-        jTableListaDependientes.setRowSorter(trsFiltroDependientes);
+        try{
+            trsFiltroDependientes = new TableRowSorter(jTableListaDependientes.getModel());
+            trsFiltroDependientes.setRowFilter(RowFilter.regexFilter(jTextFieldBuscadorDependiente.getText(), 0));
+            jTableListaDependientes.setRowSorter(trsFiltroDependientes);
+        }catch(PatternSyntaxException ex){
+            //se captura esta excepcion para evitar caracteres de escape
+        }
 
     }//GEN-LAST:event_jTextFieldBuscadorDependienteKeyTyped
 
     private void jTextFieldBuscadorLlamadaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscadorLlamadaKeyTyped
-        trsFiltroDependientes = new TableRowSorter(jTableHistorialLlamadas.getModel());
-        trsFiltroDependientes.setRowFilter(RowFilter.regexFilter(jTextFieldBuscadorLlamada.getText(), 0));
-        jTableHistorialLlamadas.setRowSorter(trsFiltroDependientes);
+        try{
+            trsFiltroDependientes = new TableRowSorter(jTableHistorialLlamadas.getModel());
+            trsFiltroDependientes.setRowFilter(RowFilter.regexFilter(jTextFieldBuscadorLlamada.getText(), 0));
+            jTableHistorialLlamadas.setRowSorter(trsFiltroDependientes);
+        }catch(PatternSyntaxException ex){
+            
+        }
     }//GEN-LAST:event_jTextFieldBuscadorLlamadaKeyTyped
 
     private void jTextFieldBuscadorTareaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscadorTareaKeyTyped
-        trsFiltroDependientes = new TableRowSorter(jTableAgenda.getModel());
-        trsFiltroDependientes.setRowFilter(RowFilter.regexFilter(jTextFieldBuscadorTarea.getText(), 0));
-        jTableAgenda.setRowSorter(trsFiltroDependientes);
+        try{
+            trsFiltroDependientes = new TableRowSorter(jTableAgenda.getModel());
+            trsFiltroDependientes.setRowFilter(RowFilter.regexFilter(jTextFieldBuscadorTarea.getText(), 0));
+            jTableAgenda.setRowSorter(trsFiltroDependientes);
+        }catch(PatternSyntaxException ex){
+            
+        }
     }//GEN-LAST:event_jTextFieldBuscadorTareaKeyTyped
 
     private void jCheckBoxAsistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAsistenteActionPerformed

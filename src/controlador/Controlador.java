@@ -36,10 +36,13 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JTable;
+import javax.swing.RowSorter;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import modelo.conexion.Conexion;
 import vista.JFramePantallaPrincipal;
 
@@ -138,11 +141,15 @@ public class Controlador {
 
         tablaAgenda.setModel(model);
 
+        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+        tablaAgenda.setRowSorter(sorter);
+        tablaAgenda.getRowSorter().toggleSortOrder(1);
+
         centraTabla(tablaAgenda);
 
     }
-    
-        public void rellenaTablaAgendaHistorial(JTable tablaHistorial) {
+
+    public void rellenaTablaAgendaHistorial(JTable tablaHistorial) {
 
         DefaultTableModel model = new MiModelo();
         TareasPendientes.setColumns(model);
@@ -154,6 +161,10 @@ public class Controlador {
         }
 
         tablaHistorial.setModel(model);
+
+        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+        tablaHistorial.setRowSorter(sorter);
+        tablaHistorial.getRowSorter().toggleSortOrder(1);
 
         centraTabla(tablaHistorial);
 
@@ -169,6 +180,10 @@ public class Controlador {
 
         jTableHistorialLlamadas.setModel(model);
 
+        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+        jTableHistorialLlamadas.setRowSorter(sorter);
+        jTableHistorialLlamadas.getRowSorter().toggleSortOrder(1);
+
         centraTabla(jTableHistorialLlamadas);
     }
 
@@ -181,6 +196,10 @@ public class Controlador {
         }
 
         jTableListaDependientes.setModel(model);
+
+        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+        jTableListaDependientes.setRowSorter(sorter);
+        jTableListaDependientes.getRowSorter().toggleSortOrder(0);
 
         centraTabla(jTableListaDependientes);
     }
@@ -199,6 +218,10 @@ public class Controlador {
 
         jTableContactosDependiente.setModel(model);
 
+        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+        jTableContactosDependiente.setRowSorter(sorter);
+        jTableContactosDependiente.getRowSorter().toggleSortOrder(0);
+
         centraTabla(jTableContactosDependiente);
     }
 
@@ -214,6 +237,10 @@ public class Controlador {
             }
         }
         jTableMedicacionDependiente.setModel(model);
+
+        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+        jTableMedicacionDependiente.setRowSorter(sorter);
+        jTableMedicacionDependiente.getRowSorter().toggleSortOrder(0);
 
         centraTabla(jTableMedicacionDependiente);
     }
@@ -231,6 +258,10 @@ public class Controlador {
         }
 
         jTableViviendasDependiente.setModel(model);
+
+        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+        jTableViviendasDependiente.setRowSorter(sorter);
+        jTableViviendasDependiente.getRowSorter().toggleSortOrder(0);
 
         centraTabla(jTableViviendasDependiente);
     }

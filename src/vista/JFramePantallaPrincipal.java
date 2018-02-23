@@ -91,7 +91,6 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jButtonCogerLlamadaAviso = new javax.swing.JButton();
         jDialogCrearDependiente = new javax.swing.JDialog();
         jLabel13 = new javax.swing.JLabel();
-        jTextFieldDNICrearDependiente = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jTextFieldNombreCrearDependiente = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -105,6 +104,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jPasswordFieldCrearDependiente = new javax.swing.JPasswordField();
         jButtonCrearDependiente = new javax.swing.JButton();
+        jFormattedTextFieldDNICrearDependiente = new javax.swing.JFormattedTextField();
         jDialogHistorialAgenda = new javax.swing.JDialog();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTableHistorialAgenda = new javax.swing.JTable();
@@ -131,7 +131,6 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jTableListaDependientes = new javax.swing.JTable();
         jButtonVerDependiente = new javax.swing.JButton();
         jButtonAddDependiente = new javax.swing.JButton();
-        jButtonBorrarDependiente = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jTextFieldBuscadorDependiente = new javax.swing.JTextField();
 
@@ -400,8 +399,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setText("DNI");
 
-        jTextFieldDNICrearDependiente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel14.setText("Nombre");
 
         jTextFieldNombreCrearDependiente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -439,6 +437,13 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        try {
+            jFormattedTextFieldDNICrearDependiente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########?")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextFieldDNICrearDependiente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jDialogCrearDependienteLayout = new javax.swing.GroupLayout(jDialogCrearDependiente.getContentPane());
         jDialogCrearDependiente.getContentPane().setLayout(jDialogCrearDependienteLayout);
         jDialogCrearDependienteLayout.setHorizontalGroup(
@@ -446,7 +451,6 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             .addGroup(jDialogCrearDependienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDialogCrearDependienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldDNICrearDependiente)
                     .addComponent(jTextFieldNombreCrearDependiente)
                     .addComponent(jTextFieldApellidosCrearDependiente)
                     .addComponent(dateChooserComboNacimientoCrearDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -463,7 +467,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel18)
                             .addComponent(jLabel19))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButtonCrearDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonCrearDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jFormattedTextFieldDNICrearDependiente, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jDialogCrearDependienteLayout.setVerticalGroup(
@@ -472,8 +477,8 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldDNICrearDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jFormattedTextFieldDNICrearDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldNombreCrearDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -498,7 +503,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPasswordFieldCrearDependiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonCrearDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addComponent(jButtonCrearDependiente, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -754,15 +759,6 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButtonBorrarDependiente.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jButtonBorrarDependiente.setText("Borrar Dependiente");
-        jButtonBorrarDependiente.setEnabled(false);
-        jButtonBorrarDependiente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBorrarDependienteActionPerformed(evt);
-            }
-        });
-
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setText("Buscar Dependiente:");
 
@@ -784,8 +780,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                         .addComponent(jButtonAddDependiente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonVerDependiente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonBorrarDependiente))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDependientesLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel6)
@@ -805,8 +800,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDependientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVerDependiente)
-                    .addComponent(jButtonAddDependiente)
-                    .addComponent(jButtonBorrarDependiente))
+                    .addComponent(jButtonAddDependiente))
                 .addContainerGap())
         );
 
@@ -940,7 +934,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private void jButtonCrearDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearDependienteActionPerformed
         // TODO add your handling code here:
         //Enf. Cronico, Persona Mayor, Discapacidad, Violencia de genero
-        String dni = jTextFieldDNICrearDependiente.getText();
+        String dni = jFormattedTextFieldDNICrearDependiente.getText();
         String nombre = jTextFieldNombreCrearDependiente.getText();
         String apellidos = jTextFieldApellidosCrearDependiente.getText();
         Calendar fechaNac = dateChooserComboNacimientoCrearDependiente.getCurrent();
@@ -959,54 +953,24 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
         this.controlador.abreDialog(jDialogCrearDependiente, false);
     }//GEN-LAST:event_jButtonAddDependienteActionPerformed
 
-    private void jButtonBorrarDependienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarDependienteActionPerformed
-        if (this.jTableListaDependientes.getSelectedRow() != -1) {
-            int s = this.jTableListaDependientes.getSelectedRow();
-            Dependiente d = (Dependiente) this.jTableListaDependientes.getModel().getValueAt(this.jTableListaDependientes.getSelectedRow(), 0);
-            if (JOptionPane.showConfirmDialog(this, "Seguro que quieres borrar a " + d.toString()) == JOptionPane.YES_OPTION) {
-                this.controlador.getConexion().eliminaDependiente(d);
-                DefaultTableModel tabla = (DefaultTableModel) jTableListaDependientes.getModel();
-                tabla.removeRow(s);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "No se ha seleccionado ningún dependiente");
-        }
-    }//GEN-LAST:event_jButtonBorrarDependienteActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         abreDialogAlerta("1", "-0.484756", "38.346041");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextFieldBuscadorDependienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscadorDependienteKeyTyped
-        try{
-            trsFiltroDependientes = new TableRowSorter(jTableListaDependientes.getModel());
-            trsFiltroDependientes.setRowFilter(RowFilter.regexFilter(jTextFieldBuscadorDependiente.getText(), 0));
-            jTableListaDependientes.setRowSorter(trsFiltroDependientes);
-        }catch(PatternSyntaxException ex){
-            //se captura esta excepcion para evitar caracteres de escape
-        }
+        this.controlador.filtraTabla(jTableListaDependientes, jTextFieldBuscadorDependiente.getText());
 
     }//GEN-LAST:event_jTextFieldBuscadorDependienteKeyTyped
 
     private void jTextFieldBuscadorLlamadaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscadorLlamadaKeyTyped
-        try{
-            trsFiltroDependientes = new TableRowSorter(jTableHistorialLlamadas.getModel());
-            trsFiltroDependientes.setRowFilter(RowFilter.regexFilter(jTextFieldBuscadorLlamada.getText(), 0));
-            jTableHistorialLlamadas.setRowSorter(trsFiltroDependientes);
-        }catch(PatternSyntaxException ex){
-            
-        }
+        this.controlador.filtraTabla(jTableHistorialLlamadas, jTextFieldBuscadorLlamada.getText());
+        
     }//GEN-LAST:event_jTextFieldBuscadorLlamadaKeyTyped
 
     private void jTextFieldBuscadorTareaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscadorTareaKeyTyped
-        try{
-            trsFiltroDependientes = new TableRowSorter(jTableAgenda.getModel());
-            trsFiltroDependientes.setRowFilter(RowFilter.regexFilter(jTextFieldBuscadorTarea.getText(), 0));
-            jTableAgenda.setRowSorter(trsFiltroDependientes);
-        }catch(PatternSyntaxException ex){
-            
-        }
+        this.controlador.filtraTabla(jTableAgenda, jTextFieldBuscadorTarea.getText());
+        
     }//GEN-LAST:event_jTextFieldBuscadorTareaKeyTyped
 
     private void jCheckBoxAsistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAsistenteActionPerformed
@@ -1032,7 +996,6 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAceptarDetallesLlamada;
     private javax.swing.JButton jButtonAddDependiente;
     private javax.swing.JButton jButtonAddTarea;
-    private javax.swing.JButton jButtonBorrarDependiente;
     private javax.swing.JButton jButtonBorrarTarea;
     private javax.swing.JButton jButtonCogerLlamadaAviso;
     private javax.swing.JButton jButtonCrearDependiente;
@@ -1051,6 +1014,7 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JDialog jDialogCrearDependiente;
     private javax.swing.JDialog jDialogDetallesLlamada;
     private javax.swing.JDialog jDialogHistorialAgenda;
+    private javax.swing.JFormattedTextField jFormattedTextFieldDNICrearDependiente;
     private javax.swing.JFormattedTextField jFormattedTextFieldHoraAddTarea;
     private javax.swing.JFormattedTextField jFormattedTextFieldHorasRepeticion;
     private javax.swing.JLabel jLabel1;
@@ -1098,7 +1062,6 @@ public class JFramePantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldBuscadorDependiente;
     private javax.swing.JTextField jTextFieldBuscadorLlamada;
     private javax.swing.JTextField jTextFieldBuscadorTarea;
-    private javax.swing.JTextField jTextFieldDNICrearDependiente;
     private javax.swing.JTextField jTextFieldEncabezadoAddTarea;
     private javax.swing.JTextField jTextFieldMotivoDetallesLlamada;
     private javax.swing.JTextField jTextFieldNombreCrearDependiente;

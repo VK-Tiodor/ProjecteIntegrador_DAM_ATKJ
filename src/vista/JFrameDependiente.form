@@ -177,9 +177,17 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jFormattedTextFieldDNICrearContacto" max="32767" attributes="0"/>
+                      <Component id="jScrollPane5" alignment="1" pref="0" max="32767" attributes="0"/>
+                      <Component id="jTextFieldNombreCrearContacto" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jTextFieldApellidosCrearContacto" alignment="0" max="32767" attributes="0"/>
+                      <Component id="dateChooserComboNacimientoCrearContacto" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jComboBoxGeneroCrearContacto" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jButtonCrearContacto" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jTextFieldRelacionCrearContacto" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jComboBoxTipoTelefonoCrearContacto" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
@@ -197,8 +205,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jTextFieldNumeroCrearContacto" min="-2" pref="136" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                  <Component id="jFormattedTextFieldNumeroCrearContacto" min="-2" pref="161" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButtonAddTelefonoCrearContacto" min="-2" pref="24" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButtonRemoveTelefonoCrearContacto" min="-2" pref="24" max="-2" attributes="0"/>
@@ -206,14 +215,6 @@
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane5" alignment="1" pref="0" max="32767" attributes="0"/>
-                      <Component id="jTextFieldDNICrearContacto" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextFieldNombreCrearContacto" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextFieldApellidosCrearContacto" alignment="0" max="32767" attributes="0"/>
-                      <Component id="dateChooserComboNacimientoCrearContacto" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jComboBoxGeneroCrearContacto" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jButtonCrearContacto" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextFieldRelacionCrearContacto" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -224,9 +225,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldDNICrearContacto" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jFormattedTextFieldDNICrearContacto" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldNombreCrearContacto" min="-2" max="-2" attributes="0"/>
@@ -251,7 +252,7 @@
                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPane5" pref="93" max="32767" attributes="0"/>
+                  <Component id="jScrollPane5" pref="91" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -262,8 +263,8 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jComboBoxTipoTelefonoCrearContacto" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldNumeroCrearContacto" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonAddTelefonoCrearContacto" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="jFormattedTextFieldNumeroCrearContacto" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jButtonCrearContacto" min="-2" pref="61" max="-2" attributes="0"/>
@@ -318,13 +319,6 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldDNICrearContacto">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="14" style="0"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
@@ -435,13 +429,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="jTextFieldNumeroCrearContacto">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="14" style="0"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel22">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -496,6 +483,26 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRemoveTelefonoCrearContactoActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldNumeroCrearContacto">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="#########" subtype="-1" type="5"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="14" style="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldDNICrearContacto">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="########?" subtype="-1" type="5"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="14" style="0"/>
+            </Property>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JDialog" name="jDialogCrearMedicina">
@@ -503,12 +510,13 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jFormattedTextFieldTomaAddMedicinaDependiente" max="32767" attributes="0"/>
                       <Component id="jScrollPane7" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jTextFieldTomaAddMedicinaDependiente" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButtonAddMedicinaDependiente" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jFormattedTextFieldCantidadAddMedicinaDependiente" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -522,7 +530,6 @@
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jFormattedTextFieldCantidadAddMedicinaDependiente" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -542,9 +549,9 @@
                   <Component id="jScrollPane7" pref="145" max="32767" attributes="0"/>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldTomaAddMedicinaDependiente" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                  <Component id="jFormattedTextFieldTomaAddMedicinaDependiente" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jFormattedTextFieldCantidadAddMedicinaDependiente" min="-2" max="-2" attributes="0"/>
@@ -580,13 +587,6 @@
               <Font name="Dialog" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Toma"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldTomaAddMedicinaDependiente">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="14" style="0"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel20">
@@ -655,6 +655,13 @@
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
               <Format format="#0.00" subtype="-1" type="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldTomaAddMedicinaDependiente">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0" subtype="-1" type="0"/>
             </Property>
           </Properties>
         </Component>

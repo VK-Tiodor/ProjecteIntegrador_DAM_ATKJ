@@ -28,10 +28,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
+import java.util.regex.PatternSyntaxException;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.RowSorter;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -416,6 +418,23 @@ public class Controlador {
 
     public void crearTareaMedicina(Dependiente dependienteSeleccionado, Date time, String encabezado, String descripcion, Double horasRepeticion, Boolean tareaAsistente, Boolean realizada) {
         this.conexion.guardaTareaPendiente(new TareasPendientes(dependienteSeleccionado, time, encabezado, descripcion, horasRepeticion, tareaAsistente, realizada));
+    }
+    public void filtraTabla(JTable tabla, String texto){
+        try{
+            RowFilter filtro = new RowFilter() {
+                @Override
+                public boolean include(RowFilter.Entry entrada) {
+                    String filtro = entrada.getStringValue(0);
+                    return (filtro.toLowerCase().contains(texto.toLowerCase()));
+                }
+            };
+
+            TableRowSorter ordenador = new TableRowSorter<>(tabla.getModel());
+            ordenador.setRowFilter(filtro);
+            tabla.setRowSorter(ordenador);
+        }catch(PatternSyntaxException ex){
+            
+        }
     }
 
 }
